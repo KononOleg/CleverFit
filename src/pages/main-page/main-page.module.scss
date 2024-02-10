@@ -1,0 +1,57 @@
+.mainPage {
+    background: url('../../assets/images/main-page.jpg') center / cover;
+    display: flex;
+
+    .sider {
+        width: 208px;
+        background: white;
+    }
+
+    .wrapper {
+        width: 1232px;
+        display: flex;
+        flex-direction: column;
+
+        min-height: 100vh;
+
+        .container {
+            padding: 24px 0;
+        }
+
+        .main {
+            flex-grow: 1;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 24px;
+
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0;
+            text-align: left;
+
+            .card {
+                background: #fff;
+                padding: 24px;
+            }
+
+            .cards {
+                display: flex;
+                gap: 16px;
+
+                div {
+                    width: 240px;
+                    background: #fff;
+                    text-align: center;
+                    padding: 12px 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                }
+            }
+        }
+    }
+}

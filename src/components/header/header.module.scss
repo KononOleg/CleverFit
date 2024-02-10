@@ -1,0 +1,18 @@
+.header {
+    height: 168px;
+    background: #f0f5ff;
+    color: #262626;
+
+    padding-top: 14px;
+
+    h1 {
+        max-width: 1000px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 12px 0 2px;
+    }
+}

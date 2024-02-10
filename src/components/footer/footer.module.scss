@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    padding-bottom: 42px;
+
+    .card {
+        background: #fff;
+        display: flex;
+        box-sizing: border-box;
+        width: 240px;
+        gap: 16px;
+        flex-direction: column;
+        padding: 6px 0 12px;
+    }
+
+    .cards {
+        display: flex;
+    }
+}
