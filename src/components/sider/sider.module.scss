@@ -1,7 +1,8 @@
+@import '../../index.variables.scss';
+
 .menu {
     min-height: 100%;
-    background: #fff;
-
+    background: $neutral-gray-1;
     transition: all 0.2s;
 }
 
@@ -12,26 +13,37 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.menuWrapperItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    span {
+        color: $primary-light-9;
+    }
+}
+
+.menuWrapperCollapsed {
+    padding-left: 15px;
+}
 
 .logoWrapper {
-    display: block;
-    text-align: center;
-    margin: 50px 25px 65px 0;
+    display: flex;
+
+    margin: 45px 0 55px 18px;
 }
 
 .logo {
     background: url('../../assets/icons/logo.png') no-repeat center / cover;
     width: 134px;
     height: 34px;
-    margin-left: 25px;
     transition: all 0.2s;
 }
 
 .logoSmall {
     background: url('../../assets/icons/logo-small.png') no-repeat center / cover;
     width: 30px;
-    height: 25px;
-    margin-left: 25px;
+    height: 34px;
     transition: all 0.2s;
 }
 
@@ -44,9 +56,13 @@
     padding: 10px 5px;
     height: 0;
     width: 80px;
-    border-bottom: 20px solid #fff;
+    border-bottom: 20px solid $neutral-gray-1;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
+
+    button {
+        color: $neutral-gray-7;
+    }
 }
 
 .siderBtn {
@@ -57,14 +73,14 @@
 }
 
 .exitWrapper {
-    border-top: 1px solid #f0f0f0;
-    padding-top: 10px;
+    border-top: 1px solid $character-light-dividers;
+    padding: 10px 0 0;
 }
 
 .exit {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 22px;
     font-size: 14px;
     font-weight: 400;
     line-height: 130%;
@@ -74,7 +90,7 @@
 }
 
 .exitImg {
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .hide {

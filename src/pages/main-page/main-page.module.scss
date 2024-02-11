@@ -1,17 +1,13 @@
-.mainPage {
-    background: url('../../assets/images/main-page.jpg') center / cover;
-    display: flex;
+@import '../../index.variables.scss';
 
-    .sider {
-        width: 208px;
-        background: white;
-    }
+.mainPage {
+    display: flex;
+    background: url('../../assets/images/main-page.jpg') center / cover;
 
     .wrapper {
-        width: 1232px;
         display: flex;
         flex-direction: column;
-
+        width: 100%;
         min-height: 100vh;
 
         .container {
@@ -19,37 +15,52 @@
         }
 
         .main {
-            flex-grow: 1;
-            max-width: 800px;
             display: flex;
+            flex-grow: 1;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
+            max-width: 800px;
             padding: 24px;
 
-            font-family: Inter;
             font-size: 16px;
-            font-weight: 400;
             line-height: 21px;
-            letter-spacing: 0;
-            text-align: left;
+
+            .about {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                .goals {
+                    color: $primary-light-9;
+                }
+            }
 
             .card {
-                background: #fff;
                 padding: 24px;
+                background: $neutral-gray-1;
             }
 
             .cards {
                 display: flex;
                 gap: 16px;
 
+                p {
+                    border-bottom: 1px solid $character-light-dividers;
+                    padding-bottom: 12px;
+                }
+
                 div {
                     width: 240px;
-                    background: #fff;
-                    text-align: center;
                     padding: 12px 0;
                     display: flex;
                     flex-direction: column;
-                    gap: 24px;
+                    gap: 11px;
+                    text-align: center;
+                    background: $neutral-gray-1;
+                }
+
+                button {
+                    color: $primary-light-6;
                 }
             }
         }

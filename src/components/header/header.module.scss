@@ -1,18 +1,19 @@
+@import '../../index.variables.scss';
+
 .header {
     height: 168px;
-    background: #f0f5ff;
-    color: #262626;
+    padding-top: 15px;
+    background: $primary-light-1;
 
-    padding-top: 14px;
-
-    h1 {
+    .title {
         max-width: 1000px;
+        padding-top: 7px;
     }
 
     .container {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        padding: 12px 0 2px;
+        padding-top: 5px;
     }
 }
