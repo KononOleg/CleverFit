@@ -6,11 +6,12 @@ import styles from './main-page.module.scss';
 import { Button } from 'antd';
 import { HeartOutlined } from '@ant-design/icons';
 import { Footer } from '@components/footer';
+import { Sider } from '@components/sider';
 
 export const MainPage: React.FC = () => {
     return (
         <div className={styles.mainPage}>
-            <div className={styles.sider}></div>
+            <Sider />
             <div className={styles.wrapper}>
                 <Header />
                 <main className={styles.main}>
