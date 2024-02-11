@@ -13,8 +13,8 @@ body {
     box-sizing: border-box;
     min-width: 320px;
     min-height: 100vh;
-    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
-        lightgray 50% / cover no-repeat;
+    /*     background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
+        lightgray 50% / cover no-repeat; */
 }
 
 footer,
@@ -39,4 +39,25 @@ h4 {
     font-size: 20px;
     font-weight: 500;
     line-height: 26px;
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 31px;
+    }
+}
+
+@media (max-width: 900px) {
+    footer,
+    main {
+        padding: 0px 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 26px;
+    }
 }

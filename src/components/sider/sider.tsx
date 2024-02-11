@@ -79,7 +79,7 @@ export const Sider: React.FC = () => {
                 <div className={styles.exitWrapper}>
                     <Link className={styles.exit} to='/'>
                         <img
-                            className={cn(styles.menu, {
+                            className={cn(styles.exit, {
                                 [styles.exitImg]: collapsed,
                                 [styles.exitImgHide]: !collapsed,
                             })}
@@ -87,7 +87,7 @@ export const Sider: React.FC = () => {
                             alt='exit'
                         />
                         <span
-                            className={cn(styles.menu, {
+                            className={cn(styles.exit, {
                                 [styles.open]: !collapsed,
                                 [styles.hide]: collapsed,
                             })}

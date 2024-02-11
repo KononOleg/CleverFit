@@ -23,3 +23,14 @@
         }
     }
 }
+
+@media (max-width: 830px) {
+    .downloadApp {
+        align-items: center;
+        width: 330px;
+        .buttons {
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+}

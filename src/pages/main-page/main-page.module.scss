@@ -20,7 +20,8 @@
             flex-direction: column;
             gap: 16px;
             max-width: 800px;
-            padding: 24px;
+            padding-top: 24px;
+            padding-bottom: 24px;
 
             font-size: 16px;
             line-height: 21px;
@@ -46,11 +47,12 @@
 
                 p {
                     border-bottom: 1px solid $character-light-dividers;
-                    padding-bottom: 12px;
+                    padding: 0 22px 12px;
                 }
 
                 div {
-                    width: 240px;
+                    max-width: 240px;
+                    width: 100%;
                     padding: 12px 0;
                     display: flex;
                     flex-direction: column;
@@ -61,6 +63,39 @@
 
                 button {
                     color: $primary-light-6;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .cards {
+        p {
+            text-align: left;
+        }
+    }
+}
+
+@media (max-width: 830px) {
+    .mainPage {
+        .wrapper {
+            .main {
+                .card {
+                    padding: 16px;
+                }
+                .cards {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+
+                    p {
+                        text-align: center;
+                    }
+
+                    div {
+                        max-width: 330px;
+                    }
                 }
             }
         }

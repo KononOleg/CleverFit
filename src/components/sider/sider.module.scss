@@ -1,7 +1,6 @@
 @import '../../index.variables.scss';
 
 .menu {
-    min-height: 100%;
     background: $neutral-gray-1;
     transition: all 0.2s;
 }
@@ -56,7 +55,7 @@
     padding: 10px 5px;
     height: 0;
     width: 80px;
-    border-bottom: 20px solid $neutral-gray-1;
+    border-bottom: 30px solid $neutral-gray-1;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
 
@@ -100,4 +99,62 @@
 .open {
     transition: 1s;
     opacity: 1;
+}
+
+@media (max-width: 830px) {
+    .menu {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        z-index: 500;
+        height: 100vh;
+
+        width: 106px !important;
+        min-width: 106px !important;
+        max-width: 106px !important;
+        flex: 0 0 106px !important;
+
+        .menuWrapperItem {
+            gap: 0;
+
+            li {
+                padding: 0;
+
+                span:first-child {
+                    display: none;
+                }
+            }
+        }
+
+        .menuWrapperCollapsed {
+            padding-left: 0;
+        }
+
+        .logoWrapper {
+            margin: 17px 0 27px 17px;
+            .logo {
+                width: 72px;
+                height: 18px;
+            }
+        }
+    }
+
+    .menuHide {
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        flex: 0 0 0 !important;
+    }
+
+    .exitImg,
+    .exitImgHide {
+        display: none;
+    }
+    .exit {
+        padding-left: 15px;
+    }
+
+    .btnClose {
+        top: 4%;
+    }
 }
