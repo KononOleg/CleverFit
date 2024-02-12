@@ -1,20 +1,44 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import cn from 'classnames';
+
+import { Button, Layout, Menu } from 'antd';
 import {
     CalendarOutlined,
     HeartFilled,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    ProfileOutlined,
+    IdcardOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
-import { Button, Layout, Menu } from 'antd';
-import cn from 'classnames';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import ExitPNG from '../../assets/icons/exit.png';
 import styles from './sider.module.scss';
 
 const { Sider: SiderAntd } = Layout;
+const items = [
+    {
+        key: '1',
+        icon: <CalendarOutlined />,
+        label: <Link to=''>Календарь</Link>,
+    },
+    {
+        key: '2',
+        icon: <HeartFilled />,
+        label: <Link to=''>Тренировки</Link>,
+    },
+    {
+        key: '3',
+        icon: <TrophyFilled />,
+        label: <Link to=''>Достижения</Link>,
+    },
+    {
+        key: '4',
+        icon: <IdcardOutlined />,
+        label: <Link to=''>Профиль</Link>,
+    },
+];
 
 export const Sider: React.FC = () => {
     const width = window.innerWidth;
@@ -43,28 +67,7 @@ export const Sider: React.FC = () => {
                         selectable={false}
                         inlineIndent={0}
                         className={styles.menuWrapperItem}
-                        items={[
-                            {
-                                key: '1',
-                                icon: <CalendarOutlined />,
-                                label: <Link to=''>Календарь</Link>,
-                            },
-                            {
-                                key: '2',
-                                icon: <HeartFilled />,
-                                label: <Link to=''>Тренировки</Link>,
-                            },
-                            {
-                                key: '3',
-                                icon: <TrophyFilled />,
-                                label: <Link to=''>Достижения</Link>,
-                            },
-                            {
-                                key: '4',
-                                icon: <ProfileOutlined />,
-                                label: <Link to=''>Профиль</Link>,
-                            },
-                        ]}
+                        items={items}
                     />
 
                     <div className={styles.btnClose} onClick={() => setCollapsed(!collapsed)}>

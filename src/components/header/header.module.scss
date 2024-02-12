@@ -18,6 +18,14 @@
     }
 }
 
+@media (max-width: 1000px) {
+    .header {
+        span:first-child {
+            display: none;
+        }
+    }
+}
+
 @media (max-width: 830px) {
     .header {
         padding-top: 15px;
@@ -28,7 +36,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 2px 0px 0px #0000000b;
+            box-shadow: 0 2px 0 0 #0000000b;
             border-radius: 50%;
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
             background: $neutral-gray-1;
@@ -40,7 +48,7 @@
 
         .title {
             max-width: 1000px;
-            padding-top: 0px;
+            padding-top: 0;
         }
     }
 }
