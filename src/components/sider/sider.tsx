@@ -17,7 +17,7 @@ import styles from './sider.module.scss';
 const { Sider: SiderAntd } = Layout;
 
 export const Sider: React.FC = () => {
-    const dataTest = window.innerWidth >= 833 ? 'sider-switch' : 'sider-switch-mobile';
+    const width = window.innerWidth;
     const [collapsed, setCollapsed] = useState(false);
 
     return (
@@ -25,11 +25,9 @@ export const Sider: React.FC = () => {
             trigger={null}
             theme='light'
             collapsed={collapsed}
-            className={cn(styles.menu, {
-                [styles.menuHide]: collapsed,
-            })}
-            width={208}
-            collapsedWidth={65}
+            className={styles.menu}
+            width={width > 833 ? '208' : '106'}
+            collapsedWidth={width > 833 ? '64' : '1'}
         >
             <div
                 className={cn(styles.menuWrapper, {
@@ -72,7 +70,7 @@ export const Sider: React.FC = () => {
                     <div className={styles.btnClose} onClick={() => setCollapsed(!collapsed)}>
                         <Button
                             type='link'
-                            data-test-id={dataTest}
+                            data-test-id={width >= 833 ? 'sider-switch' : 'sider-switch-mobile'}
                             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                             className={styles.siderBtn}
                         />
