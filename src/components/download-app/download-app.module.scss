@@ -1,0 +1,37 @@
+@import '../../index.variables.scss';
+
+.downloadApp {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 0 0 13px;
+    border-radius: 2px;
+    background: $neutral-gray-1;
+
+    .buttons {
+        display: flex;
+    }
+
+    .download {
+        padding: 0 6px 11px;
+        border-bottom: 1px solid $character-light-dividers;
+
+        p {
+            margin: 0 18px;
+            color: $character-light-secondary-45;
+        }
+    }
+}
+
+@media (max-width: 830px) {
+    .downloadApp {
+        align-items: center;
+        width: 330px;
+        .buttons {
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+}

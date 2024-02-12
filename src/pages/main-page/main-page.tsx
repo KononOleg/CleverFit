@@ -1,34 +1,74 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import reactLogo from '/react.svg';
-import viteLogo from '/vite.svg';
-import tsLogo from '/ts.svg';
-import './main-page.css';
+import cn from 'classnames';
 
-export const MainPage: React.FC = () => {
-    const [count, setCount] = useState(0);
+import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 
-    return (
-        <>
-            <div>
-                <a href='https://vitejs.dev' target='_blank'>
-                    <img src={viteLogo} className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-                <a href='https://www.typescriptlang.org/' target='_blank'>
-                    <img src={tsLogo} className='logo' alt='TS logo' />
-                </a>
-            </div>
-            <h1>Vite + React + TS</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/pages/main-page.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
-    );
-};
+import { Footer } from '@components/footer';
+import { Header } from '@components/header';
+import { Sider } from '@components/sider';
+
+import styles from './main-page.module.scss';
+
+export const MainPage: React.FC = () => (
+    <div className={styles.mainPage}>
+        <Sider />
+        <div className={styles.wrapper}>
+            <Header />
+            <main className={styles.main}>
+                <div className={styles.about}>
+                    <div className={cn(styles.card, styles.goals)}>
+                        <p>С CleverFit ты сможешь:</p>
+                        <p>
+                            — планировать свои тренировки на календаре, выбирая тип и уровень
+                            нагрузки;
+                        </p>
+                        <p>
+                            — отслеживать свои достижения в разделе статистики, сравнивая свои
+                            результаты с нормами и рекордами;
+                        </p>
+                        <p>
+                            — создавать свой профиль, где ты можешь загружать свои фото, видео и
+                            отзывы о тренировках;
+                        </p>
+                        <p>
+                            — выполнять расписанные тренировки для разных частей тела, следуя
+                            подробным инструкциям и советам профессиональных тренеров.
+                        </p>
+                    </div>
+                    <div className={styles.card}>
+                        <h4>
+                            CleverFit — это не просто приложение, а твой личный помощник в мире
+                            фитнеса. Не откладывай на завтра — начни тренироваться уже сегодня!
+                        </h4>
+                    </div>
+                </div>
+
+                <div className={styles.cards}>
+                    <div>
+                        <p>Расписать тренировки</p>
+                        <Button type='text' icon={<HeartFilled />}>
+                            Тренировки
+                        </Button>
+                    </div>
+
+                    <div>
+                        <p>Назначить календарь</p>
+                        <Button type='text' icon={<CalendarOutlined />}>
+                            Календарь
+                        </Button>
+                    </div>
+
+                    <div>
+                        <p>Заполнить профиль</p>
+                        <Button type='text' icon={<IdcardOutlined />}>
+                            Профиль
+                        </Button>
+                    </div>
+                </div>
+            </main>
+            <Footer />
+        </div>
+    </div>
+);
