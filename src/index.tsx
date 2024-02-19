@@ -5,6 +5,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { store } from '@redux/configure-store';
 import { MainPage } from './pages';
+import { AuthorizationLayout } from './layouts/authorization-layout/authorization-layout';
 import { Layout } from './layouts/layout';
 
 import 'antd/dist/antd.css';
@@ -22,6 +23,7 @@ root.render(
                 <Routes>
                     <Route element={<Layout />}>
                         <Route path='/' element={<MainPage />} />
+                        <Route path='/auth' element={<AuthorizationLayout />}></Route>
                     </Route>
                 </Routes>
             </HashRouter>

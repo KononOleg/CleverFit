@@ -1,0 +1,35 @@
+@import '../../index.variables.scss';
+
+.authorizationLayout {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    background: url('../../assets/images/authorization.jpg') center / cover;
+
+    &:after {
+        position: absolute;
+        z-index: 1;
+        content: '';
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(121, 156, 212, 50%);
+        backdrop-filter: blur(5px);
+    }
+
+    .authorizationLayoutWrapper {
+        position: relative;
+        z-index: 2;
+
+        padding: 85px 64px;
+
+        background: $neutral-gray-1;
+    }
+}
