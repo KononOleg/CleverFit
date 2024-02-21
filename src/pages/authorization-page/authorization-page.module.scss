@@ -1,0 +1,64 @@
+.logo {
+    width: 309px;
+    height: 76px;
+    margin-bottom: 48px;
+
+    background: url('../../assets/icons/logo.png') no-repeat center / cover;
+}
+
+.tabs:global.ant-tabs {
+    width: 100%;
+
+    .ant-tabs-nav {
+        margin-bottom: 32px;
+    }
+
+    .ant-tabs-nav-list {
+        width: 100%;
+    }
+
+    .ant-tabs-tab {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .ant-tabs-ink-bar {
+        width: 50% !important;
+    }
+
+    .ant-form-item-extra,
+    .ant-form-item-explain-error {
+        font-size: 12px;
+    }
+}
+
+.Form:global.ant-form {
+    .ant-form-item {
+        margin-bottom: 32px;
+    }
+}
+
+.Input:global.ant-input {
+    height: 40px;
+}
+
+.rememberWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 48px 0 24px;
+}
+
+@media (max-width: 830px) {
+    .logo {
+        width: 203px;
+        height: 50px;
+        margin-bottom: 32px;
+    }
+
+    .googleButton {
+        span:first-child {
+            display: none;
+        }
+    }
+}
