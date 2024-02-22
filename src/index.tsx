@@ -1,9 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { HistoryRouter } from 'redux-first-history/rr6';
 
-import { store } from '@redux/configure-store';
+import { history, store } from '@redux/configure-store';
 import { MainPage } from './pages';
 import { AuthorizationLayout } from './layouts/authorization-layout/authorization-layout';
 import { AuthorizationPage } from '@pages/authorization-page';
@@ -21,7 +22,7 @@ const root = createRoot(domNode);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <HashRouter>
+            <HistoryRouter history={history}>
                 <Routes>
                     <Route element={<Layout />}>
                         <Route path={PATH.Main} element={<MainPage />} />
@@ -37,7 +38,7 @@ root.render(
                         </Route>
                     </Route>
                 </Routes>
-            </HashRouter>
+            </HistoryRouter>
         </Provider>
     </React.StrictMode>,
 );

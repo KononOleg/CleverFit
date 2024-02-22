@@ -6,6 +6,7 @@ import { Form, Input } from 'antd';
 
 import { SubmitButton } from '@components/submit-button';
 import { confirmPassword, email, password, required } from '../../../../helpers';
+import { useRegistrationMutation } from '@redux/services/auth-service';
 
 type FormValues = {
     email: string;
@@ -14,10 +15,10 @@ type FormValues = {
 };
 
 export const RegistrationForm: React.FC = () => {
+    const [registration] = useRegistrationMutation();
     const [form] = Form.useForm<FormValues>();
 
-    const handleFinish = ({ email, password, confirmPassword }: FormValues) =>
-        console.log({ email, password, confirmPassword });
+    const handleFinish = ({ email, password }: FormValues) => registration({ email, password });
 
     return (
         <Form className={styles.Form} form={form} onFinish={handleFinish}>

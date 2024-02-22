@@ -6,6 +6,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 
 import { SubmitButton } from '@components/submit-button';
 import { email, required } from '../../../../helpers';
+import { useLoginMutation } from '@redux/services/auth-service';
 
 type FormValues = {
     email: string;
@@ -14,10 +15,10 @@ type FormValues = {
 };
 
 export const LoginForm: React.FC = () => {
+    const [login] = useLoginMutation();
     const [form] = Form.useForm<FormValues>();
 
-    const handleFinish = ({ email, password, remember }: FormValues) =>
-        console.log({ email, password, remember });
+    const handleFinish = (credentials: FormValues) => login(credentials).unwrap();
 
     return (
         <Form className={styles.Form} form={form} onFinish={handleFinish}>

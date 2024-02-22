@@ -15,6 +15,9 @@ import {
 
 import ExitPNG from '../../assets/icons/exit.png';
 import styles from './sider.module.scss';
+import { PATH } from '@constants/index';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { signOut } from '@redux/reducers/auth-slice';
 
 const { Sider: SiderAntd } = Layout;
 const items = [
@@ -43,6 +46,10 @@ const items = [
 export const Sider: React.FC = () => {
     const width = window.innerWidth;
     const [collapsed, setCollapsed] = useState(false);
+
+    const dispatch = useAppDispatch();
+
+    const signOutHandler = () => dispatch(signOut());
 
     return (
         <SiderAntd
@@ -80,7 +87,7 @@ export const Sider: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.exitWrapper}>
-                    <Link className={styles.exit} to='/'>
+                    <Link className={styles.exit} to={PATH.Auth} onClick={signOutHandler}>
                         <img
                             className={cn(styles.exit, {
                                 [styles.exitImg]: collapsed,

@@ -1,3 +1,10 @@
+export const API_HOST = 'https://marathon-api.clevertec.ru';
+
+export const API_PATH = {
+    register: '/auth/register',
+    login: '/auth/login',
+};
+
 export const PATH = {
     Root: '/',
     Main: '/main',
