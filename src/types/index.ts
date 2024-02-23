@@ -1,3 +1,5 @@
+import { ResultStatusType } from 'antd/lib/result';
+
 export type User = {
     email: string;
     firstName: string;
@@ -10,8 +12,25 @@ export type LoginResponse = {
     accessToken: string;
 };
 
-export type AuthRequest = {
+export type LoginRequest = {
     email: string;
     password: string;
     remember: boolean;
+};
+
+export type RegisterRequest = {
+    email: string;
+    password: string;
+};
+
+export type ResultConfig = {
+    status: ResultStatusType;
+    title: string;
+    subTitle: string;
+    buttonText: string;
+    href: string;
+};
+
+export type ResultConfigs = {
+    [K in string]: ResultConfig;
 };

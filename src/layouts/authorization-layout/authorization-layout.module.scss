@@ -31,7 +31,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 64px 85px 174px;
+        padding: 64px 85px;
         margin: 0 16px;
         max-width: 539px;
         width: 100%;
@@ -43,7 +43,7 @@
 @media (max-width: 830px) {
     .authorizationLayout {
         .authorizationLayoutWrapper {
-            padding: 32px 16px 124px;
+            padding: 32px 16px;
         }
     }
 }

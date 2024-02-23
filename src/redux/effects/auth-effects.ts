@@ -1,4 +1,4 @@
-import { PATH } from '@constants/index';
+import { HttpStatusCode, PATH } from '@constants/index';
 import { setToken } from '@redux/reducers/auth-slice';
 import { authApi } from '@redux/services/auth-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
@@ -19,20 +19,21 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.login.matchRejected,
     effect: (_, { dispatch }) => {
-        dispatch(push('/error'));
+        dispatch(push(PATH.ErrorLogin));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.registration.matchFulfilled,
     effect: (_, { dispatch }) => {
-        dispatch(push('/success'));
+        dispatch(push(PATH.Success));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.registration.matchRejected,
-    effect: (_, { dispatch }) => {
-        dispatch(push('/error'));
+    effect: ({ payload }, { dispatch }) => {
+        if (payload?.status === HttpStatusCode.CONFLICT) dispatch(push(PATH.ErrorUserExist));
+        else dispatch(push(PATH.Error));
     },
 });

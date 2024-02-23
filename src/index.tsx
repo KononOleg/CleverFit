@@ -15,6 +15,7 @@ import 'normalize.css';
 import './index.scss';
 import './index.variables.scss';
 import { AUTH_TAB, PATH } from './constants';
+import { AuthorizationResultPage } from '@pages/authorization-result-page';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -26,15 +27,16 @@ root.render(
                 <Routes>
                     <Route element={<Layout />}>
                         <Route path={PATH.Main} element={<MainPage />} />
-                        <Route path={PATH.Auth} element={<AuthorizationLayout />}>
+                        <Route element={<AuthorizationLayout />}>
                             <Route
-                                index
+                                path={PATH.Auth}
                                 element={<AuthorizationPage tab={AUTH_TAB.Login} />}
                             ></Route>
                             <Route
                                 path={PATH.Register}
                                 element={<AuthorizationPage tab={AUTH_TAB.Register} />}
                             ></Route>
+                            <Route path={PATH.Result} element={<AuthorizationResultPage />}></Route>
                         </Route>
                     </Route>
                 </Routes>

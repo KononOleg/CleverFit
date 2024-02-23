@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { AuthRequest, LoginResponse } from '../../types';
+import { LoginRequest, RegisterRequest, LoginResponse } from '../../types';
 import { RootState } from '@redux/configure-store';
 import { API_HOST, API_PATH } from '@constants/index';
 
@@ -8,14 +8,14 @@ export const authApi = createApi({
         baseUrl: API_HOST,
     }),
     endpoints: (builder) => ({
-        login: builder.mutation<LoginResponse, AuthRequest>({
+        login: builder.mutation<LoginResponse, LoginRequest>({
             query: (credentials) => ({
                 url: API_PATH.login,
                 method: 'POST',
                 body: credentials,
             }),
         }),
-        registration: builder.mutation<void, AuthRequest>({
+        registration: builder.mutation<void, RegisterRequest>({
             query: (credentials) => ({
                 url: API_PATH.register,
                 method: 'POST',
