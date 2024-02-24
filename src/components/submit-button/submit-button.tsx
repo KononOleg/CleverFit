@@ -4,7 +4,12 @@ import { Button, Form, FormInstance } from 'antd';
 
 import styles from './submit-button.module.scss';
 
-export const SubmitButton = ({ form }: { form: FormInstance }) => {
+type Props = {
+    form: FormInstance;
+    buttonText: string;
+};
+
+export const SubmitButton: React.FC<Props> = ({ form, buttonText }) => {
     const [submittable, setSubmittable] = React.useState(false);
 
     const values = Form.useWatch([], form);
@@ -29,7 +34,7 @@ export const SubmitButton = ({ form }: { form: FormInstance }) => {
             disabled={!submittable}
             block
         >
-            Войти
+            {buttonText}
         </Button>
     );
 };

@@ -5,6 +5,9 @@ export const API_HOST = 'https://marathon-api.clevertec.ru';
 export const API_PATH = {
     register: '/auth/registration',
     login: '/auth/login',
+    checkEmail: '/auth/check-email',
+    confirmEmail: '/auth/confirm-email',
+    changePassword: '/auth/change-password',
 };
 
 export const PATH = {
@@ -12,6 +15,8 @@ export const PATH = {
     Main: '/main',
     Auth: '/auth',
     Register: '/auth/registration',
+    ConfirmEmail: '/auth/confirm-email',
+    ChangePassword: '/auth/change-password',
     Result: '/result/:status',
     ErrorLogin: '/result/error-login',
     ErrorUserExist: '/result/error-user-exist',
@@ -19,6 +24,7 @@ export const PATH = {
     Success: '/result/success',
     ErrorCheckEmailNoExist: '/result/error-check-email-no-exist',
     ErrorCheckEmail: '/result/error-check-email',
+    ErrorChangePassword: '/result/error-change-password',
     SuccessChangePassword: '/result/success-change-password',
 };
 
@@ -77,7 +83,7 @@ export const resultConfigs: ResultConfigs = {
         title: 'Данные не сохранились',
         subTitle: 'Что-то пошло не так. Попробуйте ещё раз',
         buttonText: 'Повторить',
-        href: PATH.Auth,
+        href: PATH.ChangePassword,
     },
     'success-change-password': {
         status: 'success',

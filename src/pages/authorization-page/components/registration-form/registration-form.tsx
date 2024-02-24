@@ -38,7 +38,7 @@ export const RegistrationForm: React.FC = () => {
                 <Input.Password size='large' placeholder='Повторите пароль' />
             </Form.Item>
 
-            <SubmitButton form={form} />
+            <SubmitButton form={form} buttonText='Войти' />
         </Form>
     );
 };

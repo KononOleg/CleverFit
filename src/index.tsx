@@ -16,6 +16,8 @@ import './index.scss';
 import './index.variables.scss';
 import { AUTH_TAB, PATH } from './constants';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
+import { ConfirmEmailPage } from '@pages/confirm-email-page';
+import { ChangePasswordPage } from '@pages/change-password-page';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -31,12 +33,14 @@ root.render(
                             <Route
                                 path={PATH.Auth}
                                 element={<AuthorizationPage tab={AUTH_TAB.Login} />}
-                            ></Route>
+                            />
                             <Route
                                 path={PATH.Register}
                                 element={<AuthorizationPage tab={AUTH_TAB.Register} />}
-                            ></Route>
-                            <Route path={PATH.Result} element={<AuthorizationResultPage />}></Route>
+                            />
+                            <Route path={PATH.Result} element={<AuthorizationResultPage />} />
+                            <Route path={PATH.ConfirmEmail} element={<ConfirmEmailPage />} />
+                            <Route path={PATH.ChangePassword} element={<ChangePasswordPage />} />
                         </Route>
                     </Route>
                 </Routes>
