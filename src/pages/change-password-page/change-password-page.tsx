@@ -3,7 +3,13 @@ import { useEffect } from 'react';
 import styles from './change-password-page.module.scss';
 import { useChangePasswordMutation } from '@redux/services/auth-service';
 import { Button, Form, Input, Typography } from 'antd';
-import { checkPrevPath, confirmPasswordRule, passwordRule, requiredRule } from '../../helpers/';
+import {
+    checkPrevPath,
+    confirmPasswordRule,
+    passwordMessageError,
+    passwordRule,
+    requiredRule,
+} from '../../helpers/';
 
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/configure-store';
@@ -35,7 +41,11 @@ export const ChangePasswordPage = () => {
     return (
         <Form className={styles.Form} form={form} onFinish={handleFinish}>
             <Title level={3}>Восстановление аккаунта</Title>
-            <Form.Item name='password' rules={[requiredRule, passwordRule]}>
+            <Form.Item
+                name='password'
+                rules={[requiredRule, passwordRule]}
+                help={passwordMessageError}
+            >
                 <Input.Password
                     size='large'
                     placeholder='Новый пароль'

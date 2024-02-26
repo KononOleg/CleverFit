@@ -36,27 +36,31 @@ export const ConfirmEmailPage = () => {
                 title={`${isError ? 'Неверный код.' : ''} Введите код для восстановления аккауанта`}
                 subTitle={
                     <p>
-                        Мы отправили вам на e-mail <span className='body_strong'>{email}</span>
-                        шестизначный код. Введите его в поле ниже.
+                        Мы отправили вам на e-mail{' '}
+                        <span className={styles.bodyStrong}>{email}</span> шестизначный код. Введите
+                        его в поле ниже.
                     </p>
                 }
                 extra={
                     <VerificationInput
                         classNames={{
-                            container: cn(styles.recoveryInput, {
-                                [styles.recoveryInputError]: isError,
+                            container: styles.container,
+                            character: cn(styles.character, {
+                                [styles.characterError]: isError,
                             }),
+
+                            characterInactive: styles.characterInactive,
+                            characterSelected: styles.characterSelected,
                         }}
                         value={codeValue}
+                        placeholder=''
                         onComplete={onCompleteHandler}
                         inputProps={{ 'data-test-id': DATA_TEST_ID.VERIFICATION_INPUT }}
                         onChange={(value) => setCodeValue(value)}
                     />
                 }
             />
-            <Text type='secondary' className='recovery__text_bottom'>
-                Не пришло письмо? Проверьте папку Спам.
-            </Text>
+            <Text type='secondary'>Не пришло письмо? Проверьте папку Спам.</Text>
         </>
     );
 };

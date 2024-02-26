@@ -8,6 +8,7 @@ import {
     checkPrevPath,
     confirmPasswordRule,
     emailRule,
+    passwordMessageError,
     passwordRule,
     requiredRule,
 } from '../../../../helpers';
@@ -44,7 +45,11 @@ export const RegistrationForm = () => {
                 />
             </Form.Item>
 
-            <Form.Item name='password' rules={[requiredRule, passwordRule]}>
+            <Form.Item
+                name='password'
+                rules={[requiredRule, passwordRule]}
+                help={passwordMessageError}
+            >
                 <Input.Password
                     size='large'
                     placeholder='Пароль'

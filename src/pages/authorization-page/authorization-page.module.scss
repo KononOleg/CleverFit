@@ -1,3 +1,5 @@
+@import '../../index.variables.scss';
+
 .logo {
     width: 309px;
     height: 76px;
@@ -10,11 +12,15 @@
     margin-bottom: 16px;
 }
 
+.googleButton {
+    margin-bottom: 110px;
+}
+
 .tabs:global.ant-tabs {
     width: 100%;
 
     .ant-tabs-nav {
-        margin-bottom: 32px;
+        margin-bottom: 22px;
     }
 
     .ant-tabs-nav-list {
@@ -61,8 +67,14 @@
     }
 
     .googleButton {
-        span:first-child {
-            display: none;
+        margin-bottom: 90px;
+
+        span {
+            font-size: 14px;
+
+            &:first-child {
+                display: none;
+            }
         }
     }
 }

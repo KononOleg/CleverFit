@@ -14,6 +14,7 @@ import 'antd/dist/antd.css';
 import 'normalize.css';
 import './index.scss';
 import './index.variables.scss';
+import './index.global.scss';
 import { AUTH_TAB, PATH } from './constants';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
