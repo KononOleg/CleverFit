@@ -1,7 +1,7 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { authSelector } from '@redux/services/auth-service';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { PATH } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { authSelector } from '@redux/services/auth-service';
+import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedRoute = () => {
     const { token } = useAppSelector(authSelector);

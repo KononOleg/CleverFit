@@ -1,10 +1,9 @@
-import styles from './layout.module.scss';
-import { Outlet } from 'react-router-dom';
 import { Loading } from '@components/loading';
-
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-
 import { QueryStatus } from '@reduxjs/toolkit/query';
+import { Outlet } from 'react-router-dom';
+
+import styles from './layout.module.scss';
 
 export const Layout = () => {
     const isLoading = useAppSelector((state) => {

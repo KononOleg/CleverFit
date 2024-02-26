@@ -1,14 +1,15 @@
+import { API_HOST, API_PATH } from '@constants/index';
+import { RootState } from '@redux/configure-store';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 import {
-    LoginRequest,
-    RegisterRequest,
-    LoginResponse,
+    ChangePasswordRequest,
     CheckEmailRequest,
     ConfirmEmailRequest,
-    ChangePasswordRequest,
+    LoginRequest,
+    LoginResponse,
+    RegisterRequest,
 } from '../../types';
-import { RootState } from '@redux/configure-store';
-import { API_HOST, API_PATH } from '@constants/index';
 
 export const authApi = createApi({
     baseQuery: fetchBaseQuery({

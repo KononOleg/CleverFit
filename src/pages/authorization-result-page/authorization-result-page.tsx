@@ -1,9 +1,7 @@
-import styles from './authorization-result-page.module.scss';
-
-import { Button, Result } from 'antd';
-import { useParams } from 'react-router-dom';
 import { resultConfigs } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { Button, Result } from 'antd';
+import { useParams } from 'react-router-dom';
 import { push } from 'redux-first-history';
 
 export const AuthorizationResultPage = () => {
@@ -14,7 +12,6 @@ export const AuthorizationResultPage = () => {
 
     return (
         <Result
-            className={styles.result}
             status={config.status}
             title={config.title}
             subTitle={config.subTitle}

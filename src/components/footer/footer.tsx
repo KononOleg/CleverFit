@@ -1,5 +1,5 @@
-import { Button } from 'antd';
 import { DownloadApp } from '@components/download-app';
+import { Button } from 'antd';
 
 import styles from './footer.module.scss';
 

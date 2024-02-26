@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
+import { createReduxHistoryContext } from 'redux-first-history';
+
 import { listenerMiddleware } from './effects/auth-effects';
-import { authApi } from './services/auth-service';
 import { authSlice } from './reducers/auth-slice';
+import { authApi } from './services/auth-service';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-
-import styles from '../../authorization-page.module.scss';
-
+import { DATA_TEST_ID, PATH } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { authSelector, prevLocationsSelector } from '@redux/configure-store';
+import { useRegistrationMutation } from '@redux/services/auth-service';
 import { Button, Form, Input } from 'antd';
+import { useEffect } from 'react';
 
 import {
     checkPrevPath,
@@ -11,11 +12,8 @@ import {
     passwordMessageError,
     passwordRule,
     requiredRule,
-} from '../../../../helpers';
-import { useRegistrationMutation } from '@redux/services/auth-service';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector, prevLocationsSelector } from '@redux/configure-store';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+} from '../../../../utils';
+import styles from '../../authorization-page.module.scss';
 
 type FormValues = {
     email: string;

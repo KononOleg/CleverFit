@@ -1,10 +1,11 @@
-import styles from './authorization-page.module.scss';
-import { Button, Tabs, TabsProps } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
+import { AUTH_TAB, PATH } from '@constants/index';
+import { Button, Tabs, TabsProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
+import styles from './authorization-page.module.scss';
 import { LoginForm } from './components/login-form';
 import { RegistrationForm } from './components/registration-form';
-import { useNavigate } from 'react-router-dom';
-import { AUTH_TAB, PATH } from '@constants/index';
 
 const tabsItems: TabsProps['items'] = [
     { label: 'Вход', key: AUTH_TAB.LOGIN, children: <LoginForm /> },

@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { DATA_TEST_ID } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { authSelector, useConfirmEmailMutation } from '@redux/services/auth-service';
+import { Result, Typography } from 'antd';
 import cn from 'classnames';
+import { useState } from 'react';
+import VerificationInput from 'react-verification-input';
 
 import styles from './confirm-email-page.module.scss';
-
-import { Result, Typography } from 'antd';
-import VerificationInput from 'react-verification-input';
-import { authSelector, useConfirmEmailMutation } from '@redux/services/auth-service';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { DATA_TEST_ID } from '@constants/index';
 
 const { Text } = Typography;
 
@@ -31,7 +30,6 @@ export const ConfirmEmailPage = () => {
     return (
         <>
             <Result
-                className={styles.result}
                 status={isError ? 'error' : 'info'}
                 title={`${isError ? 'Неверный код.' : ''} Введите код для восстановления аккауанта`}
                 subTitle={

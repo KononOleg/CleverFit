@@ -1,19 +1,18 @@
-import { useEffect } from 'react';
-
-import styles from './change-password-page.module.scss';
+import { DATA_TEST_ID, PATH } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { authSelector, prevLocationsSelector } from '@redux/configure-store';
 import { useChangePasswordMutation } from '@redux/services/auth-service';
 import { Button, Form, Input, Typography } from 'antd';
+import { useEffect } from 'react';
+
 import {
     checkPrevPath,
     confirmPasswordRule,
     passwordMessageError,
     passwordRule,
     requiredRule,
-} from '../../helpers/';
-
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector, prevLocationsSelector } from '@redux/configure-store';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+} from '../../utils';
+import styles from './change-password-page.module.scss';
 
 const { Title } = Typography;
 

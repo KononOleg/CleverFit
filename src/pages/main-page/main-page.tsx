@@ -1,11 +1,9 @@
-import cn from 'classnames';
-
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
 import { Sider } from '@components/sider';
+import { Button } from 'antd';
+import cn from 'classnames';
 
 import styles from './main-page.module.scss';
 
