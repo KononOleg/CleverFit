@@ -3,11 +3,13 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 type AuthState = {
     token: string | null;
     email: string;
+    password: string;
 };
 
 const initialState: AuthState = {
     token: null,
     email: '',
+    password: '',
 };
 
 export const authSlice = createSlice({
@@ -21,12 +23,15 @@ export const authSlice = createSlice({
         setConfirmEmail(state, action: PayloadAction<{ email: string }>) {
             state.email = action.payload.email;
         },
+        setPassword(state, action: PayloadAction<{ password: string }>) {
+            state.email = action.payload.password;
+        },
         setToken(state, action: PayloadAction<{ accessToken: string; remember: boolean }>) {
-            if (!action.payload.remember) localStorage.setItem('token', action.payload.accessToken);
+            if (action.payload.remember) localStorage.setItem('token', action.payload.accessToken);
 
             state.token = action.payload.accessToken;
         },
     },
 });
 
-export const { signOut, setToken, setConfirmEmail } = authSlice.actions;
+export const { signOut, setToken, setConfirmEmail, setPassword } = authSlice.actions;

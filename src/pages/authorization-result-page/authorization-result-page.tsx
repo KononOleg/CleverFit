@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './authorization-result-page.module.scss';
 
 import { Button, Result } from 'antd';
@@ -8,7 +6,7 @@ import { resultConfigs } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { push } from 'redux-first-history';
 
-export const AuthorizationResultPage: React.FC = () => {
+export const AuthorizationResultPage = () => {
     const { status } = useParams();
     const dispatch = useAppDispatch();
 
@@ -26,6 +24,7 @@ export const AuthorizationResultPage: React.FC = () => {
                     type='primary'
                     size='large'
                     onClick={() => dispatch(push(config.href))}
+                    data-test-id={config.dataTestId}
                 >
                     {config.buttonText}
                 </Button>

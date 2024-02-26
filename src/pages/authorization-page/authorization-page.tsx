@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './authorization-page.module.scss';
 import { Button, Tabs, TabsProps } from 'antd';
 import { GooglePlusOutlined } from '@ant-design/icons';
@@ -9,19 +7,19 @@ import { useNavigate } from 'react-router-dom';
 import { AUTH_TAB, PATH } from '@constants/index';
 
 const tabsItems: TabsProps['items'] = [
-    { label: 'Вход', key: AUTH_TAB.Login, children: <LoginForm /> },
-    { label: 'Регистрация', key: AUTH_TAB.Register, children: <RegistrationForm /> },
+    { label: 'Вход', key: AUTH_TAB.LOGIN, children: <LoginForm /> },
+    { label: 'Регистрация', key: AUTH_TAB.REGISTER, children: <RegistrationForm /> },
 ];
 
 type Props = {
     tab: string;
 };
 
-export const AuthorizationPage: React.FC<Props> = ({ tab }) => {
+export const AuthorizationPage = ({ tab }: Props) => {
     const navigate = useNavigate();
 
     const onChange = (key: string) =>
-        navigate(key === AUTH_TAB.Login ? PATH.Auth : PATH.Register, { replace: true });
+        navigate(key === AUTH_TAB.LOGIN ? PATH.AUTH : PATH.REGISTER, { replace: true });
 
     return (
         <>

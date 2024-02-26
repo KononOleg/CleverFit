@@ -1,5 +1,5 @@
 import { HttpStatusCode, PATH } from '@constants/index';
-import { setConfirmEmail, setToken } from '@redux/reducers/auth-slice';
+import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
 import { authApi } from '@redux/services/auth-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 import { push } from 'redux-first-history';
@@ -12,29 +12,33 @@ listenerMiddleware.startListening({
         const accessToken = payload.accessToken;
         const remember = meta.arg.originalArgs.remember;
         dispatch(setToken({ accessToken, remember }));
-        dispatch(push(PATH.Main));
+        dispatch(push(PATH.MAIN));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.login.matchRejected,
     effect: (_, { dispatch }) => {
-        dispatch(push(PATH.ErrorLogin));
+        dispatch(push(PATH.ERROR_LOGIN));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.registration.matchFulfilled,
     effect: (_, { dispatch }) => {
-        dispatch(push(PATH.Success));
+        dispatch(push(PATH.SUCCESS));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.registration.matchRejected,
-    effect: ({ payload }, { dispatch }) => {
-        if (payload?.status === HttpStatusCode.CONFLICT) dispatch(push(PATH.ErrorUserExist));
-        else dispatch(push(PATH.Error));
+    effect: ({ meta, payload }, { dispatch }) => {
+        if (payload?.status === HttpStatusCode.CONFLICT) dispatch(push(PATH.ERROR_USER_EXIST));
+        else {
+            const password = meta.arg.originalArgs.password;
+            dispatch(setPassword({ password }));
+            dispatch(push(PATH.ERROR));
+        }
     },
 });
 
@@ -43,27 +47,41 @@ listenerMiddleware.startListening({
     effect: ({ meta }, { dispatch }) => {
         const email = meta.arg.originalArgs.email;
         dispatch(setConfirmEmail({ email }));
-        dispatch(push(PATH.ConfirmEmail));
+        dispatch(push(PATH.CONFIRM_EMAIL));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: authApi.endpoints.checkEmail.matchRejected,
+    effect: ({ meta, payload }, { dispatch }) => {
+        if (payload?.data) dispatch(push(PATH.ERROR_CHECK_EMAIL_NO_EXIST));
+        else {
+            const email = meta.arg.originalArgs.email;
+            dispatch(setConfirmEmail({ email }));
+            dispatch(push(PATH.ERROR_CHECK_EMAIL));
+        }
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.confirmEmail.matchFulfilled,
     effect: (_, { dispatch }) => {
-        dispatch(push(PATH.ChangePassword));
+        dispatch(push(PATH.CHANGE_PASSWORD));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.changePassword.matchFulfilled,
     effect: (_, { dispatch }) => {
-        dispatch(push(PATH.SuccessChangePassword));
+        dispatch(push(PATH.SUCCESS_CHANGE_PASSWORD));
     },
 });
 
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.changePassword.matchRejected,
-    effect: (_, { dispatch }) => {
-        dispatch(push(PATH.ErrorChangePassword));
+    effect: ({ meta }, { dispatch }) => {
+        const password = meta.arg.originalArgs.password;
+        dispatch(setPassword({ password }));
+        dispatch(push(PATH.ERROR_CHANGE_PASSWORD));
     },
 });

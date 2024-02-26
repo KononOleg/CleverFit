@@ -43,6 +43,7 @@ export type ResultConfig = {
     subTitle: string;
     buttonText: string;
     href: string;
+    dataTestId: string;
 };
 
 export type ResultConfigs = {

@@ -6,6 +6,10 @@
     background: url('../../assets/icons/logo.png') no-repeat center / cover;
 }
 
+.LoginButton:global.ant-btn {
+    margin-bottom: 16px;
+}
+
 .tabs:global.ant-tabs {
     width: 100%;
 

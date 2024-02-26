@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { history, store } from '@redux/configure-store';
@@ -18,6 +18,7 @@ import { AUTH_TAB, PATH } from './constants';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { ChangePasswordPage } from '@pages/change-password-page';
+import { ProtectedRoute } from './layouts/protected-route';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -27,20 +28,24 @@ root.render(
         <Provider store={store}>
             <HistoryRouter history={history}>
                 <Routes>
+                    <Route path={PATH.ROOT} element={<Navigate to={PATH.MAIN} />} />
                     <Route element={<Layout />}>
-                        <Route path={PATH.Main} element={<MainPage />} />
+                        <Route element={<ProtectedRoute />}>
+                            <Route path={PATH.MAIN} element={<MainPage />} />
+                        </Route>
+
                         <Route element={<AuthorizationLayout />}>
                             <Route
-                                path={PATH.Auth}
-                                element={<AuthorizationPage tab={AUTH_TAB.Login} />}
+                                path={PATH.AUTH}
+                                element={<AuthorizationPage tab={AUTH_TAB.LOGIN} />}
                             />
                             <Route
-                                path={PATH.Register}
-                                element={<AuthorizationPage tab={AUTH_TAB.Register} />}
+                                path={PATH.REGISTER}
+                                element={<AuthorizationPage tab={AUTH_TAB.REGISTER} />}
                             />
-                            <Route path={PATH.Result} element={<AuthorizationResultPage />} />
-                            <Route path={PATH.ConfirmEmail} element={<ConfirmEmailPage />} />
-                            <Route path={PATH.ChangePassword} element={<ChangePasswordPage />} />
+                            <Route path={PATH.RESULT} element={<AuthorizationResultPage />} />
+                            <Route path={PATH.CONFIRM_EMAIL} element={<ConfirmEmailPage />} />
+                            <Route path={PATH.CHANGE_PASSWORD} element={<ChangePasswordPage />} />
                         </Route>
                     </Route>
                 </Routes>
