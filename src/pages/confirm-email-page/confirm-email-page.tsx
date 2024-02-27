@@ -30,8 +30,9 @@ export const ConfirmEmailPage = () => {
     return (
         <>
             <Result
+                className={styles.Result}
                 status={isError ? 'error' : 'info'}
-                title={`${isError ? 'Неверный код.' : ''} Введите код для восстановления аккауанта`}
+                title={`${isError ? 'Неверный код.' : ''} Введите код для восстановления аккаунта`}
                 subTitle={
                     <p>
                         Мы отправили вам на e-mail{' '}

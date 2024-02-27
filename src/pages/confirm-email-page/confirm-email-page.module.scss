@@ -1,8 +1,17 @@
 @import '../../index.variables.scss';
 @import '../../index.global.scss';
 
-.container {
-    margin: 0 auto $gap-xl;
+.Result {
+    :global(.ant-result-extra) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: $gap-xl 0;
+
+        & > * {
+            margin: 0;
+        }
+    }
 }
 
 .character {
@@ -11,9 +20,7 @@
     border-radius: $border-radius-xs;
     border: $gap-5xs solid $neutral-gray-5;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
 
     font-size: $font-size-s;
 }

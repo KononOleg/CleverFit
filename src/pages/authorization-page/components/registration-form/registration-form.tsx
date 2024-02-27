@@ -4,6 +4,7 @@ import {
     PATH,
     VALIDATION_EMAIL,
     VALIDATION_FIELD_REQUIRED,
+    VALIDATION_PASSWORD,
 } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/configure-store';
@@ -44,7 +45,7 @@ export const RegistrationForm = () => {
 
             <Form.Item
                 name='password'
-                rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_EMAIL]}
+                rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_PASSWORD]}
                 help={PASSWORD_MESSAGE_ERROR}
             >
                 <Input.Password

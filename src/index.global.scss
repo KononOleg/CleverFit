@@ -25,11 +25,11 @@
 
 .ant-result-title {
     font-weight: $font-weight-l;
-    line-height: 1;
+    line-height: $font-line-l;
 }
 
 .ant-result-subtitle {
-    line-height: 1.2;
+    line-height: $font-line-s;
 }
 
 .ant-form-item-explain {
