@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import cn from 'classnames';
-
-import { Button, Layout, Menu } from 'antd';
 import {
     CalendarOutlined,
     HeartFilled,
+    IdcardOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    IdcardOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
+import { DATA_TEST_ID, PATH } from '@constants/index';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { signOut } from '@redux/reducers/auth-slice';
+import { Button, Layout, Menu } from 'antd';
+import cn from 'classnames';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ExitPNG from '../../assets/icons/exit.png';
 import styles from './sider.module.scss';
@@ -40,9 +41,12 @@ const items = [
     },
 ];
 
-export const Sider: React.FC = () => {
+export const Sider = () => {
     const width = window.innerWidth;
     const [collapsed, setCollapsed] = useState(false);
+    const dispatch = useAppDispatch();
+
+    const signOutHandler = () => dispatch(signOut());
 
     return (
         <SiderAntd
@@ -73,14 +77,18 @@ export const Sider: React.FC = () => {
                     <div className={styles.btnClose} onClick={() => setCollapsed(!collapsed)}>
                         <Button
                             type='link'
-                            data-test-id={width >= 833 ? 'sider-switch' : 'sider-switch-mobile'}
+                            data-test-id={
+                                width >= 833
+                                    ? DATA_TEST_ID.SIDER_SWITCH
+                                    : DATA_TEST_ID.SIDER_SWITCH_MOBILE
+                            }
                             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                             className={styles.siderBtn}
                         />
                     </div>
                 </div>
                 <div className={styles.exitWrapper}>
-                    <Link className={styles.exit} to='/'>
+                    <Link className={styles.exit} to={PATH.AUTH} onClick={signOutHandler}>
                         <img
                             className={cn(styles.exit, {
                                 [styles.exitImg]: collapsed,

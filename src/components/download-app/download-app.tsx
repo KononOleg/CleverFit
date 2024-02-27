@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { AndroidFilled, AppleFilled } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import styles from './download-app.module.scss';
 
-export const DownloadApp: React.FC = () => (
+export const DownloadApp = () => (
     <div className={styles.downloadApp}>
         <div className={styles.download}>
             <Button type='link' size='large'>

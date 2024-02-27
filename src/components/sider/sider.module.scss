@@ -15,7 +15,7 @@
 .menuWrapperItem {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: $gap-2xs;
 
     span {
         color: $primary-light-9;
@@ -23,7 +23,7 @@
 }
 
 .menuWrapperCollapsed {
-    padding-left: 15px;
+    padding-left: $gap-2m;
 }
 
 .logoWrapper {
@@ -52,12 +52,12 @@
     transform: translate(0, -50%) rotate(90deg);
     right: -55px;
     background: transparent;
-    padding: 10px 5px;
+    padding: $gap-2s$gap-2xs;
     height: 0;
     width: 80px;
-    border-bottom: 30px solid $neutral-gray-1;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
+    border-bottom: $gap-3xl solid $neutral-gray-1;
+    border-left: $gap-2m solid transparent;
+    border-right: $gap-2m solid transparent;
 
     button {
         color: $neutral-gray-7;
@@ -72,24 +72,24 @@
 }
 
 .exitWrapper {
-    border-top: 1px solid $character-light-dividers;
-    padding: 10px 0 0;
+    border-top: $gap-5xs solid $character-light-dividers;
+    padding: $gap-2s 0 0;
 }
 
 .exit {
     display: flex;
     align-items: center;
-    gap: 22px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 130%;
+    gap: $gap-l;
+    font-size: $font-size-s;
+    font-weight: $font-weight-xs;
+    line-height: $font-line-s;
     color: #262626;
-    margin-bottom: 12px;
-    padding-left: 4px;
+    margin-bottom: $gap-s;
+    padding-left: $gap-3xs;
 }
 
 .exitImg {
-    margin-left: 10px;
+    margin-left: $gap-2s;
 }
 
 .hide {
@@ -126,7 +126,7 @@
         }
 
         .logoWrapper {
-            margin: 17px 0 27px 17px;
+            margin: $gap-m 0 $gap-2xl $gap-m;
 
             .logo {
                 width: 72px;
@@ -141,7 +141,7 @@
     }
 
     .exit {
-        padding-left: 15px;
+        padding-left: $gap-2m;
     }
 
     .btnClose {

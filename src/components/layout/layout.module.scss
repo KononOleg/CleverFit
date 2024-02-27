@@ -1,0 +1,14 @@
+@import '../../index.variables.scss';
+
+.layout {
+    min-width: 320px;
+    min-height: 100vh;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
+        lightgray 50% / cover no-repeat;
+}
+
+.layoutWrapper {
+    max-width: $app-max-width;
+    min-height: $app-min-height;
+    margin: 0 auto;
+}

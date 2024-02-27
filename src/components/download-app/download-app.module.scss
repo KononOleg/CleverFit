@@ -4,10 +4,10 @@
     width: 240px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: $gap-2s;
 
-    padding: 0 0 13px;
-    border-radius: 2px;
+    padding: 0 0 $gap-s;
+    border-radius: $border-radius-xs;
     background: $neutral-gray-1;
 
     .buttons {
@@ -15,11 +15,11 @@
     }
 
     .download {
-        padding: 0 6px 11px;
-        border-bottom: 1px solid $character-light-dividers;
+        padding: 0 $gap-2xs $gap-s;
+        border-bottom: $gap-5xs solid $character-light-dividers;
 
         p {
-            margin: 0 18px;
+            margin: 0 $gap-m;
             color: $character-light-secondary-45;
         }
     }

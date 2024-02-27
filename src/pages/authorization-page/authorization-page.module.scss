@@ -1,0 +1,68 @@
+@import '../../index.variables.scss';
+
+.logo {
+    width: 309px;
+    height: 76px;
+    margin-bottom: $gap-7xl;
+
+    background: url('../../assets/icons/logo.png') no-repeat center / cover;
+}
+
+.LoginButton:global.ant-btn {
+    margin-bottom: $gap-m;
+}
+
+.tabs:global.ant-tabs {
+    width: 100%;
+
+    .ant-tabs-nav {
+        margin-bottom: $gap-l;
+    }
+
+    .ant-tabs-nav-list {
+        width: 100%;
+    }
+
+    .ant-tabs-tab {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .ant-tabs-ink-bar {
+        width: 50% !important;
+    }
+
+    .ant-form-item-extra,
+    .ant-form-item-explain-error {
+        font-size: $font-size-xs;
+    }
+}
+
+.Input:global.ant-input {
+    height: 40px;
+}
+
+.rememberWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $gap-7xl 0 $gap-xl;
+}
+
+@media (max-width: 830px) {
+    .logo {
+        width: 203px;
+        height: 50px;
+        margin-bottom: $gap-4xl;
+    }
+
+    .googleButton {
+        span {
+            font-size: $font-size-s;
+
+            &:first-child {
+                display: none;
+            }
+        }
+    }
+}

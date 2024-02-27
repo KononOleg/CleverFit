@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { SettingOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 
 import styles from './header.module.scss';
 
-export const Header: React.FC = () => (
+export const Header = () => (
     <header className={styles.header}>
         <span>Главная</span>
         <div className={styles.container}>

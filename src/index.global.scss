@@ -1,0 +1,41 @@
+@import './index.variables.scss';
+
+.bodyStrong {
+    font-weight: $font-weight-xl;
+}
+
+.ant-result {
+    width: 100%;
+    padding: 0;
+}
+
+.ant-form-item {
+    margin-bottom: $gap-4xl;
+}
+
+.ant-tabs-ink-bar {
+    background: $primary-light-6;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+.ant-btn-link {
+    color: $primary-light-6;
+}
+
+.ant-btn-primary {
+    border-color: $primary-light-6;
+    background: $primary-light-6;
+}
+
+.ant-result-title {
+    font-weight: $font-weight-l;
+    line-height: $font-line-l;
+}
+
+.ant-result-subtitle {
+    line-height: $font-line-s;
+}
+
+.ant-form-item-explain {
+    font-size: $font-size-xs;
+}
