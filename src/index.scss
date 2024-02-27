@@ -1,9 +1,9 @@
 @import './index.variables.scss';
 
 #root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: $font-family-main;
     line-height: 1.5;
-    font-weight: 400;
+    font-weight: $font-weight-s;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 footer,
 header,
 main {
-    padding: 0 24px;
+    padding: 0 $gap-xl;
 }
 
 h1,
@@ -23,41 +23,41 @@ p {
 }
 
 h1 {
-    font-size: 38px;
-    font-weight: 700;
-    line-height: 49px;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-xl;
+    line-height: $font-line-xl;
 }
 
 h3 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 31px;
+    font-size: $font-size-xl-tablet;
+    font-weight: $font-weight-xl-tablet;
+    line-height: $font-line-xl-tablet;
     letter-spacing: 0;
 }
 
 h4 {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 26px;
+    font-size: $font-size-l;
+    font-weight: $font-weight-l;
+    line-height: $font-line-l;
 }
 
 @media (max-width: 900px) {
     h1 {
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 31px;
+        font-size: $font-size-xl-tablet;
+        font-weight: $font-weight-xl-tablet;
+        line-height: $font-line-xl-tablet;
     }
 }
 
 @media (max-width: 830px) {
     footer,
     main {
-        padding: 0 16px;
+        padding: 0 $gap-m;
     }
 
     h1 {
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 26px;
+        font-size: $font-size-l;
+        font-weight: $font-weight-l;
+        line-height: $font-line-l;
     }
 }

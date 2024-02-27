@@ -1,3 +1,5 @@
+@import '../../index.variables.scss';
+
 .layout {
     min-width: 320px;
     min-height: 100vh;
@@ -6,7 +8,7 @@
 }
 
 .layoutWrapper {
-    max-width: 1440px;
-    min-height: 100vh;
+    max-width: $app-max-width;
+    min-height: $app-min-height;
     margin: 0 auto;
 }

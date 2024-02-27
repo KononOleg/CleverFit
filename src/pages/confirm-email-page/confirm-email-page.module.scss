@@ -2,24 +2,24 @@
 @import '../../index.global.scss';
 
 .container {
-    margin: 0 auto 24px;
+    margin: 0 auto $gap-xl;
 }
 
 .character {
     width: 40px;
     height: 40px;
-    border-radius: 2px;
-    border: 1px solid $neutral-gray-5;
+    border-radius: $border-radius-xs;
+    border: $gap-5xs solid $neutral-gray-5;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 14px;
+    font-size: $font-size-s;
 }
 
 .characterError {
-    border: 1px solid $character-light-error;
+    border: $gap-5xs solid $character-light-error;
 }
 
 .characterInactive {

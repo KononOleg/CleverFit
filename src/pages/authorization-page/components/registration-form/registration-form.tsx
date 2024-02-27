@@ -1,18 +1,17 @@
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import {
+    DATA_TEST_ID,
+    PASSWORD_MESSAGE_ERROR,
+    PATH,
+    VALIDATION_EMAIL,
+    VALIDATION_FIELD_REQUIRED,
+} from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/configure-store';
 import { useRegistrationMutation } from '@redux/services/auth-service';
 import { Button, Form, Input } from 'antd';
 import { useEffect } from 'react';
 
-import {
-    checkPrevPath,
-    confirmPasswordRule,
-    emailRule,
-    passwordMessageError,
-    passwordRule,
-    requiredRule,
-} from '../../../../utils';
+import { checkPrevPath, confirmPasswordRule } from '../../../../utils';
 import styles from '../../authorization-page.module.scss';
 
 type FormValues = {
@@ -35,7 +34,7 @@ export const RegistrationForm = () => {
 
     return (
         <Form className={styles.Form} form={form} onFinish={handleFinish}>
-            <Form.Item name='email' rules={[requiredRule, emailRule]}>
+            <Form.Item name='email' rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_EMAIL]}>
                 <Input
                     addonBefore='e-mail:'
                     size='large'
@@ -45,8 +44,8 @@ export const RegistrationForm = () => {
 
             <Form.Item
                 name='password'
-                rules={[requiredRule, passwordRule]}
-                help={passwordMessageError}
+                rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_EMAIL]}
+                help={PASSWORD_MESSAGE_ERROR}
             >
                 <Input.Password
                     size='large'
@@ -58,7 +57,7 @@ export const RegistrationForm = () => {
             <Form.Item
                 name='confirmPassword'
                 dependencies={['password']}
-                rules={[requiredRule, confirmPasswordRule('password')]}
+                rules={[VALIDATION_FIELD_REQUIRED, confirmPasswordRule('password')]}
             >
                 <Input.Password
                     size='large'

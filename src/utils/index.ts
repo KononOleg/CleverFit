@@ -1,14 +1,6 @@
-import { Rule, RuleRender } from 'antd/lib/form';
+import { RuleRender } from 'antd/lib/form';
 import { Action, Location } from 'history';
 
-export const passwordMessageError = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
-
-export const requiredRule: Rule = { required: true, message: '' };
-export const emailRule: Rule = { type: 'email', message: '' };
-export const passwordRule: Rule = {
-    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-    message: passwordMessageError,
-};
 
 export const confirmPasswordRule: (name: string) => RuleRender =
     (name) =>

@@ -1,7 +1,7 @@
 @import './index.variables.scss';
 
 .bodyStrong {
-    font-weight: 700;
+    font-weight: $font-weight-xl;
 }
 
 .ant-result {
@@ -24,7 +24,7 @@
 }
 
 .ant-result-title {
-    font-weight: 500;
+    font-weight: $font-weight-l;
     line-height: 1;
 }
 
@@ -33,5 +33,5 @@
 }
 
 .ant-form-item-explain {
-    font-size: 12px;
+    font-size: $font-size-xs;
 }

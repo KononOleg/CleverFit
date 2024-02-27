@@ -1,17 +1,17 @@
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import {
+    DATA_TEST_ID,
+    PASSWORD_MESSAGE_ERROR,
+    PATH,
+    VALIDATION_FIELD_REQUIRED,
+    VALIDATION_PASSWORD,
+} from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/configure-store';
 import { useChangePasswordMutation } from '@redux/services/auth-service';
 import { Button, Form, Input, Typography } from 'antd';
 import { useEffect } from 'react';
 
-import {
-    checkPrevPath,
-    confirmPasswordRule,
-    passwordMessageError,
-    passwordRule,
-    requiredRule,
-} from '../../utils';
+import { checkPrevPath, confirmPasswordRule } from '../../utils';
 import styles from './change-password-page.module.scss';
 
 const { Title } = Typography;
@@ -42,8 +42,8 @@ export const ChangePasswordPage = () => {
             <Title level={3}>Восстановление аккаунта</Title>
             <Form.Item
                 name='password'
-                rules={[requiredRule, passwordRule]}
-                help={passwordMessageError}
+                rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_PASSWORD]}
+                help={PASSWORD_MESSAGE_ERROR}
             >
                 <Input.Password
                     size='large'
@@ -55,7 +55,7 @@ export const ChangePasswordPage = () => {
             <Form.Item
                 name='confirmPassword'
                 dependencies={['password']}
-                rules={[requiredRule, confirmPasswordRule('password')]}
+                rules={[VALIDATION_FIELD_REQUIRED, confirmPasswordRule('password')]}
             >
                 <Input.Password
                     size='large'

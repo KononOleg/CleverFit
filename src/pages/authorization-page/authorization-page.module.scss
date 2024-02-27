@@ -3,24 +3,24 @@
 .logo {
     width: 309px;
     height: 76px;
-    margin-bottom: 48px;
+    margin-bottom: $gap-7xl;
 
     background: url('../../assets/icons/logo.png') no-repeat center / cover;
 }
 
 .LoginButton:global.ant-btn {
-    margin-bottom: 16px;
+    margin-bottom: $gap-m;
 }
 
 .googleButton {
-    margin-bottom: 110px;
+    margin-bottom: $gap-12xl;
 }
 
 .tabs:global.ant-tabs {
     width: 100%;
 
     .ant-tabs-nav {
-        margin-bottom: 22px;
+        margin-bottom: $gap-l;
     }
 
     .ant-tabs-nav-list {
@@ -38,13 +38,13 @@
 
     .ant-form-item-extra,
     .ant-form-item-explain-error {
-        font-size: 12px;
+        font-size: $font-size-xs;
     }
 }
 
 .Form:global.ant-form {
     .ant-form-item {
-        margin-bottom: 32px;
+        margin-bottom: $gap-4xl;
     }
 }
 
@@ -56,21 +56,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 48px 0 24px;
+    margin: $gap-7xl 0 $gap-xl;
 }
 
 @media (max-width: 830px) {
     .logo {
         width: 203px;
         height: 50px;
-        margin-bottom: 32px;
+        margin-bottom: $gap-4xl;
     }
 
     .googleButton {
-        margin-bottom: 90px;
+        margin-bottom: $gap-10xl;
 
         span {
-            font-size: 14px;
+            font-size: $font-size-s;
 
             &:first-child {
                 display: none;

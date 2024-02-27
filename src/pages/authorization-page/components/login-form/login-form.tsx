@@ -1,11 +1,17 @@
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import {
+    DATA_TEST_ID,
+    PATH,
+    VALIDATION_EMAIL,
+    VALIDATION_FIELD_REQUIRED,
+    VALIDATION_PASSWORD,
+} from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/configure-store';
 import { useCheckEmailMutation, useLoginMutation } from '@redux/services/auth-service';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
 
-import { checkPrevPath, emailRule, passwordRule, requiredRule } from '../../../../utils';
+import { checkPrevPath } from '../../../../utils';
 import styles from '../../authorization-page.module.scss';
 
 type FormValues = {
@@ -44,11 +50,11 @@ export const LoginForm = () => {
             onFinish={handleFinish}
             onFieldsChange={handleFormChange}
         >
-            <Form.Item name='email' rules={[requiredRule, emailRule]}>
+            <Form.Item name='email' rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_EMAIL]}>
                 <Input addonBefore='e-mail:' size='large' data-test-id={DATA_TEST_ID.LOGIN_EMAIL} />
             </Form.Item>
 
-            <Form.Item name='password' rules={[requiredRule, passwordRule]}>
+            <Form.Item name='password' rules={[VALIDATION_FIELD_REQUIRED, VALIDATION_PASSWORD]}>
                 <Input.Password
                     size='large'
                     placeholder='Пароль'
