@@ -12,10 +12,6 @@
     margin-bottom: $gap-m;
 }
 
-.googleButton {
-    margin-bottom: $gap-12xl;
-}
-
 .tabs:global.ant-tabs {
     width: 100%;
 
@@ -42,12 +38,6 @@
     }
 }
 
-.Form:global.ant-form {
-    .ant-form-item {
-        margin-bottom: $gap-4xl;
-    }
-}
-
 .Input:global.ant-input {
     height: 40px;
 }
@@ -67,8 +57,6 @@
     }
 
     .googleButton {
-        margin-bottom: $gap-10xl;
-
         span {
             font-size: $font-size-s;
 
