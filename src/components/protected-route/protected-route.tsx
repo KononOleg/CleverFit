@@ -1,6 +1,7 @@
 import { PATH } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector } from '@redux/services/auth-service';
+import { authSelector } from '@redux/configure-store';
+
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const ProtectedRoute = () => {

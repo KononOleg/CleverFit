@@ -7,7 +7,7 @@ import styles from './layout.module.scss';
 
 export const Layout = () => {
     const isLoading = useAppSelector((state) => {
-        return Object.values(state.api.mutations).some((query) => {
+        return Object.values({ ...state.api.mutations, ...state.api.queries }).some((query) => {
             return query && query.status === QueryStatus.pending;
         });
     });

@@ -8,6 +8,17 @@ export type User = {
     readyForJointTraining: boolean;
 };
 
+export type Feedback = {
+    id: string;
+    fullName: string;
+    imageSrc: string;
+    message: number;
+    rating: number;
+    createdAt: string;
+};
+
+export type GetFeedbacksResponse = Feedback[];
+
 export type LoginResponse = {
     accessToken: string;
 };

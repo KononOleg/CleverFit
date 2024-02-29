@@ -4,7 +4,7 @@ import { createReduxHistoryContext } from 'redux-first-history';
 
 import { listenerMiddleware } from './effects/auth-effects';
 import { authSlice } from './reducers/auth-slice';
-import { authApi } from './services/auth-service';
+import { apiSlice } from './services';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -13,7 +13,7 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
 
 export const store = configureStore({
     reducer: {
-        [authApi.reducerPath]: authApi.reducer,
+        [apiSlice.reducerPath]: apiSlice.reducer,
         auth: authSlice.reducer,
         router: routerReducer,
     },
@@ -21,7 +21,7 @@ export const store = configureStore({
         getDefaultMiddleware().concat(
             routerMiddleware,
             listenerMiddleware.middleware,
-            authApi.middleware,
+            apiSlice.middleware,
         ),
 });
 

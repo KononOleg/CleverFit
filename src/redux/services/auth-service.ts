@@ -1,6 +1,4 @@
-import { API_HOST, API_PATH } from '@constants/index';
-import { RootState } from '@redux/configure-store';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_PATH } from '@constants/index';
 
 import {
     ChangePasswordRequest,
@@ -10,12 +8,9 @@ import {
     LoginResponse,
     RegisterRequest,
 } from '../../types';
+import { apiSlice } from '.';
 
-export const authApi = createApi({
-    baseQuery: fetchBaseQuery({
-        baseUrl: API_HOST,
-        credentials: 'include',
-    }),
+export const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation<LoginResponse, LoginRequest>({
             query: (credentials) => ({
@@ -62,5 +57,3 @@ export const {
     useConfirmEmailMutation,
     useChangePasswordMutation,
 } = authApi;
-
-export const authSelector = (state: RootState) => state.auth;

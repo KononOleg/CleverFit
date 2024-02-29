@@ -2,70 +2,51 @@
 
 .mainPage {
     display: flex;
-    background: url('../../assets/images/main-page.jpg') center / cover;
+    flex-direction: column;
+    gap: $gap-m;
+    max-width: 752px;
 
-    .wrapper {
+    font-size: $font-size-m;
+    line-height: $font-line-xs;
+
+    .about {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        min-height: 100vh;
+        gap: $gap-xl;
 
-        .container {
-            padding: $gap-xl 0;
+        .goals {
+            color: $primary-light-9;
+        }
+    }
+
+    .card {
+        padding: $gap-xl;
+        border-radius: $border-radius-xs;
+        background: $neutral-gray-1;
+    }
+
+    .cards {
+        display: flex;
+        gap: $gap-m;
+
+        p {
+            border-bottom: $gap-5xs solid $character-light-dividers;
+            padding: 0 $gap-l $gap-s;
         }
 
-        .main {
+        div {
+            max-width: 240px;
+            width: 100%;
+            padding: $gap-s 0;
             display: flex;
-            flex-grow: 1;
             flex-direction: column;
-            gap: $gap-m;
-            max-width: 800px;
-            padding-top: $gap-xl;
-            padding-bottom: $gap-xl;
+            gap: $gap-s;
+            text-align: center;
+            background: $neutral-gray-1;
+        }
 
-            font-size: $font-size-m;
-            line-height: $font-line-xs;
-
-            .about {
-                display: flex;
-                flex-direction: column;
-                gap: $gap-xl;
-
-                .goals {
-                    color: $primary-light-9;
-                }
-            }
-
-            .card {
-                padding: $gap-xl;
-                border-radius: $border-radius-xs;
-                background: $neutral-gray-1;
-            }
-
-            .cards {
-                display: flex;
-                gap: $gap-m;
-
-                p {
-                    border-bottom: $gap-5xs solid $character-light-dividers;
-                    padding: 0 $gap-l $gap-s;
-                }
-
-                div {
-                    max-width: 240px;
-                    width: 100%;
-                    padding: $gap-s 0;
-                    display: flex;
-                    flex-direction: column;
-                    gap: $gap-s;
-                    text-align: center;
-                    background: $neutral-gray-1;
-                }
-
-                button {
-                    color: $primary-light-6;
-                }
-            }
+        button {
+            color: $primary-light-6;
         }
     }
 }
@@ -80,25 +61,21 @@
 
 @media (max-width: 830px) {
     .mainPage {
-        .wrapper {
-            .main {
-                .card {
-                    padding: $gap-m;
-                }
+        .card {
+            padding: $gap-m;
+        }
 
-                .cards {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: $gap-xs;
+        .cards {
+            flex-direction: column;
+            align-items: center;
+            gap: $gap-xs;
 
-                    p {
-                        text-align: center;
-                    }
+            p {
+                text-align: center;
+            }
 
-                    div {
-                        max-width: 330px;
-                    }
-                }
+            div {
+                max-width: 330px;
             }
         }
     }

@@ -18,11 +18,13 @@ export const API_PATH = {
     CHECK_EMAIL: '/auth/check-email',
     CONFIRM_EMAIL: '/auth/confirm-email',
     CHANGE_PASSWORD: '/auth/change-password',
+    FEEDBACK: '/feedback',
 };
 
 export const PATH = {
     ROOT: '/',
     MAIN: '/main',
+    FEEDBACKS: '/feedbacks',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',

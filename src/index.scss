@@ -18,6 +18,7 @@ main {
 
 h1,
 h4,
+h6,
 p {
     margin: 0;
 }
@@ -39,6 +40,12 @@ h4 {
     font-size: $font-size-l;
     font-weight: $font-weight-l;
     line-height: $font-line-l;
+}
+
+h6 {
+    font-size: $font-size-m;
+    font-weight: $font-weight-m;
+    line-height: $font-line-m;
 }
 
 @media (max-width: 900px) {

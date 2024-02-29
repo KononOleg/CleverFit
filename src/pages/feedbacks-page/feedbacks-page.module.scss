@@ -1,0 +1,39 @@
+@import '../../index.variables.scss';
+
+.FeedbacksWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.Feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-l;
+}
+
+.FeedbacksAll {
+    max-height: 572px;
+    overflow-y: scroll;
+}
+
+.FeedbacksAll::-webkit-scrollbar {
+    display: none;
+}
+
+.Buttons {
+    display: flex;
+    gap: $gap-xs;
+    margin-top: $gap-15xl;
+}
+
+:global(.ant-btn) {
+    height: 40px !important;
+}
+
+@media (max-width: 830px) {
+    .Buttons {
+        flex-direction: column;
+        gap: $gap-m;
+        margin-top: $gap-7xl;
+    }
+}
