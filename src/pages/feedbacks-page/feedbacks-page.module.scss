@@ -3,6 +3,16 @@
 .FeedbacksWrapper {
     display: flex;
     flex-direction: column;
+    max-height: calc(100vh - $gap-15xl);
+    :global(.ant-btn) {
+        height: 40px;
+    }
+}
+
+:global(.ant-modal-wrap) {
+    :global(.ant-btn) {
+        height: 40px;
+    }
 }
 
 .Feedbacks {
@@ -12,8 +22,7 @@
 }
 
 .FeedbacksAll {
-    max-height: 572px;
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
 .FeedbacksAll::-webkit-scrollbar {
@@ -24,10 +33,6 @@
     display: flex;
     gap: $gap-xs;
     margin-top: $gap-15xl;
-}
-
-:global(.ant-btn) {
-    height: 40px !important;
 }
 
 @media (max-width: 830px) {

@@ -35,14 +35,17 @@
 
         button {
             width: 32px;
-            height: 32px;
+            height: 32px !important;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 0 0 #0000000b;
-            border-radius: $border-radius-circle;
+            border-radius: 100%;
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
             background: $neutral-gray-1;
+
+            span:first-child {
+                display: block;
+            }
 
             span:last-child {
                 display: none;

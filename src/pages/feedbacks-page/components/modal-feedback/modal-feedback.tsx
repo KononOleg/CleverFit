@@ -69,7 +69,7 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                 open={open}
                 title='Ваш отзыв'
                 className={styles.ModalFeedback}
-                maskStyle={{ backdropFilter: 'blur(6px)' }}
+                width={540}
                 onOk={handleOk}
                 onCancel={handleCancel}
                 centered
@@ -88,7 +88,7 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
 
                 <TextArea
                     value={message}
-                    placeholder='Autosize height based on content lines'
+                    placeholder='Расскажите, почему Вам понравилось наше приложение.'
                     rows={2}
                     onChange={handleChangeMessage}
                 />

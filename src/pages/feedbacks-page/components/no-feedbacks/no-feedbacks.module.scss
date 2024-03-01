@@ -7,6 +7,10 @@
     align-items: center;
     justify-content: center;
     gap: $gap-l;
+
+    :global(.ant-btn) {
+        height: 40px;
+    }
 }
 
 .NoFeedbacks {

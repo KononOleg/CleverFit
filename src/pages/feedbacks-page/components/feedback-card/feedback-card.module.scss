@@ -54,7 +54,7 @@
 
 .Rate {
     :global(.ant-rate-star:not(:last-child)) {
-        margin-right: $gap-3xs !important;
+        margin-right: $gap-3xs;
     }
 
     svg {

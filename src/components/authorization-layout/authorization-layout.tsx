@@ -8,7 +8,7 @@ import styles from './authorization-layout.module.scss';
 export const AuthorizationLayout = () => {
     const { token } = useAppSelector(authSelector);
 
-    if (token !== null || localStorage.getItem('token')) return <Navigate to={PATH.MAIN} />;
+    if (token) return <Navigate to={PATH.MAIN} />;
 
     return (
         <div className={styles.authorizationLayout}>

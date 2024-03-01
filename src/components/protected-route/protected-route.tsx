@@ -7,6 +7,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 export const ProtectedRoute = () => {
     const { token } = useAppSelector(authSelector);
 
-    if (token === null && !localStorage.getItem('token')) return <Navigate to={PATH.AUTH} />;
+    if (!token) return <Navigate to={PATH.AUTH} />;
     return <Outlet />;
 };

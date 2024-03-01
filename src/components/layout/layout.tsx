@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { QueryStatus } from '@reduxjs/toolkit/query';
 import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
-import { setToken } from '@redux/reducers/auth-slice';
+import { checkAuth, setToken } from '@redux/reducers/auth-slice';
+import { authSelector } from '@redux/configure-store';
 
 import styles from './layout.module.scss';
 
 export const Layout = () => {
     const dispatch = useAppDispatch();
-    const isLoading = useAppSelector((state) => {
+    const { isLoading } = useAppSelector(authSelector);
+    const isFetching = useAppSelector((state) => {
         return Object.values({ ...state.api.mutations, ...state.api.queries }).some((query) => {
             return query && query.status === QueryStatus.pending;
         });
@@ -27,13 +29,15 @@ export const Layout = () => {
             );
     }, [accessToken, dispatch]);
 
+    useEffect(() => {
+        dispatch(checkAuth());
+    }, [dispatch]);
+
     return (
         <>
-            {isLoading && <Loading />}
+            { isFetching && <Loading />}
             <div className={styles.layout}>
-                <div className={styles.layoutWrapper}>
-                    <Outlet />
-                </div>
+                <div className={styles.layoutWrapper}>{!isLoading && <Outlet />}</div>
             </div>
         </>
     );
