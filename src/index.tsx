@@ -31,8 +31,8 @@ root.render(
         <Provider store={store}>
             <HistoryRouter history={history}>
                 <Routes>
-                    <Route path={PATH.ROOT} element={<Navigate to={PATH.MAIN} />} />
                     <Route element={<Layout />}>
+                        <Route path={PATH.ROOT} element={<Navigate to={PATH.MAIN} />} />
                         <Route element={<MainLayout />}>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.MAIN} element={<MainPage />} />
@@ -43,7 +43,6 @@ root.render(
                                 <Route path={PATH.FEEDBACKS} element={<FeedbacksPage />} />
                             </Route>
                         </Route>
-
                         <Route element={<AuthorizationLayout />}>
                             <Route
                                 path={PATH.AUTH}

@@ -15,6 +15,7 @@ export const API_HOST = 'https://marathon-api.clevertec.ru';
 export const API_PATH = {
     REGISTER: '/auth/registration',
     LOGIN: '/auth/login',
+    GOOGLE: '/auth/google',
     CHECK_EMAIL: '/auth/check-email',
     CONFIRM_EMAIL: '/auth/confirm-email',
     CHANGE_PASSWORD: '/auth/change-password',
