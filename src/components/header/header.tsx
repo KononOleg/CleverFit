@@ -1,9 +1,9 @@
 import { SettingOutlined } from '@ant-design/icons';
+import { PATH } from '@constants/index';
 import { Breadcrumb, Button } from 'antd';
+import { Link } from 'react-router-dom';
 
 import styles from './header.module.scss';
-import { Link } from 'react-router-dom';
-import { PATH } from '@constants/index';
 
 type Props = {
     isBreadcrumb?: boolean;

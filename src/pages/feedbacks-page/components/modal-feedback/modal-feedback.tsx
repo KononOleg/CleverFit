@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { DATA_TEST_ID } from '@constants/index';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
 import { Button, Input, Modal, Rate } from 'antd';
-import { ModalFeedbackSuccess } from '../modal-feedback-succes';
-import { ModalFeedbackError } from '../modal-feedback-error';
-import { DATA_TEST_ID } from '@constants/index';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+import { ModalFeedbackError } from '../modal-feedback-error';
+import { ModalFeedbackSuccess } from '../modal-feedback-succes';
 import styles from './modal-feedback.module.scss';
 
 type Props = {

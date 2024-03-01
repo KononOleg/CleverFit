@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { PATH } from '@constants/index';
 import { Button, Modal, Result } from 'antd';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './modal-error.module.scss';
 

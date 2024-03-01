@@ -1,13 +1,13 @@
-import { useGetFeedbacksQuery } from '@redux/services/feedback-service';
-import { NoFeedbacks } from './components/no-feedbacks';
-import classNames from 'classnames';
-import { FeedbackCard } from './components/feedback-card';
-import Button from 'antd/lib/button';
-import { useState } from 'react';
-import { ModalFeedback } from './components/modal-feedback';
-import { DATA_TEST_ID } from '@constants/index';
 import { ModalError } from '@components/modal-error';
+import { DATA_TEST_ID } from '@constants/index';
+import { useGetFeedbacksQuery } from '@redux/services/feedback-service';
+import Button from 'antd/lib/button';
+import classNames from 'classnames';
+import { useState } from 'react';
 
+import { FeedbackCard } from './components/feedback-card';
+import { ModalFeedback } from './components/modal-feedback';
+import { NoFeedbacks } from './components/no-feedbacks';
 import styles from './feedbacks-page.module.scss';
 
 export const FeedbacksPage = () => {

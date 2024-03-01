@@ -1,10 +1,10 @@
 import { Loading } from '@components/loading';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { QueryStatus } from '@reduxjs/toolkit/query';
-import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import { checkAuth, setToken } from '@redux/reducers/auth-slice';
 import { authSelector } from '@redux/configure-store';
+import { checkAuth, setToken } from '@redux/reducers/auth-slice';
+import { QueryStatus } from '@reduxjs/toolkit/query';
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import styles from './layout.module.scss';
 

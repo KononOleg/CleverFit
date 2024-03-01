@@ -1,4 +1,5 @@
 import { Rule } from 'antd/lib/form';
+
 import { ResultConfigs } from '../types';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';

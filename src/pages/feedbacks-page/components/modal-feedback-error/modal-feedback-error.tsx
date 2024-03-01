@@ -1,5 +1,5 @@
-import { Button, Modal, Result } from 'antd';
 import { DATA_TEST_ID } from '@constants/index';
+import { Button, Modal, Result } from 'antd';
 
 import styles from './modal-feedback-error.module.scss';
 

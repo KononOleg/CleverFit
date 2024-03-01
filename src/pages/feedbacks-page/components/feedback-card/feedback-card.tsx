@@ -1,7 +1,7 @@
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Card, Rate } from 'antd';
-import { Feedback } from '../../../../types';
 
+import { Feedback } from '../../../../types';
 import styles from './feedback-card.module.scss';
 
 export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }: Feedback) => {

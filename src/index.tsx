@@ -1,12 +1,12 @@
 import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
-import { ProtectedRoute } from '@components/protected-route';
 import { MainLayout } from '@components/main-layout';
+import { ProtectedRoute } from '@components/protected-route';
 import { AuthorizationPage } from '@pages/authorization-page';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
-import { FeedbacksPage } from '@pages/feedbacks-page/feedbacks-page';
 import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
+import { FeedbacksPage } from '@pages/feedbacks-page/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { history, store } from '@redux/configure-store';
 import React from 'react';

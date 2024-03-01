@@ -1,7 +1,7 @@
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { useConfirmEmailMutation } from '@redux/services/auth-service';
 import { authSelector } from '@redux/configure-store';
+import { useConfirmEmailMutation } from '@redux/services/auth-service';
 import { Result, Typography } from 'antd';
 import cn from 'classnames';
 import { useState } from 'react';

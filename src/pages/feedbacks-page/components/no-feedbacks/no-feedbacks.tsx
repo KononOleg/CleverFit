@@ -1,7 +1,7 @@
+import { DATA_TEST_ID } from '@constants/index';
 import Button from 'antd/lib/button';
 
 import styles from './no-feedbacks.module.scss';
-import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     handleOpenNewFeedback: () => void;

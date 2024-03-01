@@ -1,6 +1,6 @@
 import { DownloadApp } from '@components/download-app';
-import { Button } from 'antd';
 import { DATA_TEST_ID, PATH } from '@constants/index';
+import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 
 import styles from './footer.module.scss';

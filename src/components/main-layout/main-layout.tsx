@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import { Sider } from '@components/sider';
-import { Header } from '@components/header';
 import { Footer } from '@components/footer';
+import { Header } from '@components/header';
+import { Sider } from '@components/sider';
+import { Outlet } from 'react-router-dom';
 
 import styles from './main-layout.module.scss';
 
