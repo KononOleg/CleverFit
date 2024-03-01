@@ -1,0 +1,23 @@
+@import '../../../../index.variables.scss';
+
+.ModalFeedbackError {
+    width: 540px !important;
+
+    :global(.ant-modal-content) {
+        :global(.ant-modal-body) {
+            padding: $gap-8xl $gap-10xl;
+
+            :global(.ant-result-extra) {
+                display: flex;
+            }
+
+            :global(.ant-btn) {
+                width: 100%;
+            }
+
+            @media (max-width: 830px) {
+                padding: $gap-4xl $gap-m;
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
 
 .FeedbackCard {
     :global(.ant-card-body) {
-        padding: 16px !important;
+        padding: $gap-m !important;
     }
 }
 
@@ -54,7 +54,7 @@
 
 .Rate {
     :global(.ant-rate-star:not(:last-child)) {
-        margin-right: 4px !important;
+        margin-right: $gap-3xs !important;
     }
 
     svg {
@@ -63,7 +63,7 @@
     }
 }
 
-@media (width <= 830px) {
+@media (max-width: 830px) {
     .FeedbackWrapper {
         flex-direction: column;
     }

@@ -21,8 +21,10 @@
 
 @media (max-width: 1000px) {
     .header {
-        span:first-child {
-            display: none;
+        button {
+            span:first-child {
+                display: none;
+            }
         }
     }
 }
@@ -41,10 +43,10 @@
             border-radius: $border-radius-circle;
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
             background: $neutral-gray-1;
-        }
 
-        span:last-child {
-            display: none;
+            span:last-child {
+                display: none;
+            }
         }
 
         .title {

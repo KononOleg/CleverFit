@@ -1,6 +1,6 @@
 import { DownloadApp } from '@components/download-app';
 import { Button } from 'antd';
-import { PATH } from '@constants/index';
+import { DATA_TEST_ID, PATH } from '@constants/index';
 import { Link } from 'react-router-dom';
 
 import styles from './footer.module.scss';
@@ -8,7 +8,9 @@ import styles from './footer.module.scss';
 export const Footer = () => (
     <footer className={styles.footer}>
         <Button type='link' size='large'>
-            <Link to={PATH.FEEDBACKS}>Смотреть отзывы</Link>
+            <Link to={PATH.FEEDBACKS} data-test-id={DATA_TEST_ID.SEE_REVIEWS}>
+                Смотреть отзывы
+            </Link>
         </Button>
         <DownloadApp />
     </footer>

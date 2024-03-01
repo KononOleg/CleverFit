@@ -1,6 +1,6 @@
 import { API_PATH } from '@constants/index';
 import { apiSlice } from '.';
-import { GetFeedbacksResponse } from '../../types';
+import { CreateFeedbackResponse, GetFeedbacksResponse } from '../../types';
 
 export const feedbackApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -9,7 +9,14 @@ export const feedbackApi = apiSlice.injectEndpoints({
                 url: API_PATH.FEEDBACK,
             }),
         }),
+        createFeedback: builder.mutation<void, CreateFeedbackResponse>({
+            query: (feedback) => ({
+                url: API_PATH.FEEDBACK,
+                method: 'POST',
+                body: feedback,
+            }),
+        }),
     }),
 });
 
-export const { useGetFeedbacksQuery } = feedbackApi;
+export const { useGetFeedbacksQuery, useCreateFeedbackMutation } = feedbackApi;

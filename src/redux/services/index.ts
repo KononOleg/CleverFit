@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: API_HOST,
-        credentials: 'include',
+        /*        credentials: 'include', */
         prepareHeaders: (headers, { getState }) => {
             const token = (getState() as RootState).auth.token || localStorage.getItem('token');
 

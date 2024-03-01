@@ -70,6 +70,11 @@ export const DATA_TEST_ID = {
     CHECK_BACK_BUTTON: 'check-back-button',
     CHANGE_RETRY_BUTTON: 'change-retry-button',
     CHANGE_ENTRY_BUTTON: 'change-entry-button',
+    SEE_REVIEWS: 'see-reviews',
+    WRITE_REVIEW_NOT_SAVED_MODAL: 'write-review-not-saved-modal',
+    NEW_REVIEW_SUBMIT_BUTTON: 'new-review-submit-button',
+    WRITE_REVIEW: 'write-review',
+    ALL_REVIEWS_BUTTON: 'all-reviews-button',
 };
 
 export const resultConfigs: ResultConfigs = {

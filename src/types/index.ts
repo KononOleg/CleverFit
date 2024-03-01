@@ -19,6 +19,11 @@ export type Feedback = {
 
 export type GetFeedbacksResponse = Feedback[];
 
+export type CreateFeedbackResponse = {
+    message: string;
+    rating: number;
+};
+
 export type LoginResponse = {
     accessToken: string;
 };

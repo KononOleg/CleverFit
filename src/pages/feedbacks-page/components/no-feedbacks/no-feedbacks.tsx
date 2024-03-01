@@ -1,8 +1,13 @@
 import Button from 'antd/lib/button';
 
 import styles from './no-feedbacks.module.scss';
+import { DATA_TEST_ID } from '@constants/index';
 
-export const NoFeedbacks = () => (
+type Props = {
+    handleOpenNewFeedback: () => void;
+};
+
+export const NoFeedbacks = ({ handleOpenNewFeedback }: Props) => (
     <div className={styles.NoFeedbacksWrapper}>
         <div className={styles.NoFeedbacks}>
             <h3 className={styles.Title}>Оставьте свой отзыв первым</h3>
@@ -12,6 +17,12 @@ export const NoFeedbacks = () => (
                 выбор.
             </p>
         </div>
-        <Button type='primary'>Написать отзыв</Button>
+        <Button
+            type='primary'
+            onClick={handleOpenNewFeedback}
+            data-test-id={DATA_TEST_ID.WRITE_REVIEW}
+        >
+            Написать отзыв
+        </Button>
     </div>
 );
