@@ -6,7 +6,7 @@ import {
     VALIDATION_PASSWORD,
 } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector, prevLocationsSelector } from '@redux/configure-store';
+import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useCheckEmailMutation, useLoginMutation } from '@redux/services/auth-service';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';

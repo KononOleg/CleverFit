@@ -28,7 +28,4 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export const authSelector = (state: RootState) => state.auth;
-export const prevLocationsSelector = (state: RootState) => state.router?.previousLocations;
-
 export const history = createReduxHistory(store);

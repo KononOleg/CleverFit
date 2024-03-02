@@ -15,15 +15,17 @@ export const FeedbacksPage = () => {
     const [isAllFeedbacks, setIsAllFeedbacks] = useState(false);
     const { data: feedbacks = [], isFetching, isError, refetch } = useGetFeedbacksQuery();
 
+    const isSuccessFetching = !isFetching && !isError;
+    const isEmptyFeedbacks = feedbacks && feedbacks.length === 0;
+
     const showAllFeedbacks = () => setIsAllFeedbacks(!isAllFeedbacks);
     const handleOpenNewFeedback = () => setOpenNewFeedback(true);
     const handleRefetch = () => refetch();
 
     return (
         <>
-            {!isFetching &&
-                !isError &&
-                (feedbacks && feedbacks.length === 0 ? (
+            {isSuccessFetching &&
+                (isEmptyFeedbacks ? (
                     <NoFeedbacks handleOpenNewFeedback={handleOpenNewFeedback} />
                 ) : (
                     <div className={styles.FeedbacksWrapper}>
@@ -32,13 +34,8 @@ export const FeedbacksPage = () => {
                                 [styles.FeedbacksAll]: isAllFeedbacks,
                             })}
                         >
-                            {[...feedbacks]
-                                ?.sort(
-                                    (a, b) =>
-                                        new Date(b.createdAt).getTime() -
-                                        new Date(a.createdAt).getTime(),
-                                )
-                                ?.slice(0, isAllFeedbacks ? -1 : 4)
+                            {feedbacks
+                                .slice(0, isAllFeedbacks ? feedbacks.length : 4)
                                 .map((feedback) => (
                                     <FeedbackCard key={feedback.id} {...feedback} />
                                 ))}

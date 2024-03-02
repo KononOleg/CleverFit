@@ -1,6 +1,6 @@
 import { API_PATH } from '@constants/index';
 
-import { CreateFeedbackResponse, GetFeedbacksResponse } from '../../types';
+import { CreateFeedbackResponse, Feedback, GetFeedbacksResponse } from '../../types';
 import { apiSlice } from '.';
 
 export const feedbackApi = apiSlice.injectEndpoints({
@@ -9,6 +9,10 @@ export const feedbackApi = apiSlice.injectEndpoints({
             query: () => ({
                 url: API_PATH.FEEDBACK,
             }),
+            transformResponse: (baseQueryReturnValue: Feedback[]) =>
+                baseQueryReturnValue.sort(
+                    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+                ),
         }),
         createFeedback: builder.mutation<void, CreateFeedbackResponse>({
             query: (feedback) => ({

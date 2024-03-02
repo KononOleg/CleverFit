@@ -1,21 +1,17 @@
 import { Loading } from '@components/loading';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector } from '@redux/configure-store';
+import { authSelector, fetchingSelector } from '@redux/selectors';
 import { checkAuth, setToken } from '@redux/reducers/auth-slice';
-import { QueryStatus } from '@reduxjs/toolkit/query';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import styles from './layout.module.scss';
 
+
 export const Layout = () => {
     const dispatch = useAppDispatch();
     const { isLoading } = useAppSelector(authSelector);
-    const isFetching = useAppSelector((state) => {
-        return Object.values({ ...state.api.mutations, ...state.api.queries }).some((query) => {
-            return query && query.status === QueryStatus.pending;
-        });
-    });
+    const isFetching = useAppSelector(fetchingSelector);
 
     const accessToken = new URLSearchParams(location.search).get('accessToken');
 
@@ -35,7 +31,7 @@ export const Layout = () => {
 
     return (
         <>
-            { isFetching && <Loading />}
+            {isFetching && <Loading />}
             <div className={styles.layout}>
                 <div className={styles.layoutWrapper}>{!isLoading && <Outlet />}</div>
             </div>

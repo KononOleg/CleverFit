@@ -4,7 +4,7 @@ import { Button, Input, Modal, Rate } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ModalFeedbackError } from '../modal-feedback-error';
-import { ModalFeedbackSuccess } from '../modal-feedback-succes';
+import { ModalFeedbackSuccess } from '../modal-feedback-success';
 import styles from './modal-feedback.module.scss';
 
 type Props = {
@@ -44,7 +44,7 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
         setOpen(false);
     };
 
-    const handleCloseModalSucces = () => {
+    const handleCloseModalSuccess = () => {
         handleCancel();
         setOpenModalSucces(false);
     };
@@ -95,7 +95,7 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
             </Modal>
             <ModalFeedbackSuccess
                 open={openModalSucces}
-                handleCloseModalSucces={handleCloseModalSucces}
+                handleCloseModalSuccess={handleCloseModalSuccess}
             />
             <ModalFeedbackError
                 open={openModalError}
