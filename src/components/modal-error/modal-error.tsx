@@ -30,7 +30,6 @@ export const ModalError = ({ isError }: Props) => {
             onCancel={handleCancel}
             footer={null}
             closable={false}
-            maskStyle={{ backdropFilter: 'blur(6px)' }}
         >
             <Result
                 status='500'

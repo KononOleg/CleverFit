@@ -1,8 +1,6 @@
 @import '../../../../index.variables.scss';
 
 .ModalFeedbackError {
-    width: 540px !important;
-
     :global(.ant-modal-content) {
         :global(.ant-modal-body) {
             padding: $gap-8xl $gap-10xl;

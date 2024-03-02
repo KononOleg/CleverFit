@@ -1,10 +1,12 @@
 import { DATA_TEST_ID } from '@constants/index';
+import { characterRender } from '@utils/characterRateRender';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
 import { Button, Input, Modal, Rate } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ModalFeedbackError } from '../modal-feedback-error';
 import { ModalFeedbackSuccess } from '../modal-feedback-success';
+
 import styles from './modal-feedback.module.scss';
 
 type Props = {
@@ -21,6 +23,8 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
     const [openModalSucces, setOpenModalSucces] = useState(false);
     const [openModalError, setOpenModalError] = useState(false);
     const [createFeedback, { isError, isSuccess }] = useCreateFeedbackMutation();
+
+    const isSubmitDisabled = !rating;
 
     useEffect(() => {
         if (isSuccess) {
@@ -50,7 +54,6 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
     };
 
     const handleCloseModalError = () => {
-        handleCancel();
         setOpenModalError(false);
     };
 
@@ -69,8 +72,8 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                 open={open}
                 title='Ваш отзыв'
                 className={styles.ModalFeedback}
-                width={540}
                 onOk={handleOk}
+                maskStyle={{ background: '#799cd41a' }}
                 onCancel={handleCancel}
                 centered
                 footer={[
@@ -79,12 +82,17 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                         key='publish'
                         onClick={handleOk}
                         data-test-id={DATA_TEST_ID.NEW_REVIEW_SUBMIT_BUTTON}
+                        disabled={isSubmitDisabled}
                     >
                         Опубликовать
                     </Button>,
                 ]}
             >
-                <Rate value={rating} onChange={handleChangeRate} />
+                <Rate
+                    value={rating}
+                    onChange={handleChangeRate}
+                    character={({ index }) => characterRender(index, rating)}
+                />
 
                 <TextArea
                     value={message}

@@ -1,5 +1,6 @@
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Card, Rate } from 'antd';
+import { characterRender } from '@utils/characterRateRender';
 
 import { Feedback } from '../../../../types';
 import styles from './feedback-card.module.scss';
@@ -19,7 +20,12 @@ export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }:
                 </div>
                 <div className={styles.Description}>
                     <div className={styles.Rating}>
-                        <Rate className={styles.Rate} disabled={true} value={rating} />
+                        <Rate
+                            className={styles.Rate}
+                            disabled={true}
+                            value={rating}
+                            character={({ index }) => characterRender(index, rating)}
+                        />
                         <span className={styles.Date}>
                             {new Date(createdAt).toLocaleDateString()}
                         </span>

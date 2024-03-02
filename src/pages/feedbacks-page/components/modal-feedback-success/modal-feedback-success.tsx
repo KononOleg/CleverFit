@@ -15,7 +15,6 @@ export const ModalFeedbackSuccess = ({ open, handleCloseModalSuccess }: Props) =
         onCancel={handleCloseModalSuccess}
         footer={null}
         closable={false}
-        maskStyle={{ backdropFilter: 'blur(6px)' }}
     >
         <Result
             status='success'

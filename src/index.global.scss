@@ -4,6 +4,17 @@
     font-weight: $font-weight-xl;
 }
 
+.ant-modal {
+    width: 540px !important;
+    padding: 0 $gap-m;
+    max-width: 100%;
+}
+
+.ant-modal-mask {
+    backdrop-filter: blur(12px);
+    background: #799cd480;
+}
+
 .ant-result {
     width: 100%;
     padding: 0;

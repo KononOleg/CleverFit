@@ -21,7 +21,6 @@ export const ModalFeedbackError = ({
         onCancel={handleCloseModalError}
         footer={null}
         closable={false}
-        maskStyle={{ backdropFilter: 'blur(6px)' }}
     >
         <Result
             status='error'

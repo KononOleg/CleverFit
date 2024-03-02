@@ -4,6 +4,9 @@
     :global(.ant-modal-content) {
         :global(.ant-modal-body) {
             padding: $gap-8xl $gap-4xl $gap-7xl;
+            :global(.ant-result-subtitle) {
+                padding: 0 $gap-6xl;
+            }
         }
     }
 }
