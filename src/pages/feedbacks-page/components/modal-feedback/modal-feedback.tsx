@@ -73,7 +73,6 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                 title='Ваш отзыв'
                 className={styles.ModalFeedback}
                 onOk={handleOk}
-                maskStyle={{ background: '#799cd41a' }}
                 onCancel={handleCancel}
                 centered
                 footer={[
