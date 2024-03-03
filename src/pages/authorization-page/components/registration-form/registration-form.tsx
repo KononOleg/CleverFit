@@ -7,7 +7,7 @@ import {
     VALIDATION_PASSWORD,
 } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector, prevLocationsSelector } from '@redux/configure-store';
+import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useRegistrationMutation } from '@redux/services/auth-service';
 import { Button, Form, Input } from 'antd';
 import { useEffect } from 'react';

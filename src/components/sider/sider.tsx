@@ -43,7 +43,7 @@ const items = [
 
 export const Sider = () => {
     const width = window.innerWidth;
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
     const dispatch = useAppDispatch();
 
     const signOutHandler = () => dispatch(signOut());

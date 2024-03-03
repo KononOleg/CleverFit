@@ -1,4 +1,5 @@
 import { Rule } from 'antd/lib/form';
+
 import { ResultConfigs } from '../types';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
@@ -15,14 +16,17 @@ export const API_HOST = 'https://marathon-api.clevertec.ru';
 export const API_PATH = {
     REGISTER: '/auth/registration',
     LOGIN: '/auth/login',
+    GOOGLE: '/auth/google',
     CHECK_EMAIL: '/auth/check-email',
     CONFIRM_EMAIL: '/auth/confirm-email',
     CHANGE_PASSWORD: '/auth/change-password',
+    FEEDBACK: '/feedback',
 };
 
 export const PATH = {
     ROOT: '/',
     MAIN: '/main',
+    FEEDBACKS: '/feedbacks',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
@@ -68,6 +72,11 @@ export const DATA_TEST_ID = {
     CHECK_BACK_BUTTON: 'check-back-button',
     CHANGE_RETRY_BUTTON: 'change-retry-button',
     CHANGE_ENTRY_BUTTON: 'change-entry-button',
+    SEE_REVIEWS: 'see-reviews',
+    WRITE_REVIEW_NOT_SAVED_MODAL: 'write-review-not-saved-modal',
+    NEW_REVIEW_SUBMIT_BUTTON: 'new-review-submit-button',
+    WRITE_REVIEW: 'write-review',
+    ALL_REVIEWS_BUTTON: 'all-reviews-button',
 };
 
 export const resultConfigs: ResultConfigs = {

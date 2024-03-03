@@ -1,0 +1,22 @@
+@import '../../../../index.variables.scss';
+
+.ModalFeedback {
+    font-size: $font-size-m;
+    font-weight: $font-weight-l;
+    line-height: $font-line-m;
+
+    :global(.ant-modal-content) {
+        :global(.ant-modal-body) {
+            display: flex;
+            flex-direction: column;
+            gap: $gap-m;
+            padding: $gap-m;
+        }
+        :global(.ant-modal-header) {
+            padding: $gap-m $gap-xl;
+        }
+        :global(.ant-modal-footer) {
+            padding: $gap-2s $gap-xl;
+        }
+    }
+}

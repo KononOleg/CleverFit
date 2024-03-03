@@ -1,0 +1,44 @@
+@import '../../index.variables.scss';
+
+.FeedbacksWrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - $gap-15xl);
+    :global(.ant-btn) {
+        height: 40px;
+    }
+}
+
+:global(.ant-modal-wrap) {
+    :global(.ant-btn) {
+        height: 40px;
+    }
+}
+
+.Feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-l;
+}
+
+.FeedbacksAll {
+    overflow: scroll;
+}
+
+.FeedbacksAll::-webkit-scrollbar {
+    display: none;
+}
+
+.Buttons {
+    display: flex;
+    gap: $gap-xs;
+    margin-top: $gap-15xl;
+}
+
+@media (max-width: 830px) {
+    .Buttons {
+        flex-direction: column;
+        gap: $gap-m;
+        margin-top: $gap-7xl;
+    }
+}

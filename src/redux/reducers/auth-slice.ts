@@ -4,18 +4,25 @@ type AuthState = {
     token: string | null;
     email: string;
     password: string;
+    isLoading: boolean;
 };
 
 const initialState: AuthState = {
     token: null,
     email: '',
     password: '',
+    isLoading: true,
 };
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        checkAuth(state) {
+            const token = localStorage.getItem('token');
+            if (token) state.token = token;
+            state.isLoading = false;
+        },
         signOut(state) {
             localStorage.clear();
             state.token = null;
@@ -34,4 +41,4 @@ export const authSlice = createSlice({
     },
 });
 
-export const { signOut, setToken, setConfirmEmail, setPassword } = authSlice.actions;
+export const { checkAuth, signOut, setToken, setConfirmEmail, setPassword } = authSlice.actions;

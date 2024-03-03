@@ -1,10 +1,12 @@
 import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
+import { MainLayout } from '@components/main-layout';
 import { ProtectedRoute } from '@components/protected-route';
 import { AuthorizationPage } from '@pages/authorization-page';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
 import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
+import { FeedbacksPage } from '@pages/feedbacks-page/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { history, store } from '@redux/configure-store';
 import React from 'react';
@@ -29,16 +31,23 @@ root.render(
         <Provider store={store}>
             <HistoryRouter history={history}>
                 <Routes>
-                    <Route path={PATH.ROOT} element={<Navigate to={PATH.MAIN} />} />
                     <Route element={<Layout />}>
-                        <Route element={<ProtectedRoute />}>
-                            <Route path={PATH.MAIN} element={<MainPage />} />
+                        <Route path={PATH.ROOT} element={<Navigate to={PATH.MAIN} />} />
+                        <Route element={<MainLayout />}>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.MAIN} element={<MainPage />} />
+                            </Route>
                         </Route>
-
+                        <Route element={<MainLayout isBreadcrumb={true} isFooterHide={true} />}>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.FEEDBACKS} element={<FeedbacksPage />} />
+                            </Route>
+                        </Route>
                         <Route element={<AuthorizationLayout />}>
                             <Route
                                 path={PATH.AUTH}
-                                element={<AuthorizationPage tab={AUTH_TAB.LOGIN} />} />
+                                element={<AuthorizationPage tab={AUTH_TAB.LOGIN} />}
+                            />
                             <Route
                                 path={PATH.REGISTER}
                                 element={<AuthorizationPage tab={AUTH_TAB.REGISTER} />}

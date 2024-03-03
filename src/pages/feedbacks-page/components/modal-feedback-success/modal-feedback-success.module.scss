@@ -1,0 +1,13 @@
+@import '../../../../index.variables.scss';
+
+.ModalFeedbackSuccess {
+    :global(.ant-modal-content) {
+        :global(.ant-modal-body) {
+            padding: $gap-8xl $gap-10xl;
+
+            @media (max-width: 830px) {
+                padding: $gap-4xl $gap-m;
+            }
+        }
+    }
+}
