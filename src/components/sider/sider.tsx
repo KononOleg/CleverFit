@@ -22,7 +22,7 @@ const items = [
     {
         key: '1',
         icon: <CalendarOutlined />,
-        label: <Link to=''>Календарь</Link>,
+        label: <Link to={PATH.CALENDAR}>Календарь</Link>,
     },
     {
         key: '2',

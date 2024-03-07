@@ -27,6 +27,7 @@ export const PATH = {
     ROOT: '/',
     MAIN: '/main',
     FEEDBACKS: '/feedbacks',
+    CALENDAR: '/calendar',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',

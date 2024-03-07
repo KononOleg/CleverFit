@@ -1,0 +1,25 @@
+@import '../../index.variables.scss';
+
+.CalendarPage {
+    padding: $gap-3xs $gap-xl $gap-11xl;
+    background: $primary-light-1;
+
+    :global(.ant-picker-calendar-header) {
+        padding: $gap-s 0 0;
+    }
+
+    :global(.ant-picker-calendar-header),
+    :global(.ant-picker-calendar-full .ant-picker-panel) {
+        background: $primary-light-1;
+    }
+
+    :global(.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date) {
+        margin: 0;
+        border-left: $gap-3xs solid $primary-light-1;
+        border-right: $gap-3xs solid $primary-light-1;
+    }
+
+    :global(.ant-picker-cell) {
+        background: $neutral-gray-1;
+    }
+}

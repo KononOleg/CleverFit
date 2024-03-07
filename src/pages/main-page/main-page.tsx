@@ -1,7 +1,9 @@
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import cn from 'classnames';
-
+import { Link } from 'react-router-dom';
+import { PATH } from '@constants/index';
+    
 import styles from './main-page.module.scss';
 
 export const MainPage = () => (
@@ -42,7 +44,7 @@ export const MainPage = () => (
             <div>
                 <p>Назначить календарь</p>
                 <Button type='text' icon={<CalendarOutlined />}>
-                    Календарь
+                    <Link to={PATH.CALENDAR}> Календарь</Link>
                 </Button>
             </div>
 

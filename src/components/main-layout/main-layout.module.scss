@@ -1,5 +1,11 @@
 @import '../../index.variables.scss';
 
+footer,
+header,
+.Main {
+    padding: 0 $gap-xl;
+}
+
 .MainLayout {
     display: flex;
     background: url('../../assets/images/main-page.jpg') center / cover;
@@ -17,6 +23,10 @@
             flex-direction: column;
             padding-top: $gap-xl;
             padding-bottom: $gap-6xl;
+        }
+
+        .MainSecond {
+            padding: 0;
         }
     }
 }

@@ -17,6 +17,10 @@
         align-items: flex-start;
         padding-top: $gap-3xs;
     }
+
+    .containerRight {
+        justify-content: flex-end;
+    }
 }
 
 @media (max-width: 1000px) {
