@@ -1,0 +1,86 @@
+@import '../../../../index.variables.scss';
+
+.DrawerExercises {
+    font-family: Inter;
+
+    :global(.ant-drawer-content-wrapper) {
+        width: 408px !important;
+    }
+
+    :global(.ant-drawer-header) {
+        padding: $gap-xl $gap-4xl $gap-m;
+    }
+    :global(.ant-drawer-close) {
+        padding: 0;
+        margin-right: $gap-xs;
+    }
+
+    :global(.ant-drawer-title) {
+        font-size: $font-size-l;
+    }
+
+    :global(.ant-drawer-body) {
+        padding: 0 $gap-4xl 0;
+    }
+
+    .Status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .Exercises {
+        margin-top: $gap-3xl;
+    }
+
+    .Wrapper,
+    .InputWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: self-end;
+        margin-top: $gap-3xs;
+    }
+
+    .InputWrapper {
+        width: 195px;
+    }
+
+    .Label {
+        width: 90px;
+    }
+    .Multi {
+        height: 24px;
+        color: $neutral-gray-6;
+        transform: rotate(45deg);
+    }
+
+    .InputReplays,
+    .LabelReplays {
+        width: 120px;
+    }
+
+    .Label,
+    .LabelReplays {
+        height: $gap-xl;
+        padding: $gap-3xs $gap-xs;
+        background: $character-light-dividers;
+        font-size: $font-size-xs;
+    }
+
+    :global(.ant-input-number-input),
+    .InputReplays,
+    .Input {
+        height: 24px;
+    }
+
+    .Buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $gap-xs 4px;
+        margin-top: $gap-xl;
+        border-radius: 0 0 $border-radius-m $border-radius-m;
+        background-color: $character-light-dividers;
+    }
+}

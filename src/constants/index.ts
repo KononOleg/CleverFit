@@ -21,6 +21,8 @@ export const API_PATH = {
     CONFIRM_EMAIL: '/auth/confirm-email',
     CHANGE_PASSWORD: '/auth/change-password',
     FEEDBACK: '/feedback',
+    TRAINING: '/training',
+    TRAINING_LIST: '/catalogs/training-list',
 };
 
 export const PATH = {
@@ -78,6 +80,7 @@ export const DATA_TEST_ID = {
     NEW_REVIEW_SUBMIT_BUTTON: 'new-review-submit-button',
     WRITE_REVIEW: 'write-review',
     ALL_REVIEWS_BUTTON: 'all-reviews-button',
+    MENU_BUTTON_CALENDAR: 'menu-button-calendar',
 };
 
 export const resultConfigs: ResultConfigs = {

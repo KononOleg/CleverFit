@@ -1,0 +1,73 @@
+@import '../../../../index.variables.scss';
+
+.cardModal {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    min-width: 264px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 2px 8px 0px #00000026;
+
+    :global(.ant-card-actions) {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0 $gap-s;
+
+        li {
+            width: 100% !important;
+            margin: 0;
+        }
+    }
+
+    :global(.ant-card-head) {
+        padding: $gap-m $gap-s;
+    }
+    .headWrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    :global(.ant-card-head-title) {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    :global(.ant-card-body) {
+        min-height: 70px;
+        padding: $gap-m $gap-s $gap-s;
+    }
+
+    :global(.ant-card-meta-detail > div:not(:last-child)) {
+        margin: 0;
+    }
+
+    :global(.ant-card-meta-title),
+    :global(.ant-card-meta-description) {
+        font-size: $font-size-s;
+        text-align: start;
+    }
+
+    :global(.ant-card-meta-title) {
+        font-weight: $font-weight-xl;
+    }
+    :global(.ant-btn) {
+        font-size: $font-size-s;
+    }
+
+    :global(.ant-btn-icon-only.ant-btn-sm) {
+        width: $gap-2m;
+        height: $gap-2m;
+    }
+
+    :global(.ant-btn-default) {
+        height: 32px;
+        padding: 3px 0;
+    }
+}

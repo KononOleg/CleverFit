@@ -1,0 +1,12 @@
+@import '../../../../index.variables.scss';
+
+.EmptyWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .EmptyImage {
+        height: $gap-4xl;
+        width: $gap-4xl;
+        margin: auto;
+    }
+}
