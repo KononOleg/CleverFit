@@ -32,9 +32,7 @@ export const CardExercises = ({
         useAppSelector(trainingSelector);
     const [createTraining, { isLoading, isError }] = useCreateTrainingMutation();
 
-    const exercisesMap = !createdTraining
-        ? exercises
-        : exercises.concat(createdTraining?.exercises);
+    const exercisesMap = exercises.concat(createdTraining?.exercises).slice(0, -1);
 
     const isEmptyExercises = exercisesMap && exercisesMap.length === 0;
     const isEmptyCreatedTraining =

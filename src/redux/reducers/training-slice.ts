@@ -6,7 +6,19 @@ type AuthState = {
     selectedDate: string | null;
     trainingList: TrainingList;
     exercises: Exercise[];
-    createdTraining: Training | null;
+    createdTraining: Training;
+};
+const initialExercise = {
+    name: '',
+    approaches: 1,
+    weight: 0,
+    replays: 1,
+};
+
+const initialTraining = {
+    date: '',
+    name: '',
+    exercises: [initialExercise],
 };
 
 const initialState: AuthState = {
@@ -14,7 +26,7 @@ const initialState: AuthState = {
     selectedDate: null,
     trainingList: [],
     exercises: [],
-    createdTraining: null,
+    createdTraining: initialTraining,
 };
 
 export const trainingSlice = createSlice({
@@ -28,7 +40,7 @@ export const trainingSlice = createSlice({
             const exercises: Exercise[] = [];
             action.payload.trainingByDay.map((training) => exercises.push(...training.exercises));
             state.exercises = exercises;
-            state.createdTraining = null;
+            state.createdTraining = initialTraining;
         },
         setSelectedDate(state, action: PayloadAction<{ selectedDate: string }>) {
             state.selectedDate = action.payload.selectedDate;
@@ -38,10 +50,21 @@ export const trainingSlice = createSlice({
         },
         addTraining(state, action: PayloadAction<{ training: Training }>) {
             state.createdTraining = action.payload.training;
+            state.createdTraining.exercises = [initialExercise];
         },
 
-        addExercise(state, action: PayloadAction<{ exercise: Exercise }>) {
-            state.createdTraining?.exercises.push(action.payload.exercise);
+        setExercise(
+            state,
+            { payload: exercises }: PayloadAction<Partial<Exercise> & { index: number }>,
+        ) {
+            state.createdTraining.exercises[exercises.index] = {
+                ...state.createdTraining.exercises[exercises.index],
+                ...exercises,
+            };
+        },
+
+        addExercise(state) {
+            state.createdTraining.exercises.push(initialExercise);
         },
     },
 });
@@ -53,4 +76,5 @@ export const {
     addTraining,
     setExercises,
     addExercise,
+    setExercise,
 } = trainingSlice.actions;
