@@ -8,19 +8,20 @@ import moment from 'moment';
 import { BadgeTraining } from '../badge-training';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
-import { getTrainingByDay } from '@utils/index';
+
 import { Empty } from '../empty';
+import { Training } from '../../../../types';
 
 type Props = {
+    trainingByDay: Training[];
     closeModalHandler: () => void;
     nextModalHandler: () => void;
 };
 
-export const CardTraining = ({ closeModalHandler, nextModalHandler }: Props) => {
-    const { selectedDate, training } = useAppSelector(trainingSelector);
+export const CardTraining = ({ trainingByDay, closeModalHandler, nextModalHandler }: Props) => {
+    const { selectedDate } = useAppSelector(trainingSelector);
 
-    const TrainingByDay = getTrainingByDay(selectedDate, training);
-    const isEmptyTrainingByDay = TrainingByDay && TrainingByDay.length === 0;
+    const isEmptyTrainingByDay = trainingByDay && trainingByDay.length === 0;
 
     return (
         <Card
@@ -49,7 +50,7 @@ export const CardTraining = ({ closeModalHandler, nextModalHandler }: Props) => 
             {isEmptyTrainingByDay ? (
                 <Empty />
             ) : (
-                <BadgeTraining training={TrainingByDay} isEdit={true} />
+                <BadgeTraining training={trainingByDay} isEdit={true} />
             )}
         </Card>
     );

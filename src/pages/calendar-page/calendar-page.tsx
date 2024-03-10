@@ -33,7 +33,7 @@ export const CalendarPage = () => {
     };
 
     const dateCellRender = (date: Moment) => (
-        <BadgeTraining training={getTrainingByDay(date, training)} />
+        <BadgeTraining training={getTrainingByDay(date.toISOString(true), training)} />
     );
 
     return (

@@ -24,7 +24,7 @@ export const checkPrevPath = (
     path: string,
 ) => prevLocation?.length && prevLocation[1]?.location?.pathname === path;
 
-export const getTrainingByDay = (value: Moment, training: Training[]) =>
+export const getTrainingByDay = (value: string | null, training: Training[]) =>
     training.filter(
         ({ date }) => moment(date).format('YYYY-MM-DD') === moment(value).format('YYYY-MM-DD'),
     );

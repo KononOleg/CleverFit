@@ -18,7 +18,7 @@ export type Feedback = {
 };
 
 export type Exercise = {
-    id: string;
+    id?: string;
     name: string;
     replays: number;
     weight: number;
@@ -26,16 +26,18 @@ export type Exercise = {
 };
 
 export type Training = {
-    id: string;
+    id?: string;
     name: string;
     date: string;
     exercises: Exercise[];
 };
 
 export type TrainingList = { name: string; key: string }[];
+
 export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];
 export type GetFeedbacksResponse = Feedback[];
+export type CreateTrainingRequest = Training;
 
 export type CreateFeedbackResponse = {
     message: string;

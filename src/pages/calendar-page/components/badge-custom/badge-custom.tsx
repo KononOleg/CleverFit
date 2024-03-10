@@ -6,6 +6,7 @@ import { EditOutlined } from '@ant-design/icons';
 type Props = {
     text: string;
     isEdit?: boolean;
+    isExercise?: boolean;
 };
 
 const colors = new Map([
@@ -16,9 +17,14 @@ const colors = new Map([
     ['Спина', 'orange'],
 ]);
 
-export const BadgeCustom = ({ text, isEdit }: Props) => (
+export const BadgeCustom = ({ text, isEdit, isExercise }: Props) => (
     <div className={styles.BadgeCustomWrapper}>
-        <Badge className={styles.BadgeCustom} color={colors.get(text)} text={text} />
+        {isExercise ? (
+            <p className={styles.ExerciseText}>{text}</p>
+        ) : (
+            <Badge className={styles.BadgeCustom} color={colors.get(text)} text={text} />
+        )}
+
         {isEdit && <Button type='link' className={styles.button} icon={<EditOutlined />} />}
     </div>
 );
