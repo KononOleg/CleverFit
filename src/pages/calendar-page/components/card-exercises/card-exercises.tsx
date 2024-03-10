@@ -13,6 +13,7 @@ import { Training } from '../../../../types';
 import { useState } from 'react';
 import { addTraining } from '@redux/reducers/training-slice';
 import { useCreateTrainingMutation } from '@redux/services/training-service';
+import { ModalRequestError } from '../modal-request-error';
 
 type Props = {
     trainingByDay: Training[];
@@ -29,7 +30,7 @@ export const CardExercises = ({
     const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
     const { selectedDate, trainingList, exercises, createdTraining } =
         useAppSelector(trainingSelector);
-    const [createTraining, { isLoading }] = useCreateTrainingMutation();
+    const [createTraining, { isLoading, isError }] = useCreateTrainingMutation();
 
     const exercisesMap = !createdTraining
         ? exercises
@@ -62,52 +63,62 @@ export const CardExercises = ({
     };
 
     return (
-        <Card
-            className={styles.cardModal}
-            title={
-                <div className={styles.headWrapper}>
-                    <Button
-                        type='text'
-                        size='small'
-                        icon={<ArrowLeftOutlined />}
-                        onClick={prevModalHandler}
-                    />
+        <>
+            <Card
+                className={styles.cardModal}
+                title={
+                    <div className={styles.headWrapper}>
+                        <Button
+                            type='text'
+                            size='small'
+                            icon={<ArrowLeftOutlined />}
+                            onClick={prevModalHandler}
+                        />
 
-                    <TrainingListSelect
-                        trainingList={trainingList}
-                        selectedTrainings={selectedTrainings}
-                        changeSelectHandler={changeSelectHandler}
-                    />
-                </div>
-            }
-            actions={[
-                <Button
-                    block
-                    size='large'
-                    onClick={openDrawerExercisesHandler}
-                    disabled={isDisabledAddExercise}
-                >
-                    Добавить упражнения
-                </Button>,
-                <Button
-                    block
-                    size='large'
-                    type='link'
-                    onClick={createTrainingHandler}
-                    disabled={isDisabledSaveExercise}
-                    loading={isLoading}
-                >
-                    Сохранить
-                </Button>,
-            ]}
-        >
-            {isEmptyExercises ? (
-                <Empty />
-            ) : (
-                exercisesMap.map((exercise) => (
-                    <BadgeCustom text={exercise.name} isEdit={true} isExercise={true} />
-                ))
-            )}
-        </Card>
+                        <TrainingListSelect
+                            trainingList={trainingList}
+                            selectedTrainings={selectedTrainings}
+                            changeSelectHandler={changeSelectHandler}
+                        />
+                    </div>
+                }
+                actions={[
+                    <Button
+                        block
+                        size='large'
+                        onClick={openDrawerExercisesHandler}
+                        disabled={isDisabledAddExercise}
+                    >
+                        Добавить упражнения
+                    </Button>,
+                    <Button
+                        block
+                        size='large'
+                        type='link'
+                        onClick={createTrainingHandler}
+                        disabled={isDisabledSaveExercise}
+                        loading={isLoading}
+                    >
+                        Сохранить
+                    </Button>,
+                ]}
+            >
+                {isEmptyExercises ? (
+                    <Empty />
+                ) : (
+                    exercisesMap.map((exercise) => (
+                        <BadgeCustom text={exercise.name} isEdit={true} isExercise={true} />
+                    ))
+                )}
+            </Card>
+            <ModalRequestError
+                title='При сохранении данных произошла ошибка'
+                type='error'
+                isError={isError}
+                subtitle='Придётся попробовать ещё раз'
+                okText='Закрыть'
+                onClickButton={() => {}}
+            />
+        </>
     );
 };

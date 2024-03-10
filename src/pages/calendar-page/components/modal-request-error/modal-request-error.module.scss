@@ -1,0 +1,18 @@
+@import '../../../../index.variables.scss';
+
+.ModalRequestError {
+    max-width: 416px !important;
+
+    :global(.ant-modal-body) {
+        padding: $gap-s $gap-xl $gap-m !important;
+    }
+
+    :global(.ant-modal-confirm-btns) {
+        margin-top: $gap-2s !important;
+    }
+    :global(.ant-btn-primary) {
+        height: $gap-3xl !important;
+        width: 100px;
+        line-height: 1;
+    }
+}

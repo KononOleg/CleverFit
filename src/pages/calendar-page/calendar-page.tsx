@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { setSelectedDate, setTraining, setTrainingList } from '@redux/reducers/training-slice';
 import { getSelectedCell, getTrainingByDay } from '@utils/index';
+import { ModalRequestError } from './components/modal-request-error';
 
 export const CalendarPage = () => {
     const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export const CalendarPage = () => {
     const [selectedCell, setSelectedCell] = useState<Element | undefined>(undefined);
 
     const { data } = useGetTrainingQuery(); // Delete
-    const { data: trainingList } = useGetTrainingListQuery();
+    const { data: trainingList, isError, refetch } = useGetTrainingListQuery();
 
     useEffect(() => {
         if (trainingList) dispatch(setTrainingList({ trainingList }));
@@ -47,6 +48,15 @@ export const CalendarPage = () => {
 
                 <Calendar onSelect={onSelectHandler} dateCellRender={dateCellRender} />
             </div>
+
+            <ModalRequestError
+                title='При открытии данных произошла ошибка'
+                type='info'
+                isError={isError}
+                subtitle='Попробуйте ещё раз.'
+                okText='Обновить'
+                onClickButton={() => refetch()}
+            />
         </>
     );
 };
