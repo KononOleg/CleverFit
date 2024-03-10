@@ -2,6 +2,7 @@ import { Select } from 'antd';
 
 import styles from './training-list-select.module.scss';
 import { TrainingList } from '../../../../types';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     trainingList: TrainingList;
@@ -27,6 +28,7 @@ export const TrainingListSelect = ({
             className={styles.TrainingSelect}
             options={options}
             onChange={onChange}
+            data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
         />
     );
 };

@@ -81,6 +81,23 @@ export const DATA_TEST_ID = {
     WRITE_REVIEW: 'write-review',
     ALL_REVIEWS_BUTTON: 'all-reviews-button',
     MENU_BUTTON_CALENDAR: 'menu-button-calendar',
+    MODAL_ERROR_USER_TRAINING_TITLE: 'modal-error-user-training-title',
+    MODAL_ERROR_USER_TRAINING_SUBTITLE: 'modal-error-user-training-subtitle',
+    MODAL_ERROR_USER_TRAINING_BUTTON: 'modal-error-user-training-button',
+    MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE: 'modal-error-user-training-button-close',
+    MODAL_CREATE_TRAINING: 'modal-create-training',
+    MODAL_CREATE_TRAINING_BUTTON_CLOSE: 'modal-create-training-button-close',
+    MODAL_UPDATE_TRAINING_EDIT_BUTTON: 'modal-update-training-edit-button',
+    MODAL_CREATE_EXERCISE: 'modal-create-exercise',
+    MODAL_CREATE_EXERCISE_SELECT: 'modal-create-exercise-select',
+    MODAL_EXERCISE_TRAINING_BUTTON_CLOSE: 'modal-exercise-training-button-close',
+    MODAL_DRAWER_RIGHT: 'modal-drawer-right',
+    MODAL_DRAWER_RIGHT_BUTTON_CLOSE: 'modal-drawer-right-button-close',
+    MODAL_DRAWER_RIGHT_INPUT_EXERCISE: 'modal-drawer-right-input-exercise',
+    MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE: 'modal-drawer-right-checkbox-exercise',
+    MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
+    MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
+    MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
 };
 
 export const resultConfigs: ResultConfigs = {

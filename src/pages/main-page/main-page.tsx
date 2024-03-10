@@ -2,7 +2,7 @@ import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons
 import { Button } from 'antd';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { PATH } from '@constants/index';
+import { DATA_TEST_ID, PATH } from '@constants/index';
 
 import styles from './main-page.module.scss';
 import { useEffect } from 'react';
@@ -62,7 +62,11 @@ export const MainPage = () => {
 
                     <div>
                         <p>Назначить календарь</p>
-                        <Button type='text' icon={<CalendarOutlined />}>
+                        <Button
+                            type='text'
+                            icon={<CalendarOutlined />}
+                            data-test-id={DATA_TEST_ID.MENU_BUTTON_CALENDAR}
+                        >
                             <Link to={PATH.CALENDAR}> Календарь</Link>
                         </Button>
                     </div>

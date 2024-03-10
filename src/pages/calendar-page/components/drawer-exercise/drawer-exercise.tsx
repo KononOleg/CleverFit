@@ -10,6 +10,7 @@ import { trainingSelector } from '@redux/selectors';
 
 import { addExercise } from '@redux/reducers/training-slice';
 import { ExerciseForm } from '../exercise-form';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = { openDrawerExercises: boolean; closeDrawerExercisesHandler: () => void };
 
@@ -28,9 +29,10 @@ export const DrawerExercise = ({ openDrawerExercises, closeDrawerExercisesHandle
             title='Добавление упражнений'
             destroyOnClose={true}
             placement='right'
-            closeIcon={<PlusOutlined />}
+            closeIcon={<PlusOutlined data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT_BUTTON_CLOSE} />}
             open={openDrawerExercises}
             className={styles.DrawerExercises}
+            data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT}
             extra={
                 <Button type='text' size='small' icon={<CloseOutlined />} onClick={closeHandler} />
             }

@@ -11,6 +11,7 @@ import { trainingSelector } from '@redux/selectors';
 
 import { Empty } from '../empty';
 import { Training } from '../../../../types';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     trainingByDay: Training[];
@@ -26,6 +27,7 @@ export const CardTraining = ({ trainingByDay, closeModalHandler, nextModalHandle
     return (
         <Card
             className={styles.cardModal}
+            data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING}
             title={
                 <>
                     <Meta
@@ -33,6 +35,7 @@ export const CardTraining = ({ trainingByDay, closeModalHandler, nextModalHandle
                         description={isEmptyTrainingByDay && 'Нет активных тренировок'}
                     />
                     <Button
+                        data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING_BUTTON_CLOSE}
                         className={styles.CloseButton}
                         type='text'
                         size='small'

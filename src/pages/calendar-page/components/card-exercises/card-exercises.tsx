@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { addTraining } from '@redux/reducers/training-slice';
 import { useCreateTrainingMutation } from '@redux/services/training-service';
 import { ModalRequestError } from '../modal-request-error';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     trainingByDay: Training[];
@@ -64,9 +65,11 @@ export const CardExercises = ({
         <>
             <Card
                 className={styles.cardModal}
+                data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
                 title={
                     <div className={styles.headWrapper}>
                         <Button
+                            data-test-id={DATA_TEST_ID.MODAL_EXERCISE_TRAINING_BUTTON_CLOSE}
                             type='text'
                             size='small'
                             icon={<ArrowLeftOutlined />}

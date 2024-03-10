@@ -5,6 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setExercise } from '@redux/reducers/training-slice';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     excerciseNameInitial: string;
@@ -35,6 +36,7 @@ export const ExerciseForm = ({
     return (
         <div className={styles.Exercise}>
             <Input
+                data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
                 className={styles.Input}
                 placeholder='Упражнениe'
                 defaultValue={excerciseNameInitial}
@@ -49,6 +51,7 @@ export const ExerciseForm = ({
             </div>
             <div className={styles.Wrapper}>
                 <InputNumber
+                    data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_QUANTITY}${index}`}
                     className={styles.InputReplays}
                     addonBefore='+'
                     min={1}
@@ -57,12 +60,14 @@ export const ExerciseForm = ({
                 />
                 <div className={styles.InputWrapper}>
                     <InputNumber
+                        data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${index}`}
                         className={styles.Input}
                         defaultValue={weightInitial}
                         onChange={onChangesetWeight}
                     />
                     <PlusOutlined className={styles.Multi} />
                     <InputNumber
+                        data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_APPROACH}${index}`}
                         className={styles.Input}
                         min={1}
                         defaultValue={approachesInitial}
