@@ -7,6 +7,7 @@ type AuthState = {
     trainingList: TrainingList;
     exercises: Exercise[];
     createdTraining: Training;
+    isCardExercises: boolean;
 };
 const initialExercise = {
     name: '',
@@ -27,14 +28,25 @@ const initialState: AuthState = {
     trainingList: [],
     exercises: [],
     createdTraining: initialTraining,
+    isCardExercises: false,
 };
 
 export const trainingSlice = createSlice({
     name: 'training',
     initialState,
     reducers: {
+        closeModal(state) {
+            state.selectedDate = null;
+        },
+        setIsCardExercises(state, action: PayloadAction<{ isCardExercises: boolean }>) {
+            state.isCardExercises = action.payload.isCardExercises;
+        },
         setTraining(state, action: PayloadAction<{ training: Training[] }>) {
             state.training = action.payload.training;
+        },
+
+        updateTraining(state, action: PayloadAction<{ training: Training }>) {
+            state.training.push(action.payload.training);
         },
         setExercises(state, action: PayloadAction<{ trainingByDay: Training[] }>) {
             const exercises: Exercise[] = [];
@@ -71,10 +83,13 @@ export const trainingSlice = createSlice({
 
 export const {
     setTraining,
+    setIsCardExercises,
     setSelectedDate,
     setTrainingList,
     addTraining,
     setExercises,
     addExercise,
     setExercise,
+    updateTraining,
+    closeModal,
 } = trainingSlice.actions;

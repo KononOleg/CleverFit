@@ -31,3 +31,5 @@ export const getTrainingByDay = (value: string | null, training: Training[]) =>
 
 export const getSelectedCell = (date: Moment) =>
     document.querySelectorAll(`[title*="${moment(date).format('YYYY-MM-DD')}"]`)[0];
+
+export const isOldDate = (date: string) => Boolean(date && moment(date).isBefore(moment()));

@@ -1,7 +1,12 @@
 import { API_PATH } from '@constants/index';
 
 import { apiSlice } from '.';
-import { CreateTrainingRequest, GetTrainingListResponse, GetTrainingResponse } from '../../types';
+import {
+    CreateTrainingRequest,
+    CreateTrainingResponse,
+    GetTrainingListResponse,
+    GetTrainingResponse,
+} from '../../types';
 
 export const trainingApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -17,7 +22,7 @@ export const trainingApi = apiSlice.injectEndpoints({
                 method: 'GET',
             }),
         }),
-        createTraining: builder.mutation<void, CreateTrainingRequest>({
+        createTraining: builder.mutation<CreateTrainingResponse, CreateTrainingRequest>({
             query: (training) => ({
                 url: API_PATH.TRAINING,
                 method: 'POST',
@@ -27,5 +32,9 @@ export const trainingApi = apiSlice.injectEndpoints({
     }),
 });
 
-export const { useGetTrainingQuery, useGetTrainingListQuery, useCreateTrainingMutation } =
-    trainingApi;
+export const {
+    useGetTrainingQuery,
+    useGetTrainingListQuery,
+    useCreateTrainingMutation,
+    useLazyGetTrainingQuery,
+} = trainingApi;

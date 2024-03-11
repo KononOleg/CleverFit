@@ -6,23 +6,29 @@ import { CloseOutlined } from '@ant-design/icons';
 import moment from 'moment';
 
 import { BadgeTraining } from '../badge-training';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 
 import { Empty } from '../empty';
 import { Training } from '../../../../types';
 import { DATA_TEST_ID } from '@constants/index';
+import { isOldDate } from '@utils/index';
+import { closeModal } from '@redux/reducers/training-slice';
 
 type Props = {
     trainingByDay: Training[];
-    closeModalHandler: () => void;
     nextModalHandler: () => void;
 };
 
-export const CardTraining = ({ trainingByDay, closeModalHandler, nextModalHandler }: Props) => {
-    const { selectedDate } = useAppSelector(trainingSelector);
+export const CardTraining = ({ trainingByDay, nextModalHandler }: Props) => {
+    const dispatch = useAppDispatch();
+    const { selectedDate, trainingList } = useAppSelector(trainingSelector);
 
     const isEmptyTrainingByDay = trainingByDay && trainingByDay.length === 0;
+    const isDisabled =
+        trainingByDay.length === trainingList.length || isOldDate(selectedDate as string);
+
+    const closeModalHandler = () => dispatch(closeModal());
 
     return (
         <Card
@@ -45,8 +51,14 @@ export const CardTraining = ({ trainingByDay, closeModalHandler, nextModalHandle
                 </>
             }
             actions={[
-                <Button block size='large' type='primary' onClick={nextModalHandler}>
-                    {isEmptyTrainingByDay ? 'Создать тренировку' : 'Добавить тренировку'}
+                <Button
+                    block
+                    size='large'
+                    type='primary'
+                    onClick={nextModalHandler}
+                    disabled={isDisabled}
+                >
+                    Создать тренировку
                 </Button>,
             ]}
         >

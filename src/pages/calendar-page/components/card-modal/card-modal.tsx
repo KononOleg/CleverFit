@@ -5,26 +5,36 @@ import { DrawerExercise } from '../drawer-exercise';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
-import { setExercises } from '@redux/reducers/training-slice';
+import { setExercises, setIsCardExercises } from '@redux/reducers/training-slice';
 
-type Props = {
-    closeModalHandler: () => void;
-};
-
-export const CardModal = ({ closeModalHandler }: Props) => {
+export const CardModal = () => {
     const dispatch = useAppDispatch();
-    const { selectedDate, training } = useAppSelector(trainingSelector);
-    const [isCardExercises, setIsCardExercises] = useState(false);
+    const { selectedDate, training, isCardExercises } = useAppSelector(trainingSelector);
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
 
     const trainingByDay = getTrainingByDay(selectedDate, training);
 
     useEffect(() => {
         dispatch(setExercises({ trainingByDay }));
+        dispatch(
+            setIsCardExercises({
+                isCardExercises: false,
+            }),
+        );
     }, []);
 
-    const nextModalHandler = () => setIsCardExercises(true);
-    const prevModalHandler = () => setIsCardExercises(false);
+    const nextModalHandler = () =>
+        dispatch(
+            setIsCardExercises({
+                isCardExercises: true,
+            }),
+        );
+    const prevModalHandler = () =>
+        dispatch(
+            setIsCardExercises({
+                isCardExercises: false,
+            }),
+        );
 
     const closeDrawerExercisesHandler = () => setOpenDrawerExercises(false);
     const openDrawerExercisesHandler = () => setOpenDrawerExercises(true);
@@ -38,11 +48,7 @@ export const CardModal = ({ closeModalHandler }: Props) => {
                     openDrawerExercisesHandler={openDrawerExercisesHandler}
                 />
             ) : (
-                <CardTraining
-                    closeModalHandler={closeModalHandler}
-                    nextModalHandler={nextModalHandler}
-                    trainingByDay={trainingByDay}
-                />
+                <CardTraining nextModalHandler={nextModalHandler} trainingByDay={trainingByDay} />
             )}
 
             <DrawerExercise

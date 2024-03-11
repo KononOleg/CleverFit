@@ -1,5 +1,5 @@
 import { Calendar } from 'antd';
-import { useGetTrainingListQuery, useGetTrainingQuery } from '@redux/services/training-service';
+import { useGetTrainingListQuery } from '@redux/services/training-service';
 import { CardModal } from './components/card-modal';
 
 import styles from './calendar-page.module.scss';
@@ -9,24 +9,22 @@ import moment, { Moment } from 'moment';
 import { BadgeTraining } from './components/badge-training';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
-import { setSelectedDate, setTraining, setTrainingList } from '@redux/reducers/training-slice';
+import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
 import { getSelectedCell, getTrainingByDay } from '@utils/index';
 import { ModalRequestError } from './components/modal-request-error';
 
 export const CalendarPage = () => {
     const dispatch = useAppDispatch();
-    const { training } = useAppSelector(trainingSelector);
+    const { training, selectedDate } = useAppSelector(trainingSelector);
     const [selectedCell, setSelectedCell] = useState<Element | undefined>(undefined);
 
-    const { data } = useGetTrainingQuery(); // Delete
     const { data: trainingList, isError, refetch } = useGetTrainingListQuery();
+
+    const isOpenModal = selectedCell && selectedDate;
 
     useEffect(() => {
         if (trainingList) dispatch(setTrainingList({ trainingList }));
-        if (data) dispatch(setTraining({ training: data })); // Delete
-    }, [data, dispatch, trainingList]);
-
-    const closeModalHandler = () => setSelectedCell(undefined);
+    }, [dispatch, trainingList]);
 
     const onSelectHandler = (date: Moment) => {
         dispatch(setSelectedDate({ selectedDate: moment(date).toISOString(true) }));
@@ -40,9 +38,9 @@ export const CalendarPage = () => {
     return (
         <>
             <div className={styles.CalendarPage}>
-                {selectedCell && (
+                {isOpenModal && (
                     <Portal container={selectedCell}>
-                        <CardModal closeModalHandler={closeModalHandler} />
+                        <CardModal />
                     </Portal>
                 )}
 

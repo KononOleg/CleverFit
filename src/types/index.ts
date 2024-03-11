@@ -38,6 +38,7 @@ export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];
 export type GetFeedbacksResponse = Feedback[];
 export type CreateTrainingRequest = Training;
+export type CreateTrainingResponse = Training;
 
 export type CreateFeedbackResponse = {
     message: string;

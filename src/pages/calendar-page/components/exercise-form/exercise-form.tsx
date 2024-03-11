@@ -36,7 +36,7 @@ export const ExerciseForm = ({
     return (
         <div className={styles.Exercise}>
             <Input
-                data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
+                data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${index}`}
                 className={styles.Input}
                 placeholder='Упражнениe'
                 defaultValue={excerciseNameInitial}

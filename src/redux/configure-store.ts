@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 
-import { listenerMiddleware } from './effects/auth-effects';
+import { listenerMiddleware } from './effects/effects';
 import { authSlice } from './reducers/auth-slice';
 import { apiSlice } from './services';
 import { trainingSlice } from './reducers/training-slice';

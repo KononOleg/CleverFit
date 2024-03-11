@@ -18,7 +18,11 @@ export const DrawerExercise = ({ openDrawerExercises, closeDrawerExercisesHandle
     const dispatch = useAppDispatch();
     const { selectedDate, createdTraining } = useAppSelector(trainingSelector);
 
-    const closeHandler = () => closeDrawerExercisesHandler();
+    const closeHandler = () => {
+        if (createdTraining.exercises[createdTraining.exercises.length - 1].name)
+            dispatch(addExercise());
+        closeDrawerExercisesHandler();
+    };
 
     const addExcerciseHandler = () => {
         dispatch(addExercise());
@@ -29,12 +33,18 @@ export const DrawerExercise = ({ openDrawerExercises, closeDrawerExercisesHandle
             title='Добавление упражнений'
             destroyOnClose={true}
             placement='right'
-            closeIcon={<PlusOutlined data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT_BUTTON_CLOSE} />}
+            closeIcon={<PlusOutlined />}
             open={openDrawerExercises}
             className={styles.DrawerExercises}
             data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT}
             extra={
-                <Button type='text' size='small' icon={<CloseOutlined />} onClick={closeHandler} />
+                <Button
+                    data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT_BUTTON_CLOSE}
+                    type='text'
+                    size='small'
+                    icon={<CloseOutlined />}
+                    onClick={closeHandler}
+                />
             }
         >
             <div className={styles.Status}>

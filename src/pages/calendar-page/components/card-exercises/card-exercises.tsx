@@ -11,7 +11,7 @@ import { Empty } from '../empty';
 import { BadgeCustom } from '../badge-custom';
 import { Training } from '../../../../types';
 import { useState } from 'react';
-import { addTraining } from '@redux/reducers/training-slice';
+import { addTraining, closeModal } from '@redux/reducers/training-slice';
 import { useCreateTrainingMutation } from '@redux/services/training-service';
 import { ModalRequestError } from '../modal-request-error';
 import { DATA_TEST_ID } from '@constants/index';
@@ -37,7 +37,7 @@ export const CardExercises = ({
 
     const isEmptyExercises = exercisesMap && exercisesMap.length === 0;
     const isEmptyCreatedTraining =
-        createdTraining?.exercises && createdTraining?.exercises.length === 0;
+        createdTraining?.exercises && createdTraining?.exercises.length === 1;
 
     const selectedTrainings = trainingByDay
         .filter(({ name }) => trainingList.find((training) => training.name === name))
@@ -47,6 +47,7 @@ export const CardExercises = ({
     const isDisabledSaveExercise = !createdTraining || isEmptyCreatedTraining;
 
     const createTrainingHandler = () => createTraining(createdTraining as Training);
+    const closeModalHandler = () => dispatch(closeModal());
 
     const changeSelectHandler = (value: string) => {
         dispatch(
@@ -118,7 +119,7 @@ export const CardExercises = ({
                 isError={isError}
                 subtitle='Придётся попробовать ещё раз'
                 okText='Закрыть'
-                onClickButton={() => {}}
+                onClickButton={closeModalHandler}
             />
         </>
     );

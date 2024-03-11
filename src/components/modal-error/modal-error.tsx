@@ -1,4 +1,4 @@
-import { PATH } from '@constants/index';
+import { DATA_TEST_ID, PATH } from '@constants/index';
 import { Button, Modal, Result } from 'antd';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,7 @@ export const ModalError = ({ isError }: Props) => {
             onCancel={handleCancel}
             footer={null}
             closable={false}
+            data-test-id={DATA_TEST_ID.MODAL_NO_REVIEW}
         >
             <Result
                 status='500'

@@ -2,7 +2,8 @@ import { Modal } from 'antd';
 
 import styles from './modal-request-error.module.scss';
 import { useEffect, useState } from 'react';
-import { CloseCircleOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     isError: boolean;
@@ -34,14 +35,19 @@ export const ModalRequestError = ({
     };
 
     const config = {
-        title,
-        content: subtitle,
+        title: <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_TITLE}>{title}</span>,
+        content: (
+            <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_SUBTITLE}>{subtitle}</span>
+        ),
         className: styles.ModalRequestError,
-        handleCancel: { handleCancel },
+        handleCancel,
         closable: true,
         centered: true,
         icon: <CloseCircleOutlined />,
-        okText,
+        closeIcon: (
+            <CloseOutlined data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE} />
+        ),
+        okText: <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}>{okText}</span>,
         onOk: onOkHandler,
     };
 

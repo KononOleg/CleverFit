@@ -28,7 +28,7 @@ export const TrainingListSelect = ({
             className={styles.TrainingSelect}
             options={options}
             onChange={onChange}
-            data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
+            data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE_SELECT}
         />
     );
 };

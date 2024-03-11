@@ -1,28 +1,33 @@
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { DATA_TEST_ID, PATH } from '@constants/index';
 
 import styles from './main-page.module.scss';
 import { useEffect } from 'react';
-import { useGetTrainingQuery } from '@redux/services/training-service';
+import { useLazyGetTrainingQuery } from '@redux/services/training-service';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTraining } from '@redux/reducers/training-slice';
 import { ModalError } from '@components/modal-error';
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
-    const { data: training, isError } = useGetTrainingQuery();
+    const [getTraining, { data: training, isError }] = useLazyGetTrainingQuery();
+
+    const onNavigate = () => getTraining();
 
     useEffect(() => {
-        if (training) dispatch(setTraining({ training }));
-    }, [training, dispatch]);
+        if (training) {
+            dispatch(setTraining({ training }));
+            navigate(PATH.CALENDAR);
+        }
+    }, [dispatch, navigate, training]);
 
     return (
         <>
-            {' '}
             <div className={styles.mainPage}>
                 <div className={styles.about}>
                     <div className={cn(styles.card, styles.goals)}>
@@ -66,8 +71,9 @@ export const MainPage = () => {
                             type='text'
                             icon={<CalendarOutlined />}
                             data-test-id={DATA_TEST_ID.MENU_BUTTON_CALENDAR}
+                            onClick={onNavigate}
                         >
-                            <Link to={PATH.CALENDAR}> Календарь</Link>
+                            Календар
                         </Button>
                     </div>
 

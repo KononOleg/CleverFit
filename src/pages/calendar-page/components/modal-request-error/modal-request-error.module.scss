@@ -2,6 +2,7 @@
 
 .ModalRequestError {
     max-width: 416px !important;
+    animation-duration: 0s !important;
 
     :global(.ant-modal-body) {
         padding: $gap-s $gap-xl $gap-m !important;

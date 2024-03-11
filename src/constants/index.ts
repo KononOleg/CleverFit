@@ -80,6 +80,7 @@ export const DATA_TEST_ID = {
     NEW_REVIEW_SUBMIT_BUTTON: 'new-review-submit-button',
     WRITE_REVIEW: 'write-review',
     ALL_REVIEWS_BUTTON: 'all-reviews-button',
+    MODAL_NO_REVIEW: 'modal-no-review',
     MENU_BUTTON_CALENDAR: 'menu-button-calendar',
     MODAL_ERROR_USER_TRAINING_TITLE: 'modal-error-user-training-title',
     MODAL_ERROR_USER_TRAINING_SUBTITLE: 'modal-error-user-training-subtitle',
