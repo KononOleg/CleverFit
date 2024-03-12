@@ -36,31 +36,19 @@ export const trainingSlice = createSlice({
         closeModal(state) {
             state.selectedDate = null;
         },
-        setIsCardExercises(state, action: PayloadAction<{ isCardExercises: boolean }>) {
-            state.isCardExercises = action.payload.isCardExercises;
+        setIsCardExercises(state, { payload: isCardExercises }: PayloadAction<boolean>) {
+            state.isCardExercises = isCardExercises;
         },
-        setTraining(state, action: PayloadAction<{ training: Training[] }>) {
-            state.training = action.payload.training;
+        setSelectedDate(state, { payload: selectedDate }: PayloadAction<string>) {
+            state.selectedDate = selectedDate;
         },
-
-        updateTraining(state, action: PayloadAction<{ training: Training }>) {
-            state.training.push(action.payload.training);
-        },
-
-        setSelectedDate(state, action: PayloadAction<{ selectedDate: string }>) {
-            state.selectedDate = action.payload.selectedDate;
-        },
-        setTrainingList(state, action: PayloadAction<{ trainingList: TrainingList }>) {
-            state.trainingList = action.payload.trainingList;
-        },
-        addTraining(state, action: PayloadAction<{ training: Training }>) {
-            state.createdTraining = action.payload.training;
-            state.createdTraining.exercises = [initialExercise];
-        },
-        setCreatedTraining(state, action: PayloadAction<{ training: Training }>) {
-            state.createdTraining = action.payload.training;
+        setTraining(state, { payload: training }: PayloadAction<Training[]>) {
+            state.training = training;
         },
 
+        createTraining(state, { payload: training }: PayloadAction<Training>) {
+            state.training.push(training);
+        },
         setExercise(
             state,
             { payload: exercises }: PayloadAction<Partial<Exercise> & { index: number }>,
@@ -70,27 +58,41 @@ export const trainingSlice = createSlice({
                 ...exercises,
             };
         },
-        deleteExercises(state, action: PayloadAction<{ indexes: number[] }>) {
+        deleteExercises(state, { payload: indexes }: PayloadAction<number[]>) {
             state.createdTraining.exercises = state.createdTraining.exercises.filter(
-                (_, index) => !action.payload.indexes.includes(index),
+                (_, index) => !indexes.includes(index),
             );
         },
         addExercise(state) {
             state.createdTraining.exercises.push(initialExercise);
         },
+        setTrainingList(state, { payload: trainingList }: PayloadAction<TrainingList>) {
+            state.trainingList = trainingList;
+        },
+        addCreatedTraining(state, { payload: training }: PayloadAction<Training>) {
+            state.createdTraining = training;
+            state.createdTraining.exercises = [initialExercise];
+        },
+        setCreatedTraining(state, { payload: createdTraining }: PayloadAction<Training>) {
+            state.createdTraining = createdTraining;
+        },
+        resetCreatedTraining(state) {
+            state.createdTraining = initialTraining;
+        },
     },
 });
 
 export const {
-    setTraining,
+    closeModal,
     setIsCardExercises,
     setSelectedDate,
-    setTrainingList,
-    addTraining,
-    addExercise,
+    setTraining,
+    createTraining,
     setExercise,
-    updateTraining,
-    closeModal,
-    setCreatedTraining,
     deleteExercises,
+    addExercise,
+    setTrainingList,
+    addCreatedTraining,
+    setCreatedTraining,
+    resetCreatedTraining,
 } = trainingSlice.actions;

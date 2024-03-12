@@ -21,7 +21,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         if (training) {
-            dispatch(setTraining({ training }));
+            dispatch(setTraining(training));
             navigate(PATH.CALENDAR);
         }
     }, [dispatch, navigate, training]);

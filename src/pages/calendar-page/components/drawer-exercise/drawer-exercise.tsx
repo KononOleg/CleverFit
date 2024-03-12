@@ -8,10 +8,10 @@ import { BadgeCustom } from '../badge-custom';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 
-import { addExercise, deleteExercises, setCreatedTraining } from '@redux/reducers/training-slice';
+import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
 import { ExerciseForm } from '../exercise-form';
 import { DATA_TEST_ID } from '@constants/index';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Training } from '../../../../types';
 
 type Props = {
@@ -27,37 +27,14 @@ export const DrawerExercise = ({
     closeDrawerExercisesHandler,
     isEditExercises,
     selectedTraining,
-    trainingByDay,
 }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, createdTraining } = useAppSelector(trainingSelector);
     const [indexes, setIndexes] = useState<number[]>([]);
 
-    useEffect(() => {
-        const trainingFind = trainingByDay.find(({ name }) => name === selectedTraining);
-        /* 
-        if (trainingFind)
-            dispatch(
-                setCreatedTraining({
-                    training: trainingFind,
-                }),
-            ); */
-    }, [dispatch, openDrawerExercises, selectedTraining, trainingByDay]);
-
-    const closeHandler = () => {
-        /*         if (createdTraining.exercises[createdTraining.exercises.length - 1].name)
-            dispatch(addExercise()); */
-        closeDrawerExercisesHandler();
-    };
-
+    const closeHandler = () => closeDrawerExercisesHandler();
     const addExcerciseHandler = () => dispatch(addExercise());
-    const deleteExerciseHandler = () => {
-        dispatch(
-            deleteExercises({
-                indexes,
-            }),
-        );
-    };
+    const deleteExerciseHandler = () => dispatch(deleteExercises(indexes));
 
     const onSetIndex = (index: number) => {
         if (indexes.includes(index)) setIndexes(indexes.filter((element) => element !== index));
@@ -92,7 +69,7 @@ export const DrawerExercise = ({
             <div className={styles.Exercises}>
                 {createdTraining.exercises.map(
                     ({ _id, name, replays, weight, approaches }, index) => (
-                        <div key={_id}>
+                        <div key={`${_id}${index}`}>
                             <ExerciseForm
                                 excerciseNameInitial={name}
                                 replaysInitial={replays}

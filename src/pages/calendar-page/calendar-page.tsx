@@ -17,17 +17,16 @@ export const CalendarPage = () => {
     const dispatch = useAppDispatch();
     const { training, selectedDate } = useAppSelector(trainingSelector);
     const [selectedCell, setSelectedCell] = useState<Element | undefined>(undefined);
-
     const { data: trainingList, isError, refetch } = useGetTrainingListQuery();
 
     const isOpenModal = selectedCell && selectedDate;
 
     useEffect(() => {
-        if (trainingList) dispatch(setTrainingList({ trainingList }));
+        if (trainingList) dispatch(setTrainingList(trainingList));
     }, [dispatch, trainingList]);
 
     const onSelectHandler = (date: Moment) => {
-        dispatch(setSelectedDate({ selectedDate: moment(date).toISOString(true) }));
+        dispatch(setSelectedDate(moment(date).toISOString(true)));
         setSelectedCell(getSelectedCell(date));
     };
 

@@ -13,7 +13,8 @@ import { Empty } from '../empty';
 import { Training } from '../../../../types';
 import { DATA_TEST_ID } from '@constants/index';
 import { isOldDate } from '@utils/index';
-import { closeModal } from '@redux/reducers/training-slice';
+import { closeModal, resetCreatedTraining } from '@redux/reducers/training-slice';
+import { useEffect } from 'react';
 
 type Props = {
     trainingByDay: Training[];
@@ -24,6 +25,10 @@ type Props = {
 export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, trainingList } = useAppSelector(trainingSelector);
+
+    useEffect(() => {
+        dispatch(resetCreatedTraining());
+    }, []);
 
     const isEmptyTrainingByDay = trainingByDay && trainingByDay.length === 0;
     const isDisabled =

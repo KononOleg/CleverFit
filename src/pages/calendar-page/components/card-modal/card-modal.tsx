@@ -14,50 +14,33 @@ export const CardModal = () => {
     const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
     const [isEditExercises, setisEditExercises] = useState(false);
 
-    const trainingByDay = getTrainingByDay(selectedDate, training);
-
     useEffect(() => {
-        dispatch(
-            setIsCardExercises({
-                isCardExercises: false,
-            }),
-        );
+        dispatch(setIsCardExercises(false));
     }, []);
 
-    const nextModalHandler = () =>
-        dispatch(
-            setIsCardExercises({
-                isCardExercises: true,
-            }),
-        );
+    useEffect(() => {
+        if (!isCardExercises) setSelectedTraining(null);
+    }, [isCardExercises]);
+
+    const trainingByDay = getTrainingByDay(selectedDate, training);
+
+    const nextModalHandler = () => dispatch(setIsCardExercises(true));
     const prevModalHandler = () => {
         setSelectedTraining(null);
-        dispatch(
-            setIsCardExercises({
-                isCardExercises: false,
-            }),
-        );
+        dispatch(setIsCardExercises(false));
     };
 
     const closeDrawerExercisesHandler = () => setOpenDrawerExercises(false);
-
     const openDrawerExercisesHandler = () => {
         setisEditExercises(false);
         setOpenDrawerExercises(true);
     };
+
     const setSelectedTrainingHandler = (value: string) => setSelectedTraining(value);
 
     const onChangeTrainingHandler = (name: string) => {
-        const trainingFilter = trainingByDay.find((exercise) => exercise.name === name);
-
-        if (trainingFilter) {
-            dispatch(
-                setCreatedTraining({
-                    training: trainingFilter,
-                }),
-            );
-        }
-
+        const trainingFind = trainingByDay.find((exercise) => exercise.name === name);
+        if (trainingFind) dispatch(setCreatedTraining(trainingFind));
         nextModalHandler();
         setSelectedTraining(name);
     };

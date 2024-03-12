@@ -11,7 +11,7 @@ import { Empty } from '../empty';
 import { BadgeCustom } from '../badge-custom';
 import { Training } from '../../../../types';
 
-import { addTraining, closeModal } from '@redux/reducers/training-slice';
+import { addCreatedTraining, closeModal } from '@redux/reducers/training-slice';
 import {
     useCreateTrainingMutation,
     useUpdateTrainingMutation,
@@ -45,35 +45,32 @@ export const CardExercises = ({
     const [updateTraining, { isLoading: isUpdateLoading, isError: isUpdateError }] =
         useUpdateTrainingMutation();
 
-    const isEmptyCreatedTraining =
-        createdTraining?.exercises && createdTraining?.exercises.length === 1;
-
     const selectedTrainings = trainingByDay
         .filter(({ name }) => trainingList.find((training) => training.name === name))
         .map(({ name }) => name);
 
+    const isEmptyCreatedTraining =
+        !createdTraining?.exercises[0].name ||
+        (createdTraining?.exercises && createdTraining?.exercises.length === 0);
     const isDisabledAddExercise = !selectedTraining;
     const isDisabledSaveExercise = !createdTraining || isEmptyCreatedTraining;
 
-    const createTrainingHandler = () => createTraining(createdTraining as Training);
-    const updateTrainingHandler = () => updateTraining(createdTraining as Training);
-
     const onSaveHandler = () =>
-        !isEditExercises ? createTrainingHandler() : updateTrainingHandler();
+        isEditExercises
+            ? updateTraining(createdTraining as Training)
+            : createTraining(createdTraining as Training);
 
     const closeModalHandler = () => dispatch(closeModal());
 
-    const changeSelectHandler = (value: string) => {
+    const changeSelectHandler = (name: string) => {
         dispatch(
-            addTraining({
-                training: {
-                    name: value,
-                    date: selectedDate as string,
-                    exercises: [],
-                },
+            addCreatedTraining({
+                name,
+                date: selectedDate as string,
+                exercises: [],
             }),
         );
-        setSelectedTraining(value);
+        setSelectedTraining(name);
     };
 
     return (
