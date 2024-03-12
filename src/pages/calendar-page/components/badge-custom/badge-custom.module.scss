@@ -12,6 +12,12 @@
         font-size: $font-size-xs;
     }
 
+    .BadgeCustomDisabled {
+        :global(.ant-badge-status-text) {
+            color: $neutral-gray-6;
+        }
+    }
+
     .ExerciseText {
         color: $neutral-gray-7;
     }

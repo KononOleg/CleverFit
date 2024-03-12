@@ -5,6 +5,10 @@
 
     :global(.ant-drawer-content-wrapper) {
         width: 408px !important;
+
+        @media (max-width: 830px) {
+            width: 360px !important;
+        }
     }
 
     :global(.ant-drawer-header) {

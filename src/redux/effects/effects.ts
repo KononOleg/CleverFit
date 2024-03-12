@@ -1,6 +1,6 @@
 import { HttpStatusCode, PATH } from '@constants/index';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
-import { createTraining, setIsCardExercises } from '@redux/reducers/training-slice';
+import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
 import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
@@ -91,8 +91,15 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: trainingApi.endpoints.createTraining.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
-        const training = payload;
         dispatch(setIsCardExercises(false));
-        dispatch(createTraining(training));
+        dispatch(createTraining(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: trainingApi.endpoints.updateTraining.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        dispatch(setIsCardExercises(false));
+        dispatch(updateTraining(meta.arg.originalArgs));
     },
 });

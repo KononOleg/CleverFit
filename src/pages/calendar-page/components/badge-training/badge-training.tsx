@@ -9,12 +9,13 @@ type Props = {
 
 export const BadgeTraining = ({ training, isEdit, onChange }: Props) => (
     <ul>
-        {training.map(({ name, _id }, index) => (
+        {training.map(({ name, _id, isImplementation }, index) => (
             <li key={_id} style={{ lineHeight: 1.2 }}>
                 <BadgeCustom
                     text={name}
                     isEdit={isEdit}
                     index={index}
+                    isImplementation={isImplementation}
                     onChange={() => onChange && onChange(name)}
                 />
             </li>

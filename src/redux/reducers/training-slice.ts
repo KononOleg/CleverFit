@@ -49,6 +49,10 @@ export const trainingSlice = createSlice({
         createTraining(state, { payload: training }: PayloadAction<Training>) {
             state.training.push(training);
         },
+        updateTraining(state, { payload: training }: PayloadAction<Training>) {
+            const findIndex = state.training.findIndex(({ _id }) => _id === training._id);
+            state.training[findIndex] = { ...state.training[findIndex], ...training };
+        },
         setExercise(
             state,
             { payload: exercises }: PayloadAction<Partial<Exercise> & { index: number }>,
@@ -88,6 +92,7 @@ export const {
     setSelectedDate,
     setTraining,
     createTraining,
+    updateTraining,
     setExercise,
     deleteExercises,
     addExercise,

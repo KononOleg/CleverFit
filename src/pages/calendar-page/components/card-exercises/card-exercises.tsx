@@ -19,6 +19,7 @@ import {
 import { ModalRequestError } from '../modal-request-error';
 import { DATA_TEST_ID } from '@constants/index';
 import cn from 'classnames';
+import { isOldDate } from '@utils/index';
 
 type Props = {
     trainingByDay: Training[];
@@ -48,6 +49,8 @@ export const CardExercises = ({
     const [updateTraining, { isLoading: isUpdateLoading, isError: isUpdateError }] =
         useUpdateTrainingMutation();
 
+    const isUpdatePast = isOldDate(selectedDate as string);
+
     const selectedTrainings = trainingByDay
         .filter(({ name }) => trainingList.find((training) => training.name === name))
         .map(({ name }) => name);
@@ -58,10 +61,15 @@ export const CardExercises = ({
     const isDisabledAddExercise = !selectedTraining;
     const isDisabledSaveExercise = !createdTraining || isEmptyCreatedTraining;
 
+    const createTrainingHandler = () => createTraining(createdTraining);
+
+    const updateTrainingHandler = () =>
+        isUpdatePast
+            ? updateTraining({ ...createdTraining, isImplementation: true })
+            : updateTraining(createdTraining);
+
     const onSaveHandler = () =>
-        isEditExercises
-            ? updateTraining(createdTraining as Training)
-            : createTraining(createdTraining as Training);
+        isEditExercises ? updateTrainingHandler() : createTrainingHandler();
 
     const closeModalHandler = () => dispatch(closeModal());
 
@@ -118,17 +126,17 @@ export const CardExercises = ({
                         disabled={isDisabledSaveExercise}
                         loading={isCreateLoading || isUpdateLoading}
                     >
-                        Сохранить
+                        {isUpdatePast ? 'Сохранить изменения' : 'Сохранить'}
                     </Button>,
                 ]}
             >
                 {isEmptyCreatedTraining ? (
                     <Empty />
                 ) : (
-                    createdTraining.exercises.map((exercise, index) => (
-                        <div key={exercise._id}>
+                    createdTraining.exercises.map(({ _id, name }, index) => (
+                        <div key={_id}>
                             <BadgeCustom
-                                text={exercise.name}
+                                text={name}
                                 isEdit={true}
                                 isExercise={true}
                                 onChange={onChange}

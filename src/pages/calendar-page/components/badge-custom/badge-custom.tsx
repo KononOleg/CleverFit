@@ -3,6 +3,7 @@ import { Badge, Button } from 'antd';
 import styles from './badge-custom.module.scss';
 import { EditOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
+import cn from 'classnames';
 
 type Props = {
     text: string;
@@ -10,6 +11,7 @@ type Props = {
     isExercise?: boolean;
     index?: number;
     onChange?: () => void;
+    isImplementation?: boolean;
 };
 
 const colors = new Map([
@@ -20,12 +22,25 @@ const colors = new Map([
     ['Спина', 'orange'],
 ]);
 
-export const BadgeCustom = ({ text, isEdit, isExercise, index, onChange }: Props) => (
+export const BadgeCustom = ({
+    text,
+    isEdit,
+    isExercise,
+    index,
+    onChange,
+    isImplementation,
+}: Props) => (
     <div className={styles.BadgeCustomWrapper}>
         {isExercise ? (
             <p className={styles.ExerciseText}>{text}</p>
         ) : (
-            <Badge className={styles.BadgeCustom} color={colors.get(text)} text={text} />
+            <Badge
+                className={cn({
+                    [styles.BadgeCustomDisabled]: isImplementation,
+                })}
+                color={colors.get(text)}
+                text={text}
+            />
         )}
 
         {isEdit && (
@@ -35,6 +50,7 @@ export const BadgeCustom = ({ text, isEdit, isExercise, index, onChange }: Props
                 className={styles.button}
                 icon={<EditOutlined />}
                 onClick={onChange}
+                disabled={isImplementation}
             />
         )}
     </div>

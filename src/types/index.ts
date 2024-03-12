@@ -23,6 +23,7 @@ export type Exercise = {
     replays: number;
     weight: number;
     approaches: number;
+    isImplementation?: boolean;
 };
 
 export type Training = {
@@ -30,6 +31,7 @@ export type Training = {
     name: string;
     date: string;
     exercises: Exercise[];
+    isImplementation?: boolean;
 };
 
 export type TrainingList = { name: string; key: string }[];
