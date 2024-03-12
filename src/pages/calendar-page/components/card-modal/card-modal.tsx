@@ -5,17 +5,18 @@ import { DrawerExercise } from '../drawer-exercise';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
-import { setExercises, setIsCardExercises } from '@redux/reducers/training-slice';
+import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
 
 export const CardModal = () => {
     const dispatch = useAppDispatch();
     const { selectedDate, training, isCardExercises } = useAppSelector(trainingSelector);
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
+    const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
+    const [isEditExercises, setisEditExercises] = useState(false);
 
     const trainingByDay = getTrainingByDay(selectedDate, training);
 
     useEffect(() => {
-        dispatch(setExercises({ trainingByDay }));
         dispatch(
             setIsCardExercises({
                 isCardExercises: false,
@@ -29,15 +30,42 @@ export const CardModal = () => {
                 isCardExercises: true,
             }),
         );
-    const prevModalHandler = () =>
+    const prevModalHandler = () => {
+        setSelectedTraining(null);
         dispatch(
             setIsCardExercises({
                 isCardExercises: false,
             }),
         );
+    };
 
     const closeDrawerExercisesHandler = () => setOpenDrawerExercises(false);
-    const openDrawerExercisesHandler = () => setOpenDrawerExercises(true);
+
+    const openDrawerExercisesHandler = () => {
+        setisEditExercises(false);
+        setOpenDrawerExercises(true);
+    };
+    const setSelectedTrainingHandler = (value: string) => setSelectedTraining(value);
+
+    const onChangeTrainingHandler = (name: string) => {
+        const trainingFilter = trainingByDay.find((exercise) => exercise.name === name);
+
+        if (trainingFilter) {
+            dispatch(
+                setCreatedTraining({
+                    training: trainingFilter,
+                }),
+            );
+        }
+
+        nextModalHandler();
+        setSelectedTraining(name);
+    };
+
+    const onChangeExerciseHandler = () => {
+        setisEditExercises(true);
+        setOpenDrawerExercises(true);
+    };
 
     return (
         <>
@@ -46,14 +74,25 @@ export const CardModal = () => {
                     trainingByDay={trainingByDay}
                     prevModalHandler={prevModalHandler}
                     openDrawerExercisesHandler={openDrawerExercisesHandler}
+                    selectedTraining={selectedTraining}
+                    setSelectedTraining={setSelectedTrainingHandler}
+                    onChange={onChangeExerciseHandler}
+                    isEditExercises={isEditExercises}
                 />
             ) : (
-                <CardTraining nextModalHandler={nextModalHandler} trainingByDay={trainingByDay} />
+                <CardTraining
+                    nextModalHandler={nextModalHandler}
+                    trainingByDay={trainingByDay}
+                    onChange={onChangeTrainingHandler}
+                />
             )}
 
             <DrawerExercise
+                trainingByDay={trainingByDay}
                 openDrawerExercises={openDrawerExercises}
                 closeDrawerExercisesHandler={closeDrawerExercisesHandler}
+                isEditExercises={isEditExercises}
+                selectedTraining={selectedTraining as string}
             />
         </>
     );

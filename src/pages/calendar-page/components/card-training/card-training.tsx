@@ -18,9 +18,10 @@ import { closeModal } from '@redux/reducers/training-slice';
 type Props = {
     trainingByDay: Training[];
     nextModalHandler: () => void;
+    onChange: (name: string) => void;
 };
 
-export const CardTraining = ({ trainingByDay, nextModalHandler }: Props) => {
+export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, trainingList } = useAppSelector(trainingSelector);
 
@@ -65,7 +66,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler }: Props) => {
             {isEmptyTrainingByDay ? (
                 <Empty />
             ) : (
-                <BadgeTraining training={trainingByDay} isEdit={true} />
+                <BadgeTraining training={trainingByDay} isEdit={true} onChange={onChange} />
             )}
         </Card>
     );

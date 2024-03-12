@@ -5,7 +5,6 @@ type AuthState = {
     training: Training[];
     selectedDate: string | null;
     trainingList: TrainingList;
-    exercises: Exercise[];
     createdTraining: Training;
     isCardExercises: boolean;
 };
@@ -26,7 +25,6 @@ const initialState: AuthState = {
     training: [],
     selectedDate: null,
     trainingList: [],
-    exercises: [],
     createdTraining: initialTraining,
     isCardExercises: false,
 };
@@ -48,12 +46,7 @@ export const trainingSlice = createSlice({
         updateTraining(state, action: PayloadAction<{ training: Training }>) {
             state.training.push(action.payload.training);
         },
-        setExercises(state, action: PayloadAction<{ trainingByDay: Training[] }>) {
-            const exercises: Exercise[] = [];
-            action.payload.trainingByDay.map((training) => exercises.push(...training.exercises));
-            state.exercises = exercises;
-            state.createdTraining = initialTraining;
-        },
+
         setSelectedDate(state, action: PayloadAction<{ selectedDate: string }>) {
             state.selectedDate = action.payload.selectedDate;
         },
@@ -63,6 +56,9 @@ export const trainingSlice = createSlice({
         addTraining(state, action: PayloadAction<{ training: Training }>) {
             state.createdTraining = action.payload.training;
             state.createdTraining.exercises = [initialExercise];
+        },
+        setCreatedTraining(state, action: PayloadAction<{ training: Training }>) {
+            state.createdTraining = action.payload.training;
         },
 
         setExercise(
@@ -74,7 +70,11 @@ export const trainingSlice = createSlice({
                 ...exercises,
             };
         },
-
+        deleteExercises(state, action: PayloadAction<{ indexes: number[] }>) {
+            state.createdTraining.exercises = state.createdTraining.exercises.filter(
+                (_, index) => !action.payload.indexes.includes(index),
+            );
+        },
         addExercise(state) {
             state.createdTraining.exercises.push(initialExercise);
         },
@@ -87,9 +87,10 @@ export const {
     setSelectedDate,
     setTrainingList,
     addTraining,
-    setExercises,
     addExercise,
     setExercise,
     updateTraining,
     closeModal,
+    setCreatedTraining,
+    deleteExercises,
 } = trainingSlice.actions;

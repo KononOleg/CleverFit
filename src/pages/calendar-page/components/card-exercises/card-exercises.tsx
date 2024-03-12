@@ -10,9 +10,12 @@ import { trainingSelector } from '@redux/selectors';
 import { Empty } from '../empty';
 import { BadgeCustom } from '../badge-custom';
 import { Training } from '../../../../types';
-import { useState } from 'react';
+
 import { addTraining, closeModal } from '@redux/reducers/training-slice';
-import { useCreateTrainingMutation } from '@redux/services/training-service';
+import {
+    useCreateTrainingMutation,
+    useUpdateTrainingMutation,
+} from '@redux/services/training-service';
 import { ModalRequestError } from '../modal-request-error';
 import { DATA_TEST_ID } from '@constants/index';
 
@@ -20,22 +23,28 @@ type Props = {
     trainingByDay: Training[];
     prevModalHandler: () => void;
     openDrawerExercisesHandler: () => void;
+    selectedTraining: string | null;
+    setSelectedTraining: (value: string) => void;
+    onChange: () => void;
+    isEditExercises: boolean;
 };
 
 export const CardExercises = ({
     trainingByDay,
     prevModalHandler,
     openDrawerExercisesHandler,
+    selectedTraining,
+    setSelectedTraining,
+    onChange,
+    isEditExercises,
 }: Props) => {
     const dispatch = useAppDispatch();
-    const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
-    const { selectedDate, trainingList, exercises, createdTraining } =
-        useAppSelector(trainingSelector);
-    const [createTraining, { isLoading, isError }] = useCreateTrainingMutation();
+    const { selectedDate, trainingList, createdTraining } = useAppSelector(trainingSelector);
+    const [createTraining, { isLoading: isCreateLoading, isError: isCreateError }] =
+        useCreateTrainingMutation();
+    const [updateTraining, { isLoading: isUpdateLoading, isError: isUpdateError }] =
+        useUpdateTrainingMutation();
 
-    const exercisesMap = exercises.concat(createdTraining?.exercises).slice(0, -1);
-
-    const isEmptyExercises = exercisesMap && exercisesMap.length === 0;
     const isEmptyCreatedTraining =
         createdTraining?.exercises && createdTraining?.exercises.length === 1;
 
@@ -47,6 +56,11 @@ export const CardExercises = ({
     const isDisabledSaveExercise = !createdTraining || isEmptyCreatedTraining;
 
     const createTrainingHandler = () => createTraining(createdTraining as Training);
+    const updateTrainingHandler = () => updateTraining(createdTraining as Training);
+
+    const onSaveHandler = () =>
+        !isEditExercises ? createTrainingHandler() : updateTrainingHandler();
+
     const closeModalHandler = () => dispatch(closeModal());
 
     const changeSelectHandler = (value: string) => {
@@ -81,6 +95,7 @@ export const CardExercises = ({
                             trainingList={trainingList}
                             selectedTrainings={selectedTrainings}
                             changeSelectHandler={changeSelectHandler}
+                            defaultValue={selectedTraining}
                         />
                     </div>
                 }
@@ -97,26 +112,34 @@ export const CardExercises = ({
                         block
                         size='large'
                         type='link'
-                        onClick={createTrainingHandler}
+                        onClick={onSaveHandler}
                         disabled={isDisabledSaveExercise}
-                        loading={isLoading}
+                        loading={isCreateLoading || isUpdateLoading}
                     >
                         Сохранить
                     </Button>,
                 ]}
             >
-                {isEmptyExercises ? (
+                {isEmptyCreatedTraining ? (
                     <Empty />
                 ) : (
-                    exercisesMap.map((exercise) => (
-                        <BadgeCustom text={exercise.name} isEdit={true} isExercise={true} />
+                    createdTraining.exercises.map((exercise, index) => (
+                        <div key={exercise._id}>
+                            <BadgeCustom
+                                text={exercise.name}
+                                isEdit={true}
+                                isExercise={true}
+                                onChange={onChange}
+                                index={index}
+                            />
+                        </div>
                     ))
                 )}
             </Card>
             <ModalRequestError
                 title='При сохранении данных произошла ошибка'
                 type='error'
-                isError={isError}
+                isError={isUpdateError || isCreateError}
                 subtitle='Придётся попробовать ещё раз'
                 okText='Закрыть'
                 onClickButton={closeModalHandler}

@@ -6,6 +6,8 @@ import {
     CreateTrainingResponse,
     GetTrainingListResponse,
     GetTrainingResponse,
+    UpdateTrainingRequest,
+    UpdateTrainingResponse,
 } from '../../types';
 
 export const trainingApi = apiSlice.injectEndpoints({
@@ -29,6 +31,13 @@ export const trainingApi = apiSlice.injectEndpoints({
                 body: training,
             }),
         }),
+        updateTraining: builder.mutation<UpdateTrainingResponse, UpdateTrainingRequest>({
+            query: (training) => ({
+                url: `${API_PATH.TRAINING}/${training._id}`,
+                method: 'PUT',
+                body: training,
+            }),
+        }),
     }),
 });
 
@@ -37,4 +46,5 @@ export const {
     useGetTrainingListQuery,
     useCreateTrainingMutation,
     useLazyGetTrainingQuery,
+    useUpdateTrainingMutation,
 } = trainingApi;

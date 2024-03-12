@@ -1,4 +1,4 @@
-import { Input, InputNumber } from 'antd';
+import { Checkbox, Input, InputNumber } from 'antd';
 
 import styles from './exercise-form.module.scss';
 import { PlusOutlined } from '@ant-design/icons';
@@ -13,6 +13,9 @@ type Props = {
     weightInitial: number;
     approachesInitial: number;
     index: number;
+    isCheck?: boolean;
+    indexes: number[];
+    onCheckedElement: (index: number) => void;
 };
 
 export const ExerciseForm = ({
@@ -21,8 +24,12 @@ export const ExerciseForm = ({
     weightInitial,
     approachesInitial,
     index,
+    isCheck,
+    indexes,
+    onCheckedElement,
 }: Props) => {
     const dispatch = useAppDispatch();
+    const isChecked = indexes.includes(index);
 
     const onChangeExcerciseName = (e: React.ChangeEvent<HTMLInputElement>) =>
         dispatch(setExercise({ name: e.target.value as string, index }));
@@ -41,6 +48,15 @@ export const ExerciseForm = ({
                 placeholder='Упражнениe'
                 defaultValue={excerciseNameInitial}
                 onChange={onChangeExcerciseName}
+                addonAfter={
+                    isCheck && (
+                        <Checkbox
+                            data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
+                            checked={isChecked}
+                            onChange={() => onCheckedElement(index)}
+                        />
+                    )
+                }
             />
             <div className={styles.Wrapper}>
                 <div className={styles.LabelReplays}>Подходы</div>

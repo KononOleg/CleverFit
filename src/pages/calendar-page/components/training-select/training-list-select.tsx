@@ -8,12 +8,14 @@ type Props = {
     trainingList: TrainingList;
     selectedTrainings: string[];
     changeSelectHandler: (value: string) => void;
+    defaultValue: string | null;
 };
 
 export const TrainingListSelect = ({
     trainingList,
     selectedTrainings,
     changeSelectHandler,
+    defaultValue,
 }: Props) => {
     const options = trainingList
         .map(({ name }) => name)
@@ -24,7 +26,7 @@ export const TrainingListSelect = ({
 
     return (
         <Select
-            defaultValue='Выбор типа тренировки'
+            defaultValue={defaultValue || 'Выбор типа тренировки'}
             className={styles.TrainingSelect}
             options={options}
             onChange={onChange}

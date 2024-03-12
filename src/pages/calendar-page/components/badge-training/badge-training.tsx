@@ -1,24 +1,23 @@
-import { DATA_TEST_ID } from '@constants/index';
 import { Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 
 type Props = {
     training: Training[];
     isEdit?: boolean;
+    onChange?: (name: string) => void;
 };
 
-export const BadgeTraining = ({ training, isEdit }: Props) => {
-    return (
-        <ul>
-            {training.map(({ name, id }, index) => (
-                <li
-                    key={id}
-                    style={{ lineHeight: 1.2 }}
-                    data-test-id={`${DATA_TEST_ID.MODAL_UPDATE_TRAINING_EDIT_BUTTON}${index}`}
-                >
-                    <BadgeCustom text={name} isEdit={isEdit} />
-                </li>
-            ))}
-        </ul>
-    );
-};
+export const BadgeTraining = ({ training, isEdit, onChange }: Props) => (
+    <ul>
+        {training.map(({ name, _id }, index) => (
+            <li key={_id} style={{ lineHeight: 1.2 }}>
+                <BadgeCustom
+                    text={name}
+                    isEdit={isEdit}
+                    index={index}
+                    onChange={() => onChange && onChange(name)}
+                />
+            </li>
+        ))}
+    </ul>
+);
