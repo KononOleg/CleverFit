@@ -1,6 +1,8 @@
 import { Rule } from 'antd/lib/form';
 
 import { ResultConfigs } from '../types';
+import { PickerLocale } from 'antd/lib/date-picker/generatePicker';
+import ruRu from 'antd/es/calendar/locale/ru_RU';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
 
@@ -180,4 +182,28 @@ export const HttpStatusCode = {
     NOT_FOUND: 404,
     CONFLICT: 409,
     TOO_MANY_REQUESTS: 429,
+};
+
+export const LocalData: PickerLocale = {
+    ...ruRu,
+    lang: {
+        ...ruRu.lang,
+        ...{
+            shortWeekDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            shortMonths: [
+                'Янв',
+                'Фев',
+                'Мар',
+                'Апр',
+                'Май',
+                'Июн',
+                'Июл',
+                'Авг',
+                'Сен',
+                'Окт',
+                'Ноя',
+                'Дек',
+            ],
+        },
+    },
 };

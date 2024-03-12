@@ -12,6 +12,13 @@ import { trainingSelector } from '@redux/selectors';
 import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
 import { getSelectedCell, getTrainingByDay } from '@utils/index';
 import { ModalRequestError } from './components/modal-request-error';
+import { LocalData } from '@constants/index';
+
+moment.locale('ru', {
+    week: {
+        dow: 1,
+    },
+});
 
 export const CalendarPage = () => {
     const dispatch = useAppDispatch();
@@ -19,7 +26,8 @@ export const CalendarPage = () => {
     const [selectedCell, setSelectedCell] = useState<Element | undefined>(undefined);
     const { data: trainingList, isError, refetch } = useGetTrainingListQuery();
 
-    const isOpenModal = selectedCell && selectedDate;
+    const isDesktopVersion = window.innerWidth < 830;
+    const isOpenModal = selectedDate && selectedCell;
 
     useEffect(() => {
         if (trainingList) dispatch(setTrainingList(trainingList));
@@ -30,9 +38,14 @@ export const CalendarPage = () => {
         setSelectedCell(getSelectedCell(date));
     };
 
-    const dateCellRender = (date: Moment) => (
-        <BadgeTraining training={getTrainingByDay(date.toISOString(true), training)} />
-    );
+    const dateCellRender = (date: Moment) => {
+        const trainingByDay = getTrainingByDay(date.toISOString(true), training);
+
+        if (isDesktopVersion)
+            return trainingByDay?.length ? <div className={styles.cellMobile} /> : undefined;
+
+        return <BadgeTraining training={getTrainingByDay(date.toISOString(true), training)} />;
+    };
 
     return (
         <>
@@ -43,7 +56,12 @@ export const CalendarPage = () => {
                     </Portal>
                 )}
 
-                <Calendar onSelect={onSelectHandler} dateCellRender={dateCellRender} />
+                <Calendar
+                    onSelect={onSelectHandler}
+                    dateCellRender={dateCellRender}
+                    locale={LocalData}
+                    fullscreen={!isDesktopVersion}
+                />
             </div>
 
             <ModalRequestError

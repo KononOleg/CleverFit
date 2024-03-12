@@ -18,9 +18,11 @@ import {
 } from '@redux/services/training-service';
 import { ModalRequestError } from '../modal-request-error';
 import { DATA_TEST_ID } from '@constants/index';
+import cn from 'classnames';
 
 type Props = {
     trainingByDay: Training[];
+    isRight: boolean;
     prevModalHandler: () => void;
     openDrawerExercisesHandler: () => void;
     selectedTraining: string | null;
@@ -31,6 +33,7 @@ type Props = {
 
 export const CardExercises = ({
     trainingByDay,
+    isRight,
     prevModalHandler,
     openDrawerExercisesHandler,
     selectedTraining,
@@ -76,7 +79,9 @@ export const CardExercises = ({
     return (
         <>
             <Card
-                className={styles.cardModal}
+                className={cn(styles.cardModal, {
+                    [styles.cardModalRight]: isRight,
+                })}
                 data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
                 title={
                     <div className={styles.headWrapper}>

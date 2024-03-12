@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
 import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
+import moment from 'moment';
 
 export const CardModal = () => {
     const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ export const CardModal = () => {
     }, [isCardExercises]);
 
     const trainingByDay = getTrainingByDay(selectedDate, training);
+    const isRight = moment(selectedDate).day() === 0;
 
     const nextModalHandler = () => dispatch(setIsCardExercises(true));
     const prevModalHandler = () => {
@@ -55,6 +57,7 @@ export const CardModal = () => {
             {isCardExercises ? (
                 <CardExercises
                     trainingByDay={trainingByDay}
+                    isRight={isRight}
                     prevModalHandler={prevModalHandler}
                     openDrawerExercisesHandler={openDrawerExercisesHandler}
                     selectedTraining={selectedTraining}
@@ -64,8 +67,9 @@ export const CardModal = () => {
                 />
             ) : (
                 <CardTraining
-                    nextModalHandler={nextModalHandler}
                     trainingByDay={trainingByDay}
+                    isRight={isRight}
+                    nextModalHandler={nextModalHandler}
                     onChange={onChangeTrainingHandler}
                 />
             )}

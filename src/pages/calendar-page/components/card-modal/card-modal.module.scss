@@ -1,9 +1,12 @@
 @import '../../../../index.variables.scss';
 
+.cardModalRight {
+    right: 0;
+}
+
 .cardModal {
     position: absolute !important;
     top: 0;
-    left: 0;
     z-index: 9;
     min-width: 264px;
     display: flex;
