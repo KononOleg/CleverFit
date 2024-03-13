@@ -7,7 +7,7 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import { DATA_TEST_ID, PATH } from '@constants/index';
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { signOut } from '@redux/reducers/auth-slice';
 import { Button, Layout, Menu } from 'antd';
 import cn from 'classnames';
@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 
 import ExitPNG from '../../assets/icons/exit.png';
 import styles from './sider.module.scss';
+import { appSelector } from '@redux/selectors';
 
 const { Sider: SiderAntd } = Layout;
 const items = [
@@ -42,7 +43,7 @@ const items = [
 ];
 
 export const Sider = () => {
-    const width = window.innerWidth;
+    const { isDesktopVersion } = useAppSelector(appSelector);
     const [collapsed, setCollapsed] = useState(true);
     const dispatch = useAppDispatch();
 
@@ -54,8 +55,8 @@ export const Sider = () => {
             theme='light'
             collapsed={collapsed}
             className={styles.menu}
-            width={width > 833 ? '208' : '106'}
-            collapsedWidth={width > 833 ? '64' : '1'}
+            width={isDesktopVersion ? '208' : '106'}
+            collapsedWidth={isDesktopVersion ? '64' : '1'}
         >
             <div
                 className={cn(styles.menuWrapper, {
@@ -78,7 +79,7 @@ export const Sider = () => {
                         <Button
                             type='link'
                             data-test-id={
-                                width >= 833
+                                isDesktopVersion
                                     ? DATA_TEST_ID.SIDER_SWITCH
                                     : DATA_TEST_ID.SIDER_SWITCH_MOBILE
                             }

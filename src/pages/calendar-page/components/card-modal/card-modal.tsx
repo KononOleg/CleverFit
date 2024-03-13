@@ -7,8 +7,14 @@ import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
 import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
 import moment from 'moment';
+import cn from 'classnames';
+import styles from './card-modal.module.scss';
 
-export const CardModal = () => {
+type Props = {
+    offsetTop: number;
+};
+
+export const CardModal = ({ offsetTop }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, training, isCardExercises } = useAppSelector(trainingSelector);
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
@@ -24,7 +30,7 @@ export const CardModal = () => {
     }, [isCardExercises]);
 
     const trainingByDay = getTrainingByDay(selectedDate, training);
-    const isRight = moment(selectedDate).day() === 0;
+    const isRight = moment(selectedDate).day() === 0 || moment(selectedDate).day() === 6;
 
     const nextModalHandler = () => dispatch(setIsCardExercises(true));
     const prevModalHandler = () => {
@@ -54,25 +60,31 @@ export const CardModal = () => {
 
     return (
         <>
-            {isCardExercises ? (
-                <CardExercises
-                    trainingByDay={trainingByDay}
-                    isRight={isRight}
-                    prevModalHandler={prevModalHandler}
-                    openDrawerExercisesHandler={openDrawerExercisesHandler}
-                    selectedTraining={selectedTraining}
-                    setSelectedTraining={setSelectedTrainingHandler}
-                    onChange={onChangeExerciseHandler}
-                    isEditExercises={isEditExercises}
-                />
-            ) : (
-                <CardTraining
-                    trainingByDay={trainingByDay}
-                    isRight={isRight}
-                    nextModalHandler={nextModalHandler}
-                    onChange={onChangeTrainingHandler}
-                />
-            )}
+            <div
+                className={cn(styles.CardWrapper, {
+                    [styles.CardWrapperRight]: isRight && !offsetTop,
+                    [styles.CardWrapperLeft]: !isRight && !offsetTop,
+                })}
+                style={{ top: offsetTop }}
+            >
+                {isCardExercises ? (
+                    <CardExercises
+                        trainingByDay={trainingByDay}
+                        prevModalHandler={prevModalHandler}
+                        openDrawerExercisesHandler={openDrawerExercisesHandler}
+                        selectedTraining={selectedTraining}
+                        setSelectedTraining={setSelectedTrainingHandler}
+                        onChange={onChangeExerciseHandler}
+                        isEditExercises={isEditExercises}
+                    />
+                ) : (
+                    <CardTraining
+                        trainingByDay={trainingByDay}
+                        nextModalHandler={nextModalHandler}
+                        onChange={onChangeTrainingHandler}
+                    />
+                )}
+            </div>
 
             <DrawerExercise
                 trainingByDay={trainingByDay}

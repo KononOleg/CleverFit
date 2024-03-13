@@ -15,16 +15,14 @@ import { DATA_TEST_ID } from '@constants/index';
 import { isOldDate } from '@utils/index';
 import { closeModal, resetCreatedTraining } from '@redux/reducers/training-slice';
 import { useEffect } from 'react';
-import cn from 'classnames';
 
 type Props = {
     trainingByDay: Training[];
-    isRight: boolean;
     nextModalHandler: () => void;
     onChange: (name: string) => void;
 };
 
-export const CardTraining = ({ trainingByDay, isRight, nextModalHandler, onChange }: Props) => {
+export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, trainingList } = useAppSelector(trainingSelector);
 
@@ -40,9 +38,7 @@ export const CardTraining = ({ trainingByDay, isRight, nextModalHandler, onChang
 
     return (
         <Card
-            className={cn(styles.cardModal, {
-                [styles.cardModalRight]: isRight,
-            })}
+            className={styles.CardModal}
             data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING}
             title={
                 <>

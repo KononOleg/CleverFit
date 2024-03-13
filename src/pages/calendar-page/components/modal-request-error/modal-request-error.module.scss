@@ -1,18 +1,20 @@
 @import '../../../../index.variables.scss';
 
-.ModalRequestError {
-    max-width: 416px !important;
-    animation-duration: 0s !important;
+.ModalRequestError:global.ant-modal {
+    max-width: 416px;
+    width: 100% !important;
+
+    animation-duration: 0s;
 
     :global(.ant-modal-body) {
-        padding: $gap-s $gap-xl $gap-m !important;
+        padding: $gap-s $gap-xl $gap-m;
     }
 
     :global(.ant-modal-confirm-btns) {
-        margin-top: $gap-2s !important;
+        margin-top: $gap-2s;
     }
     :global(.ant-btn-primary) {
-        height: $gap-3xl !important;
+        height: $gap-3xl;
         width: 100px;
         line-height: 1;
     }

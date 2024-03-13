@@ -43,14 +43,7 @@
     .Input {
         height: 24px;
     }
-
-    .Buttons {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: $gap-xs 4px;
-        margin-top: $gap-xl;
-        border-radius: 0 0 $border-radius-m $border-radius-m;
-        background-color: $character-light-dividers;
+    :global(.ant-input-group-wrapper) {
+        vertical-align: baseline;
     }
 }

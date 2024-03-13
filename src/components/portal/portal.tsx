@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 
-type Props = { container: Element; children: React.ReactNode };
+type Props = { container: Element | undefined; children: React.ReactNode };
 
-export const Portal = ({ container, children }: Props) => createPortal(children, container);
+export const Portal = ({ container = document.body, children }: Props) =>
+    createPortal(children, container);

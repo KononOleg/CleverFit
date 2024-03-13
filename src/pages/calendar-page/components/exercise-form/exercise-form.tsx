@@ -58,6 +58,7 @@ export const ExerciseForm = ({
                     )
                 }
             />
+
             <div className={styles.Wrapper}>
                 <div className={styles.LabelReplays}>Подходы</div>
                 <div className={styles.InputWrapper}>

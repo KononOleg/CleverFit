@@ -6,7 +6,7 @@ import styles from './drawer-exercise.module.scss';
 import moment from 'moment';
 import { BadgeCustom } from '../badge-custom';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingSelector } from '@redux/selectors';
+import { appSelector, trainingSelector } from '@redux/selectors';
 
 import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
 import { ExerciseForm } from '../exercise-form';
@@ -29,6 +29,7 @@ export const DrawerExercise = ({
     selectedTraining,
 }: Props) => {
     const dispatch = useAppDispatch();
+    const { isDesktopVersion } = useAppSelector(appSelector);
     const { selectedDate, createdTraining } = useAppSelector(trainingSelector);
     const [indexes, setIndexes] = useState<number[]>([]);
 
@@ -46,6 +47,7 @@ export const DrawerExercise = ({
             title={isEditExercises ? 'Редактирование' : 'Добавление упражнений'}
             destroyOnClose={true}
             placement='right'
+            width={isDesktopVersion ? 408 : 360}
             closeIcon={isEditExercises ? <EditOutlined /> : <PlusOutlined />}
             open={openDrawerExercises}
             className={styles.DrawerExercises}

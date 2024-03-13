@@ -1,13 +1,25 @@
 @import '../../../../index.variables.scss';
 
-.cardModalRight {
-    right: 0;
-}
-
-.cardModal {
-    position: absolute !important;
+.CardWrapper {
+    position: absolute;
     top: 0;
     z-index: 9;
+
+    @media (max-width: 830px) {
+        min-width: 312px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.CardWrapperRight {
+    right: 3px;
+}
+.CardWrapperLeft {
+    left: 3px;
+}
+
+.CardModal {
     min-width: 264px;
     display: flex;
     flex-direction: column;
@@ -72,5 +84,19 @@
     :global(.ant-btn-default) {
         height: 32px;
         padding: 3px 0;
+    }
+
+    :global(.ant-select-selector) {
+        border-color: transparent !important;
+    }
+
+    :global(
+            .ant-select-focused:not(.ant-select-disabled).ant-select:not(
+                    .ant-select-customize-input
+                )
+                .ant-select-selector
+        ) {
+        border-color: $primary-light-7 !important;
+        outline: 1px solid $primary-light-6;
     }
 }

@@ -6,13 +6,15 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import styles from './layout.module.scss';
-
+import { setisDesktopVersion } from '@redux/reducers/app-slice';
+import { useWindowSize } from '@uidotdev/usehooks';
 
 export const Layout = () => {
     const dispatch = useAppDispatch();
     const { isLoading } = useAppSelector(authSelector);
     const isFetching = useAppSelector(fetchingSelector);
 
+    const size = useWindowSize();
     const accessToken = new URLSearchParams(location.search).get('accessToken');
 
     useEffect(() => {
@@ -28,6 +30,12 @@ export const Layout = () => {
     useEffect(() => {
         dispatch(checkAuth());
     }, [dispatch]);
+
+    useEffect(() => {
+        Number(size.width) > 830
+            ? dispatch(setisDesktopVersion(true))
+            : dispatch(setisDesktopVersion(false));
+    }, [dispatch, size]);
 
     return (
         <>
