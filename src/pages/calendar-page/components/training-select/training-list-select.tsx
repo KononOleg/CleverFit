@@ -1,8 +1,8 @@
+import { DATA_TEST_ID } from '@constants/index';
 import { Select } from 'antd';
 
-import styles from './training-list-select.module.scss';
 import { TrainingList } from '../../../../types';
-import { DATA_TEST_ID } from '@constants/index';
+import styles from './training-list-select.module.scss';
 
 type Props = {
     trainingList: TrainingList;

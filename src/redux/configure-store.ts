@@ -3,10 +3,10 @@ import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 import { listenerMiddleware } from './effects/effects';
-import { authSlice } from './reducers/auth-slice';
-import { apiSlice } from './services';
-import { trainingSlice } from './reducers/training-slice';
 import { appSlice } from './reducers/app-slice';
+import { authSlice } from './reducers/auth-slice';
+import { trainingSlice } from './reducers/training-slice';
+import { apiSlice } from './services';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

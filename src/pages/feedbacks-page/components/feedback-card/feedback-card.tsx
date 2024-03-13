@@ -1,6 +1,6 @@
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Card, Rate } from 'antd';
 import { characterRender } from '@utils/characterRateRender';
+import { Avatar, Card, Rate } from 'antd';
 
 import { Feedback } from '../../../../types';
 import styles from './feedback-card.module.scss';

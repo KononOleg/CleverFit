@@ -1,20 +1,18 @@
-import { Button, Card } from 'antd';
-
-import styles from '../card-modal/card-modal.module.scss';
-import Meta from 'antd/lib/card/Meta';
 import { CloseOutlined } from '@ant-design/icons';
-import moment from 'moment';
-
-import { BadgeTraining } from '../badge-training';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingSelector } from '@redux/selectors';
-
-import { Empty } from '../empty';
-import { Training } from '../../../../types';
 import { DATA_TEST_ID } from '@constants/index';
-import { isOldDate } from '@utils/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { closeModal, resetCreatedTraining } from '@redux/reducers/training-slice';
+import { trainingSelector } from '@redux/selectors';
+import { isOldDate } from '@utils/index';
+import { Button, Card } from 'antd';
+import Meta from 'antd/lib/card/Meta';
+import moment from 'moment';
 import { useEffect } from 'react';
+
+import { Training } from '../../../../types';
+import { BadgeTraining } from '../badge-training';
+import styles from '../card-modal/card-modal.module.scss';
+import { Empty } from '../empty';
 
 type Props = {
     trainingByDay: Training[];
@@ -28,7 +26,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
 
     useEffect(() => {
         dispatch(resetCreatedTraining());
-    }, []);
+    }, [dispatch]);
 
     const isEmptyTrainingByDay = trainingByDay && trainingByDay.length === 0;
     const isDisabled =

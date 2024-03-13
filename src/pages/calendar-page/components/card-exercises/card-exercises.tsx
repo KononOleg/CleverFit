@@ -1,24 +1,21 @@
-import { Button, Card } from 'antd';
-
-import styles from '../card-modal/card-modal.module.scss';
-
 import { ArrowLeftOutlined } from '@ant-design/icons';
-
-import { TrainingListSelect } from '../training-select';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { trainingSelector } from '@redux/selectors';
-import { Empty } from '../empty';
-import { BadgeCustom } from '../badge-custom';
-import { Training } from '../../../../types';
-
 import { addCreatedTraining, closeModal } from '@redux/reducers/training-slice';
+import { trainingSelector } from '@redux/selectors';
 import {
     useCreateTrainingMutation,
     useUpdateTrainingMutation,
 } from '@redux/services/training-service';
-import { ModalRequestError } from '../modal-request-error';
-import { DATA_TEST_ID } from '@constants/index';
 import { isOldDate } from '@utils/index';
+import { Button, Card } from 'antd';
+
+import { Training } from '../../../../types';
+import { BadgeCustom } from '../badge-custom';
+import styles from '../card-modal/card-modal.module.scss';
+import { Empty } from '../empty';
+import { ModalRequestError } from '../modal-request-error';
+import { TrainingListSelect } from '../training-select';
 
 type Props = {
     trainingByDay: Training[];

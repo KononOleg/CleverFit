@@ -1,15 +1,15 @@
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import cn from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { ModalError } from '@components/modal-error';
 import { DATA_TEST_ID, PATH } from '@constants/index';
-
-import styles from './main-page.module.scss';
-import { useEffect } from 'react';
-import { useLazyGetTrainingQuery } from '@redux/services/training-service';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTraining } from '@redux/reducers/training-slice';
-import { ModalError } from '@components/modal-error';
+import { useLazyGetTrainingQuery } from '@redux/services/training-service';
+import { Button } from 'antd';
+import cn from 'classnames';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import styles from './main-page.module.scss';
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();

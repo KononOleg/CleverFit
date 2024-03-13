@@ -1,11 +1,10 @@
+import { PlusOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/index';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { setExercise } from '@redux/reducers/training-slice';
 import { Checkbox, Input, InputNumber } from 'antd';
 
 import styles from './exercise-form.module.scss';
-import { PlusOutlined } from '@ant-design/icons';
-
-import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
-import { setExercise } from '@redux/reducers/training-slice';
-import { DATA_TEST_ID } from '@constants/index';
 
 type Props = {
     excerciseNameInitial: string;
@@ -15,7 +14,7 @@ type Props = {
     index: number;
     isCheck?: boolean;
     indexes: number[];
-    onCheckedElement: (index: number) => void;
+    onCheckedHandler: (index: number) => void;
 };
 
 export const ExerciseForm = ({
@@ -26,7 +25,7 @@ export const ExerciseForm = ({
     index,
     isCheck,
     indexes,
-    onCheckedElement,
+    onCheckedHandler,
 }: Props) => {
     const dispatch = useAppDispatch();
     const isChecked = indexes.includes(index);
@@ -53,7 +52,7 @@ export const ExerciseForm = ({
                         <Checkbox
                             data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
                             checked={isChecked}
-                            onChange={() => onCheckedElement(index)}
+                            onChange={() => onCheckedHandler(index)}
                         />
                     )
                 }

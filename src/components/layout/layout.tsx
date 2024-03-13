@@ -1,13 +1,13 @@
 import { Loading } from '@components/loading';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { authSelector, fetchingSelector } from '@redux/selectors';
+import { setisDesktopVersion } from '@redux/reducers/app-slice';
 import { checkAuth, setToken } from '@redux/reducers/auth-slice';
+import { authSelector, fetchingSelector } from '@redux/selectors';
+import { useWindowSize } from '@uidotdev/usehooks';
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import styles from './layout.module.scss';
-import { setisDesktopVersion } from '@redux/reducers/app-slice';
-import { useWindowSize } from '@uidotdev/usehooks';
 
 export const Layout = () => {
     const dispatch = useAppDispatch();

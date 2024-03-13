@@ -1,13 +1,14 @@
-import { CardTraining } from '../card-training';
-import { CardExercises } from '../card-exercises';
-import { useEffect, useState } from 'react';
-import { DrawerExercise } from '../drawer-exercise';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
-import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
-import moment from 'moment';
 import cn from 'classnames';
+import moment from 'moment';
+import { useEffect, useState } from 'react';
+
+import { CardExercises } from '../card-exercises';
+import { CardTraining } from '../card-training';
+import { DrawerExercise } from '../drawer-exercise';
 import styles from './card-modal.module.scss';
 
 type Props = {
@@ -23,7 +24,7 @@ export const CardModal = ({ offsetTop }: Props) => {
 
     useEffect(() => {
         dispatch(setIsCardExercises(false));
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (!isCardExercises) setSelectedTraining(null);

@@ -1,4 +1,5 @@
 import { QueryStatus } from '@reduxjs/toolkit/query';
+
 import { RootState } from './configure-store';
 
 export const appSelector = (state: RootState) => state.app;

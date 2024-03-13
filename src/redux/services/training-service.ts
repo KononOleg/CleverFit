@@ -1,6 +1,5 @@
 import { API_PATH } from '@constants/index';
 
-import { apiSlice } from '.';
 import {
     CreateTrainingRequest,
     CreateTrainingResponse,
@@ -9,6 +8,7 @@ import {
     UpdateTrainingRequest,
     UpdateTrainingResponse,
 } from '../../types';
+import { apiSlice } from '.';
 
 export const trainingApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({

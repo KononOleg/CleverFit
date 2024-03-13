@@ -1,9 +1,9 @@
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
 import { Sider } from '@components/sider';
-import { Outlet, useLocation } from 'react-router-dom';
-import cn from 'classnames';
 import { PATH } from '@constants/index';
+import cn from 'classnames';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import styles from './main-layout.module.scss';
 

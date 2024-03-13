@@ -1,18 +1,18 @@
-import { Calendar } from 'antd';
+import { Portal } from '@components/portal';
+import { LocalData } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
+import { appSelector, trainingSelector } from '@redux/selectors';
 import { useGetTrainingListQuery } from '@redux/services/training-service';
-import { CardModal } from './components/card-modal';
+import { getOffsetTop, getSelectedCell, getTrainingByDay } from '@utils/index';
+import { Calendar } from 'antd';
+import moment, { Moment } from 'moment';
+import { useEffect, useState } from 'react';
 
 import styles from './calendar-page.module.scss';
-import { useEffect, useState } from 'react';
-import { Portal } from '@components/portal';
-import moment, { Moment } from 'moment';
 import { BadgeTraining } from './components/badge-training';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { appSelector, trainingSelector } from '@redux/selectors';
-import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
-import { getOffsetTop, getSelectedCell, getTrainingByDay } from '@utils/index';
+import { CardModal } from './components/card-modal';
 import { ModalRequestError } from './components/modal-request-error';
-import { LocalData } from '@constants/index';
 
 moment.locale('ru', {
     week: {
@@ -75,7 +75,7 @@ export const CalendarPage = () => {
             <ModalRequestError
                 title='При открытии данных произошла ошибка'
                 type='info'
-                isError={!isError}
+                isError={isError}
                 subtitle='Попробуйте ещё раз.'
                 okText='Обновить'
                 onClickButton={() => refetch()}

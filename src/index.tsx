@@ -1,3 +1,9 @@
+import 'antd/dist/antd.css';
+import 'normalize.css';
+import './index.scss';
+import './index.variables.scss';
+import './index.global.scss';
+
 import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
 import { MainLayout } from '@components/main-layout';
@@ -17,12 +23,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { AUTH_TAB, PATH } from './constants';
-
-import 'antd/dist/antd.css';
-import 'normalize.css';
-import './index.scss';
-import './index.variables.scss';
-import './index.global.scss';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);

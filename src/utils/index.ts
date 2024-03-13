@@ -1,7 +1,8 @@
-import { Training } from '../types';
 import { RuleRender } from 'antd/lib/form';
 import { Action, Location } from 'history';
 import moment, { Moment } from 'moment';
+
+import { Training } from '../types';
 
 export const confirmPasswordRule: (name: string) => RuleRender =
     (name) =>

@@ -9,6 +9,7 @@ import {
 import { DATA_TEST_ID, PATH } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { signOut } from '@redux/reducers/auth-slice';
+import { appSelector } from '@redux/selectors';
 import { Button, Layout, Menu } from 'antd';
 import cn from 'classnames';
 import { useState } from 'react';
@@ -16,7 +17,6 @@ import { Link } from 'react-router-dom';
 
 import ExitPNG from '../../assets/icons/exit.png';
 import styles from './sider.module.scss';
-import { appSelector } from '@redux/selectors';
 
 const { Sider: SiderAntd } = Layout;
 const items = [

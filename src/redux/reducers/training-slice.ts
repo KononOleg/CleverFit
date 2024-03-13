@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Exercise, Training, TrainingList } from '../../types';
 
 type AuthState = {

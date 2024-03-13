@@ -1,9 +1,9 @@
-import { Badge, Button } from 'antd';
-
-import styles from './badge-custom.module.scss';
 import { EditOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
+import { Badge, Button } from 'antd';
 import cn from 'classnames';
+
+import styles from './badge-custom.module.scss';
 
 type Props = {
     text: string;

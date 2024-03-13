@@ -1,18 +1,16 @@
-import { Button, Drawer } from 'antd';
 import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-
-import styles from './drawer-exercise.module.scss';
-
-import moment from 'moment';
-import { BadgeCustom } from '../badge-custom';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { appSelector, trainingSelector } from '@redux/selectors';
-
-import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
-import { ExerciseForm } from '../exercise-form';
 import { DATA_TEST_ID } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
+import { appSelector, trainingSelector } from '@redux/selectors';
+import { Button, Drawer } from 'antd';
+import moment from 'moment';
 import { useState } from 'react';
+
 import { Training } from '../../../../types';
+import { BadgeCustom } from '../badge-custom';
+import { ExerciseForm } from '../exercise-form';
+import styles from './drawer-exercise.module.scss';
 
 type Props = {
     openDrawerExercises: boolean;
@@ -80,7 +78,7 @@ export const DrawerExercise = ({
                                 index={index}
                                 isCheck={isEditExercises}
                                 indexes={indexes}
-                                onCheckedElement={onSetIndex}
+                                onCheckedHandler={onSetIndex}
                             />
                         </div>
                     ),

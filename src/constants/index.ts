@@ -1,8 +1,8 @@
+import ruRu from 'antd/es/calendar/locale/ru_RU';
+import { PickerLocale } from 'antd/lib/date-picker/generatePicker';
 import { Rule } from 'antd/lib/form';
 
 import { ResultConfigs } from '../types';
-import { PickerLocale } from 'antd/lib/date-picker/generatePicker';
-import ruRu from 'antd/es/calendar/locale/ru_RU';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
 
