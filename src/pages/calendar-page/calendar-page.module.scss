@@ -33,6 +33,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        border-radius: $border-radius-2xs;
         background: $neutral-gray-3;
     }
 
@@ -49,6 +50,13 @@
 
         :global(.ant-picker-cell-inner) {
             min-height: auto;
+            width: 37px;
+            height: 24px;
+            border-radius: $border-radius-2xs;
+        }
+        :global(.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner) {
+            color: $character-light-title-85;
+            background: $neutral-gray-3;
         }
 
         :global(.ant-picker-calendar-header .ant-picker-calendar-mode-switch),

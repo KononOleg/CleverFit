@@ -32,31 +32,34 @@ export const ExerciseForm = ({
 
     const onChangeExcerciseName = (e: React.ChangeEvent<HTMLInputElement>) =>
         dispatch(setExercise({ name: e.target.value as string, index }));
-    const onChangesetReplays = (value: number | null) =>
+    const onChangeReplays = (value: number | null) =>
         dispatch(setExercise({ replays: value as number, index }));
-    const onChangesetWeight = (value: number | null) =>
+    const onChangeWeight = (value: number | null) =>
         dispatch(setExercise({ weight: value as number, index }));
     const onChangeApproaches = (value: number | null) =>
         dispatch(setExercise({ approaches: value as number, index }));
 
     return (
         <div className={styles.Exercise}>
-            <Input
-                data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${index}`}
-                className={styles.Input}
-                placeholder='Упражнениe'
-                defaultValue={excerciseNameInitial}
-                onChange={onChangeExcerciseName}
-                addonAfter={
-                    isCheck && (
+            <div className={styles.ExerciseName}>
+                <Input
+                    data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${index}`}
+                    className={styles.Input}
+                    placeholder='Упражнениe'
+                    defaultValue={excerciseNameInitial}
+                    onChange={onChangeExcerciseName}
+                />
+
+                {isCheck && (
+                    <div className={styles.Checkbox}>
                         <Checkbox
                             data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
                             checked={isChecked}
                             onChange={() => onCheckedHandler(index)}
                         />
-                    )
-                }
-            />
+                    </div>
+                )}
+            </div>
 
             <div className={styles.Wrapper}>
                 <div className={styles.LabelReplays}>Подходы</div>
@@ -72,14 +75,14 @@ export const ExerciseForm = ({
                     addonBefore='+'
                     min={1}
                     defaultValue={replaysInitial}
-                    onChange={onChangesetReplays}
+                    onChange={onChangeReplays}
                 />
                 <div className={styles.InputWrapper}>
                     <InputNumber
                         data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${index}`}
                         className={styles.Input}
                         defaultValue={weightInitial}
-                        onChange={onChangesetWeight}
+                        onChange={onChangeWeight}
                     />
                     <PlusOutlined className={styles.Multi} />
                     <InputNumber

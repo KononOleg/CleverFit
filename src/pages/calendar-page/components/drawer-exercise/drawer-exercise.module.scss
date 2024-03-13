@@ -3,6 +3,10 @@
 .DrawerExercises {
     font-family: Inter;
 
+    :global(.ant-drawer-mask) {
+        background: transparent;
+    }
+
     :global(.ant-drawer-content) {
         border-radius: $border-radius-m 0 0 $border-radius-m;
     }
@@ -41,8 +45,25 @@
     }
 
     @media (max-width: 830px) {
+        :global(.ant-drawer-content-wrapper) {
+            top: $gap-10xl;
+        }
+
+        :global(.ant-drawer-content) {
+            border-radius: $border-radius-m $border-radius-m 0 0;
+        }
+
         :global(.ant-drawer-close) {
             margin-right: $gap-3xs;
+        }
+
+        :global(.ant-drawer-header) {
+            padding: $gap-xl $gap-m $gap-m;
+            border: none;
+        }
+
+        :global(.ant-drawer-body) {
+            padding: 0 $gap-m;
         }
     }
 }
