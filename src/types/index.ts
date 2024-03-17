@@ -1,5 +1,7 @@
 import { ResultStatusType } from 'antd/lib/result';
 
+export type Nullable<T> = T | null;
+
 export type User = {
     email: string;
     firstName: string;
@@ -17,7 +19,32 @@ export type Feedback = {
     createdAt: string;
 };
 
+export type Exercise = {
+    _id?: string;
+    name: string;
+    replays: number;
+    weight: number;
+    approaches: number;
+    isImplementation?: boolean;
+};
+
+export type Training = {
+    _id?: string;
+    name: string;
+    date: string;
+    exercises: Exercise[];
+    isImplementation?: boolean;
+};
+
+export type TrainingList = { name: string; key: string }[];
+
+export type GetTrainingListResponse = TrainingList;
+export type GetTrainingResponse = Training[];
 export type GetFeedbacksResponse = Feedback[];
+export type CreateTrainingRequest = Training;
+export type CreateTrainingResponse = Training;
+export type UpdateTrainingRequest = Training;
+export type UpdateTrainingResponse = Training;
 
 export type CreateFeedbackResponse = {
     message: string;

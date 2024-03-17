@@ -6,12 +6,18 @@
 }
 
 .menuWrapper {
-    position: relative;
-    height: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    height: 100vh;
+    width: 64px;    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 0.2s;
 }
+
 .menuWrapperItem {
     display: flex;
     flex-direction: column;
@@ -23,6 +29,7 @@
 }
 
 .menuWrapperCollapsed {
+    width: 208px;
     padding-left: $gap-2m;
 }
 
@@ -66,8 +73,8 @@
 
 .siderBtn {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 15px;
+    left: 10px;
     transform: rotate(-90deg);
 }
 
@@ -103,11 +110,12 @@
 
 @media (max-width: 830px) {
     .menu {
-        position: fixed !important;
-        top: 0;
-        left: 0;
-        z-index: 4;
-        height: 100vh;
+        position: fixed;
+        z-index: 9;
+
+        .menuWrapper {
+            width: 0;
+        }
 
         .menuWrapperItem {
             gap: 0;
@@ -122,6 +130,7 @@
         }
 
         .menuWrapperCollapsed {
+            width: 106px;
             padding-left: 0;
         }
 

@@ -1,0 +1,69 @@
+@import '../../../../index.variables.scss';
+
+.DrawerExercises {
+    font-family: Inter;
+
+    :global(.ant-drawer-mask) {
+        background: transparent;
+    }
+
+    :global(.ant-drawer-content) {
+        border-radius: $border-radius-m 0 0 $border-radius-m;
+    }
+
+    :global(.ant-drawer-header) {
+        padding: $gap-xl $gap-4xl $gap-m;
+        border: none;
+    }
+    :global(.ant-drawer-close) {
+        padding: 0;
+        margin-right: $gap-xs;
+    }
+
+    :global(.ant-drawer-title) {
+        font-size: $font-size-l;
+    }
+
+    :global(.ant-drawer-body) {
+        padding: 0 $gap-4xl 0;
+    }
+
+    .Status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .Buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $gap-xs $gap-s;
+        margin-top: $gap-xl;
+        border-radius: 0 0 $border-radius-m $border-radius-m;
+        background-color: $character-light-dividers;
+    }
+
+    @media (max-width: 830px) {
+        :global(.ant-drawer-content-wrapper) {
+            top: $gap-10xl;
+        }
+
+        :global(.ant-drawer-content) {
+            border-radius: $border-radius-m $border-radius-m 0 0;
+        }
+
+        :global(.ant-drawer-close) {
+            margin-right: $gap-3xs;
+        }
+
+        :global(.ant-drawer-header) {
+            padding: $gap-xl $gap-m $gap-m;
+            border: none;
+        }
+
+        :global(.ant-drawer-body) {
+            padding: 0 $gap-m;
+        }
+    }
+}

@@ -1,12 +1,11 @@
 import { DATA_TEST_ID } from '@constants/index';
-import { characterRender } from '@utils/characterRateRender';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
+import { characterRender } from '@utils/characterRateRender';
 import { Button, Input, Modal, Rate } from 'antd';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ModalFeedbackError } from '../modal-feedback-error';
 import { ModalFeedbackSuccess } from '../modal-feedback-success';
-
 import styles from './modal-feedback.module.scss';
 
 type Props = {

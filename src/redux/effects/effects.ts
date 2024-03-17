@@ -1,6 +1,8 @@
 import { HttpStatusCode, PATH } from '@constants/index';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
+import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
+import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 import { push } from 'redux-first-history';
 
@@ -83,5 +85,21 @@ listenerMiddleware.startListening({
         const password = meta.arg.originalArgs.password;
         dispatch(setPassword({ password }));
         dispatch(push(PATH.ERROR_CHANGE_PASSWORD));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: trainingApi.endpoints.createTraining.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setIsCardExercises(false));
+        dispatch(createTraining(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: trainingApi.endpoints.updateTraining.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        dispatch(setIsCardExercises(false));
+        dispatch(updateTraining(meta.arg.originalArgs));
     },
 });

@@ -1,0 +1,23 @@
+@import '../../../../index.variables.scss';
+
+.BadgeCustomWrapper {
+    height: 18px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    :global(.ant-badge-status-text) {
+        font-size: $font-size-xs;
+    }
+
+    .BadgeCustomDisabled {
+        :global(.ant-badge-status-text) {
+            color: $neutral-gray-6;
+        }
+    }
+
+    .ExerciseText {
+        color: $neutral-gray-7;
+    }
+}

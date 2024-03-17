@@ -10,10 +10,10 @@ body {
     box-sizing: border-box;
 }
 
-footer,
-header,
-main {
-    padding: 0 $gap-xl;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 h1,

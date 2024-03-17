@@ -1,12 +1,19 @@
+import 'antd/dist/antd.css';
+import 'normalize.css';
+import './index.scss';
+import './index.variables.scss';
+import './index.global.scss';
+
 import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
 import { MainLayout } from '@components/main-layout';
 import { ProtectedRoute } from '@components/protected-route';
 import { AuthorizationPage } from '@pages/authorization-page';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
+import { CalendarPage } from '@pages/calendar-page';
 import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
-import { FeedbacksPage } from '@pages/feedbacks-page/feedbacks-page';
+import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
 import { history, store } from '@redux/configure-store';
 import React from 'react';
@@ -16,12 +23,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { AUTH_TAB, PATH } from './constants';
-
-import 'antd/dist/antd.css';
-import 'normalize.css';
-import './index.scss';
-import './index.variables.scss';
-import './index.global.scss';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -37,10 +38,11 @@ root.render(
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.MAIN} element={<MainPage />} />
                             </Route>
-                        </Route>
-                        <Route element={<MainLayout isBreadcrumb={true} isFooterHide={true} />}>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.FEEDBACKS} element={<FeedbacksPage />} />
+                            </Route>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.CALENDAR} element={<CalendarPage />} />
                             </Route>
                         </Route>
                         <Route element={<AuthorizationLayout />}>

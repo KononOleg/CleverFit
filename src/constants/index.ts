@@ -1,6 +1,11 @@
+import ruRu from 'antd/es/calendar/locale/ru_RU';
+import { PickerLocale } from 'antd/lib/date-picker/generatePicker';
 import { Rule } from 'antd/lib/form';
 
 import { ResultConfigs } from '../types';
+
+export const YYYY_MM_DD = 'YYYY-MM-DD';
+export const DD_MM_YYYY = 'DD.MM.YYYY';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
 
@@ -21,12 +26,15 @@ export const API_PATH = {
     CONFIRM_EMAIL: '/auth/confirm-email',
     CHANGE_PASSWORD: '/auth/change-password',
     FEEDBACK: '/feedback',
+    TRAINING: '/training',
+    TRAINING_LIST: '/catalogs/training-list',
 };
 
 export const PATH = {
     ROOT: '/',
     MAIN: '/main',
     FEEDBACKS: '/feedbacks',
+    CALENDAR: '/calendar',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
@@ -77,6 +85,25 @@ export const DATA_TEST_ID = {
     NEW_REVIEW_SUBMIT_BUTTON: 'new-review-submit-button',
     WRITE_REVIEW: 'write-review',
     ALL_REVIEWS_BUTTON: 'all-reviews-button',
+    MODAL_NO_REVIEW: 'modal-no-review',
+    MENU_BUTTON_CALENDAR: 'menu-button-calendar',
+    MODAL_ERROR_USER_TRAINING_TITLE: 'modal-error-user-training-title',
+    MODAL_ERROR_USER_TRAINING_SUBTITLE: 'modal-error-user-training-subtitle',
+    MODAL_ERROR_USER_TRAINING_BUTTON: 'modal-error-user-training-button',
+    MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE: 'modal-error-user-training-button-close',
+    MODAL_CREATE_TRAINING: 'modal-create-training',
+    MODAL_CREATE_TRAINING_BUTTON_CLOSE: 'modal-create-training-button-close',
+    MODAL_UPDATE_TRAINING_EDIT_BUTTON: 'modal-update-training-edit-button',
+    MODAL_CREATE_EXERCISE: 'modal-create-exercise',
+    MODAL_CREATE_EXERCISE_SELECT: 'modal-create-exercise-select',
+    MODAL_EXERCISE_TRAINING_BUTTON_CLOSE: 'modal-exercise-training-button-close',
+    MODAL_DRAWER_RIGHT: 'modal-drawer-right',
+    MODAL_DRAWER_RIGHT_BUTTON_CLOSE: 'modal-drawer-right-button-close',
+    MODAL_DRAWER_RIGHT_INPUT_EXERCISE: 'modal-drawer-right-input-exercise',
+    MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE: 'modal-drawer-right-checkbox-exercise',
+    MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
+    MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
+    MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
 };
 
 export const resultConfigs: ResultConfigs = {
@@ -158,4 +185,28 @@ export const HttpStatusCode = {
     NOT_FOUND: 404,
     CONFLICT: 409,
     TOO_MANY_REQUESTS: 429,
+};
+
+export const LocalData: PickerLocale = {
+    ...ruRu,
+    lang: {
+        ...ruRu.lang,
+        ...{
+            shortWeekDays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            shortMonths: [
+                'Янв',
+                'Фев',
+                'Мар',
+                'Апр',
+                'Май',
+                'Июн',
+                'Июл',
+                'Авг',
+                'Сен',
+                'Окт',
+                'Ноя',
+                'Дек',
+            ],
+        },
+    },
 };
