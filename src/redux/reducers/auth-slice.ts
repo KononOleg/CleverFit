@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Nullable } from '../../types';
 
 type AuthState = {
-    token: string | null;
+    token: Nullable<string>;
     email: string;
     password: string;
     isLoading: boolean;

@@ -4,6 +4,9 @@ import { Rule } from 'antd/lib/form';
 
 import { ResultConfigs } from '../types';
 
+export const YYYY_MM_DD = 'YYYY-MM-DD';
+export const DD_MM_YYYY = 'DD.MM.YYYY';
+
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
 
 export const VALIDATION_FIELD_REQUIRED: Rule = { required: true, message: '' };

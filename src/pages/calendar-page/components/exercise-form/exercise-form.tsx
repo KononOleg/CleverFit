@@ -4,6 +4,7 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setExercise } from '@redux/reducers/training-slice';
 import { Checkbox, Input, InputNumber } from 'antd';
 
+import { Nullable } from '../../../../types';
 import styles from './exercise-form.module.scss';
 
 type Props = {
@@ -12,9 +13,9 @@ type Props = {
     weightInitial: number;
     approachesInitial: number;
     index: number;
-    isCheck?: boolean;
     indexes: number[];
     onCheckedHandler: (index: number) => void;
+    isCheck?: boolean;
 };
 
 export const ExerciseForm = ({
@@ -23,20 +24,20 @@ export const ExerciseForm = ({
     weightInitial,
     approachesInitial,
     index,
-    isCheck,
     indexes,
     onCheckedHandler,
+    isCheck,
 }: Props) => {
     const dispatch = useAppDispatch();
     const isChecked = indexes.includes(index);
 
     const onChangeExcerciseName = (e: React.ChangeEvent<HTMLInputElement>) =>
         dispatch(setExercise({ name: e.target.value as string, index }));
-    const onChangeReplays = (value: number | null) =>
+    const onChangeReplays = (value: Nullable<number>) =>
         dispatch(setExercise({ replays: value as number, index }));
-    const onChangeWeight = (value: number | null) =>
+    const onChangeWeight = (value: Nullable<number>) =>
         dispatch(setExercise({ weight: value as number, index }));
-    const onChangeApproaches = (value: number | null) =>
+    const onChangeApproaches = (value: Nullable<number>) =>
         dispatch(setExercise({ approaches: value as number, index }));
 
     return (

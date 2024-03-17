@@ -1,5 +1,7 @@
 import { ResultStatusType } from 'antd/lib/result';
 
+export type Nullable<T> = T | null;
+
 export type User = {
     email: string;
     firstName: string;

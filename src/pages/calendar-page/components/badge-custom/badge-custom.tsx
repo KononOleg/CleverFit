@@ -7,11 +7,11 @@ import styles from './badge-custom.module.scss';
 
 type Props = {
     text: string;
+    isImplementation?: boolean;
     isEdit?: boolean;
     isExercise?: boolean;
     index?: number;
     onChange?: () => void;
-    isImplementation?: boolean;
 };
 
 const colors = new Map([

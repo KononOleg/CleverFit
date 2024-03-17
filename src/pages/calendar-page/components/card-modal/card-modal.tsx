@@ -6,6 +6,7 @@ import cn from 'classnames';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 
+import { Nullable } from '../../../../types';
 import { CardExercises } from '../card-exercises';
 import { CardTraining } from '../card-training';
 import { DrawerExercise } from '../drawer-exercise';
@@ -19,7 +20,7 @@ export const CardModal = ({ offsetTop }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, training, isCardExercises } = useAppSelector(trainingSelector);
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
-    const [selectedTraining, setSelectedTraining] = useState<string | null>(null);
+    const [selectedTraining, setSelectedTraining] = useState<Nullable<string>>(null);
     const [isEditExercises, setisEditExercises] = useState(false);
 
     useEffect(() => {

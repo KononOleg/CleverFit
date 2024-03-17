@@ -1,14 +1,14 @@
 import { DATA_TEST_ID } from '@constants/index';
 import { Select } from 'antd';
 
-import { TrainingList } from '../../../../types';
+import { Nullable, TrainingList } from '../../../../types';
 import styles from './training-list-select.module.scss';
 
 type Props = {
     trainingList: TrainingList;
     selectedTrainings: string[];
+    defaultValue: Nullable<string>;
     changeSelectHandler: (value: string) => void;
-    defaultValue: string | null;
 };
 
 export const TrainingListSelect = ({

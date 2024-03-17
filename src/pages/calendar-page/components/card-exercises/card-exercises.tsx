@@ -10,7 +10,7 @@ import {
 import { isOldDate } from '@utils/index';
 import { Button, Card } from 'antd';
 
-import { Training } from '../../../../types';
+import { Nullable, Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 import styles from '../card-modal/card-modal.module.scss';
 import { Empty } from '../empty';
@@ -19,23 +19,22 @@ import { TrainingListSelect } from '../training-select';
 
 type Props = {
     trainingByDay: Training[];
-
+    isEditExercises: boolean;
+    selectedTraining: Nullable<string>;
     prevModalHandler: () => void;
     openDrawerExercisesHandler: () => void;
-    selectedTraining: string | null;
     setSelectedTraining: (value: string) => void;
     onChange: () => void;
-    isEditExercises: boolean;
 };
 
 export const CardExercises = ({
     trainingByDay,
+    isEditExercises,
+    selectedTraining,
     prevModalHandler,
     openDrawerExercisesHandler,
-    selectedTraining,
     setSelectedTraining,
     onChange,
-    isEditExercises,
 }: Props) => {
     const dispatch = useAppDispatch();
     const { selectedDate, trainingList, createdTraining } = useAppSelector(trainingSelector);

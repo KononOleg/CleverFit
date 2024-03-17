@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Exercise, Training, TrainingList } from '../../types';
+import { Exercise, Nullable, Training, TrainingList } from '../../types';
 
 type AuthState = {
     training: Training[];
-    selectedDate: string | null;
+    selectedDate: Nullable<string>;
     trainingList: TrainingList;
     createdTraining: Training;
     isCardExercises: boolean;

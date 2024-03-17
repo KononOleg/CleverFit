@@ -2,7 +2,8 @@ import { RuleRender } from 'antd/lib/form';
 import { Action, Location } from 'history';
 import moment, { Moment } from 'moment';
 
-import { Training } from '../types';
+import { YYYY_MM_DD } from '@constants/index';
+import { Nullable, Training } from '../types';
 
 export const confirmPasswordRule: (name: string) => RuleRender =
     (name) =>
@@ -25,13 +26,13 @@ export const checkPrevPath = (
     path: string,
 ) => prevLocation?.length && prevLocation[1]?.location?.pathname === path;
 
-export const getTrainingByDay = (value: string | null, training: Training[]) =>
+export const getTrainingByDay = (value: Nullable<string>, training: Training[]) =>
     training.filter(
-        ({ date }) => moment(date).format('YYYY-MM-DD') === moment(value).format('YYYY-MM-DD'),
+        ({ date }) => moment(date).format(YYYY_MM_DD) === moment(value).format(YYYY_MM_DD),
     );
 
 export const getSelectedCell = (date: Moment) =>
-    document.querySelectorAll<HTMLElement>(`[title*="${moment(date).format('YYYY-MM-DD')}"]`)[0];
+    document.querySelectorAll<HTMLElement>(`[title*="${moment(date).format(YYYY_MM_DD)}"]`)[0];
 
 export const getOffsetTop = (date: Moment) => Number(getSelectedCell(date).offsetTop) + 32;
 

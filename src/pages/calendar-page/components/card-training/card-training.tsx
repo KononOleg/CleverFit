@@ -1,5 +1,5 @@
 import { CloseOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
+import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { closeModal, resetCreatedTraining } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
@@ -41,7 +41,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
             title={
                 <>
                     <Meta
-                        title={`Тренировки на ${moment(selectedDate).format('DD.MM.YYYY')}`}
+                        title={`Тренировки на ${moment(selectedDate).format(DD_MM_YYYY)}`}
                         description={isEmptyTrainingByDay && 'Нет активных тренировок'}
                     />
                     <Button

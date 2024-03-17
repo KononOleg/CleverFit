@@ -1,5 +1,5 @@
 import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
+import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
@@ -14,17 +14,17 @@ import styles from './drawer-exercise.module.scss';
 
 type Props = {
     openDrawerExercises: boolean;
-    closeDrawerExercisesHandler: () => void;
     isEditExercises: boolean;
     selectedTraining: string;
     trainingByDay: Training[];
+    closeDrawerExercisesHandler: () => void;
 };
 
 export const DrawerExercise = ({
     openDrawerExercises,
-    closeDrawerExercisesHandler,
     isEditExercises,
     selectedTraining,
+    closeDrawerExercisesHandler,
 }: Props) => {
     const dispatch = useAppDispatch();
     const { isDesktopVersion } = useAppSelector(appSelector);
@@ -63,7 +63,7 @@ export const DrawerExercise = ({
             <div className={styles.Status}>
                 <BadgeCustom text={selectedTraining} />
                 <p>
-                    {moment(selectedDate || (createdTraining?.name as string)).format('DD.MM.YYYY')}
+                    {moment(selectedDate || (createdTraining?.name as string)).format(DD_MM_YYYY)}
                 </p>
             </div>
             <div className={styles.Exercises}>

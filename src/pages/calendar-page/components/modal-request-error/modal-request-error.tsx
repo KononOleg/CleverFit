@@ -9,9 +9,9 @@ type Props = {
     isError: boolean;
     title: string;
     type: 'info' | 'error';
-    onClickButton: () => void;
     subtitle: string;
     okText: string;
+    onClickButton: () => void;
 };
 export const ModalRequestError = ({
     title,
