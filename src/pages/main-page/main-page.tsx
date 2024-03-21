@@ -7,7 +7,7 @@ import { useLazyGetTrainingQuery } from '@redux/services/training-service';
 import { Button } from 'antd';
 import cn from 'classnames';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './main-page.module.scss';
 
@@ -80,7 +80,7 @@ export const MainPage = () => {
                     <div>
                         <p>Заполнить профиль</p>
                         <Button type='text' icon={<IdcardOutlined />}>
-                            Профиль
+                            <Link to={PATH.PROFILE}>Профиль</Link>
                         </Button>
                     </div>
                 </div>

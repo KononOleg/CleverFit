@@ -35,6 +35,7 @@ export const PATH = {
     MAIN: '/main',
     FEEDBACKS: '/feedbacks',
     CALENDAR: '/calendar',
+    PROFILE: '/profile',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',

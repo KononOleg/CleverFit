@@ -38,7 +38,7 @@ const items = [
     {
         key: '4',
         icon: <IdcardOutlined />,
-        label: <Link to=''>Профиль</Link>,
+        label: <Link to={PATH.PROFILE}>Профиль</Link>,
     },
 ];
 

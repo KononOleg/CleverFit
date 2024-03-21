@@ -15,6 +15,7 @@ import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
+import { ProfilePage } from '@pages/profile-page';
 import { history, store } from '@redux/configure-store';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -43,6 +44,9 @@ root.render(
                             </Route>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.CALENDAR} element={<CalendarPage />} />
+                            </Route>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.PROFILE} element={<ProfilePage />} />
                             </Route>
                         </Route>
                         <Route element={<AuthorizationLayout />}>
