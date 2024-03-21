@@ -1,4 +1,5 @@
 import { RuleRender } from 'antd/lib/form';
+import { RcFile } from 'antd/lib/upload';
 import { Action, Location } from 'history';
 import moment, { Moment } from 'moment';
 
@@ -37,3 +38,11 @@ export const getSelectedCell = (date: Moment) =>
 export const getOffsetTop = (date: Moment) => Number(getSelectedCell(date).offsetTop) + 32;
 
 export const isOldDate = (date: string) => Boolean(date && moment(date).isBefore(moment()));
+
+export const getBase64 = (file: RcFile): Promise<string> =>
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = (error) => reject(error);
+    });

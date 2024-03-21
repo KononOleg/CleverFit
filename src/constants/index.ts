@@ -28,6 +28,7 @@ export const API_PATH = {
     FEEDBACK: '/feedback',
     TRAINING: '/training',
     TRAINING_LIST: '/catalogs/training-list',
+    UPLOAD_IMAGE: '/upload-image',
 };
 
 export const PATH = {
