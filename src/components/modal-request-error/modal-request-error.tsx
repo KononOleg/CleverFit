@@ -11,7 +11,8 @@ type Props = {
     type: 'info' | 'error';
     subtitle: string;
     okText: string;
-    onClickButton: () => void;
+    onClickButton?: () => void;
+    dataTestId?: string;
 };
 export const ModalRequestError = ({
     title,
@@ -20,6 +21,7 @@ export const ModalRequestError = ({
     onClickButton,
     okText,
     type,
+    dataTestId,
 }: Props) => {
     const [open, setOpen] = useState(false);
 
@@ -31,7 +33,7 @@ export const ModalRequestError = ({
 
     const onOkHandler = useCallback(() => {
         setOpen(false);
-        onClickButton();
+        onClickButton && onClickButton();
     }, [onClickButton]);
 
     useEffect(() => {
@@ -50,15 +52,13 @@ export const ModalRequestError = ({
             closeIcon: (
                 <CloseOutlined data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE} />
             ),
-            okText: (
-                <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}>{okText}</span>
-            ),
+            okText: <span data-test-id={dataTestId}>{okText}</span>,
             onOk: onOkHandler,
         };
         if (open) {
             type === 'info' ? Modal.info(config) : Modal.error(config);
         }
-    }, [okText, onOkHandler, open, subtitle, title, type]);
+    }, [dataTestId, okText, onOkHandler, open, subtitle, title, type]);
 
     return null;
 };

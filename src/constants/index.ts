@@ -17,6 +17,7 @@ export const VALIDATION_PASSWORD: Rule = {
 };
 
 export const API_HOST = 'https://marathon-api.clevertec.ru';
+export const IMAGE_PATH = 'https://training-api.clevertec.ru';
 
 export const API_PATH = {
     REGISTER: '/auth/registration',
@@ -29,6 +30,8 @@ export const API_PATH = {
     TRAINING: '/training',
     TRAINING_LIST: '/catalogs/training-list',
     UPLOAD_IMAGE: '/upload-image',
+    USER: '/user',
+    CURRENT_USER: '/user/me',
 };
 
 export const PATH = {
@@ -106,6 +109,17 @@ export const DATA_TEST_ID = {
     MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
     MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
     MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
+    MENU_BUTTON_PROFILE: 'menu-button-profile',
+    PROFILE_AVATAR: 'profile-avatar',
+    PROFILE_NAME: 'profile-name',
+    PROFILE_SURNAME: 'profile-surname',
+    PROFILE_EMAIL: 'profile-email',
+    PROFILE_BIRTHDAY: 'profile-birthday',
+    PROFILE_PASSWORD: 'profile-password',
+    PROFILE_REPEAT_PASSWORD: 'profile-repeat-password',
+    PROFILE_SUBMIT: 'profile-submit',
+    BIG_FILE_ERROR_CLOSE: 'big-file-error-close',
+    ALERT: 'alert',
 };
 
 export const resultConfigs: ResultConfigs = {

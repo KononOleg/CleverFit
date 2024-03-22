@@ -7,6 +7,7 @@ import { appSlice } from './reducers/app-slice';
 import { authSlice } from './reducers/auth-slice';
 import { trainingSlice } from './reducers/training-slice';
 import { apiSlice } from './services';
+import { profileSlice } from './reducers/profile-slice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -19,6 +20,7 @@ export const store = configureStore({
         app: appSlice.reducer,
         auth: authSlice.reducer,
         training: trainingSlice.reducer,
+        profile: profileSlice.reducer,
         router: routerReducer,
     },
     middleware: (getDefaultMiddleware) =>

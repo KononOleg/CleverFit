@@ -1,5 +1,5 @@
 import { Portal } from '@components/portal';
-import { LocalData } from '@constants/index';
+import { DATA_TEST_ID, LocalData } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import styles from './calendar-page.module.scss';
 import { BadgeTraining } from './components/badge-training';
 import { CardModal } from './components/card-modal';
-import { ModalRequestError } from './components/modal-request-error';
+import { ModalRequestError } from '../../components/modal-request-error';
 
 moment.locale('ru', {
     week: {
@@ -79,6 +79,7 @@ export const CalendarPage = () => {
                 subtitle='Попробуйте ещё раз.'
                 okText='Обновить'
                 onClickButton={() => refetch()}
+                dataTestId={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}
             />
         </>
     );

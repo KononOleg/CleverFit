@@ -12,7 +12,7 @@ export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }:
         <Card bordered={false} className={styles.FeedbackCard}>
             <div className={styles.FeedbackWrapper}>
                 <div className={styles.ProfileInfo}>
-                    <Avatar size={42} icon={imageSrc || <UserOutlined />} />
+                    <Avatar size={42} src={imageSrc} icon={<UserOutlined />} />
                     <div>
                         <h6>{name || 'Пользователь'}</h6>
                         <h6>{surName || ''}</h6>

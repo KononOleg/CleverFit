@@ -1,3 +1,4 @@
+import { UploadFile } from 'antd';
 import { ResultStatusType } from 'antd/lib/result';
 
 export type Nullable<T> = T | null;
@@ -7,7 +8,12 @@ export type User = {
     firstName: string;
     lastName: string;
     imgSrc: string;
+    birthday: string;
     readyForJointTraining: boolean;
+};
+
+export type ProfileAvatar = {
+    file: UploadFile;
 };
 
 export type Feedback = {
@@ -45,6 +51,10 @@ export type CreateTrainingRequest = Training;
 export type CreateTrainingResponse = Training;
 export type UpdateTrainingRequest = Training;
 export type UpdateTrainingResponse = Training;
+
+export type GetCurrentUserResponse = User;
+export type UpdateUserResponse = User;
+export type UpdateUserRequest = User;
 
 export type CreateFeedbackResponse = {
     message: string;

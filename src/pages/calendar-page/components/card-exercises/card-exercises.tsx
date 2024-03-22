@@ -14,7 +14,7 @@ import { Nullable, Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 import styles from '../card-modal/card-modal.module.scss';
 import { Empty } from '../empty';
-import { ModalRequestError } from '../modal-request-error';
+import { ModalRequestError } from '../../../../components/modal-request-error';
 import { TrainingListSelect } from '../training-select';
 
 type Props = {
@@ -145,6 +145,7 @@ export const CardExercises = ({
                 subtitle='Придётся попробовать ещё раз'
                 okText='Закрыть'
                 onClickButton={closeModalHandler}
+                dataTestId={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}
             />
         </>
     );

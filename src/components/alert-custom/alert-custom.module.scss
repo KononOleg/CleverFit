@@ -1,0 +1,15 @@
+@import '../../index.variables.scss';
+
+.AlertWrapper {
+    position: fixed;
+    bottom: $gap-9xl;
+    left: 50%;
+    transform: translate(-50%, 0);
+    .Alert {
+        margin: 0 auto;
+    }
+
+    :global(.ant-alert-close-icon) {
+        margin-left: $gap-6xl;
+    }
+}
