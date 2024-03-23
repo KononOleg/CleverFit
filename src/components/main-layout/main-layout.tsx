@@ -17,11 +17,12 @@ export const MainLayout = ({ isShowHeader = true }: Props) => {
     const isMainPage = pathname === PATH.MAIN;
     const isFeedbacksPage = pathname === PATH.FEEDBACKS;
     const isCalendarPage = pathname === PATH.CALENDAR;
+    const isSettingsPage = pathname === PATH.SETTINGS;
 
     const isMainSecond = isMainPage || isFeedbacksPage;
     const isMainThird = isCalendarPage;
     const isMainFourth = !isMainSecond && !isMainThird;
-
+    const isMainFifth = isSettingsPage;
     return (
         <div className={styles.MainLayout}>
             <Sider />
@@ -32,6 +33,7 @@ export const MainLayout = ({ isShowHeader = true }: Props) => {
                         [styles.MainSecond]: isMainSecond,
                         [styles.MainThird]: isMainThird,
                         [styles.MainFourth]: isMainFourth,
+                        [styles.MainFifth]: isMainFifth,
                     })}
                 >
                     <Outlet />

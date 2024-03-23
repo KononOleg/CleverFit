@@ -24,7 +24,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { AUTH_TAB, PATH } from './constants';
-import { NotFoundPage } from '@pages/not-found-page/not-found-page';
+import { NotFoundPage } from '@pages/not-found-page';
+import { SettingsPage } from '@pages/settings-page';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -48,6 +49,9 @@ root.render(
                             </Route>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.PROFILE} element={<ProfilePage />} />
+                            </Route>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.SETTINGS} element={<SettingsPage />} />
                             </Route>
                         </Route>
                         <Route element={<MainLayout isShowHeader={false} />}>

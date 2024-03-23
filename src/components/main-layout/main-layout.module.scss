@@ -29,9 +29,13 @@ header,
         }
 
         .MainSecond,
-        .MainFourth {
-            padding: 0;
+        .MainFourth,
+        .MainFifth {
             padding: $gap-xl $gap-xl $gap-6xl;
+        }
+
+        .MainFifth {
+            background: $neutral-gray-3;
         }
 
         @media (max-width: 830px) {

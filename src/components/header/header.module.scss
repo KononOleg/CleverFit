@@ -21,6 +21,26 @@
     .containerRight {
         justify-content: flex-end;
     }
+
+    .buttonSettings {
+        display: flex;
+        align-items: center;
+        gap: $gap-m;
+
+        a {
+            color: $character-light-title-85;
+        }
+    }
+
+    .back {
+        display: flex;
+        align-items: center;
+        gap: $gap-m;
+
+        h4 {
+            margin: 0;
+        }
+    }
 }
 
 @media (max-width: 1000px) {
@@ -34,14 +54,12 @@
                 font-weight: $font-weight-s;
             }
 
-            button {
+            .buttonSettings {
                 margin-left: auto;
-            }
-        }
 
-        button {
-            span:first-child {
-                display: none;
+                span:first-child {
+                    display: none;
+                }
             }
         }
     }
@@ -55,7 +73,7 @@
             padding: 0;
         }
 
-        button {
+        .buttonSettings {
             width: 32px;
             height: 32px !important;
             display: flex;
