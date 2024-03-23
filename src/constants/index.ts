@@ -37,6 +37,7 @@ export const API_PATH = {
 export const PATH = {
     ROOT: '/',
     MAIN: '/main',
+    NOT_FOUND: '*',
     FEEDBACKS: '/feedbacks',
     CALENDAR: '/calendar',
     PROFILE: '/profile',

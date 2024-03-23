@@ -1,0 +1,35 @@
+@import '../../index.variables.scss';
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-xl;
+
+    .Image {
+        max-width: 254px;
+        max-height: 294px;
+    }
+
+    .TitleAndDescriptionWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        .Title {
+            margin: 0;
+        }
+
+        .Description {
+            margin: 0;
+            color: $character-light-secondary-45;
+        }
+    }
+
+    .Button {
+        height: 40px;
+        background-color: $primary-light-6;
+    }
+}

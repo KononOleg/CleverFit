@@ -7,7 +7,12 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import styles from './main-layout.module.scss';
 
-export const MainLayout = () => {
+type Props = {
+    isShowHeader?: boolean;
+    isShowFooter?: boolean;
+};
+
+export const MainLayout = ({ isShowHeader = true, isShowFooter = true }: Props) => {
     const { pathname } = useLocation();
 
     const isMainPage = pathname === PATH.MAIN;
@@ -18,7 +23,7 @@ export const MainLayout = () => {
         <div className={styles.MainLayout}>
             <Sider />
             <div className={styles.Wrapper}>
-                <Header />
+                {isShowHeader && <Header />}
                 <main
                     className={cn({
                         [styles.Main]: !isCalendarPage || !isProfilePage,
@@ -27,7 +32,7 @@ export const MainLayout = () => {
                 >
                     <Outlet />
                 </main>
-                {isMainPage && <Footer />}
+                {(isMainPage || isShowFooter) && <Footer />}
             </div>
         </div>
     );
