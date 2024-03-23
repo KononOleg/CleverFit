@@ -50,7 +50,7 @@ root.render(
                                 <Route path={PATH.PROFILE} element={<ProfilePage />} />
                             </Route>
                         </Route>
-                        <Route element={<MainLayout isShowHeader={false} isShowFooter={false} />}>
+                        <Route element={<MainLayout isShowHeader={false} />}>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.NOT_FOUND} element={<NotFoundPage />} />
                             </Route>

@@ -2,11 +2,8 @@
 
 .ProfileCard {
     height: 100%;
-    margin: $gap-xl $gap-xl $gap-6xl;
 
     @media (max-width: 830px) {
-        margin: $gap-xl 0 $gap-6xl;
-
         :global(.ant-card-body) {
             padding: $gap-2m $gap-xl $gap-6xl;
         }

@@ -9,15 +9,18 @@ import styles from './main-layout.module.scss';
 
 type Props = {
     isShowHeader?: boolean;
-    isShowFooter?: boolean;
 };
 
-export const MainLayout = ({ isShowHeader = true, isShowFooter = true }: Props) => {
+export const MainLayout = ({ isShowHeader = true }: Props) => {
     const { pathname } = useLocation();
 
     const isMainPage = pathname === PATH.MAIN;
+    const isFeedbacksPage = pathname === PATH.FEEDBACKS;
     const isCalendarPage = pathname === PATH.CALENDAR;
-    const isProfilePage = pathname === PATH.PROFILE;
+
+    const isMainSecond = isMainPage || isFeedbacksPage;
+    const isMainThird = isCalendarPage;
+    const isMainFourth = !isMainSecond && !isMainThird;
 
     return (
         <div className={styles.MainLayout}>
@@ -25,14 +28,15 @@ export const MainLayout = ({ isShowHeader = true, isShowFooter = true }: Props) 
             <div className={styles.Wrapper}>
                 {isShowHeader && <Header />}
                 <main
-                    className={cn({
-                        [styles.Main]: !isCalendarPage || !isProfilePage,
-                        [styles.MainSecond]: isCalendarPage || isProfilePage,
+                    className={cn(styles.Main, {
+                        [styles.MainSecond]: isMainSecond,
+                        [styles.MainThird]: isMainThird,
+                        [styles.MainFourth]: isMainFourth,
                     })}
                 >
                     <Outlet />
                 </main>
-                {(isMainPage || isShowFooter) && <Footer />}
+                {isMainPage && <Footer />}
             </div>
         </div>
     );
