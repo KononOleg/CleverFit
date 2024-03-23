@@ -12,6 +12,7 @@ export const MainLayout = () => {
 
     const isMainPage = pathname === PATH.MAIN;
     const isCalendarPage = pathname === PATH.CALENDAR;
+    const isProfilePage = pathname === PATH.PROFILE;
 
     return (
         <div className={styles.MainLayout}>
@@ -20,8 +21,8 @@ export const MainLayout = () => {
                 <Header />
                 <main
                     className={cn({
-                        [styles.Main]: !isCalendarPage,
-                        [styles.MainSecond]: isCalendarPage,
+                        [styles.Main]: !isCalendarPage || !isProfilePage,
+                        [styles.MainSecond]: isCalendarPage || isProfilePage,
                     })}
                 >
                     <Outlet />

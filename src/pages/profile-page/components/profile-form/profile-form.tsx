@@ -119,7 +119,7 @@ export const ProfileForm = ({ submitHandler }: Props) => {
                 />
             </Form.Item>
             <Button
-                className={styles.LoginButton}
+                className={styles.ProfileButton}
                 disabled={isDisabledSubmit}
                 type='primary'
                 htmlType='submit'

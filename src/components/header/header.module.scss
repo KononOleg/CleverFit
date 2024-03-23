@@ -10,7 +10,7 @@
         max-width: 1000px;
         padding-top: $gap-2xs;
     }
-
+    .profile,
     .container {
         display: flex;
         justify-content: space-between;
@@ -25,6 +25,20 @@
 
 @media (max-width: 1000px) {
     .header {
+        .profile {
+            flex-direction: column;
+            padding: 0 0 $gap-xs;
+
+            h4 {
+                font-size: $font-size-s;
+                font-weight: $font-weight-s;
+            }
+
+            button {
+                margin-left: auto;
+            }
+        }
+
         button {
             span:first-child {
                 display: none;
@@ -36,6 +50,10 @@
 @media (max-width: 830px) {
     .header {
         padding-top: $gap-2m;
+
+        .profile {
+            padding: 0;
+        }
 
         button {
             width: 32px;

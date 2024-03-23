@@ -4,13 +4,13 @@
     max-width: 480px;
 
     :global(.ant-typography) {
-        margin-bottom: $gap-m;
+        margin-bottom: $gap-xl;
     }
 
     .Personal {
         display: flex;
-        gap: $gap-xl;
-        padding: $gap-2xs 0 $gap-xl;
+        gap: $gap-2m;
+        margin-bottom: $gap-l;
     }
 
     .PersonalInputs {
@@ -27,11 +27,28 @@
         margin-bottom: $gap-7xl;
     }
 
-    :global(.ant-btn) {
-        margin-top: $gap-xl;
-    }
-
     .Datepicker {
         width: 100%;
+    }
+
+    .ProfileButton {
+        margin-top: $gap-l;
+    }
+
+    @media (max-width: 830px) {
+        .Personal {
+            flex-direction: column-reverse;
+            gap: 0;
+            margin-bottom: $gap-4xs;
+        }
+
+        .ProfileButton {
+            margin-top: $gap-m;
+            width: 100%;
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: $gap-l;
+        }
     }
 }

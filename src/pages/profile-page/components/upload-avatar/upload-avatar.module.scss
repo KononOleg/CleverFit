@@ -17,3 +17,33 @@
     margin-top: $gap-xs;
     color: $neutral-gray-7;
 }
+
+.MobileButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        width: 147px;
+    }
+
+    .MobileText {
+        font-size: $font-size-xs;
+    }
+}
+
+@media (max-width: 830px) {
+    :global(.ant-upload-list-item-name) {
+        visibility: hidden;
+    }
+
+    :global(.ant-upload) {
+        display: inline-block;
+        width: 100%;
+    }
+
+    :global(.ant-upload-list-item) {
+        margin: 0;
+    }
+}
