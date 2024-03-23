@@ -124,6 +124,9 @@ export const DATA_TEST_ID = {
     PROFILE_SUBMIT: 'profile-submit',
     BIG_FILE_ERROR_CLOSE: 'big-file-error-close',
     ALERT: 'alert',
+    FREE_TARIFF_CARD: 'free-tariff-card',
+    PRO_TARIFF_CARD: 'pro-tariff-card',
+    ACTIVATE_TARIFF_BTN: 'activate-tariff-btn',
 };
 
 export const resultConfigs: ResultConfigs = {
