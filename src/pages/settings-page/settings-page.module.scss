@@ -2,4 +2,12 @@
 
 .SettingsPage {
     height: 100%;
+
+    .Buttons {
+        margin-top: $gap-9xl;
+
+        :global(.ant-btn) {
+            height: 40px;
+        }
+    }
 }
