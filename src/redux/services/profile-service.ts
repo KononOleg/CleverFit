@@ -1,8 +1,13 @@
 import { API_PATH } from '@constants/index';
 
-import { GetCurrentUserResponse, UpdateUserRequest, UpdateUserResponse } from '../../types';
+import {
+    GetCurrentUserResponse,
+    GetTariffListResponse,
+    UpdateUserRequest,
+    UpdateUserResponse,
+} from '../../types';
 import { apiSlice } from '.';
-import { setProfile } from '@redux/reducers/profile-slice';
+import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 
 export const profileApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -35,7 +40,21 @@ export const profileApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+        getTariffList: builder.query<GetTariffListResponse, void>({
+            query: () => ({
+                url: API_PATH.TARIFF_LIST,
+                method: 'GET',
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(setTariffs(data));
+                } catch {
+                    dispatch(setTariffs([]));
+                }
+            },
+        }),
     }),
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation } = profileApi;
+export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetTariffListQuery } = profileApi;

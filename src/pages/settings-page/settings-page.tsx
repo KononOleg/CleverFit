@@ -2,15 +2,17 @@ import { Button, Card } from 'antd';
 import styles from './settings-page.module.scss';
 import { TariffCards } from './components/tariff-cards';
 import { TariffOptions } from './components/tariff-options';
-import { DrawerTariff } from './components/comparing-drawer';
+import { DrawerTariff } from './components/drawer-tariff';
 import { useState } from 'react';
 import { ModalFeedback } from '@pages/feedbacks-page/components/modal-feedback';
 import { Link } from 'react-router-dom';
 import { PATH } from '@constants/index';
 import { useGetTrainingListQuery } from '@redux/services/training-service';
+import { useGetTariffListQuery } from '@redux/services/profile-service';
 
 export const SettingsPage = () => {
     const { refetch } = useGetTrainingListQuery();
+    useGetTariffListQuery();
     const [openTariffSider, setOpenTariffSider] = useState(false);
     const [openNewFeedback, setOpenNewFeedback] = useState(false);
 

@@ -41,6 +41,16 @@ export type Training = {
     exercises: Exercise[];
     isImplementation?: boolean;
 };
+export type Period = {
+    text: string;
+    cost: number;
+    days: number;
+};
+export type Tariff = {
+    _id?: string;
+    name: string;
+    periods: Period[];
+};
 
 export type TrainingList = { name: string; key: string }[];
 
@@ -55,6 +65,8 @@ export type UpdateTrainingResponse = Training;
 export type GetCurrentUserResponse = User;
 export type UpdateUserResponse = User;
 export type UpdateUserRequest = User;
+
+export type GetTariffListResponse = Tariff[];
 
 export type CreateFeedbackResponse = {
     message: string;

@@ -3,6 +3,10 @@ import { Button, Drawer } from 'antd';
 import styles from './drawer-tariff.module.scss';
 import { CheckCircleFilled, CloseCircleOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
+import { TariffCost } from '../tariff-cost';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { profileSelector } from '@redux/selectors';
+import { useState } from 'react';
 
 const Traits = [
     {
@@ -41,7 +45,11 @@ type Props = {
 };
 
 export const DrawerTariff = ({ open, handleClose }: Props) => {
+    const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
+    const { tariffs } = useAppSelector(profileSelector);
     const isProUser = false;
+
+    const onFieldsChangeHandler = () => setIsDisabledSubmit(false);
 
     return (
         <Drawer
@@ -59,6 +67,7 @@ export const DrawerTariff = ({ open, handleClose }: Props) => {
                         type='primary'
                         htmlType='submit'
                         data-test-id={DATA_TEST_ID.TARIFF_SUBMIT}
+                        disabled={isDisabledSubmit}
                         block
                     >
                         Выбрать и оплатить
@@ -83,6 +92,7 @@ export const DrawerTariff = ({ open, handleClose }: Props) => {
                     </div>
                 ))}
             </div>
+            <TariffCost tariffs={tariffs} onFieldsChangeHandler={onFieldsChangeHandler} />
         </Drawer>
     );
 };
