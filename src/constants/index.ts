@@ -127,6 +127,12 @@ export const DATA_TEST_ID = {
     FREE_TARIFF_CARD: 'free-tariff-card',
     PRO_TARIFF_CARD: 'pro-tariff-card',
     ACTIVATE_TARIFF_BTN: 'activate-tariff-btn',
+    TARIFF_TRAININGS: 'tariff-trainings',
+    TARIFF_NOTIFICATIONS: 'tariff-notifications',
+    TARIFF_THEME: 'tariff-theme',
+    TARIFF_THEME_ICON: 'tariff-theme-icon',
+    TARIFF_TRAININGS_ICON: 'tariff-trainings-icon',
+    TARIFF_NOTIFICATIONS_ICON: 'tariff-notifications-icon',
 };
 
 export const resultConfigs: ResultConfigs = {
