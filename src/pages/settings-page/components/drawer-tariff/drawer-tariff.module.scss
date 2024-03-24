@@ -3,6 +3,14 @@
 .DrawerTariff {
     font-family: Inter;
 
+    .tariffPro {
+        margin: $gap-xl 0;
+        padding: $gap-2m 0;
+        background: $primary-light-1;
+        color: $primary-light-10;
+        text-align: center;
+    }
+
     .Traits {
         display: flex;
         flex-direction: column;
@@ -53,6 +61,10 @@
 
     .CloseCircle {
         color: $character-light-disable-25;
+    }
+
+    .CheckCircle {
+        color: $character-light-success;
     }
 
     :global(.ant-drawer-title) {

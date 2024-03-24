@@ -1,7 +1,7 @@
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, Typography } from 'antd';
 
 import styles from './drawer-tariff.module.scss';
-import { CheckCircleFilled, CloseCircleOutlined } from '@ant-design/icons';
+import { CheckCircleFilled, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { TariffCost } from '../tariff-cost';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -44,14 +44,17 @@ const Traits = [
 type Props = {
     open: boolean;
     handleClose: () => void;
+    isProUser: boolean;
+    month: number;
+    day: number;
 };
 
-export const DrawerTariff = ({ open, handleClose }: Props) => {
+export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props) => {
+    const { profile } = useAppSelector(profileSelector);
     const { isDesktopVersion } = useAppSelector(appSelector);
     const [buyTariff, { isSuccess }] = useBuyTariffMutation();
     const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
     const { tariffs } = useAppSelector(profileSelector);
-    const isProUser = false;
 
     const onFieldsChangeHandler = () => setIsDisabledSubmit(false);
 
@@ -88,9 +91,19 @@ export const DrawerTariff = ({ open, handleClose }: Props) => {
                     )
                 }
             >
+                {isProUser && (
+                    <div className={styles.tariffPro}>
+                        <Typography.Title level={5}>
+                            Ваш PRO tarif активен до {String(day).padStart(2, '0')}.
+                            {String(month).padStart(2, '0')}
+                        </Typography.Title>
+                    </div>
+                )}
                 <div className={styles.Buttons}>
                     <div className={styles.Tariff}>FREE</div>
-                    <div className={styles.Tariff}>PRO</div>
+                    <div className={styles.Tariff}>
+                        PRO {isProUser && <CheckCircleOutlined className={styles.CheckCircle} />}
+                    </div>
                 </div>
                 <div className={styles.Traits}>
                     {Traits.map(({ title, free }) => (
@@ -105,11 +118,14 @@ export const DrawerTariff = ({ open, handleClose }: Props) => {
                         </div>
                     ))}
                 </div>
-                <TariffCost
-                    tariffs={tariffs}
-                    onFieldsChangeHandler={onFieldsChangeHandler}
-                    onFinishHandler={onFinishHandler}
-                />
+
+                {!isProUser && profile?.tariff && (
+                    <TariffCost
+                        tariffs={tariffs}
+                        onFieldsChangeHandler={onFieldsChangeHandler}
+                        onFinishHandler={onFinishHandler}
+                    />
+                )}
             </Drawer>
             {isSuccess && <TariffSuccessModal />}
         </>

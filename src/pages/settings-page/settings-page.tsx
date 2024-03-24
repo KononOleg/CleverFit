@@ -9,12 +9,21 @@ import { Link } from 'react-router-dom';
 import { PATH } from '@constants/index';
 import { useGetTrainingListQuery } from '@redux/services/training-service';
 import { useGetTariffListQuery } from '@redux/services/profile-service';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { profileSelector } from '@redux/selectors';
+import moment from 'moment';
 
 export const SettingsPage = () => {
+    const { profile } = useAppSelector(profileSelector);
     const { refetch } = useGetTrainingListQuery();
     useGetTariffListQuery();
     const [openTariffSider, setOpenTariffSider] = useState(false);
     const [openNewFeedback, setOpenNewFeedback] = useState(false);
+
+    const isProUser = profile?.tariff as unknown as boolean;
+    const date = moment(profile?.tariff?.expired);
+    const month = date.month() + 1;
+    const day = date.date();
 
     const closeTariffSiderHandler = () => setOpenTariffSider(false);
     const openTariffSiderHandler = () => setOpenTariffSider(true);
@@ -24,8 +33,13 @@ export const SettingsPage = () => {
     return (
         <>
             <Card className={styles.SettingsPage}>
-                <TariffCards handleOpen={openTariffSiderHandler} />
-                <TariffOptions />
+                <TariffCards
+                    handleOpen={openTariffSiderHandler}
+                    isProUser={isProUser}
+                    month={month}
+                    day={day}
+                />
+                <TariffOptions isProUser={isProUser} />
                 <div className={styles.Buttons}>
                     <Button type='primary' onClick={openNewFeedbackHandler}>
                         Написать отзыв
@@ -40,7 +54,13 @@ export const SettingsPage = () => {
                 setOpen={setOpenNewFeedback}
                 handleRefetch={handleRefetch}
             />
-            <DrawerTariff open={openTariffSider} handleClose={closeTariffSiderHandler} />
+            <DrawerTariff
+                open={openTariffSider}
+                handleClose={closeTariffSiderHandler}
+                isProUser={isProUser}
+                month={month}
+                day={day}
+            />
         </>
     );
 };

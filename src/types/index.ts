@@ -10,6 +10,13 @@ export type User = {
     imgSrc: string;
     birthday: string;
     readyForJointTraining: boolean;
+    sendNotification:boolean,
+    tariff: UserTariff;
+};
+
+export type UserTariff = {
+    tariffId: string;
+    expired: string;
 };
 
 export type ProfileAvatar = {

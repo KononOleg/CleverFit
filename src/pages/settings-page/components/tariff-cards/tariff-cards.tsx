@@ -14,11 +14,12 @@ const Tariffs = [
 
 type Props = {
     handleOpen: () => void;
+    isProUser: boolean;
+    month: number;
+    day: number;
 };
 
-export const TariffCards = ({ handleOpen }: Props) => {
-    const isProUser = false;
-
+export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => {
     return (
         <>
             <Typography.Title className={styles.Title} level={4}>
@@ -53,12 +54,20 @@ export const TariffCards = ({ handleOpen }: Props) => {
                                 <Button
                                     type='primary'
                                     data-test-id={DATA_TEST_ID.ACTIVATE_TARIFF_BTN}
+                                    onClick={handleOpen}
                                 >
                                     Активировать
                                 </Button>
                             ) : (
                                 <div className={styles.Active}>
-                                    <Typography.Title level={5}>активен</Typography.Title>
+                                    <Typography.Title level={5}>
+                                        активен{' '}
+                                        {isProUser &&
+                                            title.includes('PRO') &&
+                                            ` до ${String(day).padStart(2, '0')}.${String(
+                                                month,
+                                            ).padStart(2, '0')}`}
+                                    </Typography.Title>
                                     <CheckOutlined />
                                 </div>
                             )}
