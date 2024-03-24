@@ -32,6 +32,7 @@ export const API_PATH = {
     UPLOAD_IMAGE: '/upload-image',
     USER: '/user',
     CURRENT_USER: '/user/me',
+    TARIFF: '/tariff',
     TARIFF_LIST: '/catalogs/tariff-list',
 };
 
@@ -137,6 +138,7 @@ export const DATA_TEST_ID = {
     TARIFF_SIDER: 'tariff-sider',
     TARIFF_SUBMIT: 'tariff-submit',
     TARIFF_COST: 'tariff-cost',
+    TARIFF_MODAL_SUCCESS: 'tariff-modal-success',
 };
 
 export const resultConfigs: ResultConfigs = {

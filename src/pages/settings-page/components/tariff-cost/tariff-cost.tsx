@@ -7,19 +7,22 @@ import { Tariff } from '../../../../types';
 type Props = {
     tariffs: Tariff[];
     onFieldsChangeHandler: () => void;
+    onFinishHandler: ({ days }: { days: number }) => void;
 };
 
-export const TariffCost = ({ tariffs, onFieldsChangeHandler }: Props) => {
+export const TariffCost = ({ tariffs, onFieldsChangeHandler, onFinishHandler }: Props) => {
     const onFieldsChange = () => onFieldsChangeHandler();
 
     return (
         <Form
+            id='form'
             className={styles.TariffCost}
             onFieldsChange={onFieldsChange}
+            onFinish={onFinishHandler}
             data-test-id={DATA_TEST_ID.TARIFF_COST}
         >
             <div className={styles.Title}>Стоимость тарифа</div>
-            <Form.Item name='cost'>
+            <Form.Item name='days'>
                 <Radio.Group className={styles.Costs}>
                     {tariffs[0]?.periods.map(({ text, cost, days }) => (
                         <Radio value={days} key={text} data-test-id={`tariff-${cost}`}>

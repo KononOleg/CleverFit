@@ -67,6 +67,7 @@ export type UpdateUserResponse = User;
 export type UpdateUserRequest = User;
 
 export type GetTariffListResponse = Tariff[];
+export type BuyTariffRequest = { tariffId: string; days: number };
 
 export type CreateFeedbackResponse = {
     message: string;

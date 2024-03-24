@@ -1,0 +1,30 @@
+@import '../../../../index.variables.scss';
+
+.TariffSuccessModal {
+    color: $character-light-secondary-45;
+
+    :global(.ant-modal-body) {
+        padding: $gap-8xl $gap-4xl 56px;
+    }
+
+    .Wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-xl;
+        text-align: center;
+    }
+
+    h3 {
+        margin-bottom: 0;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    .Icon {
+        font-size: 80px;
+        margin: 0 auto;
+        color: $primary-light-6;
+    }
+}

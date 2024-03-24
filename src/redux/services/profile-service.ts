@@ -1,6 +1,7 @@
 import { API_PATH } from '@constants/index';
 
 import {
+    BuyTariffRequest,
     GetCurrentUserResponse,
     GetTariffListResponse,
     UpdateUserRequest,
@@ -54,7 +55,18 @@ export const profileApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+        buyTariff: builder.mutation<void, BuyTariffRequest>({
+            query: () => ({
+                url: API_PATH.TARIFF,
+                method: 'POST',
+            }),
+        }),
     }),
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetTariffListQuery } = profileApi;
+export const {
+    useGetCurrentUserQuery,
+    useUpdateUserMutation,
+    useGetTariffListQuery,
+    useBuyTariffMutation,
+} = profileApi;
