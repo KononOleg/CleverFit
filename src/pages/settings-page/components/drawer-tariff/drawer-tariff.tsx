@@ -50,11 +50,12 @@ type Props = {
 };
 
 export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props) => {
-    const { profile } = useAppSelector(profileSelector);
     const { isDesktopVersion } = useAppSelector(appSelector);
     const [buyTariff, { isSuccess }] = useBuyTariffMutation();
     const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
     const { tariffs } = useAppSelector(profileSelector);
+
+    const isShowTariffCost = !isProUser && tariffs;
 
     const onFieldsChangeHandler = () => setIsDisabledSubmit(false);
 
@@ -119,7 +120,7 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
                     ))}
                 </div>
 
-                {!isProUser && profile?.tariff && (
+                {isShowTariffCost && (
                     <TariffCost
                         tariffs={tariffs}
                         onFieldsChangeHandler={onFieldsChangeHandler}

@@ -33,9 +33,12 @@
     }
 
     .back {
+        height: 38px;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: $gap-m;
+        padding: 0;
 
         h4 {
             margin: 0;
@@ -53,14 +56,10 @@
                 font-size: $font-size-s;
                 font-weight: $font-weight-s;
             }
+        }
 
-            .buttonSettings {
-                margin-left: auto;
-
-                span:first-child {
-                    display: none;
-                }
-            }
+        .buttonSettings {
+            margin-left: auto;
         }
     }
 }
@@ -73,6 +72,18 @@
             padding: 0;
         }
 
+        .back {
+            height: 18px;
+
+            gap: $gap-m;
+            padding: 0;
+
+            h4 {
+                font-size: $font-size-s;
+                font-weight: $font-weight-s;
+            }
+        }
+
         .buttonSettings {
             width: 32px;
             height: 32px !important;
@@ -83,13 +94,13 @@
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
             background: $neutral-gray-1;
 
-            span:first-child {
+            span {
                 display: block;
                 width: 14px;
                 height: 14px;
             }
 
-            span:last-child {
+            a {
                 display: none;
             }
         }

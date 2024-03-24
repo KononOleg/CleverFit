@@ -4,11 +4,15 @@
     font-family: Inter;
 
     .tariffPro {
-        margin: $gap-xl 0;
+        margin: $gap-xl 0 0;
         padding: $gap-2m 0;
         background: $primary-light-1;
         color: $primary-light-10;
         text-align: center;
+
+        h5 {
+            margin: 0;
+        }
     }
 
     .Traits {

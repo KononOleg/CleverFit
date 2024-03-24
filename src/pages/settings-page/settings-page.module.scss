@@ -10,4 +10,17 @@
             height: 40px;
         }
     }
+
+    @media (max-width: 830px) {
+        .Buttons {
+            display: flex;
+            flex-direction: column;
+            gap: $gap-2m;
+            margin-top: $gap-3xs;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
 }

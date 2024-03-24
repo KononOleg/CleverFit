@@ -5,7 +5,7 @@ import styles from './tariff-options.module.scss';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { profileSelector } from '@redux/selectors';
+import { appSelector, profileSelector } from '@redux/selectors';
 import { useUpdateUserMutation } from '@redux/services/profile-service';
 import { AlertCustom } from '@components/alert-custom';
 
@@ -38,7 +38,11 @@ type Props = {
 };
 export const TariffOptions = ({ isProUser }: Props) => {
     const { profile } = useAppSelector(profileSelector);
+    const { isDesktopVersion } = useAppSelector(appSelector);
     const [updateUser, { isSuccess }] = useUpdateUserMutation();
+
+    const switchSize = isDesktopVersion ? 'default' : 'small';
+    const tooltipPlacement = isDesktopVersion ? 'bottom' : 'top';
 
     const onFieldsChange: FormProps['onFieldsChange'] = (fields) => {
         const { name: names, value } = fields[0];
@@ -65,7 +69,7 @@ export const TariffOptions = ({ isProUser }: Props) => {
                                 })}
                             >
                                 <span>{title}</span>
-                                <Tooltip title={tooltip}>
+                                <Tooltip title={tooltip} placement={tooltipPlacement}>
                                     <InfoCircleOutlined
                                         data-test-id={dataTestIdIcon}
                                         className={styles.Icon}
@@ -73,7 +77,11 @@ export const TariffOptions = ({ isProUser }: Props) => {
                                 </Tooltip>
                             </div>
                             <Form.Item name={name} key={title} valuePropName='checked'>
-                                <Switch disabled={isShowPro} data-test-id={dataTestId} />
+                                <Switch
+                                    disabled={isShowPro}
+                                    data-test-id={dataTestId}
+                                    size={switchSize}
+                                />
                             </Form.Item>
                         </div>
                     );

@@ -1,6 +1,7 @@
 @import '../../../../index.variables.scss';
 
 .TariffSuccessModal {
+    font-family: $font-family-main;
     color: $character-light-secondary-45;
 
     :global(.ant-modal-body) {
@@ -12,12 +13,13 @@
         flex-direction: column;
         gap: $gap-xl;
         text-align: center;
+        line-height: $font-line-s;
     }
 
     h3 {
         margin-bottom: 0;
 
-        span {
+        .Email {
             font-weight: 700;
         }
     }
@@ -26,5 +28,18 @@
         font-size: 80px;
         margin: 0 auto;
         color: $primary-light-6;
+    }
+
+    @media (max-width: 830px) {
+        h3 {
+            margin: 0 $gap-7xl;
+        }
+        .Bottom {
+            margin: 0 $gap-l;
+        }
+
+        :global(.ant-modal-body) {
+            padding: $gap-4xl $gap-m;
+        }
     }
 }
