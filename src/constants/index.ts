@@ -133,6 +133,8 @@ export const DATA_TEST_ID = {
     TARIFF_THEME_ICON: 'tariff-theme-icon',
     TARIFF_TRAININGS_ICON: 'tariff-trainings-icon',
     TARIFF_NOTIFICATIONS_ICON: 'tariff-notifications-icon',
+    TARIFF_SIDER: 'tariff-sider',
+    TARIFF_SUBMIT: 'tariff-submit',
 };
 
 export const resultConfigs: ResultConfigs = {

@@ -12,7 +12,11 @@ const Tariffs = [
     { title: 'PRO tarif', image: imgPro, dataTestId: DATA_TEST_ID.PRO_TARIFF_CARD, forPro: true },
 ];
 
-export const TariffCards = () => {
+type Props = {
+    handleOpen: () => void;
+};
+
+export const TariffCards = ({ handleOpen }: Props) => {
     const isProUser = false;
 
     return (
@@ -27,7 +31,11 @@ export const TariffCards = () => {
                     return (
                         <Card
                             title={title}
-                            extra={<Button type='link'>Подробнее</Button>}
+                            extra={
+                                <Button type='link' onClick={handleOpen}>
+                                    Подробнее
+                                </Button>
+                            }
                             key={title}
                             hoverable={false}
                             data-test-id={dataTestId}
