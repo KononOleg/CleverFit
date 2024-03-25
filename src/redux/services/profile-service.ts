@@ -1,5 +1,4 @@
 import { API_PATH } from '@constants/index';
-import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 
 import {
     BuyTariffRequest,
@@ -18,15 +17,6 @@ export const profileApi = apiSlice.injectEndpoints({
                 url: API_PATH.CURRENT_USER,
                 method: 'GET',
             }),
-            async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-
-                    dispatch(setProfile(data));
-                } catch {
-                    dispatch(setProfile(null));
-                }
-            },
         }),
         updateUser: builder.mutation<UpdateUserResponse, UpdateUserRequest>({
             query: (user) => ({
@@ -34,30 +24,12 @@ export const profileApi = apiSlice.injectEndpoints({
                 method: 'PUT',
                 body: user,
             }),
-            async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-
-                    dispatch(setProfile(data));
-                } catch {
-                    dispatch(setProfile(null));
-                }
-            },
         }),
         getTariffList: builder.query<GetTariffListResponse, void>({
             query: () => ({
                 url: API_PATH.TARIFF_LIST,
                 method: 'GET',
             }),
-            async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-
-                    dispatch(setTariffs(data));
-                } catch {
-                    dispatch(setTariffs([]));
-                }
-            },
         }),
         buyTariff: builder.mutation<void, BuyTariffRequest>({
             query: () => ({
@@ -69,7 +41,7 @@ export const profileApi = apiSlice.injectEndpoints({
 });
 
 export const {
-    useGetCurrentUserQuery,
+    useLazyGetCurrentUserQuery,
     useUpdateUserMutation,
     useGetTariffListQuery,
     useBuyTariffMutation,

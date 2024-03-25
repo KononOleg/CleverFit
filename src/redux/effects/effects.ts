@@ -1,8 +1,10 @@
 import { push } from 'redux-first-history';
 import { HttpStatusCode, PATH } from '@constants/index';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
+import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
+import { profileApi } from '@redux/services/profile-service';
 import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 
@@ -11,8 +13,8 @@ export const listenerMiddleware = createListenerMiddleware();
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.login.matchFulfilled,
     effect: ({ payload, meta }, { dispatch }) => {
-        const {accessToken} = payload;
-        const {remember} = meta.arg.originalArgs;
+        const { accessToken } = payload;
+        const { remember } = meta.arg.originalArgs;
 
         dispatch(setToken({ accessToken, remember }));
         dispatch(push(PATH.MAIN));
@@ -38,7 +40,7 @@ listenerMiddleware.startListening({
     effect: ({ meta, payload }, { dispatch }) => {
         if (payload?.status === HttpStatusCode.CONFLICT) dispatch(push(PATH.ERROR_USER_EXIST));
         else {
-            const {password} = meta.arg.originalArgs;
+            const { password } = meta.arg.originalArgs;
 
             dispatch(setPassword({ password }));
             dispatch(push(PATH.ERROR));
@@ -49,7 +51,7 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.checkEmail.matchFulfilled,
     effect: ({ meta }, { dispatch }) => {
-        const {email} = meta.arg.originalArgs;
+        const { email } = meta.arg.originalArgs;
 
         dispatch(setConfirmEmail({ email }));
         dispatch(push(PATH.CONFIRM_EMAIL));
@@ -61,7 +63,7 @@ listenerMiddleware.startListening({
     effect: ({ meta, payload }, { dispatch }) => {
         if (payload?.data) dispatch(push(PATH.ERROR_CHECK_EMAIL_NO_EXIST));
         else {
-            const {email} = meta.arg.originalArgs;
+            const { email } = meta.arg.originalArgs;
 
             dispatch(setConfirmEmail({ email }));
             dispatch(push(PATH.ERROR_CHECK_EMAIL));
@@ -86,7 +88,7 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.changePassword.matchRejected,
     effect: ({ meta }, { dispatch }) => {
-        const {password} = meta.arg.originalArgs;
+        const { password } = meta.arg.originalArgs;
 
         dispatch(setPassword({ password }));
         dispatch(push(PATH.ERROR_CHANGE_PASSWORD));
@@ -106,5 +108,26 @@ listenerMiddleware.startListening({
     effect: ({ meta }, { dispatch }) => {
         dispatch(setIsCardExercises(false));
         dispatch(updateTraining(meta.arg.originalArgs));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: profileApi.endpoints.getCurrentUser.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setProfile(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: profileApi.endpoints.updateUser.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setProfile(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: profileApi.endpoints.getTariffList.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setTariffs(payload));
     },
 });

@@ -1,29 +1,42 @@
+import { useEffect, useState } from 'react';
 import { Button, Modal, Result } from 'antd';
 
 import styles from './modal-feedback-success.module.scss';
 
 type Props = {
-    open: boolean;
+    isSuccess: boolean;
     handleCloseModalSuccess: () => void;
 };
 
-export const ModalFeedbackSuccess = ({ open, handleCloseModalSuccess }: Props) => (
-    <Modal
-        open={open}
-        className={styles.ModalFeedbackSuccess}
-        centered={true}
-        onCancel={handleCloseModalSuccess}
-        footer={null}
-        closable={false}
-    >
-        <Result
-            status='success'
-            title='Отзыв успешно опубликован'
-            extra={
-                <Button type='primary' block={true} onClick={handleCloseModalSuccess}>
-                    Отлично
-                </Button>
-            }
-        />
-    </Modal>
-);
+export const ModalFeedbackSuccess = ({ isSuccess, handleCloseModalSuccess }: Props) => {
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (isSuccess) setOpen(true);
+    }, [isSuccess]);
+
+    const handleCancel = () => {
+        handleCloseModalSuccess();
+        setOpen(false);
+    };
+
+    return (
+        <Modal
+            open={open}
+            className={styles.ModalFeedbackSuccess}
+            centered={true}
+            footer={null}
+            closable={false}
+        >
+            <Result
+                status='success'
+                title='Отзыв успешно опубликован'
+                extra={
+                    <Button type='primary' block={true} onClick={handleCancel}>
+                        Отлично
+                    </Button>
+                }
+            />
+        </Modal>
+    );
+};

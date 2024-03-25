@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
 import { Sider } from '@components/sider';
 import { PATH } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { profileSelector } from '@redux/selectors';
+import { useLazyGetCurrentUserQuery } from '@redux/services/profile-service';
 import cn from 'classnames';
 
 import styles from './main-layout.module.scss';
@@ -13,6 +17,13 @@ type Props = {
 
 export const MainLayout = ({ isShowHeader = true }: Props) => {
     const { pathname } = useLocation();
+    const { profile } = useAppSelector(profileSelector);
+
+    const [getCurrentUser] = useLazyGetCurrentUserQuery();
+
+    useEffect(() => {
+        if (!profile) getCurrentUser();
+    }, [getCurrentUser, profile]);
 
     const isMainPage = pathname === PATH.MAIN;
     const isFeedbacksPage = pathname === PATH.FEEDBACKS;
