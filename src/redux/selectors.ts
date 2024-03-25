@@ -8,8 +8,4 @@ export const prevLocationsSelector = (state: RootState) => state.router?.previou
 export const trainingSelector = (state: RootState) => state.training;
 export const profileSelector = (state: RootState) => state.profile;
 
-export const fetchingSelector = (state: RootState) => {
-    return Object.values({ ...state.api.mutations, ...state.api.queries }).some((query) => {
-        return query && query.status === QueryStatus.pending;
-    });
-};
+export const fetchingSelector = (state: RootState) => Object.values({ ...state.api.mutations, ...state.api.queries }).some((query) => query && query.status === QueryStatus.pending);

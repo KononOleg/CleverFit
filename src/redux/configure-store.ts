@@ -1,13 +1,13 @@
+import { createReduxHistoryContext } from 'redux-first-history';
 import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
-import { createReduxHistoryContext } from 'redux-first-history';
 
 import { listenerMiddleware } from './effects/effects';
 import { appSlice } from './reducers/app-slice';
 import { authSlice } from './reducers/auth-slice';
+import { profileSlice } from './reducers/profile-slice';
 import { trainingSlice } from './reducers/training-slice';
 import { apiSlice } from './services';
-import { profileSlice } from './reducers/profile-slice';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),

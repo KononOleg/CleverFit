@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
     DATA_TEST_ID,
     PASSWORD_MESSAGE_ERROR,
@@ -9,9 +10,9 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useChangePasswordMutation } from '@redux/services/auth-service';
 import { Button, Form, Input, Typography } from 'antd';
-import { useEffect } from 'react';
 
 import { checkPrevPath, confirmPasswordRule } from '../../utils';
+
 import styles from './change-password-page.module.scss';
 
 const { Title } = Typography;
@@ -68,7 +69,7 @@ export const ChangePasswordPage = () => {
                 type='primary'
                 htmlType='submit'
                 size='large'
-                block
+                block={true}
                 data-test-id={DATA_TEST_ID.CHANGE_SUBMIT_BUTTON}
             >
                 Сохранить

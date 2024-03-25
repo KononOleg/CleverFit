@@ -1,11 +1,11 @@
+import React, { useState } from 'react';
+import VerificationInput from 'react-verification-input';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector } from '@redux/selectors';
 import { useConfirmEmailMutation } from '@redux/services/auth-service';
 import { Result, Typography } from 'antd';
 import cn from 'classnames';
-import { useState } from 'react';
-import VerificationInput from 'react-verification-input';
 
 import styles from './confirm-email-page.module.scss';
 
@@ -29,7 +29,7 @@ export const ConfirmEmailPage = () => {
     };
 
     return (
-        <>
+        <React.Fragment>
             <Result
                 className={styles.Result}
                 status={isError ? 'error' : 'info'}
@@ -61,6 +61,6 @@ export const ConfirmEmailPage = () => {
                 }
             />
             <Text type='secondary'>Не пришло письмо? Проверьте папку Спам.</Text>
-        </>
+        </React.Fragment>
     );
 };

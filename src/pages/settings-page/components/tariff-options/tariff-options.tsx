@@ -1,13 +1,16 @@
-import { Form, FormProps, Switch, Tooltip } from 'antd';
-import cn from 'classnames';
-
-import styles from './tariff-options.module.scss';
+import React from 'react';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import { AlertCustom } from '@components/alert-custom';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector, profileSelector } from '@redux/selectors';
 import { useUpdateUserMutation } from '@redux/services/profile-service';
-import { AlertCustom } from '@components/alert-custom';
+import { Form, FormProps, Switch, Tooltip } from 'antd';
+import cn from 'classnames';
+
+import { User } from '../../../../types';
+
+import styles from './tariff-options.module.scss';
 
 const Options = [
     {
@@ -48,14 +51,14 @@ export const TariffOptions = ({ isProUser }: Props) => {
         const { name: names, value } = fields[0];
         const name = names[0];
 
-        updateUser({ ...profile, [name]: value } as any);
+        updateUser({ ...profile, [name]: value } as User);
     };
 
     return (
-        <>
+        <React.Fragment>
             <Form
                 className={styles.Options}
-                initialValues={profile as any}
+                initialValues={profile as User}
                 onFieldsChange={onFieldsChange}
             >
                 {Options.map(({ title, tooltip, name, dataTestId, dataTestIdIcon, forPro }) => {
@@ -88,6 +91,6 @@ export const TariffOptions = ({ isProUser }: Props) => {
                 })}
             </Form>
             {isSuccess && <AlertCustom description='Данные профиля успешно обновлены' />}
-        </>
+        </React.Fragment>
     );
 };

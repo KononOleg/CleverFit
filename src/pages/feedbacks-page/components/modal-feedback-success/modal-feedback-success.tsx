@@ -20,7 +20,7 @@ export const ModalFeedbackSuccess = ({ open, handleCloseModalSuccess }: Props) =
             status='success'
             title='Отзыв успешно опубликован'
             extra={
-                <Button type='primary' block onClick={handleCloseModalSuccess}>
+                <Button type='primary' block={true} onClick={handleCloseModalSuccess}>
                     Отлично
                 </Button>
             }

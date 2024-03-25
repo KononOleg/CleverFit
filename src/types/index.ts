@@ -59,7 +59,7 @@ export type Tariff = {
     periods: Period[];
 };
 
-export type TrainingList = { name: string; key: string }[];
+export type TrainingList = Array<{ name: string; key: string }>;
 
 export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];

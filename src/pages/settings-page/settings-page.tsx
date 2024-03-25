@@ -1,21 +1,24 @@
-import { Button, Card } from 'antd';
-import styles from './settings-page.module.scss';
-import { TariffCards } from './components/tariff-cards';
-import { TariffOptions } from './components/tariff-options';
-import { DrawerTariff } from './components/drawer-tariff';
-import { useState } from 'react';
-import { ModalFeedback } from '@pages/feedbacks-page/components/modal-feedback';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PATH } from '@constants/index';
-import { useGetTrainingListQuery } from '@redux/services/training-service';
-import { useGetTariffListQuery } from '@redux/services/profile-service';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { ModalFeedback } from '@pages/feedbacks-page/components/modal-feedback';
 import { profileSelector } from '@redux/selectors';
+import { useGetTariffListQuery } from '@redux/services/profile-service';
+import { useGetTrainingListQuery } from '@redux/services/training-service';
+import { Button, Card } from 'antd';
 import moment from 'moment';
+
+import { DrawerTariff } from './components/drawer-tariff';
+import { TariffCards } from './components/tariff-cards';
+import { TariffOptions } from './components/tariff-options';
+
+import styles from './settings-page.module.scss';
 
 export const SettingsPage = () => {
     const { profile } = useAppSelector(profileSelector);
     const { refetch } = useGetTrainingListQuery();
+
     useGetTariffListQuery();
     const [openTariffSider, setOpenTariffSider] = useState(false);
     const [openNewFeedback, setOpenNewFeedback] = useState(false);
@@ -31,7 +34,7 @@ export const SettingsPage = () => {
     const handleRefetch = () => refetch();
 
     return (
-        <>
+        <React.Fragment>
             <Card className={styles.SettingsPage}>
                 <TariffCards
                     handleOpen={openTariffSiderHandler}
@@ -61,6 +64,6 @@ export const SettingsPage = () => {
                 month={month}
                 day={day}
             />
-        </>
+        </React.Fragment>
     );
 };

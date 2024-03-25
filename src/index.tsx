@@ -1,9 +1,8 @@
-import 'antd/dist/antd.css';
-import 'normalize.css';
-import './index.scss';
-import './index.variables.scss';
-import './index.global.scss';
-
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { HistoryRouter } from 'redux-first-history/rr6';
 import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
 import { MainLayout } from '@components/main-layout';
@@ -15,17 +14,18 @@ import { ChangePasswordPage } from '@pages/change-password-page';
 import { ConfirmEmailPage } from '@pages/confirm-email-page';
 import { FeedbacksPage } from '@pages/feedbacks-page';
 import { MainPage } from '@pages/main-page';
+import { NotFoundPage } from '@pages/not-found-page';
 import { ProfilePage } from '@pages/profile-page';
+import { SettingsPage } from '@pages/settings-page';
 import { history, store } from '@redux/configure-store';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { HistoryRouter } from 'redux-first-history/rr6';
 
 import { AUTH_TAB, PATH } from './constants';
-import { NotFoundPage } from '@pages/not-found-page';
-import { SettingsPage } from '@pages/settings-page';
+
+import 'antd/dist/antd.css';
+import 'normalize.css';
+import './index.scss';
+import './index.variables.scss';
+import './index.global.scss';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);

@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -7,12 +8,12 @@ import { isOldDate } from '@utils/index';
 import { Button, Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import moment from 'moment';
-import { useEffect } from 'react';
 
 import { Training } from '../../../../types';
 import { BadgeTraining } from '../badge-training';
-import styles from '../card-modal/card-modal.module.scss';
 import { Empty } from '../empty';
+
+import styles from '../card-modal/card-modal.module.scss';
 
 type Props = {
     trainingByDay: Training[];
@@ -39,7 +40,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
             className={styles.CardModal}
             data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING}
             title={
-                <>
+                <React.Fragment>
                     <Meta
                         title={`Тренировки на ${moment(selectedDate).format(DD_MM_YYYY)}`}
                         description={isEmptyTrainingByDay && 'Нет активных тренировок'}
@@ -52,11 +53,11 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
                         icon={<CloseOutlined />}
                         onClick={closeModalHandler}
                     />
-                </>
+                </React.Fragment>
             }
             actions={[
                 <Button
-                    block
+                    block={true}
                     size='large'
                     type='primary'
                     onClick={nextModalHandler}

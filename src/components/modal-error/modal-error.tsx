@@ -1,7 +1,7 @@
-import { DATA_TEST_ID, PATH } from '@constants/index';
-import { Button, Modal, Result } from 'antd';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { DATA_TEST_ID, PATH } from '@constants/index';
+import { Button, Modal, Result } from 'antd';
 
 import styles from './modal-error.module.scss';
 

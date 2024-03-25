@@ -1,6 +1,7 @@
 import { API_PATH } from '@constants/index';
 
 import { CreateFeedbackResponse, Feedback, GetFeedbacksResponse } from '../../types';
+
 import { apiSlice } from '.';
 
 export const feedbackApi = apiSlice.injectEndpoints({

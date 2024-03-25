@@ -7,17 +7,15 @@ type Props = {
     description: string;
 };
 
-export const AlertCustom = ({ description }: Props) => {
-    return (
+export const AlertCustom = ({ description }: Props) => (
         <div className={styles.AlertWrapper}>
             <Alert
                 message={description}
                 type='success'
                 className={styles.Alert}
                 data-test-id={DATA_TEST_ID.ALERT}
-                closable
-                showIcon
+                closable={true}
+                showIcon={true}
             />
         </div>
     );
-};

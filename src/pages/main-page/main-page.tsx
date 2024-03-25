@@ -1,3 +1,5 @@
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { ModalError } from '@components/modal-error';
 import { DATA_TEST_ID, PATH } from '@constants/index';
@@ -7,14 +9,13 @@ import { useGetCurrentUserQuery } from '@redux/services/profile-service';
 import { useLazyGetTrainingQuery } from '@redux/services/training-service';
 import { Button } from 'antd';
 import cn from 'classnames';
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './main-page.module.scss';
 
 export const MainPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
     useGetCurrentUserQuery();
 
     const [getTraining, { data: training, isError }] = useLazyGetTrainingQuery();
@@ -29,7 +30,7 @@ export const MainPage = () => {
     }, [dispatch, navigate, training]);
 
     return (
-        <>
+        <React.Fragment>
             <div className={styles.mainPage}>
                 <div className={styles.about}>
                     <div className={cn(styles.card, styles.goals)}>
@@ -92,6 +93,6 @@ export const MainPage = () => {
                 </div>
             </div>
             <ModalError isError={isError} />
-        </>
+        </React.Fragment>
     );
 };

@@ -1,6 +1,4 @@
-import { DatePicker, Typography, Button, Form, Input } from 'antd';
-
-import { confirmPasswordRule } from '@utils/index';
+import { useState } from 'react';
 import {
     DATA_TEST_ID,
     PASSWORD_MESSAGE_ERROR,
@@ -8,14 +6,16 @@ import {
     VALIDATION_FIELD_REQUIRED,
     VALIDATION_PASSWORD,
 } from '@constants/index';
-
-import styles from './profile-form.module.scss';
-import { UploadAvatar } from '../upload-avatar/upload-avatar';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { profileSelector } from '@redux/selectors';
-import { User } from '../../../../types';
-import { useState } from 'react';
+import { confirmPasswordRule } from '@utils/index';
+import { Button, DatePicker, Form, FormProps, Input, Typography } from 'antd';
 import moment from 'moment';
+
+import { User } from '../../../../types';
+import { UploadAvatar } from '../upload-avatar/upload-avatar';
+
+import styles from './profile-form.module.scss';
 
 const { Title } = Typography;
 
@@ -45,7 +45,7 @@ export const ProfileForm = ({ submitHandler }: Props) => {
         form.setFieldValue('confirmPassword', '');
     };
 
-    const onFieldsChange = (values: any[]) => {
+    const onFieldsChange: FormProps['onFieldsChange'] = (values) => {
         if (values[0].name[0] === 'imgSrc' && values[0].value?.file.error)
             setIsDisabledSubmit(true);
         else setIsDisabledSubmit(false);

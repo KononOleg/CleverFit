@@ -1,3 +1,4 @@
+import React from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -10,12 +11,13 @@ import {
 import { isOldDate } from '@utils/index';
 import { Button, Card } from 'antd';
 
+import { ModalRequestError } from '../../../../components/modal-request-error';
 import { Nullable, Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
-import styles from '../card-modal/card-modal.module.scss';
 import { Empty } from '../empty';
-import { ModalRequestError } from '../../../../components/modal-request-error';
 import { TrainingListSelect } from '../training-select';
+
+import styles from '../card-modal/card-modal.module.scss';
 
 type Props = {
     trainingByDay: Training[];
@@ -79,7 +81,7 @@ export const CardExercises = ({
     };
 
     return (
-        <>
+        <React.Fragment>
             <Card
                 className={styles.CardModal}
                 data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
@@ -103,7 +105,7 @@ export const CardExercises = ({
                 }
                 actions={[
                     <Button
-                        block
+                        block={true}
                         size='large'
                         onClick={openDrawerExercisesHandler}
                         disabled={isDisabledAddExercise}
@@ -111,7 +113,7 @@ export const CardExercises = ({
                         Добавить упражнения
                     </Button>,
                     <Button
-                        block
+                        block={true}
                         size='large'
                         type='link'
                         onClick={onSaveHandler}
@@ -147,6 +149,6 @@ export const CardExercises = ({
                 onClickButton={closeModalHandler}
                 dataTestId={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}
             />
-        </>
+        </React.Fragment>
     );
 };

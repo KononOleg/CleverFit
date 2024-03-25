@@ -1,11 +1,12 @@
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { DATA_TEST_ID } from '@constants/index';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
-import { characterRender } from '@utils/characterRateRender';
+import { characterRender } from '@utils/character-rate-render';
 import { Button, Input, Modal, Rate } from 'antd';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ModalFeedbackError } from '../modal-feedback-error';
 import { ModalFeedbackSuccess } from '../modal-feedback-success';
+
 import styles from './modal-feedback.module.scss';
 
 type Props = {
@@ -66,14 +67,14 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
     const handleChangeRate = (value: number) => setRating(value);
 
     return (
-        <>
+        <React.Fragment>
             <Modal
                 open={open}
                 title='Ваш отзыв'
                 className={styles.ModalFeedback}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                centered
+                centered={true}
                 footer={[
                     <Button
                         type='primary'
@@ -108,6 +109,6 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                 handleCloseModalError={handleCloseModalError}
                 handleRefetchFeedback={handleRefetchFeedback}
             />
-        </>
+        </React.Fragment>
     );
 };

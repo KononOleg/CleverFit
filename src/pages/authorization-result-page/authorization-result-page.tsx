@@ -1,8 +1,8 @@
+import { useParams } from 'react-router-dom';
+import { push } from 'redux-first-history';
 import { resultConfigs } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { Button, Result } from 'antd';
-import { useParams } from 'react-router-dom';
-import { push } from 'redux-first-history';
 
 export const AuthorizationResultPage = () => {
     const { status } = useParams();
@@ -17,7 +17,7 @@ export const AuthorizationResultPage = () => {
             subTitle={config.subTitle}
             extra={
                 <Button
-                    block
+                    block={true}
                     type='primary'
                     size='large'
                     onClick={() => dispatch(push(config.href))}

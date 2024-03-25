@@ -51,7 +51,9 @@ export const trainingSlice = createSlice({
             state.training.push(training);
         },
         updateTraining(state, { payload: training }: PayloadAction<Training>) {
+            // eslint-disable-next-line no-underscore-dangle
             const findIndex = state.training.findIndex(({ _id }) => _id === training._id);
+
             state.training[findIndex] = { ...state.training[findIndex], ...training };
         },
         setExercise(

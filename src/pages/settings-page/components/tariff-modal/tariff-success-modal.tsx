@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { CheckCircleFilled } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/index';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { signOut } from '@redux/reducers/auth-slice';
+import { profileSelector } from '@redux/selectors';
 import { Modal, Typography } from 'antd';
 
 import styles from './tariff-success-modal.module.scss';
-import { CheckCircleFilled } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
-import { useState } from 'react';
-import { profileSelector } from '@redux/selectors';
-import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { signOut } from '@redux/reducers/auth-slice';
 
 export const TariffSuccessModal = () => {
     const { profile } = useAppSelector(profileSelector);

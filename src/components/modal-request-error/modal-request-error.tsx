@@ -1,7 +1,7 @@
+import { useCallback, useEffect, useState } from 'react';
 import { CloseCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { Modal } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
 
 import styles from './modal-request-error.module.scss';
 
@@ -33,30 +33,36 @@ export const ModalRequestError = ({
 
     const onOkHandler = useCallback(() => {
         setOpen(false);
-        onClickButton && onClickButton();
+        if (onClickButton) onClickButton();
     }, [onClickButton]);
 
     useEffect(() => {
-        const config = {
-            title: <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_TITLE}>{title}</span>,
-            content: (
-                <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_SUBTITLE}>
-                    {subtitle}
-                </span>
-            ),
-            className: styles.ModalRequestError,
-            handleCancel,
-            closable: true,
-            centered: true,
-            icon: <CloseCircleOutlined />,
-            closeIcon: (
-                <CloseOutlined data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE} />
-            ),
-            okText: <span data-test-id={dataTestId}>{okText}</span>,
-            onOk: onOkHandler,
-        };
         if (open) {
-            type === 'info' ? Modal.info(config) : Modal.error(config);
+            const config = {
+                title: (
+                    <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_TITLE}>{title}</span>
+                ),
+                content: (
+                    <span data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_SUBTITLE}>
+                        {subtitle}
+                    </span>
+                ),
+                className: styles.ModalRequestError,
+                handleCancel,
+                closable: true,
+                centered: true,
+                icon: <CloseCircleOutlined />,
+                closeIcon: (
+                    <CloseOutlined
+                        data-test-id={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON_CLOSE}
+                    />
+                ),
+                okText: <span data-test-id={dataTestId}>{okText}</span>,
+                onOk: onOkHandler,
+            };
+
+            if (type === 'info') Modal.info(config);
+            else Modal.error(config);
         }
     }, [dataTestId, okText, onOkHandler, open, subtitle, title, type]);
 

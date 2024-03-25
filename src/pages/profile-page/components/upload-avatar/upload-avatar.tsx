@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { Button, Form, Modal, Upload } from 'antd';
-import type { UploadFile } from 'antd';
+import React, { useState } from 'react';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
-import { RcFile } from 'antd/lib/upload';
-import { getBase64 } from '@utils/index';
+import { ModalRequestError } from '@components/modal-request-error';
 import { API_HOST, API_PATH, DATA_TEST_ID, HttpStatusCode } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector, authSelector } from '@redux/selectors';
-import { ModalRequestError } from '@components/modal-request-error';
+import { getBase64 } from '@utils/index';
+import type { UploadFile } from 'antd';
+import { Button, Form, Modal, Upload } from 'antd';
+import { RcFile } from 'antd/lib/upload';
 
 import styles from './upload-avatar.module.scss';
 
@@ -35,12 +35,18 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
     const isShowUploadButton = fileList.length === 0;
 
     const handlePreview = async (file: UploadFile) => {
-        if (!file.url && !file.preview)
-            file.preview = await getBase64(file.originFileObj as RcFile);
+        const newFile = file;
 
-        setPreviewImage(file.url || (file.preview as string));
+        if (!file.url && !file.preview)
+            newFile.preview = await getBase64(file.originFileObj as RcFile);
+
+        setPreviewImage(newFile.url || (newFile.preview as string));
         setPreviewOpen(true);
-        setPreviewTitle(file.name || file.url?.substring(file.url?.lastIndexOf('/') + 1) || '');
+        setPreviewTitle(
+            newFile.name ||
+                newFile.url?.substring((newFile.url?.lastIndexOf('/') as number) + 1) ||
+                '',
+        );
     };
     const handleCancel = () => setPreviewOpen(false);
     const onCloseModal = () => setIsBigFileError(false);
@@ -50,7 +56,7 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
     };
 
     return (
-        <>
+        <React.Fragment>
             <Form.Item name='imgSrc' data-test-id={DATA_TEST_ID.PROFILE_AVATAR}>
                 <Upload
                     maxCount={1}
@@ -80,7 +86,7 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
                 onClickButton={onCloseModal}
                 dataTestId={DATA_TEST_ID.BIG_FILE_ERROR_CLOSE}
             />
-        </>
+        </React.Fragment>
     );
 };
 

@@ -1,14 +1,15 @@
-import { Button, Drawer, Typography } from 'antd';
-
-import styles from './drawer-tariff.module.scss';
+import React, { useState } from 'react';
 import { CheckCircleFilled, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
-import { TariffCost } from '../tariff-cost';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector, profileSelector } from '@redux/selectors';
-import { useState } from 'react';
 import { useBuyTariffMutation } from '@redux/services/profile-service';
+import { Button, Drawer, Typography } from 'antd';
+
+import { TariffCost } from '../tariff-cost';
 import { TariffSuccessModal } from '../tariff-modal';
+
+import styles from './drawer-tariff.module.scss';
 
 const Traits = [
     {
@@ -61,6 +62,7 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
 
     const onFinishHandler = ({ days }: { days: number }) => {
         buyTariff({
+            // eslint-disable-next-line no-underscore-dangle
             tariffId: tariffs[0]._id as string,
             days,
         });
@@ -68,7 +70,7 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
     };
 
     return (
-        <>
+        <React.Fragment>
             <Drawer
                 className={styles.DrawerTariff}
                 title='Сравнить тарифы'
@@ -85,7 +87,7 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
                             htmlType='submit'
                             data-test-id={DATA_TEST_ID.TARIFF_SUBMIT}
                             disabled={isDisabledSubmit}
-                            block
+                            block={true}
                         >
                             Выбрать и оплатить
                         </Button>
@@ -129,6 +131,6 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
                 )}
             </Drawer>
             {isSuccess && <TariffSuccessModal />}
-        </>
+        </React.Fragment>
     );
 };

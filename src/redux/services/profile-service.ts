@@ -1,4 +1,5 @@
 import { API_PATH } from '@constants/index';
+import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 
 import {
     BuyTariffRequest,
@@ -7,8 +8,8 @@ import {
     UpdateUserRequest,
     UpdateUserResponse,
 } from '../../types';
+
 import { apiSlice } from '.';
-import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 
 export const profileApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -20,6 +21,7 @@ export const profileApi = apiSlice.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
+
                     dispatch(setProfile(data));
                 } catch {
                     dispatch(setProfile(null));
@@ -35,6 +37,7 @@ export const profileApi = apiSlice.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
+
                     dispatch(setProfile(data));
                 } catch {
                     dispatch(setProfile(null));
@@ -49,6 +52,7 @@ export const profileApi = apiSlice.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
+
                     dispatch(setTariffs(data));
                 } catch {
                     dispatch(setTariffs([]));

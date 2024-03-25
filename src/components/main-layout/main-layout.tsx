@@ -1,9 +1,9 @@
+import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
 import { Sider } from '@components/sider';
 import { PATH } from '@constants/index';
 import cn from 'classnames';
-import { Outlet, useLocation } from 'react-router-dom';
 
 import styles from './main-layout.module.scss';
 
@@ -23,6 +23,7 @@ export const MainLayout = ({ isShowHeader = true }: Props) => {
     const isMainThird = isCalendarPage;
     const isMainFourth = !isMainSecond && !isMainThird;
     const isMainFifth = isSettingsPage;
+
     return (
         <div className={styles.MainLayout}>
             <Sider />

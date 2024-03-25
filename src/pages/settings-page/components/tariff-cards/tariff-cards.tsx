@@ -1,11 +1,13 @@
+import React from 'react';
+import { CheckOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/index';
 import { Button, Card, Typography } from 'antd';
 import cn from 'classnames';
+
 import imgFree from '../../../../assets/images/free.png';
 import imgPro from '../../../../assets/images/pro.png';
 
 import styles from './tariff-cards.module.scss';
-import { CheckOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
 
 const Tariffs = [
     { title: 'FREE tarif', image: imgFree, dataTestId: DATA_TEST_ID.FREE_TARIFF_CARD },
@@ -19,9 +21,8 @@ type Props = {
     day: number;
 };
 
-export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => {
-    return (
-        <>
+export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => (
+        <React.Fragment>
             <Typography.Title className={styles.Title} level={4}>
                 Мой тариф
             </Typography.Title>
@@ -75,6 +76,5 @@ export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => {
                     );
                 })}
             </div>
-        </>
+        </React.Fragment>
     );
-};

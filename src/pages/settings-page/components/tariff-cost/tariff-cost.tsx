@@ -1,8 +1,9 @@
+import { DATA_TEST_ID } from '@constants/index';
 import { Form, Radio, Typography } from 'antd';
 
-import styles from './tariff-cost.module.scss';
-import { DATA_TEST_ID } from '@constants/index';
 import { Tariff } from '../../../../types';
+
+import styles from './tariff-cost.module.scss';
 
 type Props = {
     tariffs: Tariff[];

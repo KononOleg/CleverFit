@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
     CalendarOutlined,
     HeartFilled,
@@ -12,10 +14,9 @@ import { signOut } from '@redux/reducers/auth-slice';
 import { appSelector } from '@redux/selectors';
 import { Button, Layout, Menu } from 'antd';
 import cn from 'classnames';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import ExitPNG from '../../assets/icons/exit.png';
+
 import styles from './sider.module.scss';
 
 const { Sider: SiderAntd } = Layout;
@@ -48,6 +49,7 @@ export const Sider = () => {
     const dispatch = useAppDispatch();
 
     const signOutHandler = () => dispatch(signOut());
+    const setCollapsedHandler = () => setCollapsed(!collapsed);
 
     return (
         <SiderAntd
@@ -65,7 +67,7 @@ export const Sider = () => {
             >
                 <div>
                     <Link to='/' className={styles.logoWrapper}>
-                        <div className={!collapsed ? styles.logo : styles.logoSmall} />
+                        <div className={collapsed ? styles.logoSmall : styles.logo} />
                     </Link>
                     <Menu
                         mode='inline'
@@ -75,7 +77,7 @@ export const Sider = () => {
                         items={items}
                     />
 
-                    <div className={styles.btnClose} onClick={() => setCollapsed(!collapsed)}>
+                    <div className={styles.btnClose}>
                         <Button
                             type='link'
                             data-test-id={
@@ -85,6 +87,7 @@ export const Sider = () => {
                             }
                             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                             className={styles.siderBtn}
+                            onClick={setCollapsedHandler}
                         />
                     </div>
                 </div>

@@ -1,15 +1,16 @@
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { setCreatedTraining, setIsCardExercises } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
 import { getTrainingByDay } from '@utils/index';
 import cn from 'classnames';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
 
 import { Nullable } from '../../../../types';
 import { CardExercises } from '../card-exercises';
 import { CardTraining } from '../card-training';
 import { DrawerExercise } from '../drawer-exercise';
+
 import styles from './card-modal.module.scss';
 
 type Props = {
@@ -50,6 +51,7 @@ export const CardModal = ({ offsetTop }: Props) => {
 
     const onChangeTrainingHandler = (name: string) => {
         const trainingFind = trainingByDay.find((exercise) => exercise.name === name);
+
         if (trainingFind) dispatch(setCreatedTraining(trainingFind));
         nextModalHandler();
         setSelectedTraining(name);
@@ -61,7 +63,7 @@ export const CardModal = ({ offsetTop }: Props) => {
     };
 
     return (
-        <>
+        <React.Fragment>
             <div
                 className={cn(styles.CardWrapper, {
                     [styles.CardWrapperRight]: isRight && !offsetTop,
@@ -89,12 +91,11 @@ export const CardModal = ({ offsetTop }: Props) => {
             </div>
 
             <DrawerExercise
-                trainingByDay={trainingByDay}
                 openDrawerExercises={openDrawerExercises}
                 closeDrawerExercisesHandler={closeDrawerExercisesHandler}
                 isEditExercises={isEditExercises}
                 selectedTraining={selectedTraining as string}
             />
-        </>
+        </React.Fragment>
     );
 };
