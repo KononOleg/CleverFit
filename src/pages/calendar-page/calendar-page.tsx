@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Portal } from '@components/portal';
 import { DATA_TEST_ID, LocalData } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -15,12 +15,6 @@ import { BadgeTraining } from './components/badge-training';
 import { CardModal } from './components/card-modal';
 
 import styles from './calendar-page.module.scss';
-
-moment.locale('ru', {
-    week: {
-        dow: 1,
-    },
-});
 
 export const CalendarPage = () => {
     const dispatch = useAppDispatch();

@@ -8,8 +8,15 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { profileSelector } from '@redux/selectors';
 import { useLazyGetCurrentUserQuery } from '@redux/services/profile-service';
 import cn from 'classnames';
+import moment from 'moment';
 
 import styles from './main-layout.module.scss';
+
+moment.locale('ru', {
+    week: {
+        dow: 1,
+    },
+});
 
 type Props = {
     isShowHeader?: boolean;
@@ -22,7 +29,7 @@ export const MainLayout = ({ isShowHeader = true }: Props) => {
     const [getCurrentUser] = useLazyGetCurrentUserQuery();
 
     useEffect(() => {
-        if (!profile) getCurrentUser();
+        if (profile === null) setTimeout(getCurrentUser, 200);
     }, [getCurrentUser, profile]);
 
     const isMainPage = pathname === PATH.MAIN;
