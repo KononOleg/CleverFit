@@ -146,6 +146,7 @@ export const CardExercises = ({
                 isError={isUpdateError || isCreateError}
                 subtitle='Придётся попробовать ещё раз'
                 okText='Закрыть'
+                closable={true}
                 onClickButton={closeModalHandler}
                 dataTestId={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}
             />

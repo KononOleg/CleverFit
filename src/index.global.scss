@@ -4,6 +4,10 @@
     font-weight: $font-weight-xl;
 }
 
+.ant-drawer-mask {
+    background: transparent;
+}
+
 .ant-modal {
     width: 540px !important;
     padding: 0 $gap-m;

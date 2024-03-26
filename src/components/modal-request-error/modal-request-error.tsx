@@ -13,6 +13,7 @@ type Props = {
     okText: string;
     onClickButton?: () => void;
     dataTestId?: string;
+    closable?: boolean;
 };
 export const ModalRequestError = ({
     title,
@@ -22,6 +23,7 @@ export const ModalRequestError = ({
     okText,
     type,
     dataTestId,
+    closable,
 }: Props) => {
     const [open, setOpen] = useState(false);
 
@@ -49,7 +51,7 @@ export const ModalRequestError = ({
                 ),
                 className: styles.ModalRequestError,
                 handleCancel,
-                closable: true,
+                closable,
                 centered: true,
                 icon: <CloseCircleOutlined />,
                 closeIcon: (
@@ -64,7 +66,7 @@ export const ModalRequestError = ({
             if (type === 'info') Modal.info(config);
             else Modal.error(config);
         }
-    }, [dataTestId, okText, onOkHandler, open, subtitle, title, type]);
+    }, [closable, dataTestId, okText, onOkHandler, open, subtitle, title, type]);
 
     return null;
 };
