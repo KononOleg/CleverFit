@@ -1,11 +1,12 @@
+import React, { Dispatch, SetStateAction,  useState } from 'react';
 import { DATA_TEST_ID } from '@constants/index';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
-import { characterRender } from '@utils/characterRateRender';
+import { characterRender } from '@utils/character-rate-render';
 import { Button, Input, Modal, Rate } from 'antd';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { ModalFeedbackError } from '../modal-feedback-error';
 import { ModalFeedbackSuccess } from '../modal-feedback-success';
+
 import styles from './modal-feedback.module.scss';
 
 type Props = {
@@ -19,22 +20,9 @@ const { TextArea } = Input;
 export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
     const [rating, setRating] = useState(0);
     const [message, setMessage] = useState('');
-    const [openModalSucces, setOpenModalSucces] = useState(false);
-    const [openModalError, setOpenModalError] = useState(false);
     const [createFeedback, { isError, isSuccess }] = useCreateFeedbackMutation();
 
     const isSubmitDisabled = !rating;
-
-    useEffect(() => {
-        if (isSuccess) {
-            handleRefetch();
-            setOpenModalSucces(true);
-        }
-    }, [handleRefetch, isSuccess]);
-
-    useEffect(() => {
-        if (isError) setOpenModalError(true);
-    }, [isError]);
 
     const handleOk = () => {
         setOpen(false);
@@ -48,32 +36,25 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
     };
 
     const handleCloseModalSuccess = () => {
+        handleRefetch();
         handleCancel();
-        setOpenModalSucces(false);
     };
 
-    const handleCloseModalError = () => {
-        setOpenModalError(false);
-    };
-
-    const handleRefetchFeedback = () => {
-        setOpen(true);
-        setOpenModalError(false);
-    };
+    const handleRefetchFeedback = () => setOpen(true);
 
     const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
         setMessage(e.target.value);
     const handleChangeRate = (value: number) => setRating(value);
 
     return (
-        <>
+        <React.Fragment>
             <Modal
                 open={open}
                 title='Ваш отзыв'
                 className={styles.ModalFeedback}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                centered
+                centered={true}
                 footer={[
                     <Button
                         type='primary'
@@ -100,14 +81,10 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
                 />
             </Modal>
             <ModalFeedbackSuccess
-                open={openModalSucces}
+                isSuccess={isSuccess}
                 handleCloseModalSuccess={handleCloseModalSuccess}
             />
-            <ModalFeedbackError
-                open={openModalError}
-                handleCloseModalError={handleCloseModalError}
-                handleRefetchFeedback={handleRefetchFeedback}
-            />
-        </>
+            <ModalFeedbackError isError={isError} handleRefetchFeedback={handleRefetchFeedback} />
+        </React.Fragment>
     );
 };

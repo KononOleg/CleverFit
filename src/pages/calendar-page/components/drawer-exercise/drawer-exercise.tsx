@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -5,18 +6,16 @@ import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
 import { Button, Drawer } from 'antd';
 import moment from 'moment';
-import { useState } from 'react';
 
-import { Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 import { ExerciseForm } from '../exercise-form';
+
 import styles from './drawer-exercise.module.scss';
 
 type Props = {
     openDrawerExercises: boolean;
     isEditExercises: boolean;
     selectedTraining: string;
-    trainingByDay: Training[];
     closeDrawerExercisesHandler: () => void;
 };
 
@@ -69,7 +68,7 @@ export const DrawerExercise = ({
             <div className={styles.Exercises}>
                 {createdTraining.exercises.map(
                     ({ _id, name, replays, weight, approaches }, index) => (
-                        <div key={`${_id}${index}`}>
+                        <div key={`${_id}${index.toString()}`}>
                             <ExerciseForm
                                 excerciseNameInitial={name}
                                 replaysInitial={replays}

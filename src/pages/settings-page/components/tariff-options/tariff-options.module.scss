@@ -1,0 +1,43 @@
+@import '../../../../index.variables.scss';
+
+.Options {
+    max-width: 505px;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-2xs;
+    padding: $gap-5xl 0;
+
+    .Option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .Title {
+            display: flex;
+            align-items: center;
+            gap: $gap-3xs;
+            font-weight: $font-weight-xl;
+        }
+
+        .Icon {
+            font-size: $font-size-m;
+            color: $character-light-secondary-45;
+            cursor: pointer;
+        }
+
+        .Disabled {
+            color: $character-light-disable-25;
+        }
+
+        :global(.ant-form-item) {
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 830px) {
+        .Title {
+            align-items: start;
+            max-width: 197px;
+        }
+    }
+}

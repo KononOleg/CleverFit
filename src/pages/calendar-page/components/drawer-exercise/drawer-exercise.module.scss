@@ -3,10 +3,6 @@
 .DrawerExercises {
     font-family: Inter;
 
-    :global(.ant-drawer-mask) {
-        background: transparent;
-    }
-
     :global(.ant-drawer-content) {
         border-radius: $border-radius-m 0 0 $border-radius-m;
     }

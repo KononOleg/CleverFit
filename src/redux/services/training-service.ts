@@ -8,6 +8,7 @@ import {
     UpdateTrainingRequest,
     UpdateTrainingResponse,
 } from '../../types';
+
 import { apiSlice } from '.';
 
 export const trainingApi = apiSlice.injectEndpoints({
@@ -33,6 +34,7 @@ export const trainingApi = apiSlice.injectEndpoints({
         }),
         updateTraining: builder.mutation<UpdateTrainingResponse, UpdateTrainingRequest>({
             query: (training) => ({
+                // eslint-disable-next-line no-underscore-dangle
                 url: `${API_PATH.TRAINING}/${training._id}`,
                 method: 'PUT',
                 body: training,

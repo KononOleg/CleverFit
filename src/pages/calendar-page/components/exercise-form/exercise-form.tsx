@@ -5,6 +5,7 @@ import { setExercise } from '@redux/reducers/training-slice';
 import { Checkbox, Input, InputNumber } from 'antd';
 
 import { Nullable } from '../../../../types';
+
 import styles from './exercise-form.module.scss';
 
 type Props = {

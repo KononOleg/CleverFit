@@ -1,0 +1,99 @@
+@import '../../../../index.variables.scss';
+
+.DrawerTariff {
+    font-family: Inter;
+
+    .tariffPro {
+        margin: $gap-xl 0 0;
+        padding: $gap-2m 0;
+        background: $primary-light-1;
+        color: $primary-light-10;
+        text-align: center;
+
+        h5 {
+            margin: 0;
+        }
+    }
+
+    .Traits {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-s;
+        padding-bottom: $gap-7xl;
+    }
+
+    .Trait {
+        display: flex;
+        justify-content: end;
+
+        svg {
+            font-size: 18px;
+        }
+    }
+
+    .Buttons {
+        padding-top: $gap-7xl;
+        display: flex;
+        gap: $gap-2m;
+        justify-content: end;
+        margin-bottom: $gap-xl;
+    }
+
+    .Title {
+        margin-right: auto;
+    }
+
+    .LastTrait {
+        margin-left: $gap-7xl;
+        margin-right: $gap-m;
+    }
+
+    .Tariff {
+        padding: $gap-3xs $gap-s;
+        font-size: $font-size-xs;
+        line-height: $font-line-xs;
+    }
+
+    .Tariff:first-child {
+        background-color: $neutral-gray-4;
+    }
+
+    .Tariff:last-child {
+        background-color: $primary-light-1;
+        color: $primary-light-7;
+    }
+
+    .CloseCircle {
+        color: $character-light-disable-25;
+    }
+
+    .CheckCircle {
+        color: $character-light-success;
+    }
+
+    :global(.ant-drawer-title) {
+        font-size: $font-size-l;
+    }
+
+    :global(.ant-drawer-header),
+    :global(.ant-drawer-footer) {
+        border: 0;
+        padding: $gap-xl $gap-4xl $gap-m;
+    }
+
+    :global(.ant-drawer-body) {
+        padding: 0 $gap-4xl;
+    }
+
+    :global(.ant-btn) {
+        padding: $gap-l;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    :global(.ant-drawer-close) {
+        position: absolute;
+        right: $gap-2m;
+    }
+}

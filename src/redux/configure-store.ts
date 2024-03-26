@@ -1,10 +1,11 @@
+import { createReduxHistoryContext } from 'redux-first-history';
 import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
-import { createReduxHistoryContext } from 'redux-first-history';
 
 import { listenerMiddleware } from './effects/effects';
 import { appSlice } from './reducers/app-slice';
 import { authSlice } from './reducers/auth-slice';
+import { profileSlice } from './reducers/profile-slice';
 import { trainingSlice } from './reducers/training-slice';
 import { apiSlice } from './services';
 
@@ -19,6 +20,7 @@ export const store = configureStore({
         app: appSlice.reducer,
         auth: authSlice.reducer,
         training: trainingSlice.reducer,
+        profile: profileSlice.reducer,
         router: routerReducer,
     },
     middleware: (getDefaultMiddleware) =>

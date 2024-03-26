@@ -17,6 +17,7 @@ export const VALIDATION_PASSWORD: Rule = {
 };
 
 export const API_HOST = 'https://marathon-api.clevertec.ru';
+export const IMAGE_PATH = 'https://training-api.clevertec.ru';
 
 export const API_PATH = {
     REGISTER: '/auth/registration',
@@ -28,13 +29,21 @@ export const API_PATH = {
     FEEDBACK: '/feedback',
     TRAINING: '/training',
     TRAINING_LIST: '/catalogs/training-list',
+    UPLOAD_IMAGE: '/upload-image',
+    USER: '/user',
+    CURRENT_USER: '/user/me',
+    TARIFF: '/tariff',
+    TARIFF_LIST: '/catalogs/tariff-list',
 };
 
 export const PATH = {
     ROOT: '/',
     MAIN: '/main',
+    NOT_FOUND: '*',
     FEEDBACKS: '/feedbacks',
     CALENDAR: '/calendar',
+    PROFILE: '/profile',
+    SETTINGS: '/settings',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
@@ -104,6 +113,32 @@ export const DATA_TEST_ID = {
     MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
     MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
     MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
+    MENU_BUTTON_PROFILE: 'menu-button-profile',
+    HEADER_SETTINGS: 'header-settings',
+    SETTINGS_BACK: 'settings-back',
+    PROFILE_AVATAR: 'profile-avatar',
+    PROFILE_NAME: 'profile-name',
+    PROFILE_SURNAME: 'profile-surname',
+    PROFILE_EMAIL: 'profile-email',
+    PROFILE_BIRTHDAY: 'profile-birthday',
+    PROFILE_PASSWORD: 'profile-password',
+    PROFILE_REPEAT_PASSWORD: 'profile-repeat-password',
+    PROFILE_SUBMIT: 'profile-submit',
+    BIG_FILE_ERROR_CLOSE: 'big-file-error-close',
+    ALERT: 'alert',
+    FREE_TARIFF_CARD: 'free-tariff-card',
+    PRO_TARIFF_CARD: 'pro-tariff-card',
+    ACTIVATE_TARIFF_BTN: 'activate-tariff-btn',
+    TARIFF_TRAININGS: 'tariff-trainings',
+    TARIFF_NOTIFICATIONS: 'tariff-notifications',
+    TARIFF_THEME: 'tariff-theme',
+    TARIFF_THEME_ICON: 'tariff-theme-icon',
+    TARIFF_TRAININGS_ICON: 'tariff-trainings-icon',
+    TARIFF_NOTIFICATIONS_ICON: 'tariff-notifications-icon',
+    TARIFF_SIDER: 'tariff-sider',
+    TARIFF_SUBMIT: 'tariff-submit',
+    TARIFF_COST: 'tariff-cost',
+    TARIFF_MODAL_SUCCESS: 'tariff-modal-success',
 };
 
 export const resultConfigs: ResultConfigs = {

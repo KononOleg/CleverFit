@@ -1,0 +1,26 @@
+@import '../../index.variables.scss';
+
+.SettingsPage {
+    height: 100%;
+
+    .Buttons {
+        margin-top: $gap-9xl;
+
+        :global(.ant-btn) {
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 830px) {
+        .Buttons {
+            display: flex;
+            flex-direction: column;
+            gap: $gap-2m;
+            margin-top: $gap-3xs;
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -10,7 +10,7 @@
         max-width: 1000px;
         padding-top: $gap-2xs;
     }
-
+    .profile,
     .container {
         display: flex;
         justify-content: space-between;
@@ -21,14 +21,45 @@
     .containerRight {
         justify-content: flex-end;
     }
+
+    .buttonSettings {
+        display: flex;
+        align-items: center;
+        gap: $gap-m;
+
+        a {
+            color: $character-light-title-85;
+        }
+    }
+
+    .back {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-m;
+        padding: 0;
+
+        h4 {
+            margin: 0;
+        }
+    }
 }
 
 @media (max-width: 1000px) {
     .header {
-        button {
-            span:first-child {
-                display: none;
+        .profile {
+            flex-direction: column;
+            padding: 0 0 $gap-xs;
+
+            h4 {
+                font-size: $font-size-s;
+                font-weight: $font-weight-s;
             }
+        }
+
+        .buttonSettings {
+            margin-left: auto;
         }
     }
 }
@@ -37,7 +68,23 @@
     .header {
         padding-top: $gap-2m;
 
-        button {
+        .profile {
+            padding: 0;
+        }
+
+        .back {
+            height: 18px;
+
+            gap: $gap-m;
+            padding: 0;
+
+            h4 {
+                font-size: $font-size-s;
+                font-weight: $font-weight-s;
+            }
+        }
+
+        .buttonSettings {
             width: 32px;
             height: 32px !important;
             display: flex;
@@ -47,13 +94,13 @@
             box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
             background: $neutral-gray-1;
 
-            span:first-child {
+            span {
                 display: block;
                 width: 14px;
                 height: 14px;
             }
 
-            span:last-child {
+            a {
                 display: none;
             }
         }

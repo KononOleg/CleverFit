@@ -2,6 +2,7 @@ import { DATA_TEST_ID } from '@constants/index';
 import { Select } from 'antd';
 
 import { Nullable, TrainingList } from '../../../../types';
+
 import styles from './training-list-select.module.scss';
 
 type Props = {

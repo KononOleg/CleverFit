@@ -1,8 +1,9 @@
 import { UserOutlined } from '@ant-design/icons';
-import { characterRender } from '@utils/characterRateRender';
+import { characterRender } from '@utils/character-rate-render';
 import { Avatar, Card, Rate } from 'antd';
 
 import { Feedback } from '../../../../types';
+
 import styles from './feedback-card.module.scss';
 
 export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }: Feedback) => {
@@ -12,7 +13,7 @@ export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }:
         <Card bordered={false} className={styles.FeedbackCard}>
             <div className={styles.FeedbackWrapper}>
                 <div className={styles.ProfileInfo}>
-                    <Avatar size={42} icon={imageSrc || <UserOutlined />} />
+                    <Avatar size={42} src={imageSrc} icon={<UserOutlined />} />
                     <div>
                         <h6>{name || 'Пользователь'}</h6>
                         <h6>{surName || ''}</h6>

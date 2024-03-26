@@ -1,0 +1,42 @@
+@import '../../../../index.variables.scss';
+
+.TariffCost {
+    padding-top: $gap-5xl;
+
+    .Title {
+        font-size: $font-size-s;
+        font-weight: $font-weight-xl;
+        margin-bottom: $gap-3xl;
+    }
+
+    .Costs {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-l;
+
+        .Cost {
+            width: 100%;
+            max-width: 267px;
+            display: flex;
+            align-items: center;
+            flex: 1 0;
+            justify-content: space-between;
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: 0;
+        }
+    }
+
+    :global(.ant-radio-wrapper) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    :global(.ant-radio + *) {
+        padding: 0;
+        display: flex;
+        width: 100%;
+    }
+}

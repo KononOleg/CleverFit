@@ -1,0 +1,73 @@
+@import '../../../../index.variables.scss';
+
+.Cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap-s $gap-2xl;
+    margin-top: $gap-s;
+
+    .Cover {
+        position: relative;
+        max-width: 240px;
+
+        img {
+            max-width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+        }
+    }
+
+    .Active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $gap-xs;
+
+        h5 {
+            margin: 0;
+        }
+    }
+
+    .Inactive img {
+        filter: grayscale(1);
+        opacity: 0.3;
+    }
+
+    :global(.ant-card-body) {
+        height: 95px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    :global(.ant-card-head) {
+        height: 53px;
+    }
+
+    :global(.ant-card-head-title),
+    :global(.ant-card-extra) {
+        padding: $gap-s 0;
+
+        :global(.ant-btn-link) {
+            padding: 0;
+        }
+    }
+
+    :global(.ant-btn) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $gap-l;
+    }
+
+    @media (max-width: 830px) {
+        .Cover {
+            max-width: 100%;
+        }
+
+        :global(.ant-card-body) {
+            height: 64px;
+        }
+    }
+}

@@ -8,4 +8,6 @@ export const characterRender = (index: number | undefined, value: number) => {
             <StarTwoTone twoToneColor={['#FAAD14', 'transparent']} />
         );
     }
+
+    return null;
 };

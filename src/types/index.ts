@@ -1,3 +1,4 @@
+import { UploadFile } from 'antd';
 import { ResultStatusType } from 'antd/lib/result';
 
 export type Nullable<T> = T | null;
@@ -7,7 +8,19 @@ export type User = {
     firstName: string;
     lastName: string;
     imgSrc: string;
+    birthday: string;
     readyForJointTraining: boolean;
+    sendNotification:boolean,
+    tariff: UserTariff;
+};
+
+export type UserTariff = {
+    tariffId: string;
+    expired: string;
+};
+
+export type ProfileAvatar = {
+    file: UploadFile;
 };
 
 export type Feedback = {
@@ -35,8 +48,18 @@ export type Training = {
     exercises: Exercise[];
     isImplementation?: boolean;
 };
+export type Period = {
+    text: string;
+    cost: number;
+    days: number;
+};
+export type Tariff = {
+    _id?: string;
+    name: string;
+    periods: Period[];
+};
 
-export type TrainingList = { name: string; key: string }[];
+export type TrainingList = Array<{ name: string; key: string }>;
 
 export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];
@@ -45,6 +68,13 @@ export type CreateTrainingRequest = Training;
 export type CreateTrainingResponse = Training;
 export type UpdateTrainingRequest = Training;
 export type UpdateTrainingResponse = Training;
+
+export type GetCurrentUserResponse = User;
+export type UpdateUserResponse = User;
+export type UpdateUserRequest = User;
+
+export type GetTariffListResponse = Tariff[];
+export type BuyTariffRequest = { tariffId: string; days: number };
 
 export type CreateFeedbackResponse = {
     message: string;

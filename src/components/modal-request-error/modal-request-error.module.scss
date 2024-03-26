@@ -1,4 +1,4 @@
-@import '../../../../index.variables.scss';
+@import '../../index.variables.scss';
 
 .ModalRequestError:global.ant-modal {
     max-width: 416px;
@@ -7,7 +7,7 @@
     animation-duration: 0s;
 
     :global(.ant-modal-body) {
-        padding: $gap-s $gap-xl $gap-m;
+        padding: $gap-4xl $gap-4xl $gap-xl;
     }
 
     :global(.ant-modal-confirm-btns) {

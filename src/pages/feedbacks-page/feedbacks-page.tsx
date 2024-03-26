@@ -1,13 +1,14 @@
+import React, { useState } from 'react';
 import { ModalError } from '@components/modal-error';
 import { DATA_TEST_ID } from '@constants/index';
 import { useGetFeedbacksQuery } from '@redux/services/feedback-service';
 import Button from 'antd/lib/button';
 import classNames from 'classnames';
-import { useState } from 'react';
 
 import { FeedbackCard } from './components/feedback-card';
 import { ModalFeedback } from './components/modal-feedback';
 import { NoFeedbacks } from './components/no-feedbacks';
+
 import styles from './feedbacks-page.module.scss';
 
 export const FeedbacksPage = () => {
@@ -23,7 +24,7 @@ export const FeedbacksPage = () => {
     const handleRefetch = () => refetch();
 
     return (
-        <>
+        <React.Fragment>
             {isSuccessFetching &&
                 (isEmptyFeedbacks ? (
                     <NoFeedbacks handleOpenNewFeedback={handleOpenNewFeedback} />
@@ -65,6 +66,6 @@ export const FeedbacksPage = () => {
                 handleRefetch={handleRefetch}
             />
             <ModalError isError={isError} />
-        </>
+        </React.Fragment>
     );
 };

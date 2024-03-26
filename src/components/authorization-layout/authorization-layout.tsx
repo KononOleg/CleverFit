@@ -1,7 +1,7 @@
+import { Navigate, Outlet } from 'react-router-dom';
 import { PATH } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector } from '@redux/selectors';
-import { Navigate, Outlet } from 'react-router-dom';
 
 import styles from './authorization-layout.module.scss';
 

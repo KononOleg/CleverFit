@@ -17,17 +17,31 @@ header,
         flex-direction: column;
         width: 100%;
         min-height: 100vh;
-        
+
         .Main {
             display: flex;
             flex-grow: 1;
             flex-direction: column;
-            padding-top: $gap-xl;
-            padding-bottom: $gap-6xl;
         }
 
-        .MainSecond {
+        .MainThird {
             padding: 0;
+        }
+
+        .MainSecond,
+        .MainFourth,
+        .MainFifth {
+            padding: $gap-xl $gap-xl $gap-6xl;
+        }
+
+        .MainFifth {
+            background: $neutral-gray-3;
+        }
+
+        @media (max-width: 830px) {
+            .MainFourth {
+                padding: $gap-xl 0 $gap-6xl;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Nullable } from '../../types';
 
 type AuthState = {
@@ -21,6 +22,7 @@ export const authSlice = createSlice({
     reducers: {
         checkAuth(state) {
             const token = localStorage.getItem('token');
+
             if (token) state.token = token;
             state.isLoading = false;
         },

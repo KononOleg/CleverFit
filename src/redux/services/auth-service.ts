@@ -8,6 +8,7 @@ import {
     LoginResponse,
     RegisterRequest,
 } from '../../types';
+
 import { apiSlice } from '.';
 
 export const authApi = apiSlice.injectEndpoints({

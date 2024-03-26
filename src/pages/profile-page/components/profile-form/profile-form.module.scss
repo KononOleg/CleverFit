@@ -1,0 +1,54 @@
+@import '../../../../index.variables.scss';
+
+.ProfileForm {
+    max-width: 480px;
+
+    :global(.ant-typography) {
+        margin-bottom: $gap-xl;
+    }
+
+    .Personal {
+        display: flex;
+        gap: $gap-2m;
+        margin-bottom: $gap-l;
+    }
+
+    .PersonalInputs {
+        flex: 1 0;
+        display: flex;
+        flex-direction: column;
+
+        :global(.ant-form-item) {
+            margin-bottom: $gap-m;
+        }
+    }
+
+    :global(.ant-form-item-with-help) {
+        margin-bottom: $gap-7xl;
+    }
+
+    .Datepicker {
+        width: 100%;
+    }
+
+    .ProfileButton {
+        margin-top: $gap-l;
+    }
+
+    @media (max-width: 830px) {
+        .Personal {
+            flex-direction: column-reverse;
+            gap: 0;
+            margin-bottom: $gap-4xs;
+        }
+
+        .ProfileButton {
+            margin-top: $gap-m;
+            width: 100%;
+        }
+
+        :global(.ant-typography) {
+            margin-bottom: $gap-l;
+        }
+    }
+}
