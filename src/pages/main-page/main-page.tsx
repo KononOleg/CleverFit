@@ -61,7 +61,7 @@ export const MainPage = () => {
                     <div>
                         <p>Расписать тренировки</p>
                         <Button type='text' icon={<HeartFilled />}>
-                            Тренировки
+                            <Link to={PATH.TRAINING}>Тренировки</Link>
                         </Button>
                     </div>
 

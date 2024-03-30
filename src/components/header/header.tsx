@@ -15,6 +15,7 @@ export const Header = () => {
     const isCalendarPage = pathname === PATH.CALENDAR;
     const isProfilePage = pathname === PATH.PROFILE;
     const isSettingsPage = pathname === PATH.SETTINGS;
+    const isTrainingPage = pathname === PATH.TRAINING;
 
     const isShowBreadcrumb = !isProfilePage && !isSettingsPage;
 
@@ -50,7 +51,7 @@ export const Header = () => {
                 </div>
             )}
 
-            {isCalendarPage && (
+            {(isCalendarPage || isTrainingPage) && (
                 <div className={cn(styles.container, styles.containerRight)}>
                     <Header.Setting />
                 </div>

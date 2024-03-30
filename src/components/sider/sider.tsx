@@ -29,7 +29,7 @@ const items = [
     {
         key: '2',
         icon: <HeartFilled />,
-        label: <Link to=''>Тренировки</Link>,
+        label: <Link to={PATH.TRAINING}>Тренировки</Link>,
     },
     {
         key: '3',

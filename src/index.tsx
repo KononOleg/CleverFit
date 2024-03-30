@@ -17,6 +17,7 @@ import { MainPage } from '@pages/main-page';
 import { NotFoundPage } from '@pages/not-found-page';
 import { ProfilePage } from '@pages/profile-page';
 import { SettingsPage } from '@pages/settings-page';
+import { TrainingPage } from '@pages/training-page';
 import { history, store } from '@redux/configure-store';
 
 import { AUTH_TAB, PATH } from './constants';
@@ -53,7 +54,11 @@ root.render(
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.SETTINGS} element={<SettingsPage />} />
                             </Route>
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.TRAINING} element={<TrainingPage />} />
+                            </Route>
                         </Route>
+
                         <Route element={<MainLayout isShowHeader={false} />}>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.NOT_FOUND} element={<NotFoundPage />} />

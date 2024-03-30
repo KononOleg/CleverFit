@@ -44,6 +44,7 @@ export const PATH = {
     CALENDAR: '/calendar',
     PROFILE: '/profile',
     SETTINGS: '/settings',
+    TRAINING: '/training',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
