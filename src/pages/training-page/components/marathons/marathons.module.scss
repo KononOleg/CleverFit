@@ -1,0 +1,19 @@
+@import '../../../../index.variables.scss';
+
+.Marathons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $gap-5xl;
+    padding-top: 290px;
+    text-align: center;
+    line-height: $font-line-l;
+
+    .Title {
+        color: $primary-light-9;
+    }
+
+    @media (max-width: 830px) {
+        padding-top: $gap-8xl;
+    }
+}

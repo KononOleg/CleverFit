@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { Card, Tabs, TabsProps } from 'antd';
+import cn from 'classnames';
+
+import { Marathons } from './components/marathons';
 
 import styles from './training-page.module.scss';
 
@@ -16,12 +20,24 @@ const tabsItems: TabsProps['items'] = [
     {
         label: 'Марафоны',
         key: 'marathons',
-        children: <div />,
+        children: <Marathons />,
     },
 ];
 
-export const TrainingPage = () => (
-    <Card className={styles.TrainingPage}>
-        <Tabs items={tabsItems} />
-    </Card>
-);
+export const TrainingPage = () => {
+    const [currentTab, setCurrentTab] = useState('');
+
+    const isMarathonsTab = currentTab === 'marathons';
+
+    const onChangeHandler = (activeKey: string) => setCurrentTab(activeKey);
+
+    return (
+        <Card
+            className={cn(styles.TrainingPage, {
+                [styles.MarathonsTab]: isMarathonsTab,
+            })}
+        >
+            <Tabs items={tabsItems} onChange={onChangeHandler} />
+        </Card>
+    );
+};

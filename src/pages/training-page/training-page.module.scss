@@ -27,3 +27,9 @@
         }
     }
 }
+
+.MarathonsTab:global(.ant-card) {
+    background: url('../../assets/images/marathon-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
