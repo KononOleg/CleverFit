@@ -9,6 +9,10 @@
         padding: 0 $gap-s;
     }
 
+    :global(.ant-tabs-tab) {
+        padding: 12px 0 0;
+    }
+
     :global(.ant-tabs-tab-btn) {
         font-size: $font-size-xl-tablet;
         font-weight: $font-weight-xl-tablet;

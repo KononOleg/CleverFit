@@ -10,7 +10,7 @@ export type User = {
     imgSrc: string;
     birthday: string;
     readyForJointTraining: boolean;
-    sendNotification:boolean,
+    sendNotification: boolean;
     tariff: UserTariff;
 };
 
@@ -32,6 +32,12 @@ export type Feedback = {
     createdAt: string;
 };
 
+export type Parameters = {
+    repeat: string;
+    period: number;
+    jointTraining: boolean;
+};
+
 export type Exercise = {
     _id?: string;
     name: string;
@@ -47,6 +53,7 @@ export type Training = {
     date: string;
     exercises: Exercise[];
     isImplementation?: boolean;
+    parameters?: Parameters;
 };
 export type Period = {
     text: string;

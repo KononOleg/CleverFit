@@ -140,6 +140,8 @@ export const DATA_TEST_ID = {
     TARIFF_SUBMIT: 'tariff-submit',
     TARIFF_COST: 'tariff-cost',
     TARIFF_MODAL_SUCCESS: 'tariff-modal-success',
+    MENU_BUTTON_TRAINING: 'menu-button-training',
+    CREATE_NEW_TRAINING_BUTTON: 'create-new-training-button',
 };
 
 export const resultConfigs: ResultConfigs = {

@@ -1,0 +1,23 @@
+@import '../../../../index.variables.scss';
+
+.TableExercises {
+    .TrainingType {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+            font-size: $font-size-s;
+        }
+    }
+
+    .EditButton {
+        font-size: $font-size-xl-tablet;
+    }
+
+    :global(.ant-table-tbody) {
+        :global(.ant-table-cell),
+        :global(.ant-btn) {
+            padding: 0 !important;
+        }
+    }
+}
