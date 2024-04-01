@@ -33,7 +33,7 @@ export type Feedback = {
 };
 
 export type Parameters = {
-    repeat: string;
+    repeat: boolean;
     period: number;
     jointTraining: boolean;
 };
@@ -128,4 +128,9 @@ export type ResultConfig = {
 
 export type ResultConfigs = {
     [K in string]: ResultConfig;
+};
+
+export type PeriodOptions = {
+    name: string;
+    period: number;
 };

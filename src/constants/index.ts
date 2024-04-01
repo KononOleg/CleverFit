@@ -114,6 +114,9 @@ export const DATA_TEST_ID = {
     MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
     MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
     MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
+    MODAL_DRAWER_RIGHT_DATE_PICKER: 'modal-drawer-right-date-picker',
+    MODAL_DRAWER_RIGHT_CHECKBOX_PERIOD: 'modal-drawer-right-checkbox-period',
+    MODAL_DRAWER_RIGHT_SELECT_PERIOD: 'modal-drawer-right-select-period',
     MENU_BUTTON_PROFILE: 'menu-button-profile',
     HEADER_SETTINGS: 'header-settings',
     SETTINGS_BACK: 'settings-back',
@@ -141,7 +144,9 @@ export const DATA_TEST_ID = {
     TARIFF_COST: 'tariff-cost',
     TARIFF_MODAL_SUCCESS: 'tariff-modal-success',
     MENU_BUTTON_TRAINING: 'menu-button-training',
+    MY_TRAININGS_TABLE: 'my-trainings-table',
     CREATE_NEW_TRAINING_BUTTON: 'create-new-training-button',
+    CREATE_TRAINING_SUCCESS_ALERT: 'create-training-success-alert',
 };
 
 export const resultConfigs: ResultConfigs = {

@@ -1,7 +1,9 @@
 import { DownOutlined, EditOutlined } from '@ant-design/icons';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { BadgeCustom } from '@pages/calendar-page/components/badge-custom';
 import { trainingSelector } from '@redux/selectors';
+import { getKeyByPeriod } from '@utils/find-period-option';
 import { Button, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
@@ -28,9 +30,9 @@ export const TableExercises = () => {
         },
         {
             key: 'period',
-            title: 'Сортировка по периоду',
+            title: 'Периодичность',
             dataIndex: 'period',
-            render: () => <div>Через 1 день</div>,
+            render: (_, record) => <div>{getKeyByPeriod(record.parameters?.period)}</div>,
             sorter: (a, b) => Number(a.parameters?.period) - Number(b.parameters?.period),
         },
         {
@@ -47,6 +49,7 @@ export const TableExercises = () => {
 
     return (
         <Table
+            data-test-id={DATA_TEST_ID.MY_TRAININGS_TABLE}
             className={styles.TableExercises}
             columns={columns}
             pagination={{ position: ['bottomLeft', 'bottomLeft'] }}

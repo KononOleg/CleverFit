@@ -1,0 +1,25 @@
+@import '../../index.variables.scss';
+
+.TrainingForm {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    margin-top: $gap-xl;
+
+    .Period {
+        display: flex;
+        justify-content: space-between;
+        margin-top: $gap-m;
+    }
+
+    .InputWrapper {
+        width: 156px;
+    }
+
+    :global(.ant-picker) {
+        height: 28px;
+    }
+}
+.DisabledDate {
+    background: $primary-light-1;
+}

@@ -96,6 +96,7 @@ export const CardExercises = ({
                         />
 
                         <TrainingListSelect
+                            dataTestId={DATA_TEST_ID.MODAL_CREATE_EXERCISE_SELECT}
                             trainingList={trainingList}
                             selectedTrainings={selectedTrainings}
                             changeSelectHandler={changeSelectHandler}

@@ -1,14 +1,14 @@
-import { DATA_TEST_ID } from '@constants/index';
 import { Select } from 'antd';
 
-import { Nullable, TrainingList } from '../../../../types';
+import { Nullable, PeriodOptions, TrainingList } from '../../../../types';
 
 import styles from './training-list-select.module.scss';
 
 type Props = {
-    trainingList: TrainingList;
+    trainingList: TrainingList | PeriodOptions[];
     selectedTrainings: string[];
     defaultValue: Nullable<string>;
+    dataTestId: string;
     changeSelectHandler: (value: string) => void;
 };
 
@@ -17,6 +17,7 @@ export const TrainingListSelect = ({
     selectedTrainings,
     changeSelectHandler,
     defaultValue,
+    dataTestId,
 }: Props) => {
     const options = trainingList
         .map(({ name }) => name)
@@ -31,7 +32,7 @@ export const TrainingListSelect = ({
             className={styles.TrainingSelect}
             options={options}
             onChange={onChange}
-            data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE_SELECT}
+            data-test-id={dataTestId}
         />
     );
 };

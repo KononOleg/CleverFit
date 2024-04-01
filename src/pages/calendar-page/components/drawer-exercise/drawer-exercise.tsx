@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
+import { TrainingForm } from '@components/training-form';
+import { DATA_TEST_ID, DD_MM_YYYY, PATH } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { addExercise, deleteExercises } from '@redux/reducers/training-slice';
+import { addExercise, deleteExercises, resetCreatedTraining } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
 import { Button, Drawer } from 'antd';
 import moment from 'moment';
@@ -17,6 +19,7 @@ type Props = {
     isEditExercises: boolean;
     selectedTraining: string;
     closeDrawerExercisesHandler: () => void;
+    createTrainingHandler?: () => void;
 };
 
 export const DrawerExercise = ({
@@ -24,15 +27,25 @@ export const DrawerExercise = ({
     isEditExercises,
     selectedTraining,
     closeDrawerExercisesHandler,
+    createTrainingHandler,
 }: Props) => {
     const dispatch = useAppDispatch();
+    const { pathname } = useLocation();
     const { isDesktopVersion } = useAppSelector(appSelector);
     const { selectedDate, createdTraining } = useAppSelector(trainingSelector);
     const [indexes, setIndexes] = useState<number[]>([]);
 
+    const isTrainingPage = pathname === PATH.TRAINING;
+    const isDisabledSave =
+        !createdTraining.date || !createdTraining.name || !createdTraining.exercises[0].name;
+
     const closeHandler = () => closeDrawerExercisesHandler();
     const addExcerciseHandler = () => dispatch(addExercise());
     const deleteExerciseHandler = () => dispatch(deleteExercises(indexes));
+
+    useEffect(() => {
+        if (isTrainingPage) dispatch(resetCreatedTraining());
+    }, [dispatch, isTrainingPage, openDrawerExercises]);
 
     const onSetIndex = (index: number) => {
         if (indexes.includes(index)) setIndexes(indexes.filter((element) => element !== index));
@@ -58,13 +71,32 @@ export const DrawerExercise = ({
                     onClick={closeHandler}
                 />
             }
+            footer={
+                isTrainingPage && (
+                    <Button
+                        size='large'
+                        type='primary'
+                        disabled={isDisabledSave}
+                        block={true}
+                        onClick={createTrainingHandler}
+                    >
+                        Сохранить
+                    </Button>
+                )
+            }
         >
-            <div className={styles.Status}>
-                <BadgeCustom text={selectedTraining} />
-                <p>
-                    {moment(selectedDate || (createdTraining?.name as string)).format(DD_MM_YYYY)}
-                </p>
-            </div>
+            {isTrainingPage ? (
+                <TrainingForm />
+            ) : (
+                <div className={styles.Status}>
+                    <BadgeCustom text={selectedTraining} />
+                    <p>
+                        {moment(selectedDate || (createdTraining?.name as string)).format(
+                            DD_MM_YYYY,
+                        )}
+                    </p>
+                </div>
+            )}
             <div className={styles.Exercises}>
                 {createdTraining.exercises.map(
                     ({ _id, name, replays, weight, approaches }, index) => (
