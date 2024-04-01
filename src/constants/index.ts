@@ -147,6 +147,7 @@ export const DATA_TEST_ID = {
     MY_TRAININGS_TABLE: 'my-trainings-table',
     CREATE_NEW_TRAINING_BUTTON: 'create-new-training-button',
     CREATE_TRAINING_SUCCESS_ALERT: 'create-training-success-alert',
+    UPDATE_MY_TRAINING_TABLE_ICON: 'update-my-training-table-icon',
 };
 
 export const resultConfigs: ResultConfigs = {

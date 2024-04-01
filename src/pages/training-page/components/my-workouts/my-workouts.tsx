@@ -2,33 +2,65 @@ import React, { useState } from 'react';
 import { AlertCustom } from '@components/alert-custom';
 import { ModalRequestError } from '@components/modal-request-error';
 import { DATA_TEST_ID } from '@constants/index';
-import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { DrawerExercise } from '@pages/calendar-page/components/drawer-exercise';
+import { setCreatedTraining } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
-import { useCreateTrainingMutation } from '@redux/services/training-service';
+import {
+    useCreateTrainingMutation,
+    useUpdateTrainingMutation,
+} from '@redux/services/training-service';
+import { isOldDate } from '@utils/index';
 import { Button, Typography } from 'antd';
 
+import { Training } from '../../../../types';
 import { TrainingList } from '../training-list';
 
 import styles from './my-workouts.module.scss';
 
 export const MyWorkouts = () => {
+    const dispatch = useAppDispatch();
     const { training, createdTraining } = useAppSelector(trainingSelector);
-    const [createTraining, { isError, isSuccess }] = useCreateTrainingMutation();
+    const [createTraining, { isError: isCreateError, isSuccess: isCreateSuccess }] =
+        useCreateTrainingMutation();
+    const [updateTraining, { isError: isUpdateError, isSuccess: isUpdateSuccess }] =
+        useUpdateTrainingMutation();
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
+    const [isEditTraining, setIsEditTraining] = useState(false);
 
-    const closeDrawerExercisesHandler = () => setOpenDrawerExercises(false);
+    const isUpdatePast = isOldDate(createdTraining.date as string);
+
+    const closeDrawerExercisesHandler = () => {
+        setOpenDrawerExercises(false);
+        setIsEditTraining(false);
+    };
     const openDrawerExercisesHandler = () => setOpenDrawerExercises(true);
 
-    const createTrainingHandler = () => {
-        createTraining(createdTraining);
+    const createTrainingHandler = () => createTraining(createdTraining);
+    const updateTrainingHandler = () =>
+        isUpdatePast
+            ? updateTraining({ ...createdTraining, isImplementation: true })
+            : updateTraining(createdTraining);
+
+    const saveTrainingHandler = () => {
+        if (isEditTraining) updateTrainingHandler();
+        else createTrainingHandler();
         closeDrawerExercisesHandler();
+    };
+
+    const onChangeTrainingHandler = (record: Training) => {
+        dispatch(setCreatedTraining(record));
+        setIsEditTraining(true);
+        setOpenDrawerExercises(true);
     };
 
     return (
         <React.Fragment>
             {training ? (
-                <TrainingList openDrawerExercisesHandler={openDrawerExercisesHandler} />
+                <TrainingList
+                    openDrawerExercisesHandler={openDrawerExercisesHandler}
+                    onChangeTrainingHandler={onChangeTrainingHandler}
+                />
             ) : (
                 <div className={styles.MyWorkoutsEmpty}>
                     <Typography.Text>У вас еще нет созданных тренировок</Typography.Text>
@@ -46,23 +78,29 @@ export const MyWorkouts = () => {
             <DrawerExercise
                 openDrawerExercises={openDrawerExercises}
                 closeDrawerExercisesHandler={closeDrawerExercisesHandler}
-                isEditExercises={false}
+                isEditExercises={isEditTraining}
                 selectedTraining={null as unknown as string}
-                createTrainingHandler={createTrainingHandler}
+                saveTrainingHandler={saveTrainingHandler}
             />
             <ModalRequestError
                 title='При сохранении данных произошла ошибка'
                 type='error'
-                isError={isError}
+                isError={isCreateError || isUpdateError}
                 subtitle='Придётся попробовать ещё раз'
                 okText='Закрыть'
                 closable={true}
                 dataTestId={DATA_TEST_ID.MODAL_ERROR_USER_TRAINING_BUTTON}
             />
 
-            {isSuccess && (
+            {isCreateSuccess && (
                 <AlertCustom
                     description='Новая тренировка успешно добавлена'
+                    dataTestId={DATA_TEST_ID.CREATE_TRAINING_SUCCESS_ALERT}
+                />
+            )}
+            {isUpdateSuccess && (
+                <AlertCustom
+                    description='Тренировка успешно обновлена'
                     dataTestId={DATA_TEST_ID.CREATE_TRAINING_SUCCESS_ALERT}
                 />
             )}

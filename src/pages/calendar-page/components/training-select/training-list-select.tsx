@@ -10,6 +10,7 @@ type Props = {
     defaultValue: Nullable<string>;
     dataTestId: string;
     changeSelectHandler: (value: string) => void;
+    disabled?: boolean;
 };
 
 export const TrainingListSelect = ({
@@ -18,6 +19,7 @@ export const TrainingListSelect = ({
     changeSelectHandler,
     defaultValue,
     dataTestId,
+    disabled,
 }: Props) => {
     const options = trainingList
         .map(({ name }) => name)
@@ -33,6 +35,7 @@ export const TrainingListSelect = ({
             options={options}
             onChange={onChange}
             data-test-id={dataTestId}
+            disabled={disabled}
         />
     );
 };

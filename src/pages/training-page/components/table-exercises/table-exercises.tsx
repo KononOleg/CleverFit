@@ -11,7 +11,11 @@ import { Training } from '../../../../types';
 
 import styles from './table-exercises.module.scss';
 
-export const TableExercises = () => {
+type Props = {
+    onChangeTrainingHandler: (training: Training) => void;
+};
+
+export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
     const { training } = useAppSelector(trainingSelector);
 
     const columns: ColumnsType<Training> = [
@@ -19,7 +23,7 @@ export const TableExercises = () => {
             title: 'Тип тренировки',
             dataIndex: 'trainingType',
             key: 'trainingType',
-            render: (_text, record) => (
+            render: (_, record) => (
                 <div className={styles.TrainingType}>
                     <BadgeCustom isEdit={false} text={record.name} />
                     <Button type='link'>
@@ -39,10 +43,15 @@ export const TableExercises = () => {
             key: 'action',
             dataIndex: 'action',
             width: 30,
-            render: () => (
-                <Button type='link' className={styles.EditButton}>
-                    <EditOutlined />
-                </Button>
+            render: (_, record, index) => (
+                <Button
+                    type='link'
+                    className={styles.EditButton}
+                    data-test-id={`${DATA_TEST_ID.UPDATE_MY_TRAINING_TABLE_ICON}${index}`}
+                    onClick={() => onChangeTrainingHandler(record)}
+                    disabled={record.isImplementation}
+                    icon={<EditOutlined />}
+                />
             ),
         },
     ];

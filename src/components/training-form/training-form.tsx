@@ -4,17 +4,21 @@ import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { TrainingListSelect } from '@pages/calendar-page/components/training-select';
 import { setCreatedTraining } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
-import { getPeriodByItem, periodOptions } from '@utils/find-period-option';
+import { getKeyByPeriod, getPeriodByItem, periodOptions } from '@utils/find-period-option';
 import { isOldDate } from '@utils/index';
 import { Checkbox, DatePicker, DatePickerProps } from 'antd';
 import moment, { Moment } from 'moment';
 
 import styles from './training-form.module.scss';
 
-export const TrainingForm = () => {
+type Props = {
+    isEditExercises: boolean;
+};
+
+export const TrainingForm = ({ isEditExercises }: Props) => {
     const dispatch = useAppDispatch();
     const { training, trainingList, createdTraining } = useAppSelector(trainingSelector);
-    const [isShowPeriod, setIsShowPeriod] = useState(false);
+    const [isShowPeriod, setIsShowPeriod] = useState(createdTraining.parameters?.repeat);
 
     const dateCellRender = (pickerDate: Moment) => {
         const trainingToday = training.find(({ date }) => pickerDate.isSame(date, 'days'));
@@ -70,7 +74,8 @@ export const TrainingForm = () => {
                 trainingList={trainingList}
                 selectedTrainings={[]}
                 changeSelectHandler={onChangeName}
-                defaultValue={null}
+                defaultValue={createdTraining.name}
+                disabled={isEditExercises}
             />
 
             <div className={styles.Period}>
@@ -81,6 +86,9 @@ export const TrainingForm = () => {
                         disabledDate={disabledDateHandler}
                         dateRender={dateCellRender}
                         onChange={onChangeDate}
+                        defaultValue={
+                            createdTraining.date ? moment(createdTraining.date) : undefined
+                        }
                     />
                 </div>
                 <Checkbox
@@ -99,7 +107,10 @@ export const TrainingForm = () => {
                         trainingList={periodOptions}
                         selectedTrainings={[]}
                         changeSelectHandler={onChangePeriod}
-                        defaultValue={periodOptions[0].name}
+                        defaultValue={
+                            getKeyByPeriod(createdTraining.parameters?.period) ||
+                            periodOptions[0].name
+                        }
                     />
                 </div>
             )}

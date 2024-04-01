@@ -19,7 +19,7 @@ type Props = {
     isEditExercises: boolean;
     selectedTraining: string;
     closeDrawerExercisesHandler: () => void;
-    createTrainingHandler?: () => void;
+    saveTrainingHandler?: () => void;
 };
 
 export const DrawerExercise = ({
@@ -27,7 +27,7 @@ export const DrawerExercise = ({
     isEditExercises,
     selectedTraining,
     closeDrawerExercisesHandler,
-    createTrainingHandler,
+    saveTrainingHandler,
 }: Props) => {
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
@@ -44,8 +44,8 @@ export const DrawerExercise = ({
     const deleteExerciseHandler = () => dispatch(deleteExercises(indexes));
 
     useEffect(() => {
-        if (isTrainingPage) dispatch(resetCreatedTraining());
-    }, [dispatch, isTrainingPage, openDrawerExercises]);
+        if (isTrainingPage && !isEditExercises) dispatch(resetCreatedTraining());
+    }, [dispatch, isEditExercises, isTrainingPage, openDrawerExercises]);
 
     const onSetIndex = (index: number) => {
         if (indexes.includes(index)) setIndexes(indexes.filter((element) => element !== index));
@@ -78,7 +78,7 @@ export const DrawerExercise = ({
                         type='primary'
                         disabled={isDisabledSave}
                         block={true}
-                        onClick={createTrainingHandler}
+                        onClick={saveTrainingHandler}
                     >
                         Сохранить
                     </Button>
@@ -86,7 +86,7 @@ export const DrawerExercise = ({
             }
         >
             {isTrainingPage ? (
-                <TrainingForm />
+                <TrainingForm isEditExercises={isEditExercises} />
             ) : (
                 <div className={styles.Status}>
                     <BadgeCustom text={selectedTraining} />
