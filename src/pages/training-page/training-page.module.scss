@@ -19,15 +19,17 @@
         line-height: $font-line-xl-tablet;
     }
 
-    @media (max-width: 830px) {
-        :global(.ant-card-body) {
-            padding: $gap-s;
-        }
-
+    @media (max-width: 900px) {
         :global(.ant-tabs-tab-btn) {
             font-size: $font-size-s;
             font-weight: $font-weight-s;
             line-height: $font-line-s;
+        }
+    }
+
+    @media (max-width: 830px) {
+        :global(.ant-card-body) {
+            padding: $gap-s;
         }
     }
 }

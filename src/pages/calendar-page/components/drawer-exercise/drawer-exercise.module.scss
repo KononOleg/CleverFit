@@ -41,6 +41,8 @@
     }
 
     @media (max-width: 830px) {
+        margin-top: $gap-10xl;
+
         :global(.ant-drawer-content-wrapper) {
             top: $gap-10xl;
         }

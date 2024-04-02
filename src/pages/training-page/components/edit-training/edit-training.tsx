@@ -35,7 +35,7 @@ export const EditTraining: React.FC<CardProps> = ({
             >
                 <Button
                     type='text'
-                    size='small'
+                    size='large'
                     icon={<ArrowLeftOutlined />}
                     onClick={closeEditTrainingHandler}
                 />

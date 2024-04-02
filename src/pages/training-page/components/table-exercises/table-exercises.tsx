@@ -69,8 +69,9 @@ export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
                     data-test-id={`${DATA_TEST_ID.UPDATE_MY_TRAINING_TABLE_ICON}${index}`}
                     onClick={() => onChangeTrainingHandler(record)}
                     disabled={record.isImplementation}
-                    icon={<EditOutlined />}
-                />
+                >
+                    <EditOutlined />
+                </Button>
             ),
         },
     ];

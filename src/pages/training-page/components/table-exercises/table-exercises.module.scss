@@ -5,6 +5,7 @@
         position: relative;
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         span {
             font-size: $font-size-s;
@@ -18,7 +19,7 @@
     :global(.ant-table-tbody) {
         :global(.ant-table-cell),
         :global(.ant-btn) {
-            padding: 0 !important;
+            padding: 0 $gap-2xs !important;
         }
     }
 }
