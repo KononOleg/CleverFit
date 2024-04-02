@@ -254,3 +254,11 @@ export const LocalData: PickerLocale = {
         },
     },
 };
+
+export const colors = new Map([
+    ['Силовая', 'yellow'],
+    ['Ноги', 'red'],
+    ['Руки', 'cyan'],
+    ['Грудь', 'green'],
+    ['Спина', 'orange'],
+]);

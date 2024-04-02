@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+
+import { useState } from 'react';
 import { DownOutlined, EditOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
@@ -8,6 +11,7 @@ import { Button, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
 import { Training } from '../../../../types';
+import { EditTraining } from '../edit-training';
 
 import styles from './table-exercises.module.scss';
 
@@ -17,6 +21,14 @@ type Props = {
 
 export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
     const { training } = useAppSelector(trainingSelector);
+    const [openEditTraining, setOpenEditTraining] = useState(false);
+    const [selectedTraining, setSelectedTraining] = useState<Training>();
+
+    const openEditTrainingHandler = (record: Training) => {
+        setOpenEditTraining(true);
+        setSelectedTraining(record);
+    };
+    const closeEditTrainingHandler = () => setOpenEditTraining(false);
 
     const columns: ColumnsType<Training> = [
         {
@@ -26,9 +38,16 @@ export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
             render: (_, record) => (
                 <div className={styles.TrainingType}>
                     <BadgeCustom isEdit={false} text={record.name} />
-                    <Button type='link'>
+                    <Button type='link' onClick={() => openEditTrainingHandler(record)}>
                         <DownOutlined />
                     </Button>
+                    {openEditTraining && record._id === selectedTraining?._id && (
+                        <EditTraining
+                            selectedTraining={record}
+                            closeEditTrainingHandler={closeEditTrainingHandler}
+                            onChangeTrainingHandler={onChangeTrainingHandler}
+                        />
+                    )}
                 </div>
             ),
         },

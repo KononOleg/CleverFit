@@ -1,0 +1,33 @@
+@import '../../../../index.variables.scss';
+
+.EditTraining {
+    position: absolute !important;
+    top: 0;
+    left: 10px;
+    width: 240px;
+    z-index: 8;
+
+    .Title {
+        width: 100%;
+        display: flex;
+
+        padding: $gap-m $gap-s $gap-s;
+    }
+
+    .Body {
+        min-height: 130px;
+        padding: $gap-m $gap-s;
+    }
+
+    :global(.ant-card-actions) {
+        padding: 0 $gap-m;
+    }
+
+    :global(.ant-card-body) {
+        padding: 0;
+    }
+
+    @media (max-width: 460px) {
+        width: 312px;
+    }
+}
