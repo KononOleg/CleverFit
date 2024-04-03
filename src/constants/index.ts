@@ -34,6 +34,8 @@ export const API_PATH = {
     CURRENT_USER: '/user/me',
     TARIFF: '/tariff',
     TARIFF_LIST: '/catalogs/tariff-list',
+    USER_JOINT_TRAINING_LIST: '/catalogs/user-joint-training-list',
+    TRAINING_PALS: '/catalogs/training-pals',
 };
 
 export const PATH = {
@@ -148,8 +150,9 @@ export const DATA_TEST_ID = {
     CREATE_NEW_TRAINING_BUTTON: 'create-new-training-button',
     CREATE_TRAINING_SUCCESS_ALERT: 'create-training-success-alert',
     UPDATE_MY_TRAINING_TABLE_ICON: 'update-my-training-table-icon',
+    JOINT_TRAINING_CARDS: 'joint-training-cards',
+    SEARCH_INPUT: 'search-input',
 };
-
 export const resultConfigs: ResultConfigs = {
     'error-login': {
         status: 'warning',

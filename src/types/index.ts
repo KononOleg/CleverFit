@@ -65,6 +65,15 @@ export type Tariff = {
     name: string;
     periods: Period[];
 };
+export type UserJointTrainig = {
+    id: string;
+    name: string;
+    imageSrc: string;
+    trainingType: string;
+    avgWeightInWeek: number;
+    status: Nullable<string>;
+    inviteId: Nullable<string>;
+};
 
 export type TrainingList = Array<{ name: string; key: string }>;
 
@@ -79,6 +88,12 @@ export type UpdateTrainingResponse = Training;
 export type GetCurrentUserResponse = User;
 export type UpdateUserResponse = User;
 export type UpdateUserRequest = User;
+
+export type GetUserJointTrainingListResponse = UserJointTrainig[];
+export type GetUserJointTrainingListRequest = {
+    trainingType?: string;
+};
+export type GetTrainingPalsResponse = UserJointTrainig[];
 
 export type GetTariffListResponse = Tariff[];
 export type BuyTariffRequest = { tariffId: string; days: number };

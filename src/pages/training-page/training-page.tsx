@@ -7,6 +7,7 @@ import { useGetTrainingListQuery } from '@redux/services/training-service';
 import { Card, Tabs, TabsProps } from 'antd';
 import cn from 'classnames';
 
+import { GroupWorkouts } from './components/group-workouts';
 import { Marathons } from './components/marathons';
 import { MyWorkouts } from './components/my-workouts';
 
@@ -21,7 +22,7 @@ const tabsItems: TabsProps['items'] = [
     {
         label: 'Совместные тренировки',
         key: 'group-workouts',
-        children: <div />,
+        children: <GroupWorkouts />,
     },
     {
         label: 'Марафоны',

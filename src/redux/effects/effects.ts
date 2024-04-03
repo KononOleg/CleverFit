@@ -1,9 +1,11 @@
 import { push } from 'redux-first-history';
 import { HttpStatusCode, PATH } from '@constants/index';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
+import { setTrainingPals, setUserJointTrainigList } from '@redux/reducers/invite-slice';
 import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
+import { inviteApi } from '@redux/services/invite-service';
 import { profileApi } from '@redux/services/profile-service';
 import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
@@ -129,5 +131,19 @@ listenerMiddleware.startListening({
     matcher: profileApi.endpoints.getTariffList.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
         dispatch(setTariffs(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.getUserJointTrainingList.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setUserJointTrainigList(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.getTrainingPals.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setTrainingPals(payload));
     },
 });

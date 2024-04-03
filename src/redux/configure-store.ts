@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import { listenerMiddleware } from './effects/effects';
 import { appSlice } from './reducers/app-slice';
 import { authSlice } from './reducers/auth-slice';
+import { inviteSlice } from './reducers/invite-slice';
 import { profileSlice } from './reducers/profile-slice';
 import { trainingSlice } from './reducers/training-slice';
 import { apiSlice } from './services';
@@ -21,6 +22,7 @@ export const store = configureStore({
         auth: authSlice.reducer,
         training: trainingSlice.reducer,
         profile: profileSlice.reducer,
+        invite: inviteSlice.reducer,
         router: routerReducer,
     },
     middleware: (getDefaultMiddleware) =>

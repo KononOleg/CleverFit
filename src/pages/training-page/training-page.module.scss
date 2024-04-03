@@ -10,7 +10,10 @@
     }
 
     :global(.ant-tabs-tab) {
-        padding: 12px 0 0;
+        padding: $gap-s 0 0;
+    }
+    :global(.ant-tabs-tabpane) {
+        padding: $gap-xl 0 0;
     }
 
     :global(.ant-tabs-tab-btn) {
