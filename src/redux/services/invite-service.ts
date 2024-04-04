@@ -1,6 +1,7 @@
 import { API_PATH } from '@constants/index';
 
 import {
+    GetInviteListResponse,
     GetTrainingPalsResponse,
     GetUserJointTrainingListRequest,
     GetUserJointTrainingListResponse,
@@ -35,6 +36,13 @@ export const inviteApi = apiSlice.injectEndpoints({
             }),
         }),
 
+        getInviteList: builder.query<GetInviteListResponse, void>({
+            query: () => ({
+                url: API_PATH.INVITE,
+                method: 'GET',
+            }),
+        }),
+
         sendInvite: builder.mutation<SendInviteResponse, SendInviteRequest>({
             query: (body) => ({
                 url: API_PATH.INVITE,
@@ -48,5 +56,6 @@ export const inviteApi = apiSlice.injectEndpoints({
 export const {
     useLazyGetUserJointTrainingListQuery,
     useGetTrainingPalsQuery,
+    useLazyGetInviteListQuery,
     useSendInviteMutation,
 } = inviteApi;

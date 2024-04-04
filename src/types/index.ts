@@ -76,7 +76,22 @@ export type UserJointTrainig = {
     inviteId: Nullable<string>;
 };
 
+export type From = {
+    _id: string;
+    firstName?: string;
+    lastName?: string;
+    imageSrc?: string;
+};
+
 export type TrainingList = Array<{ name: string; key: string }>;
+
+export type Invite = {
+    _id: string;
+    training: Training;
+    status: string;
+    createdAt: string;
+    from: From;
+};
 
 export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];
@@ -99,8 +114,10 @@ export type GetTrainingPalsResponse = UserJointTrainig[];
 export type GetTariffListResponse = Tariff[];
 export type BuyTariffRequest = { tariffId: string; days: number };
 
-export type SendInviteResponse = { _id: string; training: Training; status: string };
+export type SendInviteResponse = Invite;
 export type SendInviteRequest = { to: string; trainingId: string };
+
+export type GetInviteListResponse = Invite[];
 
 export type CreateFeedbackResponse = {
     message: string;

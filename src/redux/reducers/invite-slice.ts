@@ -1,17 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Nullable, UserJointTrainig } from '../../types';
+import { Invite, Nullable, UserJointTrainig } from '../../types';
 
 type InviteState = {
     userJointTrainigList: UserJointTrainig[];
     trainingPals: UserJointTrainig[];
     createdTrainingPal: Nullable<UserJointTrainig>;
+    inviteList: Invite[];
 };
 
 const initialState: InviteState = {
     userJointTrainigList: [],
     trainingPals: [],
     createdTrainingPal: null,
+    inviteList: [],
 };
 
 export const inviteSlice = createSlice({
@@ -41,6 +43,10 @@ export const inviteSlice = createSlice({
 
             state.userJointTrainigList[findIndex].status = status;
         },
+
+        setInviteList(state, { payload: inviteList }: PayloadAction<Invite[]>) {
+            state.inviteList = inviteList;
+        },
     },
 });
 
@@ -49,4 +55,5 @@ export const {
     setTrainingPals,
     setCreatedTrainingPal,
     setJointTrainingStatus,
+    setInviteList,
 } = inviteSlice.actions;

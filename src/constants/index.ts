@@ -153,6 +153,8 @@ export const DATA_TEST_ID = {
     UPDATE_MY_TRAINING_TABLE_ICON: 'update-my-training-table-icon',
     JOINT_TRAINING_CARDS: 'joint-training-cards',
     SEARCH_INPUT: 'search-input',
+    NOTIFICATION_ABOUT_JOINT_TRAINING: 'notification-about-joint-training',
+    JOINT_TRAINING_REVIEW_CARD: 'joint-training-review-card',
 };
 export const resultConfigs: ResultConfigs = {
     'error-login': {

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
     CalendarOutlined,
-    HeartFilled,
     IdcardOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
+import { JointNotification } from '@components/joint-notification';
 import { DATA_TEST_ID, PATH } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { signOut } from '@redux/reducers/auth-slice';
@@ -28,7 +28,7 @@ const items = [
     },
     {
         key: '2',
-        icon: <HeartFilled />,
+        icon: <JointNotification />,
         label: <Link to={PATH.TRAINING}>Тренировки</Link>,
     },
     {

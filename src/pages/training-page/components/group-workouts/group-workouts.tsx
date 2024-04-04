@@ -15,6 +15,7 @@ import { getFavouriteTraining } from '@utils/favourite-training-type';
 import { Button, Typography } from 'antd';
 
 import { UserJointTrainig } from '../../../../types';
+import { InviteList } from '../invite-list';
 import { JointTrainingList } from '../joint-training-list';
 import { TrainingPals } from '../training-pals';
 
@@ -86,6 +87,7 @@ export const GroupWorkouts = () => {
     return (
         <React.Fragment>
             <div className={styles.GroupWorkouts}>
+                <InviteList />
                 <div className={styles.Description}>
                     <Typography.Title className={styles.Title} level={3}>
                         Хочешь тренироваться с тем, кто разделяет твои цели и темп? <br /> Можешь
