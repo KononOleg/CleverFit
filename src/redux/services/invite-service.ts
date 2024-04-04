@@ -4,6 +4,8 @@ import {
     GetTrainingPalsResponse,
     GetUserJointTrainingListRequest,
     GetUserJointTrainingListResponse,
+    SendInviteRequest,
+    SendInviteResponse,
 } from '../../types';
 
 import { apiSlice } from '.';
@@ -32,7 +34,19 @@ export const inviteApi = apiSlice.injectEndpoints({
                 method: 'GET',
             }),
         }),
+
+        sendInvite: builder.mutation<SendInviteResponse, SendInviteRequest>({
+            query: (body) => ({
+                url: API_PATH.INVITE,
+                method: 'POST',
+                body,
+            }),
+        }),
     }),
 });
 
-export const { useLazyGetUserJointTrainingListQuery, useGetTrainingPalsQuery } = inviteApi;
+export const {
+    useLazyGetUserJointTrainingListQuery,
+    useGetTrainingPalsQuery,
+    useSendInviteMutation,
+} = inviteApi;

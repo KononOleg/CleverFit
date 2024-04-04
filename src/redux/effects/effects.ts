@@ -1,7 +1,12 @@
 import { push } from 'redux-first-history';
 import { HttpStatusCode, PATH } from '@constants/index';
+import { INVITE_STATUS } from '@constants/invite-status';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
-import { setTrainingPals, setUserJointTrainigList } from '@redux/reducers/invite-slice';
+import {
+    setJointTrainingStatus,
+    setTrainingPals,
+    setUserJointTrainigList,
+} from '@redux/reducers/invite-slice';
 import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
@@ -145,5 +150,14 @@ listenerMiddleware.startListening({
     matcher: inviteApi.endpoints.getTrainingPals.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
         dispatch(setTrainingPals(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.sendInvite.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { to } = meta.arg.originalArgs;
+
+        dispatch(setJointTrainingStatus({ id: to, status: INVITE_STATUS.PENDING }));
     },
 });

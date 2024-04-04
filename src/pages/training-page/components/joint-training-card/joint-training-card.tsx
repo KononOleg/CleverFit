@@ -1,5 +1,6 @@
-import { UserOutlined } from '@ant-design/icons';
+import { CheckCircleTwoTone, UserOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
+import { INVITE_STATUS } from '@constants/invite-status';
 import { Avatar, Button, Card } from 'antd';
 import cn from 'classnames';
 
@@ -11,10 +12,20 @@ type Props = {
     partner: UserJointTrainig;
     index: number;
     isMyPartner?: boolean;
+    onChangeTrainingHandler?: (partner: UserJointTrainig) => void;
 };
 
-export const JointTrainingCard = ({ partner, isMyPartner, index }: Props) => {
+export const JointTrainingCard = ({
+    partner,
+    isMyPartner,
+    index,
+    onChangeTrainingHandler,
+}: Props) => {
     const [name, surName] = partner.name.split(' ') ?? [];
+
+    const createTrainingHandler = () => {
+        if (onChangeTrainingHandler) onChangeTrainingHandler(partner);
+    };
 
     return (
         <Card
@@ -54,23 +65,31 @@ export const JointTrainingCard = ({ partner, isMyPartner, index }: Props) => {
                 </div>
                 {!isMyPartner && (
                     <div className={styles.Buttons}>
-                        {partner.status ? (
-                            <Button block={true} size='middle' type='primary'>
-                                Создать тренировку
-                            </Button>
-                        ) : (
-                            <Button
-                                block={true}
-                                size='middle'
-                                type={partner.status === 'ACCEPTED' ? 'default' : 'primary'}
-                                disabled={
-                                    partner.status === 'REJECTED' || partner.status === 'PENDING'
-                                }
-                            >
-                                {partner.status === 'ACCEPTED'
-                                    ? 'Отменить тренировку'
-                                    : 'Создать тренировку'}
-                            </Button>
+                        <Button
+                            block={true}
+                            size='middle'
+                            type={partner.status === INVITE_STATUS.ACCEPTED ? 'default' : 'primary'}
+                            disabled={
+                                partner.status === INVITE_STATUS.REJECTED ||
+                                partner.status === INVITE_STATUS.PENDING
+                            }
+                            onClick={createTrainingHandler}
+                        >
+                            {partner.status === INVITE_STATUS.ACCEPTED
+                                ? 'Отменить тренировку'
+                                : 'Создать тренировку'}
+                        </Button>
+
+                        {partner.status && (
+                            <div className={styles.Status}>
+                                {partner.status === INVITE_STATUS.PENDING &&
+                                    'ожидает подтверждения'}
+                                {partner.status === INVITE_STATUS.ACCEPTED && 'запрос одобрен'}
+                                {partner.status === INVITE_STATUS.REJECTED && 'запрос отклонен'}
+                                {partner.status === INVITE_STATUS.ACCEPTED && (
+                                    <CheckCircleTwoTone />
+                                )}
+                            </div>
                         )}
                     </div>
                 )}

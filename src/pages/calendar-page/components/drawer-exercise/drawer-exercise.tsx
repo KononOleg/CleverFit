@@ -20,6 +20,8 @@ type Props = {
     selectedTraining: string;
     closeDrawerExercisesHandler: () => void;
     saveTrainingHandler?: () => void;
+    createTrainingHandler?: () => void;
+    isJointTraining?: boolean;
 };
 
 export const DrawerExercise = ({
@@ -28,6 +30,8 @@ export const DrawerExercise = ({
     selectedTraining,
     closeDrawerExercisesHandler,
     saveTrainingHandler,
+    createTrainingHandler,
+    isJointTraining,
 }: Props) => {
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
@@ -35,9 +39,13 @@ export const DrawerExercise = ({
     const { selectedDate, createdTraining } = useAppSelector(trainingSelector);
     const [indexes, setIndexes] = useState<number[]>([]);
 
+    const titleExercises = isEditExercises ? 'Редактирование' : 'Добавление упражнений';
+    const title = isJointTraining ? 'Совместная тренировка' : titleExercises;
+
     const isTrainingPage = pathname === PATH.TRAINING;
     const isDisabledSave =
         !createdTraining.date || !createdTraining.name || !createdTraining.exercises[0].name;
+    const isDisabledJoint = !createdTraining.date || !createdTraining.exercises[0].name;
 
     const closeHandler = () => closeDrawerExercisesHandler();
     const addExcerciseHandler = () => dispatch(addExercise());
@@ -54,11 +62,11 @@ export const DrawerExercise = ({
 
     return (
         <Drawer
-            title={isEditExercises ? 'Редактирование' : 'Добавление упражнений'}
+            title={title}
             destroyOnClose={true}
             placement='right'
             width={isDesktopVersion ? 408 : 360}
-            closeIcon={isEditExercises ? <EditOutlined /> : <PlusOutlined />}
+            closeIcon={isEditExercises && !isJointTraining ? <EditOutlined /> : <PlusOutlined />}
             open={openDrawerExercises}
             className={styles.DrawerExercises}
             data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT}
@@ -72,7 +80,18 @@ export const DrawerExercise = ({
                 />
             }
             footer={
-                isTrainingPage && (
+                isTrainingPage &&
+                (isJointTraining ? (
+                    <Button
+                        size='large'
+                        type='primary'
+                        disabled={isDisabledJoint}
+                        block={true}
+                        onClick={createTrainingHandler}
+                    >
+                        Отправить приглашение
+                    </Button>
+                ) : (
                     <Button
                         size='large'
                         type='primary'
@@ -82,7 +101,7 @@ export const DrawerExercise = ({
                     >
                         Сохранить
                     </Button>
-                )
+                ))
             }
         >
             {isTrainingPage ? (

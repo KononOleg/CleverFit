@@ -4,15 +4,17 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { inviteSelector } from '@redux/selectors';
 import { Button, Input, List } from 'antd';
 
+import { UserJointTrainig } from '../../../../types';
 import { JointTrainingCard } from '../joint-training-card';
 
 import styles from './joint-training-list.module.scss';
 
 type Props = {
     goBackHandler: () => void;
+    onChangeTrainingHandler: (partner: UserJointTrainig) => void;
 };
 
-export const JointTrainingList = ({ goBackHandler }: Props) => {
+export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Props) => {
     const { userJointTrainigList } = useAppSelector(inviteSelector);
 
     return (
@@ -31,7 +33,11 @@ export const JointTrainingList = ({ goBackHandler }: Props) => {
             <List
                 dataSource={userJointTrainigList}
                 renderItem={(partner, index) => (
-                    <JointTrainingCard partner={partner} index={index} />
+                    <JointTrainingCard
+                        partner={partner}
+                        index={index}
+                        onChangeTrainingHandler={onChangeTrainingHandler}
+                    />
                 )}
                 className={styles.JointList}
                 pagination={

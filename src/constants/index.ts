@@ -36,6 +36,7 @@ export const API_PATH = {
     TARIFF_LIST: '/catalogs/tariff-list',
     USER_JOINT_TRAINING_LIST: '/catalogs/user-joint-training-list',
     TRAINING_PALS: '/catalogs/training-pals',
+    INVITE: '/invite',
 };
 
 export const PATH = {

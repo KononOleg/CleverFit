@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { BadgeCustom } from '@pages/calendar-page/components/badge-custom';
 import { TrainingListSelect } from '@pages/calendar-page/components/training-select';
 import { setCreatedTraining } from '@redux/reducers/training-slice';
-import { trainingSelector } from '@redux/selectors';
+import { inviteSelector, trainingSelector } from '@redux/selectors';
 import { getKeyByPeriod, getPeriodByItem, periodOptions } from '@utils/find-period-option';
 import { isOldDate } from '@utils/index';
-import { Checkbox, DatePicker, DatePickerProps } from 'antd';
+import { Avatar, Checkbox, DatePicker, DatePickerProps } from 'antd';
 import moment, { Moment } from 'moment';
 
 import styles from './training-form.module.scss';
@@ -18,7 +20,10 @@ type Props = {
 export const TrainingForm = ({ isEditExercises }: Props) => {
     const dispatch = useAppDispatch();
     const { training, trainingList, createdTraining } = useAppSelector(trainingSelector);
+    const { createdTrainingPal } = useAppSelector(inviteSelector);
     const [isShowPeriod, setIsShowPeriod] = useState(createdTraining.parameters?.repeat);
+
+    const [firstName, lastName] = createdTrainingPal?.name.split(' ') ?? [];
 
     const dateCellRender = (pickerDate: Moment) => {
         const trainingToday = training.find(({ date }) => pickerDate.isSame(date, 'days'));
@@ -69,14 +74,33 @@ export const TrainingForm = ({ isEditExercises }: Props) => {
 
     return (
         <div className={styles.TrainingForm}>
-            <TrainingListSelect
-                dataTestId={DATA_TEST_ID.MODAL_CREATE_EXERCISE_SELECT}
-                trainingList={trainingList}
-                selectedTrainings={[]}
-                changeSelectHandler={onChangeName}
-                defaultValue={createdTraining.name}
-                disabled={isEditExercises}
-            />
+            {createdTrainingPal ? (
+                <div className={styles.Partner}>
+                    <div className={styles.UserInfo}>
+                        <Avatar
+                            size={42}
+                            alt={createdTrainingPal.name}
+                            src={createdTrainingPal.imageSrc}
+                            icon={!createdTrainingPal.imageSrc && <UserOutlined />}
+                        />
+
+                        <h6>
+                            {firstName}
+                            <br /> {lastName}
+                        </h6>
+                    </div>
+                    <BadgeCustom text={createdTrainingPal.trainingType} />
+                </div>
+            ) : (
+                <TrainingListSelect
+                    dataTestId={DATA_TEST_ID.MODAL_CREATE_EXERCISE_SELECT}
+                    trainingList={trainingList}
+                    selectedTrainings={[]}
+                    changeSelectHandler={onChangeName}
+                    defaultValue={createdTraining.name}
+                    disabled={isEditExercises}
+                />
+            )}
 
             <div className={styles.Period}>
                 <div className={styles.InputWrapper}>

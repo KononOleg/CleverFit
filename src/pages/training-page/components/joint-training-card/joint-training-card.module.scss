@@ -8,6 +8,11 @@
 
     .Buttons {
         margin-top: $gap-m;
+
+        .Status {
+            text-align: center;
+            margin-top: $gap-s;
+        }
     }
 
     .UserInfo {

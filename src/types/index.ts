@@ -36,6 +36,7 @@ export type Parameters = {
     repeat: boolean;
     period: number;
     jointTraining: boolean;
+    participants?: string[];
 };
 
 export type Exercise = {
@@ -97,6 +98,9 @@ export type GetTrainingPalsResponse = UserJointTrainig[];
 
 export type GetTariffListResponse = Tariff[];
 export type BuyTariffRequest = { tariffId: string; days: number };
+
+export type SendInviteResponse = { _id: string; training: Training; status: string };
+export type SendInviteRequest = { to: string; trainingId: string };
 
 export type CreateFeedbackResponse = {
     message: string;
