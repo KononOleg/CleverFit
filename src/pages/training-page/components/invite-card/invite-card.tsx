@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { DD_MM_YYYY } from '@constants/index';
+import { INVITE_STATUS } from '@constants/invite-status';
 import { TRAININGS } from '@constants/training-types';
+import {
+    useLazyGetTrainingPalsQuery,
+    useSendInviteAnswerMutation,
+} from '@redux/services/invite-service';
 import { Avatar, Button, Typography } from 'antd';
 import moment from 'moment';
 
@@ -16,9 +21,24 @@ type Props = {
 
 export const InviteCard = ({ invite }: Props) => {
     const [openInviteTrainingCard, setOpenInviteTrainingCard] = useState(false);
+    const [sendInviteAnswer] = useSendInviteAnswerMutation();
+    const [getTrainingPals] = useLazyGetTrainingPalsQuery();
 
     const closeInviteTrainingCardHandler = () => setOpenInviteTrainingCard(false);
     const openInviteTrainingCardHandler = () => setOpenInviteTrainingCard(true);
+
+    const acceptInviteHandler = async () => {
+        closeInviteTrainingCardHandler();
+        // eslint-disable-next-line no-underscore-dangle
+        await sendInviteAnswer({ id: invite._id, status: INVITE_STATUS.ACCEPTED });
+        await getTrainingPals();
+    };
+
+    const rejectInviteHandler = () => {
+        // eslint-disable-next-line no-underscore-dangle
+        sendInviteAnswer({ id: invite._id, status: INVITE_STATUS.REJECTED });
+        closeInviteTrainingCardHandler();
+    };
 
     return (
         // eslint-disable-next-line no-underscore-dangle
@@ -56,11 +76,13 @@ export const InviteCard = ({ invite }: Props) => {
                 )}
             </div>
             <div className={styles.Buttons}>
-                <Button type='primary' size='large'>
+                <Button type='primary' size='large' onClick={acceptInviteHandler}>
                     Тренироваться вместе
                 </Button>
 
-                <Button size='large'>Отклонить запрос</Button>
+                <Button size='large' onClick={rejectInviteHandler}>
+                    Отклонить запрос
+                </Button>
             </div>
         </div>
     );

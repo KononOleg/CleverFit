@@ -155,6 +155,7 @@ export const DATA_TEST_ID = {
     SEARCH_INPUT: 'search-input',
     NOTIFICATION_ABOUT_JOINT_TRAINING: 'notification-about-joint-training',
     JOINT_TRAINING_REVIEW_CARD: 'joint-training-review-card',
+    PARTNER_MODAL: 'partner-modal',
 };
 export const resultConfigs: ResultConfigs = {
     'error-login': {

@@ -119,6 +119,11 @@ export type SendInviteRequest = { to: string; trainingId: string };
 
 export type GetInviteListResponse = Invite[];
 
+export type SendInviteAnswerResponse = Invite;
+export type SendInviteAnswerRequest = { id: string; status: string };
+
+export type RemoveInviteRequest = { id: string };
+
 export type CreateFeedbackResponse = {
     message: string;
     rating: number;

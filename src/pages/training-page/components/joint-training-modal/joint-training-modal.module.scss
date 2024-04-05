@@ -1,36 +1,44 @@
 @import '../../../../index.variables.scss';
 
-.UserCard {
-    width: 234px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-
-    .Buttons {
-        margin-top: $gap-m;
-
-        .Status {
-            text-align: center;
-            margin-top: $gap-s;
-        }
-    }
-
+.JointTrainingModal {
     .UserInfo {
+        width: 239px;
         display: flex;
         gap: $gap-xs;
         font-size: $font-size-s;
         color: $character-light-title-85;
     }
 
+    :global(.ant-modal) {
+        width: 570px !important;
+    }
+
+    :global(.ant-modal-body) {
+        display: flex;
+        gap: $gap-xl;
+        flex-direction: column;
+        padding: $gap-6xl $gap-4xl;
+    }
+
+    .Block {
+        display: flex;
+        align-items: center;
+    }
+
+    .Status {
+        width: 239px;
+        display: flex;
+        gap: $gap-xs;
+    }
+
     .Trainings {
-        margin-top: $gap-s;
         display: flex;
         flex-direction: column;
         gap: $gap-2xs;
 
         .Training {
             display: flex;
+            align-items: center;
             gap: $gap-s;
 
             .TrainingInfo {
@@ -48,27 +56,5 @@
                 color: $character-light-secondary-45;
             }
         }
-    }
-
-    @media (max-width: 830px) {
-        width: 312px;
-    }
-}
-
-.UserCardSecond {
-    height: 114px;
-    background-color: $neutral-gray-1 !important;
-
-    :global(.ant-card-body) {
-        padding: $gap-s;
-    }
-}
-
-.UserCardThird {
-    height: 194px;
-    background-color: $primary-light-1 !important;
-
-    :global(.ant-card-body) {
-        padding: $gap-m $gap-m $gap-xs;
     }
 }

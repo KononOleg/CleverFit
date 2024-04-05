@@ -5,6 +5,9 @@ import {
     GetTrainingPalsResponse,
     GetUserJointTrainingListRequest,
     GetUserJointTrainingListResponse,
+    RemoveInviteRequest,
+    SendInviteAnswerRequest,
+    SendInviteAnswerResponse,
     SendInviteRequest,
     SendInviteResponse,
 } from '../../types';
@@ -50,12 +53,29 @@ export const inviteApi = apiSlice.injectEndpoints({
                 body,
             }),
         }),
+
+        sendInviteAnswer: builder.mutation<SendInviteAnswerResponse, SendInviteAnswerRequest>({
+            query: (body) => ({
+                url: API_PATH.INVITE,
+                method: 'PUT',
+                body,
+            }),
+        }),
+        removeInvite: builder.mutation<void, RemoveInviteRequest>({
+            query: (body) => ({
+                url: `${API_PATH.INVITE}/${body.id}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
 
 export const {
     useLazyGetUserJointTrainingListQuery,
     useGetTrainingPalsQuery,
+    useLazyGetTrainingPalsQuery,
     useLazyGetInviteListQuery,
     useSendInviteMutation,
+    useSendInviteAnswerMutation,
+    useRemoveInviteMutation,
 } = inviteApi;

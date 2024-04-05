@@ -13,6 +13,7 @@ type Props = {
     index: number;
     isMyPartner?: boolean;
     onChangeTrainingHandler?: (partner: UserJointTrainig) => void;
+    onClickHandler?: (partner: UserJointTrainig) => void;
 };
 
 export const JointTrainingCard = ({
@@ -20,12 +21,15 @@ export const JointTrainingCard = ({
     isMyPartner,
     index,
     onChangeTrainingHandler,
+    onClickHandler,
 }: Props) => {
     const [name, surName] = partner.name.split(' ') ?? [];
 
     const createTrainingHandler = () => {
         if (onChangeTrainingHandler) onChangeTrainingHandler(partner);
     };
+
+    const onClick = () => onClickHandler && onClickHandler(partner);
 
     return (
         <Card
@@ -35,6 +39,7 @@ export const JointTrainingCard = ({
             })}
             key={partner.id}
             data-test-id={`${DATA_TEST_ID.JOINT_TRAINING_CARDS}${index}`}
+            onClick={onClick}
         >
             <div>
                 <div className={styles.UserInfo}>

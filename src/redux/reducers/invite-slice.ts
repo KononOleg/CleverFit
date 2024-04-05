@@ -26,8 +26,12 @@ export const inviteSlice = createSlice({
         ) {
             state.userJointTrainigList = userJointTrainigList;
         },
+
         setTrainingPals(state, { payload: trainingPals }: PayloadAction<UserJointTrainig[]>) {
             state.trainingPals = trainingPals;
+        },
+        removeTrainingPal(state, { payload: id }: PayloadAction<string>) {
+            state.trainingPals = state.trainingPals.filter(({ inviteId }) => inviteId !== id);
         },
         setCreatedTrainingPal(
             state,
@@ -53,6 +57,7 @@ export const inviteSlice = createSlice({
 export const {
     setUserJointTrainigList,
     setTrainingPals,
+    removeTrainingPal,
     setCreatedTrainingPal,
     setJointTrainingStatus,
     setInviteList,

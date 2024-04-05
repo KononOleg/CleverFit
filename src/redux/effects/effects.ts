@@ -3,6 +3,7 @@ import { HttpStatusCode, PATH } from '@constants/index';
 import { INVITE_STATUS } from '@constants/invite-status';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
 import {
+    removeTrainingPal,
     setInviteList,
     setJointTrainingStatus,
     setTrainingPals,
@@ -167,5 +168,14 @@ listenerMiddleware.startListening({
     matcher: inviteApi.endpoints.getInviteList.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
         dispatch(setInviteList(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.removeInvite.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { id } = meta.arg.originalArgs;
+
+        dispatch(removeTrainingPal(id));
     },
 });
