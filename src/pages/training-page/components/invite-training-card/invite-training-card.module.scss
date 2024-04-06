@@ -38,4 +38,9 @@
     .Approaches {
         color: $primary-light-6;
     }
+
+    @media (max-width: 830px) {
+        left: -12px;
+        width: 312px;
+    }
 }

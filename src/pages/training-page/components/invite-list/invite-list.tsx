@@ -12,9 +12,11 @@ export const InviteList = () => {
     const [collapsed, setCollapsed] = useState(true);
     const { inviteList } = useAppSelector(inviteSelector);
 
+    const inviteListToRender = collapsed ? [inviteList[0]] : inviteList;
+
     const collapseHandler = () => setCollapsed(!collapsed);
 
-    const inviteListToRender = collapsed ? [inviteList[0]] : inviteList;
+    if (!inviteList.length) return null;
 
     return (
         <div className={styles.InviteList}>

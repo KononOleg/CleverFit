@@ -3,6 +3,7 @@ import { HttpStatusCode, PATH } from '@constants/index';
 import { INVITE_STATUS } from '@constants/invite-status';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
 import {
+    removeInvite,
     removeTrainingPal,
     setInviteList,
     setJointTrainingStatus,
@@ -161,6 +162,7 @@ listenerMiddleware.startListening({
         const { to } = meta.arg.originalArgs;
 
         dispatch(setJointTrainingStatus({ id: to, status: INVITE_STATUS.PENDING }));
+        dispatch(removeInvite(to));
     },
 });
 
@@ -168,6 +170,15 @@ listenerMiddleware.startListening({
     matcher: inviteApi.endpoints.getInviteList.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
         dispatch(setInviteList(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.sendInviteAnswer.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { id } = meta.arg.originalArgs;
+
+        dispatch(removeInvite(id));
     },
 });
 

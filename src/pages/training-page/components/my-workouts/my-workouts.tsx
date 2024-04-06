@@ -8,6 +8,7 @@ import { setCreatedTraining } from '@redux/reducers/training-slice';
 import { trainingSelector } from '@redux/selectors';
 import {
     useCreateTrainingMutation,
+    useLazyGetTrainingQuery,
     useUpdateTrainingMutation,
 } from '@redux/services/training-service';
 import { isOldDate } from '@utils/index';
@@ -25,6 +26,8 @@ export const MyWorkouts = () => {
         useCreateTrainingMutation();
     const [updateTraining, { isError: isUpdateError, isSuccess: isUpdateSuccess }] =
         useUpdateTrainingMutation();
+
+    const [getTraining] = useLazyGetTrainingQuery();
     const [openDrawerExercises, setOpenDrawerExercises] = useState(false);
     const [isEditTraining, setIsEditTraining] = useState(false);
 
@@ -52,6 +55,7 @@ export const MyWorkouts = () => {
         dispatch(setCreatedTraining(record));
         setIsEditTraining(true);
         setOpenDrawerExercises(true);
+        getTraining();
     };
 
     return (

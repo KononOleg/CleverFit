@@ -16,4 +16,8 @@
     .CollapseButton {
         text-align: start;
     }
+
+    @media (max-width: 830px) {
+        padding: $gap-s;
+    }
 }

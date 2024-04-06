@@ -11,8 +11,17 @@
         margin-top: $gap-m;
 
         .Status {
-            text-align: center;
-            margin-top: $gap-s;
+            display: flex;
+            justify-content: center;
+            gap: $gap-xs;
+            margin-top: $gap-2xs;
+
+            .AcceptedStatus {
+                color: $character-light-success;
+            }
+            .RejectedStatus {
+                color: $character-light-secondary-45;
+            }
         }
     }
 
@@ -71,4 +80,8 @@
     :global(.ant-card-body) {
         padding: $gap-m $gap-m $gap-xs;
     }
+}
+
+.UserCardFourth {
+    background-color: $neutral-gray-2 !important;
 }

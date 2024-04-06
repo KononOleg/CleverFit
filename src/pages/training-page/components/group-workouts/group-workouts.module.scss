@@ -26,8 +26,12 @@
     }
 
     @media (max-width: 830px) {
-        .description {
+        .Description {
             padding: $gap-m $gap-4xs;
+
+            .Buttons {  
+                padding: 0;
+            }
         }
         .Buttons {
             flex-direction: column;

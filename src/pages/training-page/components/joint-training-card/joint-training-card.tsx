@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
-import { CheckCircleTwoTone, UserOutlined } from '@ant-design/icons';
+import { CheckCircleFilled, ExclamationCircleOutlined, UserOutlined } from '@ant-design/icons';
 import { Highlighter } from '@components/highlighter';
 import { DATA_TEST_ID } from '@constants/index';
 import { INVITE_STATUS } from '@constants/invite-status';
+import { useSendInviteAnswerMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Card } from 'antd';
 import cn from 'classnames';
 
@@ -27,6 +28,7 @@ export const JointTrainingCard = ({
     onChangeTrainingHandler,
     onClickHandler,
 }: Props) => {
+    const [sendInviteAnswer] = useSendInviteAnswerMutation();
     const highlight = useCallback(
         (text: string) => <Highlighter searchValue={searchValue as string} text={text} />,
         [searchValue],
@@ -36,6 +38,11 @@ export const JointTrainingCard = ({
         if (onChangeTrainingHandler) onChangeTrainingHandler(partner);
     };
 
+    const clickTrainingButtonHandler = () =>
+        partner.status === INVITE_STATUS.ACCEPTED
+            ? sendInviteAnswer({ id: partner.inviteId as string, status: INVITE_STATUS.REJECTED })
+            : createTrainingHandler();
+
     const onClick = () => onClickHandler && onClickHandler(partner);
 
     return (
@@ -43,6 +50,7 @@ export const JointTrainingCard = ({
             className={cn(styles.UserCard, {
                 [styles.UserCardSecond]: isMyPartner,
                 [styles.UserCardThird]: !isMyPartner,
+                [styles.UserCardFourth]: partner.status === INVITE_STATUS.REJECTED,
             })}
             key={partner.id}
             data-test-id={`${DATA_TEST_ID.JOINT_TRAINING_CARDS}${index}`}
@@ -82,7 +90,7 @@ export const JointTrainingCard = ({
                                 partner.status === INVITE_STATUS.REJECTED ||
                                 partner.status === INVITE_STATUS.PENDING
                             }
-                            onClick={createTrainingHandler}
+                            onClick={clickTrainingButtonHandler}
                         >
                             {partner.status === INVITE_STATUS.ACCEPTED
                                 ? 'Отменить тренировку'
@@ -96,7 +104,10 @@ export const JointTrainingCard = ({
                                 {partner.status === INVITE_STATUS.ACCEPTED && 'запрос одобрен'}
                                 {partner.status === INVITE_STATUS.REJECTED && 'запрос отклонен'}
                                 {partner.status === INVITE_STATUS.ACCEPTED && (
-                                    <CheckCircleTwoTone />
+                                    <CheckCircleFilled className={styles.AcceptedStatus} />
+                                )}
+                                {partner.status === INVITE_STATUS.REJECTED && (
+                                    <ExclamationCircleOutlined className={styles.RejectedStatus} />
                                 )}
                             </div>
                         )}

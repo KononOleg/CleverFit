@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircleTwoTone, UserOutlined } from '@ant-design/icons';
+import { CheckCircleFilled, UserOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useRemoveInviteMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Modal } from 'antd';
@@ -66,7 +66,7 @@ export const JointTrainingModal = ({ open, onClose, partner }: Props) => {
                 <div className={styles.Block}>
                     <div className={styles.Status}>
                         тренировка одобрена
-                        <CheckCircleTwoTone />
+                        <CheckCircleFilled />
                     </div>
                     <Button size='large' onClick={rejectInviteHandler}>
                         Отменить тренировку

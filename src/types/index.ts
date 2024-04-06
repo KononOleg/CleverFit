@@ -67,6 +67,7 @@ export type Tariff = {
     periods: Period[];
 };
 export type UserJointTrainig = {
+    _id: string;
     id: string;
     name: string;
     imageSrc: string;

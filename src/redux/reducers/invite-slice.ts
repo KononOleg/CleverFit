@@ -51,6 +51,11 @@ export const inviteSlice = createSlice({
         setInviteList(state, { payload: inviteList }: PayloadAction<Invite[]>) {
             state.inviteList = inviteList;
         },
+
+        removeInvite(state, { payload: id }: PayloadAction<string>) {
+            // eslint-disable-next-line no-underscore-dangle
+            state.inviteList = state.inviteList.filter((invite) => invite._id !== id);
+        },
     },
 });
 
@@ -61,4 +66,5 @@ export const {
     setCreatedTrainingPal,
     setJointTrainingStatus,
     setInviteList,
+    removeInvite,
 } = inviteSlice.actions;

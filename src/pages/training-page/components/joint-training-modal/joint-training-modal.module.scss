@@ -1,4 +1,7 @@
 @import '../../../../index.variables.scss';
+:global(.ant-modal-mask) {
+    background: $background !important;
+}
 
 .JointTrainingModal {
     .UserInfo {
@@ -29,6 +32,10 @@
         width: 239px;
         display: flex;
         gap: $gap-xs;
+
+        span {
+            color: $character-light-success;
+        }
     }
 
     .Trainings {
@@ -54,6 +61,33 @@
                 font-weight: $font-weight-xs;
                 line-height: $font-line-xs;
                 color: $character-light-secondary-45;
+            }
+        }
+    }
+
+    @media (max-width: 830px) {
+        :global(.ant-modal-body) {
+            gap: $gap-m;
+            padding: 16px 12px;
+        }
+
+        .Block {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $gap-s;
+        }
+
+        .Block:last-child {
+            flex-direction: column-reverse;
+            align-items: center;
+
+            .Status {
+                width: 100%;
+                justify-content: center;
+            }
+
+            button {
+                width: 100%;
             }
         }
     }
