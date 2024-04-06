@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { CheckCircleTwoTone, UserOutlined } from '@ant-design/icons';
+import { Highlighter } from '@components/highlighter';
 import { DATA_TEST_ID } from '@constants/index';
 import { INVITE_STATUS } from '@constants/invite-status';
 import { Avatar, Button, Card } from 'antd';
@@ -11,6 +13,7 @@ import styles from './joint-training-card.module.scss';
 type Props = {
     partner: UserJointTrainig;
     index: number;
+    searchValue?: string;
     isMyPartner?: boolean;
     onChangeTrainingHandler?: (partner: UserJointTrainig) => void;
     onClickHandler?: (partner: UserJointTrainig) => void;
@@ -20,10 +23,14 @@ export const JointTrainingCard = ({
     partner,
     isMyPartner,
     index,
+    searchValue,
     onChangeTrainingHandler,
     onClickHandler,
 }: Props) => {
-    const [name, surName] = partner.name.split(' ') ?? [];
+    const highlight = useCallback(
+        (text: string) => <Highlighter searchValue={searchValue as string} text={text} />,
+        [searchValue],
+    );
 
     const createTrainingHandler = () => {
         if (onChangeTrainingHandler) onChangeTrainingHandler(partner);
@@ -50,10 +57,7 @@ export const JointTrainingCard = ({
                         icon={!partner.imageSrc && <UserOutlined />}
                     />
 
-                    <h6>
-                        {name}
-                        <br /> {surName}
-                    </h6>
+                    <h6>{highlight(partner.name)}</h6>
                 </div>
                 <div className={styles.Trainings}>
                     <div className={styles.Training}>

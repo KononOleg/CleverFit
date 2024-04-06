@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { inviteSelector } from '@redux/selectors';
+import { sortTrainingList } from '@utils/filter-training-list';
 import { Button, Input, List } from 'antd';
 
 import { UserJointTrainig } from '../../../../types';
@@ -16,6 +18,11 @@ type Props = {
 
 export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Props) => {
     const { userJointTrainigList } = useAppSelector(inviteSelector);
+    const [searchValue, setSearchValue] = useState('');
+
+    const filteredTrainingList = sortTrainingList(userJointTrainigList, searchValue);
+
+    const searchHandler = (value: string) => setSearchValue(value);
 
     return (
         <div className={styles.JointTrainingList}>
@@ -28,20 +35,25 @@ export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Pr
                 >
                     Назад
                 </Button>
-                <Input.Search placeholder='Поиск по имени' className={styles.SearhInput} />
+                <Input.Search
+                    placeholder='Поиск по имени'
+                    className={styles.SearhInput}
+                    onSearch={searchHandler}
+                />
             </div>
             <List
-                dataSource={userJointTrainigList}
+                dataSource={filteredTrainingList}
                 renderItem={(partner, index) => (
                     <JointTrainingCard
                         partner={partner}
                         index={index}
                         onChangeTrainingHandler={onChangeTrainingHandler}
+                        searchValue={searchValue}
                     />
                 )}
                 className={styles.JointList}
                 pagination={
-                    userJointTrainigList.length > 12 && {
+                    filteredTrainingList.length > 12 && {
                         pageSize: 12,
                         size: 'small',
                     }
