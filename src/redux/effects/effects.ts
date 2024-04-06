@@ -6,9 +6,9 @@ import {
     removeInvite,
     removeTrainingPal,
     setInviteList,
+    setJointTrainigList,
     setJointTrainingStatus,
     setTrainingPals,
-    setUserJointTrainigList,
 } from '@redux/reducers/invite-slice';
 import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
@@ -145,7 +145,7 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: inviteApi.endpoints.getUserJointTrainingList.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
-        dispatch(setUserJointTrainigList(payload));
+        dispatch(setJointTrainigList(payload));
     },
 });
 

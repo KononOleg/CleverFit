@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Invite, Nullable, UserJointTrainig } from '../../types';
+import { Invite, JointTrainig, Nullable } from '../../types';
 
 type InviteState = {
-    userJointTrainigList: UserJointTrainig[];
-    trainingPals: UserJointTrainig[];
-    createdTrainingPal: Nullable<UserJointTrainig>;
+    jointTrainigList: JointTrainig[];
+    trainingPals: JointTrainig[];
+    createdTrainingPal: Nullable<JointTrainig>;
     inviteList: Invite[];
 };
 
 const initialState: InviteState = {
-    userJointTrainigList: [],
+    jointTrainigList: [],
     trainingPals: [],
     createdTrainingPal: null,
     inviteList: [],
@@ -20,32 +20,28 @@ export const inviteSlice = createSlice({
     name: 'invite',
     initialState,
     reducers: {
-        setUserJointTrainigList(
+        setJointTrainigList(
             state,
-            { payload: userJointTrainigList }: PayloadAction<UserJointTrainig[]>,
+            { payload: userJointTrainigList }: PayloadAction<JointTrainig[]>,
         ) {
-            state.userJointTrainigList = userJointTrainigList;
-        },
-
-        setTrainingPals(state, { payload: trainingPals }: PayloadAction<UserJointTrainig[]>) {
-            state.trainingPals = trainingPals;
-        },
-        removeTrainingPal(state, { payload: id }: PayloadAction<string>) {
-            state.trainingPals = state.trainingPals.filter(({ inviteId }) => inviteId !== id);
-        },
-        setCreatedTrainingPal(
-            state,
-            { payload: createdTrainingPal }: PayloadAction<UserJointTrainig>,
-        ) {
-            state.createdTrainingPal = createdTrainingPal;
+            state.jointTrainigList = userJointTrainigList;
         },
         setJointTrainingStatus(
             state,
             { payload: { id, status } }: PayloadAction<{ id: string; status: string }>,
         ) {
-            const findIndex = state.userJointTrainigList.findIndex((joint) => joint.id === id);
+            const findIndex = state.jointTrainigList.findIndex((joint) => joint.id === id);
 
-            state.userJointTrainigList[findIndex].status = status;
+            state.jointTrainigList[findIndex].status = status;
+        },
+        setTrainingPals(state, { payload: trainingPals }: PayloadAction<JointTrainig[]>) {
+            state.trainingPals = trainingPals;
+        },
+        removeTrainingPal(state, { payload: id }: PayloadAction<string>) {
+            state.trainingPals = state.trainingPals.filter(({ inviteId }) => inviteId !== id);
+        },
+        setCreatedTrainingPal(state, { payload: createdTrainingPal }: PayloadAction<JointTrainig>) {
+            state.createdTrainingPal = createdTrainingPal;
         },
 
         setInviteList(state, { payload: inviteList }: PayloadAction<Invite[]>) {
@@ -60,7 +56,7 @@ export const inviteSlice = createSlice({
 });
 
 export const {
-    setUserJointTrainigList,
+    setJointTrainigList,
     setTrainingPals,
     removeTrainingPal,
     setCreatedTrainingPal,

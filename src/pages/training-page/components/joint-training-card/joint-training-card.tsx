@@ -7,17 +7,17 @@ import { useSendInviteAnswerMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Card } from 'antd';
 import cn from 'classnames';
 
-import { UserJointTrainig } from '../../../../types';
+import { JointTrainig } from '../../../../types';
 
 import styles from './joint-training-card.module.scss';
 
 type Props = {
-    partner: UserJointTrainig;
+    partner: JointTrainig;
     index: number;
     searchValue?: string;
     isMyPartner?: boolean;
-    onChangeTrainingHandler?: (partner: UserJointTrainig) => void;
-    onClickHandler?: (partner: UserJointTrainig) => void;
+    onChangeTrainingHandler?: (partner: JointTrainig) => void;
+    onClickHandler?: (partner: JointTrainig) => void;
 };
 
 export const JointTrainingCard = ({
@@ -34,12 +34,16 @@ export const JointTrainingCard = ({
         [searchValue],
     );
 
+    const isAccepted = partner.status === INVITE_STATUS.ACCEPTED;
+    const isPending = partner.status === INVITE_STATUS.PENDING;
+    const isRejected = partner.status === INVITE_STATUS.REJECTED;
+
     const createTrainingHandler = () => {
         if (onChangeTrainingHandler) onChangeTrainingHandler(partner);
     };
 
     const clickTrainingButtonHandler = () =>
-        partner.status === INVITE_STATUS.ACCEPTED
+        isAccepted
             ? sendInviteAnswer({ id: partner.inviteId as string, status: INVITE_STATUS.REJECTED })
             : createTrainingHandler();
 
@@ -50,7 +54,7 @@ export const JointTrainingCard = ({
             className={cn(styles.UserCard, {
                 [styles.UserCardSecond]: isMyPartner,
                 [styles.UserCardThird]: !isMyPartner,
-                [styles.UserCardFourth]: partner.status === INVITE_STATUS.REJECTED,
+                [styles.UserCardFourth]: isRejected,
             })}
             key={partner.id}
             data-test-id={`${DATA_TEST_ID.JOINT_TRAINING_CARDS}${index}`}
@@ -85,28 +89,22 @@ export const JointTrainingCard = ({
                         <Button
                             block={true}
                             size='middle'
-                            type={partner.status === INVITE_STATUS.ACCEPTED ? 'default' : 'primary'}
-                            disabled={
-                                partner.status === INVITE_STATUS.REJECTED ||
-                                partner.status === INVITE_STATUS.PENDING
-                            }
+                            type={isAccepted ? 'default' : 'primary'}
+                            disabled={isRejected || isPending}
                             onClick={clickTrainingButtonHandler}
                         >
-                            {partner.status === INVITE_STATUS.ACCEPTED
-                                ? 'Отменить тренировку'
-                                : 'Создать тренировку'}
+                            {isAccepted ? 'Отменить тренировку' : 'Создать тренировку'}
                         </Button>
 
                         {partner.status && (
                             <div className={styles.Status}>
-                                {partner.status === INVITE_STATUS.PENDING &&
-                                    'ожидает подтверждения'}
-                                {partner.status === INVITE_STATUS.ACCEPTED && 'запрос одобрен'}
-                                {partner.status === INVITE_STATUS.REJECTED && 'запрос отклонен'}
-                                {partner.status === INVITE_STATUS.ACCEPTED && (
+                                {isPending && 'ожидает подтверждения'}
+                                {isAccepted && 'запрос одобрен'}
+                                {isRejected && 'запрос отклонен'}
+                                {isAccepted && (
                                     <CheckCircleFilled className={styles.AcceptedStatus} />
                                 )}
-                                {partner.status === INVITE_STATUS.REJECTED && (
+                                {isRejected && (
                                     <ExclamationCircleOutlined className={styles.RejectedStatus} />
                                 )}
                             </div>

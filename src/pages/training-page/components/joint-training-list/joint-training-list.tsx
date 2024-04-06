@@ -6,21 +6,21 @@ import { inviteSelector } from '@redux/selectors';
 import { sortTrainingList } from '@utils/filter-training-list';
 import { Button, Input, List } from 'antd';
 
-import { UserJointTrainig } from '../../../../types';
+import { JointTrainig } from '../../../../types';
 import { JointTrainingCard } from '../joint-training-card';
 
 import styles from './joint-training-list.module.scss';
 
 type Props = {
     goBackHandler: () => void;
-    onChangeTrainingHandler: (partner: UserJointTrainig) => void;
+    onChangeTrainingHandler: (partner: JointTrainig) => void;
 };
 
 export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Props) => {
-    const { userJointTrainigList } = useAppSelector(inviteSelector);
+    const { jointTrainigList } = useAppSelector(inviteSelector);
     const [searchValue, setSearchValue] = useState('');
 
-    const filteredTrainingList = sortTrainingList(userJointTrainigList, searchValue);
+    const filteredTrainingList = sortTrainingList(jointTrainigList, searchValue);
 
     const searchHandler = (value: string) => setSearchValue(value);
 

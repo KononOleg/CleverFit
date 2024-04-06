@@ -14,7 +14,7 @@ import { useCreateTrainingMutation } from '@redux/services/training-service';
 import { getFavouriteTraining } from '@utils/favourite-training-type';
 import { Button, Typography } from 'antd';
 
-import { UserJointTrainig } from '../../../../types';
+import { JointTrainig } from '../../../../types';
 import { InviteList } from '../invite-list';
 import { JointTrainingList } from '../joint-training-list';
 import { TrainingPals } from '../training-pals';
@@ -48,7 +48,7 @@ export const GroupWorkouts = () => {
     const closeDrawerExercisesHandler = () => setOpenDrawerExercises(false);
     const openDrawerExercisesHandler = () => setOpenDrawerExercises(true);
 
-    const onChangeTrainingHandler = (partner: UserJointTrainig) => {
+    const onChangeTrainingHandler = (partner: JointTrainig) => {
         dispatch(setCreatedTrainingPal(partner));
 
         openDrawerExercisesHandler();

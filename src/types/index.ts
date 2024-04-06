@@ -66,7 +66,7 @@ export type Tariff = {
     name: string;
     periods: Period[];
 };
-export type UserJointTrainig = {
+export type JointTrainig = {
     _id: string;
     id: string;
     name: string;
@@ -106,11 +106,11 @@ export type GetCurrentUserResponse = User;
 export type UpdateUserResponse = User;
 export type UpdateUserRequest = User;
 
-export type GetUserJointTrainingListResponse = UserJointTrainig[];
+export type GetUserJointTrainingListResponse = JointTrainig[];
 export type GetUserJointTrainingListRequest = {
     trainingType?: string;
 };
-export type GetTrainingPalsResponse = UserJointTrainig[];
+export type GetTrainingPalsResponse = JointTrainig[];
 
 export type GetTariffListResponse = Tariff[];
 export type BuyTariffRequest = { tariffId: string; days: number };

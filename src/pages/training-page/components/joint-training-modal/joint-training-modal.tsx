@@ -4,14 +4,14 @@ import { DATA_TEST_ID } from '@constants/index';
 import { useRemoveInviteMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Modal } from 'antd';
 
-import { UserJointTrainig } from '../../../../types';
+import { JointTrainig } from '../../../../types';
 
 import styles from './joint-training-modal.module.scss';
 
 type Props = {
     open: boolean;
     onClose: () => void;
-    partner: UserJointTrainig;
+    partner: JointTrainig;
 };
 
 export const JointTrainingModal = ({ open, onClose, partner }: Props) => {

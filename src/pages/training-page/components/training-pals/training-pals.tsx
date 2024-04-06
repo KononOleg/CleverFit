@@ -3,7 +3,7 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { inviteSelector } from '@redux/selectors';
 import { List, Typography } from 'antd';
 
-import { UserJointTrainig } from '../../../../types';
+import { JointTrainig } from '../../../../types';
 import { JointTrainingCard } from '../joint-training-card';
 import { JointTrainingModal } from '../joint-training-modal';
 
@@ -12,11 +12,11 @@ import styles from './training-pals.module.scss';
 export const TrainingPals = () => {
     const { trainingPals } = useAppSelector(inviteSelector);
     const [openJointTrainingModal, setOpenJointTrainingModal] = useState(false);
-    const [selectedTrainingPal, setSelectedTrainingPal] = useState<UserJointTrainig>();
+    const [selectedTrainingPal, setSelectedTrainingPal] = useState<JointTrainig>();
 
     const isEmptyTrainingPals = trainingPals && trainingPals.length === 0;
 
-    const openJointTrainingModalHandler = (partner: UserJointTrainig) => {
+    const openJointTrainingModalHandler = (partner: JointTrainig) => {
         setOpenJointTrainingModal(true);
         setSelectedTrainingPal(partner);
     };

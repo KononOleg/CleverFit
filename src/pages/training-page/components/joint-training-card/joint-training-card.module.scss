@@ -30,6 +30,10 @@
         gap: $gap-xs;
         font-size: $font-size-s;
         color: $character-light-title-85;
+
+        h6 {
+            max-width: 50px;
+        }
     }
 
     .Trainings {
