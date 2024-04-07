@@ -1,0 +1,94 @@
+@import '../../../../index.variables.scss';
+:global(.ant-modal-mask) {
+    background: $background !important;
+}
+
+.JointTrainingModal {
+    .UserInfo {
+        width: 239px;
+        display: flex;
+        gap: $gap-xs;
+        font-size: $font-size-s;
+        color: $character-light-title-85;
+    }
+
+    :global(.ant-modal) {
+        width: 570px !important;
+    }
+
+    :global(.ant-modal-body) {
+        display: flex;
+        gap: $gap-xl;
+        flex-direction: column;
+        padding: $gap-6xl $gap-4xl;
+    }
+
+    .Block {
+        display: flex;
+        align-items: center;
+    }
+
+    .Status {
+        width: 239px;
+        display: flex;
+        gap: $gap-xs;
+
+        span {
+            color: $character-light-success;
+        }
+    }
+
+    .Trainings {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-2xs;
+
+        .Training {
+            display: flex;
+            align-items: center;
+            gap: $gap-s;
+
+            .TrainingInfo {
+                font-size: $font-size-s;
+                font-weight: $font-weight-l;
+                line-height: $font-line-s;
+                color: $primary-light-6;
+            }
+
+            .TrainingType {
+                width: 110px;
+                font-size: $font-size-xs;
+                font-weight: $font-weight-xs;
+                line-height: $font-line-xs;
+                color: $character-light-secondary-45;
+            }
+        }
+    }
+
+    @media (max-width: 830px) {
+        :global(.ant-modal-body) {
+            gap: $gap-m;
+            padding: 16px 12px;
+        }
+
+        .Block {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $gap-s;
+        }
+
+        .Block:last-child {
+            flex-direction: column-reverse;
+            align-items: center;
+
+            .Status {
+                width: 100%;
+                justify-content: center;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

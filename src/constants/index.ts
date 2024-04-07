@@ -34,6 +34,9 @@ export const API_PATH = {
     CURRENT_USER: '/user/me',
     TARIFF: '/tariff',
     TARIFF_LIST: '/catalogs/tariff-list',
+    USER_JOINT_TRAINING_LIST: '/catalogs/user-joint-training-list',
+    TRAINING_PALS: '/catalogs/training-pals',
+    INVITE: '/invite',
 };
 
 export const PATH = {
@@ -44,6 +47,7 @@ export const PATH = {
     CALENDAR: '/calendar',
     PROFILE: '/profile',
     SETTINGS: '/settings',
+    TRAINING: '/training',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
@@ -113,6 +117,9 @@ export const DATA_TEST_ID = {
     MODAL_DRAWER_RIGHT_INPUT_APPROACH: 'modal-drawer-right-input-approach',
     MODAL_DRAWER_RIGHT_INPUT_WEIGHT: 'modal-drawer-right-input-weight',
     MODAL_DRAWER_RIGHT_INPUT_QUANTITY: 'modal-drawer-right-input-quantity',
+    MODAL_DRAWER_RIGHT_DATE_PICKER: 'modal-drawer-right-date-picker',
+    MODAL_DRAWER_RIGHT_CHECKBOX_PERIOD: 'modal-drawer-right-checkbox-period',
+    MODAL_DRAWER_RIGHT_SELECT_PERIOD: 'modal-drawer-right-select-period',
     MENU_BUTTON_PROFILE: 'menu-button-profile',
     HEADER_SETTINGS: 'header-settings',
     SETTINGS_BACK: 'settings-back',
@@ -139,8 +146,17 @@ export const DATA_TEST_ID = {
     TARIFF_SUBMIT: 'tariff-submit',
     TARIFF_COST: 'tariff-cost',
     TARIFF_MODAL_SUCCESS: 'tariff-modal-success',
+    MENU_BUTTON_TRAINING: 'menu-button-training',
+    MY_TRAININGS_TABLE: 'my-trainings-table',
+    CREATE_NEW_TRAINING_BUTTON: 'create-new-training-button',
+    CREATE_TRAINING_SUCCESS_ALERT: 'create-training-success-alert',
+    UPDATE_MY_TRAINING_TABLE_ICON: 'update-my-training-table-icon',
+    JOINT_TRAINING_CARDS: 'joint-training-cards',
+    SEARCH_INPUT: 'search-input',
+    NOTIFICATION_ABOUT_JOINT_TRAINING: 'notification-about-joint-training',
+    JOINT_TRAINING_REVIEW_CARD: 'joint-training-review-card',
+    PARTNER_MODAL: 'partner-modal',
 };
-
 export const resultConfigs: ResultConfigs = {
     'error-login': {
         status: 'warning',
@@ -245,3 +261,11 @@ export const LocalData: PickerLocale = {
         },
     },
 };
+
+export const colors = new Map([
+    ['Силовая', 'yellow'],
+    ['Ноги', 'red'],
+    ['Руки', 'cyan'],
+    ['Грудь', 'green'],
+    ['Спина', 'orange'],
+]);

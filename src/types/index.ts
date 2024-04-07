@@ -10,7 +10,7 @@ export type User = {
     imgSrc: string;
     birthday: string;
     readyForJointTraining: boolean;
-    sendNotification:boolean,
+    sendNotification: boolean;
     tariff: UserTariff;
 };
 
@@ -32,6 +32,13 @@ export type Feedback = {
     createdAt: string;
 };
 
+export type Parameters = {
+    repeat: boolean;
+    period: number;
+    jointTraining: boolean;
+    participants?: string[];
+};
+
 export type Exercise = {
     _id?: string;
     name: string;
@@ -47,6 +54,7 @@ export type Training = {
     date: string;
     exercises: Exercise[];
     isImplementation?: boolean;
+    parameters?: Parameters;
 };
 export type Period = {
     text: string;
@@ -58,8 +66,33 @@ export type Tariff = {
     name: string;
     periods: Period[];
 };
+export type JointTrainig = {
+    _id: string;
+    id: string;
+    name: string;
+    imageSrc: string;
+    trainingType: string;
+    avgWeightInWeek: number;
+    status: Nullable<string>;
+    inviteId: Nullable<string>;
+};
+
+export type From = {
+    _id: string;
+    firstName?: string;
+    lastName?: string;
+    imageSrc?: string;
+};
 
 export type TrainingList = Array<{ name: string; key: string }>;
+
+export type Invite = {
+    _id: string;
+    training: Training;
+    status: string;
+    createdAt: string;
+    from: From;
+};
 
 export type GetTrainingListResponse = TrainingList;
 export type GetTrainingResponse = Training[];
@@ -73,8 +106,24 @@ export type GetCurrentUserResponse = User;
 export type UpdateUserResponse = User;
 export type UpdateUserRequest = User;
 
+export type GetUserJointTrainingListResponse = JointTrainig[];
+export type GetUserJointTrainingListRequest = {
+    trainingType?: string;
+};
+export type GetTrainingPalsResponse = JointTrainig[];
+
 export type GetTariffListResponse = Tariff[];
 export type BuyTariffRequest = { tariffId: string; days: number };
+
+export type SendInviteResponse = Invite;
+export type SendInviteRequest = { to: string; trainingId: string };
+
+export type GetInviteListResponse = Invite[];
+
+export type SendInviteAnswerResponse = Invite;
+export type SendInviteAnswerRequest = { id: string; status: string };
+
+export type RemoveInviteRequest = { id: string };
 
 export type CreateFeedbackResponse = {
     message: string;
@@ -121,4 +170,9 @@ export type ResultConfig = {
 
 export type ResultConfigs = {
     [K in string]: ResultConfig;
+};
+
+export type PeriodOptions = {
+    name: string;
+    period: number;
 };

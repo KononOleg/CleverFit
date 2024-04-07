@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { ModalError } from '@components/modal-error';
@@ -15,16 +15,16 @@ export const MainPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [getTraining, { data: training, isError }] = useLazyGetTrainingQuery();
+    const [getTraining, { isError }] = useLazyGetTrainingQuery();
 
-    const onNavigate = () => getTraining();
+    const onNavigate = async (route: string) => {
+        const { data: training } = await getTraining();
 
-    useEffect(() => {
         if (training) {
             dispatch(setTraining(training));
-            navigate(PATH.CALENDAR);
+            navigate(route);
         }
-    }, [dispatch, navigate, training]);
+    };
 
     return (
         <React.Fragment>
@@ -60,7 +60,12 @@ export const MainPage = () => {
                 <div className={styles.cards}>
                     <div>
                         <p>Расписать тренировки</p>
-                        <Button type='text' icon={<HeartFilled />}>
+                        <Button
+                            type='text'
+                            icon={<HeartFilled />}
+                            data-test-id={DATA_TEST_ID.MENU_BUTTON_TRAINING}
+                            onClick={() => onNavigate(PATH.TRAINING)}
+                        >
                             Тренировки
                         </Button>
                     </div>
@@ -71,7 +76,7 @@ export const MainPage = () => {
                             type='text'
                             icon={<CalendarOutlined />}
                             data-test-id={DATA_TEST_ID.MENU_BUTTON_CALENDAR}
-                            onClick={onNavigate}
+                            onClick={() => onNavigate(PATH.CALENDAR)}
                         >
                             Календар
                         </Button>

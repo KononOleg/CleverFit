@@ -1,0 +1,23 @@
+@import '../../../../index.variables.scss';
+
+.InviteList {
+    display: flex;
+    flex-direction: column;
+    padding: $gap-m $gap-xl;
+    gap: $gap-m;
+    background: $neutral-gray-2;
+
+    :global(.ant-list-items) {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-xs;
+    }
+
+    .CollapseButton {
+        text-align: start;
+    }
+
+    @media (max-width: 830px) {
+        padding: $gap-s;
+    }
+}

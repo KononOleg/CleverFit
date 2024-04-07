@@ -1,0 +1,91 @@
+@import '../../../../index.variables.scss';
+
+.UserCard {
+    width: 234px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    .Buttons {
+        margin-top: $gap-m;
+
+        .Status {
+            display: flex;
+            justify-content: center;
+            gap: $gap-xs;
+            margin-top: $gap-2xs;
+
+            .AcceptedStatus {
+                color: $character-light-success;
+            }
+            .RejectedStatus {
+                color: $character-light-secondary-45;
+            }
+        }
+    }
+
+    .UserInfo {
+        display: flex;
+        gap: $gap-xs;
+        font-size: $font-size-s;
+        color: $character-light-title-85;
+
+        h6 {
+            max-width: 50px;
+        }
+    }
+
+    .Trainings {
+        margin-top: $gap-s;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-2xs;
+
+        .Training {
+            display: flex;
+            gap: $gap-s;
+
+            .TrainingInfo {
+                font-size: $font-size-s;
+                font-weight: $font-weight-l;
+                line-height: $font-line-s;
+                color: $primary-light-6;
+            }
+
+            .TrainingType {
+                width: 110px;
+                font-size: $font-size-xs;
+                font-weight: $font-weight-xs;
+                line-height: $font-line-xs;
+                color: $character-light-secondary-45;
+            }
+        }
+    }
+
+    @media (max-width: 830px) {
+        width: 312px;
+    }
+}
+
+.UserCardSecond {
+    height: 114px;
+    background-color: $neutral-gray-1 !important;
+
+    :global(.ant-card-body) {
+        padding: $gap-s;
+    }
+}
+
+.UserCardThird {
+    height: 194px;
+    background-color: $primary-light-1 !important;
+
+    :global(.ant-card-body) {
+        padding: $gap-m $gap-m $gap-xs;
+    }
+}
+
+.UserCardFourth {
+    background-color: $neutral-gray-2 !important;
+}

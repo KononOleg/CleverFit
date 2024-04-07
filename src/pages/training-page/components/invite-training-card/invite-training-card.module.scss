@@ -1,0 +1,46 @@
+@import '../../../../index.variables.scss';
+
+.InviteTrainingCard {
+    position: absolute !important;
+    top: 75%;
+    left: 0;
+    width: 285px;
+    z-index: 9;
+
+    .Period {
+        font-size: $font-size-m;
+    }
+
+    :global(.ant-card-head) {
+        padding: 0;
+    }
+
+    :global(.ant-card-head-title) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $gap-s $gap-xs;
+    }
+
+    :global(.ant-card-body) {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-xs;
+        padding: $gap-xl $gap-s;
+    }
+
+    .Column {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Approaches {
+        color: $primary-light-6;
+    }
+
+    @media (max-width: 830px) {
+        left: -12px;
+        width: 312px;
+    }
+}

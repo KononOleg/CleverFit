@@ -5,7 +5,8 @@ import { Header } from '@components/header';
 import { Sider } from '@components/sider';
 import { PATH } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { profileSelector } from '@redux/selectors';
+import { inviteSelector, profileSelector } from '@redux/selectors';
+import { useLazyGetInviteListQuery } from '@redux/services/invite-service';
 import { useLazyGetCurrentUserQuery } from '@redux/services/profile-service';
 import cn from 'classnames';
 import moment from 'moment';
@@ -25,12 +26,18 @@ type Props = {
 export const MainLayout = ({ isShowHeader = true }: Props) => {
     const { pathname } = useLocation();
     const { profile } = useAppSelector(profileSelector);
+    const { inviteList } = useAppSelector(inviteSelector);
 
+    const [getInviteList] = useLazyGetInviteListQuery();
     const [getCurrentUser] = useLazyGetCurrentUserQuery();
 
     useEffect(() => {
         if (profile === null) setTimeout(getCurrentUser, 200);
     }, [getCurrentUser, profile]);
+
+    useEffect(() => {
+        if (inviteList.length === 0) getInviteList();
+    }, [getInviteList, inviteList]);
 
     const isMainPage = pathname === PATH.MAIN;
     const isFeedbacksPage = pathname === PATH.FEEDBACKS;

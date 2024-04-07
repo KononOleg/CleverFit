@@ -1,0 +1,80 @@
+@import '../../../../index.variables.scss';
+
+.InviteCard {
+    display: flex;
+    gap: $gap-xs;
+    padding: $gap-l $gap-l $gap-m $gap-s;
+    border-radius: $border-radius-xxl;
+    border-top-left-radius: 0;
+    background: $neutral-gray-1;
+
+    .UserInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 174px;
+    }
+
+    .UserName {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: $gap-s;
+    }
+
+    .Date {
+        font-size: $font-size-xs;
+        color: $neutral-gray-6;
+    }
+
+    .Message {
+        position: relative;
+
+        .Greeting {
+            margin: 0;
+            color: $primary-light-9;
+        }
+
+        button {
+            padding: 0;
+        }
+    }
+    .Buttons {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        gap: $gap-m;
+
+        button {
+            font-size: $font-size-s;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .InviteCard {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .UserInfo {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
+            .UserName {
+                margin-left: $gap-s;
+            }
+        }
+
+        .Message {
+            margin-top: $gap-m;
+        }
+
+        .Buttons {
+            margin-top: $gap-s;
+            width: 100%;
+        }
+    }
+}

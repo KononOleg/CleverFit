@@ -1,0 +1,44 @@
+@import '../../index.variables.scss';
+
+.TrainingPage {
+    min-height: 100%;
+
+    :global(.ant-tabs-nav-list) {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 $gap-s;
+    }
+
+    :global(.ant-tabs-tab) {
+        padding: $gap-s 0 0;
+    }
+    :global(.ant-tabs-tabpane) {
+        padding: $gap-xl 0 0;
+    }
+
+    :global(.ant-tabs-tab-btn) {
+        font-size: $font-size-xl-tablet;
+        font-weight: $font-weight-xl-tablet;
+        line-height: $font-line-xl-tablet;
+    }
+
+    @media (max-width: 900px) {
+        :global(.ant-tabs-tab-btn) {
+            font-size: $font-size-s;
+            font-weight: $font-weight-s;
+            line-height: $font-line-s;
+        }
+    }
+
+    @media (max-width: 830px) {
+        :global(.ant-card-body) {
+            padding: $gap-s;
+        }
+    }
+}
+
+.MarathonsTab:global(.ant-card) {
+    background: url('../../assets/images/marathon-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

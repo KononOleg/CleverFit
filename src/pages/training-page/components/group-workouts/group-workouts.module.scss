@@ -1,0 +1,41 @@
+@import '../../../../index.variables.scss';
+
+.GroupWorkouts {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xl;
+
+    .Description {
+        padding: $gap-xl $gap-xl $gap-m;
+        border: $gap-5xs solid $character-light-dividers;
+        background: $neutral-gray-2;
+        text-align: center;
+
+        .Title {
+            color: $primary-light-9;
+            margin-bottom: $gap-4xl;
+        }
+        .Buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: $gap-l;
+            padding: $gap-s $gap-8xl 0;
+            border-top: $gap-5xs solid $character-light-dividers;
+            gap: $gap-m;
+        }
+    }
+
+    @media (max-width: 830px) {
+        .Description {
+            padding: $gap-m $gap-4xs;
+
+            .Buttons {  
+                padding: 0;
+            }
+        }
+        .Buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}

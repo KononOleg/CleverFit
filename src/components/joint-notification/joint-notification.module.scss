@@ -1,0 +1,13 @@
+@import '../../index.variables.scss';
+
+.JointNotification {
+    :global(.ant-badge-count) {
+        top: $gap-2s;
+    }
+
+    :global(.ant-scroll-number) {
+        span {
+            color: $neutral-gray-1;
+        }
+    }
+}

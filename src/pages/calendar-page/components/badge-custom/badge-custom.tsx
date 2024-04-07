@@ -1,5 +1,5 @@
 import { EditOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
+import { colors,DATA_TEST_ID } from '@constants/index';
 import { Badge, Button } from 'antd';
 import cn from 'classnames';
 
@@ -13,14 +13,6 @@ type Props = {
     index?: number;
     onChange?: () => void;
 };
-
-const colors = new Map([
-    ['Силовая', 'yellow'],
-    ['Ноги', 'red'],
-    ['Руки', 'cyan'],
-    ['Грудь', 'green'],
-    ['Спина', 'orange'],
-]);
 
 export const BadgeCustom = ({
     text,

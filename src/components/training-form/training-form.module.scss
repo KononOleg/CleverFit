@@ -1,0 +1,38 @@
+@import '../../index.variables.scss';
+
+.TrainingForm {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    margin-top: $gap-xl;
+
+    .Partner {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+
+        .UserInfo {
+            display: flex;
+            gap: $gap-xs;
+            font-size: $font-size-s;
+            color: $character-light-title-85;
+        }
+    }
+
+    .Period {
+        display: flex;
+        justify-content: space-between;
+        margin-top: $gap-m;
+    }
+
+    .InputWrapper {
+        width: 156px;
+    }
+
+    :global(.ant-picker) {
+        height: 28px;
+    }
+}
+.DisabledDate {
+    background: $primary-light-1;
+}

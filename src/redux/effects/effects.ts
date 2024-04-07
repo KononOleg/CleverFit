@@ -1,9 +1,19 @@
 import { push } from 'redux-first-history';
 import { HttpStatusCode, PATH } from '@constants/index';
+import { INVITE_STATUS } from '@constants/invite-status';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
+import {
+    removeInvite,
+    removeTrainingPal,
+    setInviteList,
+    setJointTrainigList,
+    setJointTrainingStatus,
+    setTrainingPals,
+} from '@redux/reducers/invite-slice';
 import { setProfile, setTariffs } from '@redux/reducers/profile-slice';
 import { createTraining, setIsCardExercises, updateTraining } from '@redux/reducers/training-slice';
 import { authApi } from '@redux/services/auth-service';
+import { inviteApi } from '@redux/services/invite-service';
 import { profileApi } from '@redux/services/profile-service';
 import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
@@ -129,5 +139,54 @@ listenerMiddleware.startListening({
     matcher: profileApi.endpoints.getTariffList.matchFulfilled,
     effect: ({ payload }, { dispatch }) => {
         dispatch(setTariffs(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.getUserJointTrainingList.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setJointTrainigList(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.getTrainingPals.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setTrainingPals(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.sendInvite.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { to } = meta.arg.originalArgs;
+
+        dispatch(setJointTrainingStatus({ id: to, status: INVITE_STATUS.PENDING }));
+        dispatch(removeInvite(to));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.getInviteList.matchFulfilled,
+    effect: ({ payload }, { dispatch }) => {
+        dispatch(setInviteList(payload));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.sendInviteAnswer.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { id } = meta.arg.originalArgs;
+
+        dispatch(removeInvite(id));
+    },
+});
+
+listenerMiddleware.startListening({
+    matcher: inviteApi.endpoints.removeInvite.matchFulfilled,
+    effect: ({ meta }, { dispatch }) => {
+        const { id } = meta.arg.originalArgs;
+
+        dispatch(removeTrainingPal(id));
     },
 });
