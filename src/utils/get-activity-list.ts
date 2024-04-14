@@ -32,7 +32,7 @@ export const getActivityList = (
             : training.filter(({ name }) => name === selectedTraining.name);
 
     return days.map((day) => {
-        const trainingFind = filteredTraining.find((y) => moment(y.date).isSame(day, 'day'));
+        const trainingFind = filteredTraining.find(({ date }) => moment(date).isSame(day, 'day'));
 
         let activity = 0;
         let replays = 0;
@@ -49,6 +49,8 @@ export const getActivityList = (
             activity,
             replays,
             approaches,
+            name: trainingFind?.name || '',
+            exercises: trainingFind?.exercises || [],
         };
     });
 };

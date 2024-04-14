@@ -88,6 +88,8 @@ export type Activity = {
     activity: number;
     replays: number;
     approaches: number;
+    name: string;
+    exercises: Exercise[];
 };
 
 export type ActivityList = Activity[];

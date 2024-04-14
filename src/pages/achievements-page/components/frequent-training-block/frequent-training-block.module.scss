@@ -1,0 +1,25 @@
+@import '../../../../index.variables.scss';
+
+.FrequentTrainingBlock {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    padding-top: 56px;
+
+    .TrainingWrapper {
+        display: flex;
+        align-items: center;
+        gap: 105px;
+
+        h3 {
+            margin: 0;
+        }
+
+        .Subtitle {
+            max-width: 99px;
+            width: 100%;
+            text-align: left;
+            color: $character-light-secondary-45;
+        }
+    }
+}
