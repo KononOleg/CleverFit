@@ -86,6 +86,8 @@ export type From = {
 export type Activity = {
     date: string;
     activity: number;
+    replays: number;
+    approaches: number;
 };
 
 export type ActivityList = Activity[];

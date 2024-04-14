@@ -26,22 +26,29 @@ export const getActivityList = (
             .fill(0)
             .forEach((_, i) => days.push(moment(monthStart).add(i, 'days').format()));
     }
+    const filteredTraining =
+        selectedTraining.key === 'all'
+            ? training
+            : training.filter(({ name }) => name === selectedTraining.name);
 
     return days.map((day) => {
-        const filteredTraining =
-            selectedTraining.key === 'all'
-                ? training
-                : training.filter(({ name }) => name === selectedTraining.name);
         const trainingFind = filteredTraining.find((y) => moment(y.date).isSame(day, 'day'));
-        const activity =
-            trainingFind?.exercises.reduce(
-                (n, { weight, replays, approaches }) => n + weight * replays * approaches,
-                0,
-            ) || 0;
+
+        let activity = 0;
+        let replays = 0;
+        let approaches = 0;
+
+        trainingFind?.exercises.forEach((exercises) => {
+            activity += exercises.weight * exercises.replays * exercises.approaches;
+            replays += exercises.replays;
+            approaches += exercises.approaches;
+        });
 
         return {
             date: day,
             activity,
+            replays,
+            approaches,
         };
     });
 };

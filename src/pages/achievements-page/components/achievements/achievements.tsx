@@ -5,6 +5,7 @@ import { getActivityList } from '@utils/get-activity-list';
 
 import { ActivityList } from '../../../../types';
 import { ActivityBlock } from '../activity-block';
+import { CardBlock } from '../card-block';
 import { FilterPanel } from '../filter-panel';
 
 type Props = {
@@ -28,7 +29,9 @@ export const Achievements = ({ period }: Props) => {
                 selectedTraining={selectedTraining}
                 setSelectedTraining={setSelectedTraining}
             />
+
             <ActivityBlock activityList={activityList} />
+            <CardBlock activityList={activityList} />
         </Fragment>
     );
 };
