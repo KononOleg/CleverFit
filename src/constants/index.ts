@@ -6,6 +6,8 @@ import { ResultConfigs } from '../types';
 
 export const YYYY_MM_DD = 'YYYY-MM-DD';
 export const DD_MM_YYYY = 'DD.MM.YYYY';
+export const DD_MM = 'DD.MM';
+export const DDDD = 'dddd';
 
 export const PASSWORD_MESSAGE_ERROR = 'Пароль не менее 8 символов, с заглавное буквой и цифрой.';
 
@@ -48,6 +50,7 @@ export const PATH = {
     PROFILE: '/profile',
     SETTINGS: '/settings',
     TRAINING: '/training',
+    ACHIEVEMENTS: '/achievements',
     AUTH: '/auth',
     REGISTER: '/auth/registration',
     CONFIRM_EMAIL: '/auth/confirm-email',
@@ -156,6 +159,7 @@ export const DATA_TEST_ID = {
     NOTIFICATION_ABOUT_JOINT_TRAINING: 'notification-about-joint-training',
     JOINT_TRAINING_REVIEW_CARD: 'joint-training-review-card',
     PARTNER_MODAL: 'partner-modal',
+    SIDEBAR_ACHIEVEMENTS: 'sidebar-achievements',
 };
 export const resultConfigs: ResultConfigs = {
     'error-login': {

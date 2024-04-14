@@ -34,7 +34,11 @@ const items = [
     {
         key: '3',
         icon: <TrophyFilled />,
-        label: <Link to=''>Достижения</Link>,
+        label: (
+            <Link to={PATH.ACHIEVEMENTS} data-test-id={DATA_TEST_ID.SIDEBAR_ACHIEVEMENTS}>
+                Достижения
+            </Link>
+        ),
     },
     {
         key: '4',

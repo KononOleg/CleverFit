@@ -83,8 +83,16 @@ export type From = {
     lastName?: string;
     imageSrc?: string;
 };
+export type Activity = {
+    date: string;
+    activity: number;
+};
 
-export type TrainingList = Array<{ name: string; key: string }>;
+export type ActivityList = Activity[];
+
+export type TrainingType = { name: string; key: string };
+
+export type TrainingList = TrainingType[];
 
 export type Invite = {
     _id: string;

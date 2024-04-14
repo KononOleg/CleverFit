@@ -7,6 +7,7 @@ import { AuthorizationLayout } from '@components/authorization-layout';
 import { Layout } from '@components/layout';
 import { MainLayout } from '@components/main-layout';
 import { ProtectedRoute } from '@components/protected-route';
+import { AchievementsPage } from '@pages/achievements-page';
 import { AuthorizationPage } from '@pages/authorization-page';
 import { AuthorizationResultPage } from '@pages/authorization-result-page';
 import { CalendarPage } from '@pages/calendar-page';
@@ -56,6 +57,10 @@ root.render(
                             </Route>
                             <Route element={<ProtectedRoute />}>
                                 <Route path={PATH.TRAINING} element={<TrainingPage />} />
+                            </Route>
+
+                            <Route element={<ProtectedRoute />}>
+                                <Route path={PATH.ACHIEVEMENTS} element={<AchievementsPage />} />
                             </Route>
                         </Route>
 

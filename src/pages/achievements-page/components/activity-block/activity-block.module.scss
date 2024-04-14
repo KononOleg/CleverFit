@@ -1,0 +1,14 @@
+@import '../../../../index.variables.scss';
+
+.ActivityBlock {
+    display: flex;
+    align-items: center;
+    gap: $gap-xl 151px;
+    padding-top: $gap-s;
+}
+
+.ActivityBlockFullSize {
+    flex-direction: column;
+    align-items: flex-start;
+}
+

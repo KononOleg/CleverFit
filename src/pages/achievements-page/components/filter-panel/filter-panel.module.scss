@@ -1,0 +1,21 @@
+@import '../../../../index.variables.scss';
+
+.FilterPanel {
+    margin-top: $gap-2s;
+
+    span:first-child {
+        margin-right: $gap-xl;
+    }
+
+    :global(.ant-tag) {
+        margin-right: $gap-s;
+        border: $gap-5xs solid $character-light-dividers;
+        line-height: $font-line-xs;
+    }
+
+    :global(.ant-tag-checkable-checked) {
+        background: $primary-light-1;
+        border: $gap-5xs solid $primary-light-3;
+        color: $primary-light-6;
+    }
+}

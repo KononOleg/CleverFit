@@ -1,0 +1,54 @@
+@import '../../../../index.variables.scss';
+.ActivityRows {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: 100px;
+
+    .ActivityColumn {
+        width: 182px;
+
+        .ActivityWeek {
+            display: flex;
+            flex-direction: column;
+            gap: $gap-2m;
+            margin-top: 20px;
+
+            .ActivityDay {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .Day {
+                    margin-right: $gap-m;
+
+                    :global(.ant-badge-count) {
+                        background: $primary-light-6;
+                    }
+
+                    :global(.ant-scroll-number) {
+                        span {
+                            color: $neutral-gray-1;
+                        }
+                    }
+                }
+
+                .DayEmpty {
+                    :global(.ant-scroll-number) {
+                        span {
+                            color: $primary-light-6;
+                        }
+                    }
+
+                    :global(.ant-badge-count) {
+                        background: $primary-light-1;
+                    }
+                }
+
+                .Activity {
+                    font-weight: $font-weight-xl;
+                }
+            }
+        }
+    }
+}

@@ -1,14 +1,14 @@
 import { INVITE_STATUS } from '@constants/invite-status';
 
-import { UserJointTrainig } from '../types';
+import { JointTrainig } from '../types';
 
-export const sortTrainingList = (traininglist: UserJointTrainig[], searchValue: string) => {
+export const sortTrainingList = (traininglist: JointTrainig[], searchValue: string) => {
     if (!traininglist.length) return [];
 
-    const acceptedTrainings: UserJointTrainig[] = [];
-    const rejectedTrainings: UserJointTrainig[] = [];
-    const pendingTrainings: UserJointTrainig[] = [];
-    const trainings: UserJointTrainig[] = [];
+    const acceptedTrainings: JointTrainig[] = [];
+    const rejectedTrainings: JointTrainig[] = [];
+    const pendingTrainings: JointTrainig[] = [];
+    const trainings: JointTrainig[] = [];
 
     [...traininglist]
         .sort((a, b) => a.name.localeCompare(b.name))
