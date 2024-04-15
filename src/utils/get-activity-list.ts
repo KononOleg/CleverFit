@@ -26,10 +26,17 @@ export const getActivityList = (
             .fill(0)
             .forEach((_, i) => days.push(moment(monthStart).add(i, 'days').format()));
     }
+
+    const filteredByDaysTraining = training.filter(({ date }) =>
+        days.includes(moment(date).subtract(3, 'hours').format()),
+    );
+
     const filteredTraining =
         selectedTraining.key === 'all'
-            ? training
-            : training.filter(({ name }) => name === selectedTraining.name);
+            ? filteredByDaysTraining
+            : filteredByDaysTraining.filter(({ name }) => name === selectedTraining.name);
+
+    if (filteredTraining.length === 0) return [];
 
     return days.map((day) => {
         const trainingFind = filteredTraining.find(({ date }) => moment(date).isSame(day, 'day'));

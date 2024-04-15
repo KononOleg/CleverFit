@@ -9,6 +9,7 @@ import { CardBlock } from '../card-block';
 import { FilterPanel } from '../filter-panel';
 import { FrequentExersiceBlock } from '../frequent-exersice-block';
 import { FrequentTrainingBlock } from '../frequent-training-block';
+import { NotFoundActivity } from '../not-found-activity';
 
 type Props = {
     period: string;
@@ -19,6 +20,8 @@ export const Achievements = ({ period }: Props) => {
     const [activityList, setActivityList] = useState<ActivityList>([]);
     const trainingData = [{ name: 'Все', key: 'all' }, ...trainingList];
     const [selectedTraining, setSelectedTraining] = useState(trainingData[0]);
+
+    const isEmptyActivityList = activityList.length === 0;
 
     useEffect(() => {
         setActivityList(getActivityList(training, period, selectedTraining));
@@ -31,13 +34,25 @@ export const Achievements = ({ period }: Props) => {
                 selectedTraining={selectedTraining}
                 setSelectedTraining={setSelectedTraining}
             />
-            <ActivityBlock activityList={activityList} />
-            <CardBlock activityList={activityList} />
-            <FrequentTrainingBlock
-                activityList={activityList}
-                selectedTraining={selectedTraining}
-            />
-            <FrequentExersiceBlock activityList={activityList} />
+            {isEmptyActivityList ? (
+                <NotFoundActivity
+                    title={
+                        period === 'month'
+                            ? 'Ой, такой тренировки в этом месяце не было.'
+                            : 'Ой, такой тренировки на этой неделе не было.'
+                    }
+                />
+            ) : (
+                <Fragment>
+                    <ActivityBlock activityList={activityList} />
+                    <CardBlock activityList={activityList} />
+                    <FrequentTrainingBlock
+                        activityList={activityList}
+                        selectedTraining={selectedTraining}
+                    />
+                    <FrequentExersiceBlock activityList={activityList} />
+                </Fragment>
+            )}
         </Fragment>
     );
 };

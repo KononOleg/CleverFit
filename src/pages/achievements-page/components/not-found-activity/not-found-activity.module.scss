@@ -1,0 +1,14 @@
+@import '../../../../index.variables.scss';
+
+.NotFoundActivity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 48vh;
+    gap: $gap-xl;
+
+    .Title {
+        text-align: center;
+    }
+}
