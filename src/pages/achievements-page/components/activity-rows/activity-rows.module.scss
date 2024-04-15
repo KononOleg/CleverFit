@@ -5,50 +5,71 @@
     align-items: flex-end;
     gap: 100px;
 
+    .ActivityColumnPie {
+        width: 100% !important;
+
+        .Title {
+            display: block;
+            width: 194px;
+        }
+    }
+
     .ActivityColumn {
         width: 182px;
 
         .ActivityWeek {
             display: flex;
             flex-direction: column;
-            gap: $gap-2m;
-            margin-top: 20px;
+            gap: 14px;
+            margin-top: $gap-l;
 
             .ActivityDay {
                 display: flex;
-                justify-content: space-between;
+                gap: $gap-m;
                 align-items: center;
 
                 .Day {
-                    margin-right: $gap-m;
-
-                    :global(.ant-badge-count) {
-                        background: $primary-light-6;
-                    }
-
-                    :global(.ant-scroll-number) {
-                        span {
-                            color: $neutral-gray-1;
-                        }
-                    }
+                    width: 92px;
                 }
 
-                .DayEmpty {
-                    :global(.ant-scroll-number) {
-                        span {
-                            color: $primary-light-6;
-                        }
-                    }
-
-                    :global(.ant-badge-count) {
-                        background: $primary-light-1;
-                    }
+                :global(.ant-badge-count) {
+                    background: $primary-light-6;
                 }
 
-                .Activity {
-                    font-weight: $font-weight-xl;
+                :global(.ant-scroll-number) {
+                    span {
+                        color: $neutral-gray-1;
+                    }
                 }
             }
+
+            .DayEmpty {
+                :global(.ant-scroll-number) {
+                    span {
+                        color: $primary-light-6;
+                    }
+                }
+
+                :global(.ant-badge-count) {
+                    background: $primary-light-1;
+                }
+            }
+
+            .PieChart {
+                :global(.ant-badge-count) {
+                    background: $character-light-error;
+                }
+
+                :global(.ant-scroll-number) {
+                    span {
+                        color: $neutral-gray-1;
+                    }
+                }
+            }
+        }
+
+        .Activity {
+            font-weight: $font-weight-xl;
         }
     }
 }

@@ -1,0 +1,9 @@
+@import '../../../../index.variables.scss';
+
+.FrequentExersiceBlock {
+    display: flex;
+    align-items: center;
+    gap: $gap-xs;
+    padding-top: 76px;
+    gap: 150px;
+}

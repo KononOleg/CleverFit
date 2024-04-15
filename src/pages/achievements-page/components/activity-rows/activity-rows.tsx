@@ -10,14 +10,17 @@ import styles from './activity-rows.module.scss';
 
 type Props = {
     activityList: ActivityList;
-    isFullSize: boolean;
+    isFullSize?: boolean;
+    isPieChart?: boolean;
+    title?: string;
 };
 
 type ActivityColumnProps = {
     activityList: ActivityList;
     title: string;
+    isPieChart?: boolean;
 };
-export const ActivityRows = ({ activityList, isFullSize }: Props) => (
+export const ActivityRows = ({ activityList, isFullSize, isPieChart, title }: Props) => (
     <div className={styles.ActivityRows}>
         {isFullSize ? (
             Array(4)
@@ -38,28 +41,38 @@ export const ActivityRows = ({ activityList, isFullSize }: Props) => (
         ) : (
             <ActivityRows.ActivityColumn
                 activityList={activityList}
-                title='Средняя нагрузка по дням недели'
+                title={title || 'Средняя нагрузка по дням недели'}
+                isPieChart={isPieChart}
             />
         )}
     </div>
 );
 
-ActivityRows.ActivityColumn = ({ activityList, title }: ActivityColumnProps) => (
-    <div className={styles.ActivityColumn}>
-        <span>{title}</span>
+ActivityRows.ActivityColumn = ({ activityList, title, isPieChart }: ActivityColumnProps) => (
+    <div
+        className={cn(styles.ActivityColumn, {
+            [styles.ActivityColumnPie]: isPieChart,
+        })}
+    >
+        <span className={styles.Title}>{title}</span>
         <div className={styles.ActivityWeek}>
-            {activityList.map(({ date, activity }, index) => (
+            {activityList.map(({ date, activity, name }, index) => (
                 <div className={styles.ActivityDay} key={date}>
-                    <div>
-                        <Badge
-                            count={index + 1}
-                            className={cn(styles.Day, { [styles.DayEmpty]: !activity })}
-                            size='small'
-                        />
-                        <span>{getWeekDays(moment(date).format(DDDD))}</span>
-                    </div>
+                    <Badge
+                        count={index + 1}
+                        className={cn({
+                            [styles.DayEmpty]: !activity,
+                            [styles.PieChart]: isPieChart,
+                        })}
+                        size='small'
+                    />
+                    <span className={styles.Day}>{getWeekDays(moment(date).format(DDDD))}</span>
 
-                    {!!activity && <span className={styles.Activity}>{activity} кг</span>}
+                    {isPieChart ? (
+                        <span className={styles.Activity}>{name}</span>
+                    ) : (
+                        <span className={styles.Activity}>{activity ? `${activity} кг` : ''}</span>
+                    )}
                 </div>
             ))}
         </div>
