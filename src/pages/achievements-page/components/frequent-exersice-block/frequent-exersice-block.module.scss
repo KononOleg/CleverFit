@@ -3,7 +3,21 @@
 .FrequentExersiceBlock {
     display: flex;
     align-items: center;
-    gap: $gap-xs;
-    padding-top: 76px;
-    gap: 150px;
+    padding-top: $gap-7xl;
+    gap: $gap-xl 150px;
+
+    .Pie {
+        max-width: 520px;
+        width: 100%;
+        height: 211px;
+    }
+
+    @media (max-width: 1000px) {
+        padding: 0;
+        flex-direction: column;
+
+        .Pie {
+            max-width: 100%;
+        }
+    }
 }

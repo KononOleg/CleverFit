@@ -2,74 +2,7 @@
 .ActivityRows {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
-    gap: 100px;
-
-    .ActivityColumnPie {
-        width: 100% !important;
-
-        .Title {
-            display: block;
-            width: 194px;
-        }
-    }
-
-    .ActivityColumn {
-        width: 182px;
-
-        .ActivityWeek {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-top: $gap-l;
-
-            .ActivityDay {
-                display: flex;
-                gap: $gap-m;
-                align-items: center;
-
-                .Day {
-                    width: 92px;
-                }
-
-                :global(.ant-badge-count) {
-                    background: $primary-light-6;
-                }
-
-                :global(.ant-scroll-number) {
-                    span {
-                        color: $neutral-gray-1;
-                    }
-                }
-            }
-
-            .DayEmpty {
-                :global(.ant-scroll-number) {
-                    span {
-                        color: $primary-light-6;
-                    }
-                }
-
-                :global(.ant-badge-count) {
-                    background: $primary-light-1;
-                }
-            }
-
-            .PieChart {
-                :global(.ant-badge-count) {
-                    background: $character-light-error;
-                }
-
-                :global(.ant-scroll-number) {
-                    span {
-                        color: $neutral-gray-1;
-                    }
-                }
-            }
-        }
-
-        .Activity {
-            font-weight: $font-weight-xl;
-        }
-    }
+    gap: $gap-m 100px;
 }

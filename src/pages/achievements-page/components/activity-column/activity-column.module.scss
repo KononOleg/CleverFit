@@ -1,0 +1,87 @@
+@import '../../../../index.variables.scss';
+
+.ActivityColumnPie {
+    width: 100% !important;
+
+    .Title {
+        display: block;
+        width: 194px;
+    }
+}
+
+.ActivityColumn {
+    width: 182px;
+
+    .TitleWrapper {
+        display: flex;
+        align-items: center;
+
+        button {
+            height: $gap-m;
+            display: flex;
+            align-items: center;
+            padding: 0 $gap-m;
+        }
+    }
+
+    .ActivityWeek {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-2m;
+        margin-top: $gap-l;
+
+        .ActivityDay {
+            display: flex;
+            gap: $gap-m;
+            align-items: center;
+
+            .Day {
+                width: 92px;
+            }
+
+            :global(.ant-badge-count) {
+                background: $primary-light-6;
+            }
+
+            :global(.ant-scroll-number) {
+                span {
+                    color: $neutral-gray-1;
+                }
+            }
+        }
+
+        .DayEmpty {
+            :global(.ant-scroll-number) {
+                span {
+                    color: $primary-light-6;
+                }
+            }
+
+            :global(.ant-badge-count) {
+                background: $primary-light-1;
+            }
+        }
+
+        .PieChart {
+            :global(.ant-badge-count) {
+                background: $character-light-error;
+            }
+
+            :global(.ant-scroll-number) {
+                span {
+                    color: $neutral-gray-1;
+                }
+            }
+        }
+    }
+
+    .Activity {
+        font-weight: $font-weight-xl;
+    }
+}
+
+@media (max-width: 1000px) {
+    .ActivityColumn {
+        width: 100%;
+    }
+}

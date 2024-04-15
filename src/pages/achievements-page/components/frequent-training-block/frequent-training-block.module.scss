@@ -22,4 +22,12 @@
             color: $character-light-secondary-45;
         }
     }
+
+    @media (max-width: 1000px) {
+        padding-top: $gap-2xs;
+
+        .TrainingWrapper {
+            gap: $gap-9xl;
+        }
+    }
 }

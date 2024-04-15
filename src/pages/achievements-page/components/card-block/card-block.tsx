@@ -24,8 +24,10 @@ export const CardBlock = ({ activityList }: Props) => {
         <div className={styles.CardBlock}>
             {cardData.map(({ id, value, description }) => (
                 <Card className={styles.Card} key={id}>
-                    <Typography.Title level={1}>{value}</Typography.Title>
-                    <span className={styles.Description}>{description}</span>
+                    <div className={styles.CardBody}>
+                        <Typography.Title level={1}>{value}</Typography.Title>
+                        <span className={styles.Description}>{description}</span>
+                    </div>
                 </Card>
             ))}
         </div>

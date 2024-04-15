@@ -3,8 +3,9 @@
 .CardBlock {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: $gap-xl;
-    padding-top: $gap-4xl;
+    padding-top: $gap-2xl;
 
     .Card {
         max-width: 156px;
@@ -26,6 +27,41 @@
 
         .Description {
             color: $character-light-secondary-45;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        padding-top: $gap-xs;
+        display: grid;
+        grid-template-columns: repeat(2, 156px);
+    }
+
+    @media (max-width: 830px) {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-m;
+
+        .Card {
+            max-width: 100%;
+            height: $gap-8xl;
+            flex-direction: row;
+
+            .CardBody {
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            :global(.ant-card-body) {
+                width: 100%;
+                padding: $gap-2xs $gap-m;
+            }
+
+            h1 {
+                margin: 0;
+            }
         }
     }
 }

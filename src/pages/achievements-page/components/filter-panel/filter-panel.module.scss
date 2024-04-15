@@ -2,9 +2,20 @@
 
 .FilterPanel {
     margin-top: $gap-2s;
+    display: flex;
+    align-items: center;
 
-    span:first-child {
-        margin-right: $gap-xl;
+    gap: $gap-2xl;
+
+    .Title {
+        max-width: 118px;
+        width: 100%;
+    }
+
+    .Trainings {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-3s 0;
     }
 
     :global(.ant-tag) {
@@ -17,5 +28,9 @@
         background: $primary-light-1;
         border: $gap-5xs solid $primary-light-3;
         color: $primary-light-6;
+    }
+
+    @media (max-width: 1000px) {
+        align-items: flex-start;
     }
 }

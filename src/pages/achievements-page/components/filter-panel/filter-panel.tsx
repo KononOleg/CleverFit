@@ -12,15 +12,17 @@ type Props = {
 
 export const FilterPanel = ({ trainingData, selectedTraining, setSelectedTraining }: Props) => (
     <div className={styles.FilterPanel}>
-        <span>Тип тренировки :</span>
-        {trainingData.map((tag) => (
-            <CheckableTag
-                key={tag.key}
-                checked={selectedTraining.key === tag.key}
-                onChange={() => setSelectedTraining(tag)}
-            >
-                {tag.name}
-            </CheckableTag>
-        ))}
+        <span className={styles.Title}>Тип тренировки :</span>
+        <div className={styles.Trainings}>
+            {trainingData.map((tag) => (
+                <CheckableTag
+                    key={tag.key}
+                    checked={selectedTraining.key === tag.key}
+                    onChange={() => setSelectedTraining(tag)}
+                >
+                    {tag.name}
+                </CheckableTag>
+            ))}
+        </div>
     </div>
 );

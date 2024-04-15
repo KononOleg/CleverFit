@@ -1,5 +1,7 @@
 import { Column } from '@ant-design/plots';
 import { DD_MM } from '@constants/index';
+import { useAppSelector } from '@hooks/typed-react-redux-hooks';
+import { appSelector } from '@redux/selectors';
 import cn from 'classnames';
 import moment from 'moment';
 
@@ -13,6 +15,8 @@ type Props = {
 };
 
 export const ActivityBlock = ({ activityList }: Props) => {
+    const { isDesktopVersion } = useAppSelector(appSelector);
+
     const isFullSize = activityList.length > 7;
 
     const config = {
@@ -22,28 +26,36 @@ export const ActivityBlock = ({ activityList }: Props) => {
         axis: {
             x: {
                 title: 'Нагрузка, кг',
-                titleSpacing: 16,
                 titlePosition: 'bottom',
-                titleFontSize: 16,
+                titleFontSize: isDesktopVersion ? 14 : 12,
                 tick: false,
-                labelSpacing: 16,
+
+                label: {
+                    autoRotate: false,
+                    style: {
+                        textAlign: 'center',
+                    },
+                },
             },
             y: {
                 labelFormatter: (value: number) => `${value} кг`,
                 tick: false,
-                labelSpacing: 16,
+                labelSpacing: isDesktopVersion ? 16 : 8,
             },
         },
 
         style: {
-            maxWidth: 30,
-            fill: '#85A5FFFF',
+            fill: '#85A5FF',
         },
+        sizeField: isDesktopVersion ? 30 : 15,
     };
 
     return (
         <div className={cn(styles.ActivityBlock, { [styles.ActivityBlockFullSize]: isFullSize })}>
-            <Column {...config} width={isFullSize ? 1136 : 520} height={362} />
+            <div className={styles.Column}>
+                <Column {...config} scrollbar={isFullSize && { x: {} }} />
+            </div>
+
             <ActivityRows activityList={activityList} isFullSize={isFullSize} />
         </div>
     );

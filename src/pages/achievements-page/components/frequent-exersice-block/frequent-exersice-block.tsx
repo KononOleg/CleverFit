@@ -17,7 +17,7 @@ export const FrequentExersiceBlock = ({ activityList }: Props) => {
         data: frequentUniqueExercises,
         angleField: 'activity',
         colorField: 'name',
-        padding: 75,
+        padding: 10,
         innerRadius: 0.7,
         labels: [
             {
@@ -26,7 +26,7 @@ export const FrequentExersiceBlock = ({ activityList }: Props) => {
                     fontSize: 16,
                     fill: '#000',
                 },
-                offset: 40,
+                offset: 30,
             },
         ],
         style: {
@@ -38,7 +38,10 @@ export const FrequentExersiceBlock = ({ activityList }: Props) => {
 
     return (
         <div className={styles.FrequentExersiceBlock}>
-            <Pie {...config} width={520} height={334} />
+            <div className={styles.Pie}>
+                <Pie {...config} />
+            </div>
+
             <ActivityRows
                 activityList={frequentExercises}
                 isPieChart={true}
