@@ -20,7 +20,7 @@ export const getActivityList = (
     }
 
     if (period === 'month') {
-        const monthStart = currentDate.clone().startOf('month').startOf('week');
+        const monthStart = currentDate.clone().subtract(27, 'days').startOf('week');
 
         Array(28)
             .fill(0)
@@ -28,7 +28,7 @@ export const getActivityList = (
     }
 
     const filteredByDaysTraining = training.filter(({ date }) =>
-        days.includes(moment(date).subtract(3, 'hours').format()),
+        days.includes(moment(date).startOf('day').format()),
     );
 
     const filteredTraining =
