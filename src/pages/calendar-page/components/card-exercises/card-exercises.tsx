@@ -84,7 +84,7 @@ export const CardExercises = ({
     return (
         <React.Fragment>
             <Card
-                className={styles.CardModal}
+                className={styles.cardModal}
                 data-test-id={DATA_TEST_ID.MODAL_CREATE_EXERCISE}
                 title={
                     <div className={styles.headWrapper}>

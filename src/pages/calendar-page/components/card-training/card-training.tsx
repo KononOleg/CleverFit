@@ -38,7 +38,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
 
     return (
         <Card
-            className={styles.CardModal}
+            className={styles.cardModal}
             data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING}
             title={
                 <React.Fragment>
@@ -48,7 +48,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
                     />
                     <Button
                         data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING_BUTTON_CLOSE}
-                        className={styles.CloseButton}
+                        className={styles.closeButton}
                         type='text'
                         size='small'
                         icon={<CloseOutlined />}

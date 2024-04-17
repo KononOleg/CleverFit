@@ -14,6 +14,8 @@
         padding: $gap-s 0 0;
     }
     :global(.ant-tabs-tabpane) {
+        height: 740px;
+        overflow-y: scroll;
         display: flex;
         flex-direction: column;
         gap: $gap-xl;
@@ -37,6 +39,9 @@
     @media (max-width: 830px) {
         :global(.ant-card-body) {
             padding: $gap-s;
+        }
+        :global(.ant-tabs-tabpane) {
+            height: 100%;
         }
     }
 }
