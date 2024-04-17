@@ -2,17 +2,18 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { ModalError } from '@components/modal-error';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTraining } from '@redux/reducers/training-slice';
 import { useLazyGetTrainingQuery } from '@redux/services/training-service';
+import { PATH } from '@routes/path';
 import { Button } from 'antd';
 import cn from 'classnames';
 
 import styles from './main-page.module.scss';
 
 export const MainPage = () => {
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
     const navigate = useNavigate();
 
     const [getTraining, { isError }] = useLazyGetTrainingQuery();

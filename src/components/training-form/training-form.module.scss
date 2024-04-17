@@ -1,17 +1,17 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
-.TrainingForm {
+.trainingForm {
     display: flex;
     flex-direction: column;
     gap: $gap-xs;
     margin-top: $gap-xl;
 
-    .Partner {
+    .partner {
         display: flex;
         justify-content: space-between;
         align-items: end;
 
-        .UserInfo {
+        .userInfo {
             display: flex;
             gap: $gap-xs;
             font-size: $font-size-s;
@@ -19,13 +19,13 @@
         }
     }
 
-    .Period {
+    .period {
         display: flex;
         justify-content: space-between;
         margin-top: $gap-m;
     }
 
-    .InputWrapper {
+    .inputWrapper {
         width: 156px;
     }
 
@@ -33,6 +33,6 @@
         height: 28px;
     }
 }
-.DisabledDate {
+.disabledDate {
     background: $primary-light-1;
 }

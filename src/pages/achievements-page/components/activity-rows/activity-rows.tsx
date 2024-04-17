@@ -1,10 +1,11 @@
 import { DD_MM } from '@constants/index';
 import moment from 'moment';
 
-import { ActivityList } from '../../../../types';
 import { ActivityColumn } from '../activity-column';
 
 import styles from './activity-rows.module.scss';
+
+import { ActivityList } from '@/types/index';
 
 type Props = {
     activityList: ActivityList;
@@ -14,7 +15,7 @@ type Props = {
 };
 
 export const ActivityRows = ({ activityList, isFullSize, isPieChart, title }: Props) => (
-    <div className={styles.ActivityRows}>
+    <div className={styles.activityRows}>
         {isFullSize ? (
             Array(4)
                 .fill(0)

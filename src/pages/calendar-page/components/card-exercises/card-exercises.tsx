@@ -12,12 +12,13 @@ import { isOldDate } from '@utils/index';
 import { Button, Card } from 'antd';
 
 import { ModalRequestError } from '../../../../components/modal-request-error';
-import { Nullable, Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 import { Empty } from '../empty';
 import { TrainingListSelect } from '../training-select';
 
 import styles from '../card-modal/card-modal.module.scss';
+
+import { Nullable, Training } from '@/types/index';
 
 type Props = {
     trainingByDay: Training[];

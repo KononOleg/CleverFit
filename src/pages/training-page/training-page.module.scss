@@ -1,6 +1,6 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
-.TrainingPage {
+.trainingPage {
     min-height: 100%;
 
     :global(.ant-tabs-nav-list) {
@@ -37,7 +37,7 @@
     }
 }
 
-.MarathonsTab:global(.ant-card) {
+.marathonsTab:global(.ant-card) {
     background: url('../../assets/images/marathon-background.png');
     background-repeat: no-repeat;
     background-size: cover;

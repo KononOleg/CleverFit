@@ -9,9 +9,9 @@ type Props = {
 };
 
 export const NotFoundActivity = ({ title }: Props) => (
-    <div className={styles.NotFoundActivity}>
+    <div className={styles.notFoundActivity}>
         <img src={notFoundActivity} alt='notFoundActivity' />
-        <Typography.Title className={styles.Title} level={3}>
+        <Typography.Title className={styles.title} level={3}>
             {title}
         </Typography.Title>
     </div>

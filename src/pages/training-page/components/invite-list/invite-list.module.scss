@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.InviteList {
+.inviteList {
     display: flex;
     flex-direction: column;
     padding: $gap-m $gap-xl;
@@ -13,7 +13,7 @@
         gap: $gap-xs;
     }
 
-    .CollapseButton {
+    .collapseButton {
         text-align: start;
     }
 

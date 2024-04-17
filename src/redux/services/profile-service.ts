@@ -1,12 +1,11 @@
 import { API_PATH } from '@constants/index';
-
 import {
     BuyTariffRequest,
     GetCurrentUserResponse,
     GetTariffListResponse,
     UpdateUserRequest,
     UpdateUserResponse,
-} from '../../types';
+} from '@redux/types';
 
 import { apiSlice } from '.';
 

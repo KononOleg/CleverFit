@@ -6,9 +6,9 @@ import { getKeyByPeriod } from '@utils/find-period-option';
 import { Button, Card, Typography } from 'antd';
 import moment from 'moment';
 
-import { Training } from '../../../../types';
-
 import styles from './invite-training-card.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     training: Training;
@@ -17,14 +17,14 @@ type Props = {
 
 export const InviteTrainingCard = ({ training, onCloseHandler }: Props) => (
     <Card
-        className={styles.InviteTrainingCard}
+        className={styles.inviteTrainingCard}
         data-test-id={DATA_TEST_ID.JOINT_TRAINING_REVIEW_CARD}
         title={
             <React.Fragment>
                 <BadgeCustom text={training.name} />
                 <Button
                     data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING_BUTTON_CLOSE}
-                    className={styles.CloseButton}
+                    className={styles.closeButton}
                     type='text'
                     size='small'
                     icon={<CloseOutlined />}
@@ -35,8 +35,8 @@ export const InviteTrainingCard = ({ training, onCloseHandler }: Props) => (
     >
         <React.Fragment>
             {training.parameters?.period && (
-                <div className={styles.Column}>
-                    <Typography.Text className={styles.Period}>
+                <div className={styles.column}>
+                    <Typography.Text className={styles.period}>
                         {getKeyByPeriod(training.parameters?.period)}
                     </Typography.Text>
                     <Typography.Text>{moment(training.date).format(DD_MM_YYYY)}</Typography.Text>
@@ -44,9 +44,9 @@ export const InviteTrainingCard = ({ training, onCloseHandler }: Props) => (
             )}
 
             {training.exercises?.map(({ name, approaches, replays }) => (
-                <div className={styles.Column}>
+                <div className={styles.column}>
                     <Typography.Text type='secondary'>{name}</Typography.Text>
-                    <Typography.Text className={styles.Approaches}>
+                    <Typography.Text className={styles.approaches}>
                         {`${approaches} x (${replays})`}
                     </Typography.Text>
                 </div>

@@ -1,5 +1,4 @@
 import { API_PATH } from '@constants/index';
-
 import {
     CreateTrainingRequest,
     CreateTrainingResponse,
@@ -7,7 +6,7 @@ import {
     GetTrainingResponse,
     UpdateTrainingRequest,
     UpdateTrainingResponse,
-} from '../../types';
+} from '@redux/types';
 
 import { apiSlice } from '.';
 

@@ -9,11 +9,12 @@ import { Button, Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import moment from 'moment';
 
-import { Training } from '../../../../types';
 import { BadgeTraining } from '../badge-training';
 import { Empty } from '../empty';
 
 import styles from '../card-modal/card-modal.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     trainingByDay: Training[];

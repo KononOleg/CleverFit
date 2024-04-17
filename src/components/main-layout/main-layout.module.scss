@@ -1,4 +1,4 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
 footer,
 header,
@@ -6,40 +6,40 @@ header,
     padding: 0 $gap-xl;
 }
 
-.MainLayout {
+.mainLayout {
     min-height: 100vh;
     display: flex;
     background: url('../../assets/images/main-page.jpg') center / cover;
 
-    .Wrapper {
+    .wrapper {
         display: flex;
         flex-grow: 1;
         flex-direction: column;
         width: 100%;
         min-height: 100vh;
 
-        .Main {
+        .main {
             display: flex;
             flex-grow: 1;
             flex-direction: column;
         }
 
-        .MainThird {
+        .mainThird {
             padding: 0;
         }
 
-        .MainSecond,
-        .MainFourth,
-        .MainFifth {
+        .mainSecond,
+        .mainFourth,
+        .mainFifth {
             padding: $gap-xl $gap-xl $gap-6xl;
         }
 
-        .MainFifth {
+        .mainFifth {
             background: $neutral-gray-3;
         }
 
         @media (max-width: 830px) {
-            .MainFourth {
+            .mainFourth {
                 padding: $gap-xl 0 $gap-6xl;
             }
         }

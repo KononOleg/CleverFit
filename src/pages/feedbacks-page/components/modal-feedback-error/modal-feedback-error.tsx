@@ -9,10 +9,7 @@ type Props = {
     handleRefetchFeedback: () => void;
 };
 
-export const ModalFeedbackError = ({
-    isError,
-    handleRefetchFeedback,
-}: Props) => {
+export const ModalFeedbackError = ({ isError, handleRefetchFeedback }: Props) => {
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -25,7 +22,7 @@ export const ModalFeedbackError = ({
         <Modal
             open={open}
             centered={true}
-            className={styles.ModalFeedbackError}
+            className={styles.modalFeedbackError}
             onCancel={handleCancel}
             footer={null}
             closable={false}

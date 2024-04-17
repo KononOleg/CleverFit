@@ -1,12 +1,12 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.ActivityBlock {
+.activityBlock {
     display: flex;
     align-items: center;
     gap: $gap-xl 151px;
     padding-top: $gap-s;
 
-    .Column {
+    .column {
         max-width: 520px;
         width: 100%;
         height: 376px;
@@ -16,7 +16,7 @@
     @media (max-width: 1000px) {
         flex-direction: column;
 
-        .Column {
+        .column {
             max-width: 100%;
         }
     }
@@ -24,17 +24,17 @@
     @media (max-width: 830px) {
         padding: 0;
 
-        .Column {
+        .column {
             height: 236px;
         }
     }
 }
 
-.ActivityBlockFullSize {
+.activityBlockFullSize {
     flex-direction: column;
     align-items: flex-end;
 
-    .Column {
+    .column {
         max-width: 100%;
     }
 }

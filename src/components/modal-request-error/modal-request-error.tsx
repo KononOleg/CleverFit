@@ -49,7 +49,7 @@ export const ModalRequestError = ({
                         {subtitle}
                     </span>
                 ),
-                className: styles.ModalRequestError,
+                className: styles.modalRequestError,
                 handleCancel,
                 closable,
                 centered: true,

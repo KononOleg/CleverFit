@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined, SettingOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
+import { PATH } from '@routes/path';
 import { Breadcrumb, Button, Typography } from 'antd';
 import cn from 'classnames';
 

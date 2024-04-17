@@ -3,13 +3,14 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { getActivityList } from '@utils/get-activity-list';
 
-import { ActivityList } from '../../../../types';
 import { ActivityBlock } from '../activity-block';
 import { CardBlock } from '../card-block';
 import { FilterPanel } from '../filter-panel';
 import { FrequentExersiceBlock } from '../frequent-exersice-block';
 import { FrequentTrainingBlock } from '../frequent-training-block';
 import { NotFoundActivity } from '../not-found-activity';
+
+import { ActivityList } from '@/types/index';
 
 type Props = {
     period: string;

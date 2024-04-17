@@ -1,31 +1,31 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.UserCard {
+.userCard {
     width: 234px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
 
-    .Buttons {
+    .buttons {
         margin-top: $gap-m;
 
-        .Status {
+        .status {
             display: flex;
             justify-content: center;
             gap: $gap-xs;
             margin-top: $gap-2xs;
 
-            .AcceptedStatus {
+            .acceptedStatus {
                 color: $character-light-success;
             }
-            .RejectedStatus {
+            .rejectedStatus {
                 color: $character-light-secondary-45;
             }
         }
     }
 
-    .UserInfo {
+    .userInfo {
         display: flex;
         gap: $gap-xs;
         font-size: $font-size-s;
@@ -36,24 +36,24 @@
         }
     }
 
-    .Trainings {
+    .trainings {
         margin-top: $gap-s;
         display: flex;
         flex-direction: column;
         gap: $gap-2xs;
 
-        .Training {
+        .training {
             display: flex;
             gap: $gap-s;
 
-            .TrainingInfo {
+            .trainingInfo {
                 font-size: $font-size-s;
                 font-weight: $font-weight-l;
                 line-height: $font-line-s;
                 color: $primary-light-6;
             }
 
-            .TrainingType {
+            .trainingType {
                 width: 110px;
                 font-size: $font-size-xs;
                 font-weight: $font-weight-xs;
@@ -68,7 +68,7 @@
     }
 }
 
-.UserCardSecond {
+.userCardSecond {
     height: 114px;
     background-color: $neutral-gray-1 !important;
 
@@ -77,7 +77,7 @@
     }
 }
 
-.UserCardThird {
+.userCardThird {
     height: 194px;
     background-color: $primary-light-1 !important;
 
@@ -86,6 +86,6 @@
     }
 }
 
-.UserCardFourth {
+.userCardFourth {
     background-color: $neutral-gray-2 !important;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GooglePlusOutlined } from '@ant-design/icons';
-import { API_HOST, API_PATH, AUTH_TAB, PATH } from '@constants/index';
+import { API_HOST, API_PATH, AUTH_TAB } from '@constants/index';
+import { PATH } from '@routes/path';
 import { Button, Tabs, TabsProps } from 'antd';
 
 import { LoginForm } from './components/login-form';

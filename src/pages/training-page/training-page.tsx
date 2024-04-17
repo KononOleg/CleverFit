@@ -48,8 +48,8 @@ export const TrainingPage = () => {
     return (
         <React.Fragment>
             <Card
-                className={cn(styles.TrainingPage, {
-                    [styles.MarathonsTab]: isMarathonsTab,
+                className={cn(styles.trainingPage, {
+                    [styles.marathonsTab]: isMarathonsTab,
                 })}
             >
                 <Tabs items={tabsItems} onChange={onChangeHandler} />

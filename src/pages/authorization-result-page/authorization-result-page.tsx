@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { push } from 'redux-first-history';
-import { resultConfigs } from '@constants/index';
+import { RESULT_CONFIGS } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { Button, Result } from 'antd';
 
@@ -8,7 +8,7 @@ export const AuthorizationResultPage = () => {
     const { status } = useParams();
     const dispatch = useAppDispatch();
 
-    const config = resultConfigs[status as string];
+    const config = RESULT_CONFIGS[status as string];
 
     return (
         <Result

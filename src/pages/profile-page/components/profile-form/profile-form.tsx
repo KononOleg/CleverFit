@@ -12,10 +12,11 @@ import { confirmPasswordRule } from '@utils/index';
 import { Button, DatePicker, Form, FormProps, Input, Typography } from 'antd';
 import moment from 'moment';
 
-import { User } from '../../../../types';
 import { UploadAvatar } from '../upload-avatar/upload-avatar';
 
 import styles from './profile-form.module.scss';
+
+import { User } from '@/types/index';
 
 const { Title } = Typography;
 
@@ -56,15 +57,15 @@ export const ProfileForm = ({ submitHandler }: Props) => {
             initialValues={
                 { ...profile, birthday: profile?.birthday && moment(profile.birthday) } as User
             }
-            className={styles.ProfileForm}
+            className={styles.profileForm}
             form={form}
             onFinish={handleFinish}
             onFieldsChange={onFieldsChange}
         >
             <Title level={5}>Личная информация</Title>
-            <div className={styles.Personal}>
+            <div className={styles.personal}>
                 <UploadAvatar imgSrc={profile?.imgSrc as string} />
-                <div className={styles.PersonalInputs}>
+                <div className={styles.personalInputs}>
                     <Form.Item name='firstName'>
                         <Input
                             placeholder='Имя'
@@ -82,7 +83,7 @@ export const ProfileForm = ({ submitHandler }: Props) => {
                     <Form.Item name='birthday'>
                         <DatePicker
                             format='DD.MM.YYYY'
-                            className={styles.Datepicker}
+                            className={styles.datepicker}
                             placeholder='Дата рождения'
                             size='large'
                             data-test-id={DATA_TEST_ID.PROFILE_BIRTHDAY}
@@ -119,7 +120,7 @@ export const ProfileForm = ({ submitHandler }: Props) => {
                 />
             </Form.Item>
             <Button
-                className={styles.ProfileButton}
+                className={styles.profileButton}
                 disabled={isDisabledSubmit}
                 type='primary'
                 htmlType='submit'

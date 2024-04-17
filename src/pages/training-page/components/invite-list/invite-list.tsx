@@ -19,7 +19,7 @@ export const InviteList = () => {
     if (!inviteList.length) return null;
 
     return (
-        <div className={styles.InviteList}>
+        <div className={styles.inviteList}>
             <Typography.Text type='secondary'>
                 Новое сообщение ({inviteList.length})
             </Typography.Text>
@@ -29,7 +29,7 @@ export const InviteList = () => {
             />
             {inviteList.length > 1 && (
                 <Button
-                    className={styles.CollapseButton}
+                    className={styles.collapseButton}
                     type='link'
                     ghost={true}
                     icon={collapsed ? <DownOutlined /> : <UpOutlined />}

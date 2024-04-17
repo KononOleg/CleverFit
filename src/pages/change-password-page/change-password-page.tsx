@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import {
     DATA_TEST_ID,
     PASSWORD_MESSAGE_ERROR,
-    PATH,
     VALIDATION_FIELD_REQUIRED,
     VALIDATION_PASSWORD,
 } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useChangePasswordMutation } from '@redux/services/auth-service';
+import { PATH } from '@routes/path';
 import { Button, Form, Input, Typography } from 'antd';
 
 import { checkPrevPath, confirmPasswordRule } from '../../utils';
@@ -39,7 +39,7 @@ export const ChangePasswordPage = () => {
     }, [changePassword, password, prevLocation]);
 
     return (
-        <Form className={styles.Form} form={form} onFinish={handleFinish}>
+        <Form className={styles.form} form={form} onFinish={handleFinish}>
             <Title level={3}>Восстановление аккаунта</Title>
             <Form.Item
                 name='password'

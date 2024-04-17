@@ -22,59 +22,59 @@ type Props = {
 };
 
 export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => (
-        <React.Fragment>
-            <Typography.Title className={styles.Title} level={4}>
-                Мой тариф
-            </Typography.Title>
-            <div className={styles.Cards}>
-                {Tariffs.map(({ title, image, forPro, dataTestId }) => {
-                    const isShowPro = !isProUser && forPro;
+    <React.Fragment>
+        <Typography.Title className={styles.title} level={4}>
+            Мой тариф
+        </Typography.Title>
+        <div className={styles.cards}>
+            {Tariffs.map(({ title, image, forPro, dataTestId }) => {
+                const isShowPro = !isProUser && forPro;
 
-                    return (
-                        <Card
-                            title={title}
-                            extra={
-                                <Button type='link' onClick={handleOpen}>
-                                    Подробнее
-                                </Button>
-                            }
-                            key={title}
-                            hoverable={false}
-                            data-test-id={dataTestId}
-                            cover={
-                                <div
-                                    className={cn(styles.Cover, {
-                                        [styles.Inactive]: isShowPro,
-                                    })}
-                                >
-                                    <img alt={title} src={image} />
-                                </div>
-                            }
-                        >
-                            {isShowPro ? (
-                                <Button
-                                    type='primary'
-                                    data-test-id={DATA_TEST_ID.ACTIVATE_TARIFF_BTN}
-                                    onClick={handleOpen}
-                                >
-                                    Активировать
-                                </Button>
-                            ) : (
-                                <div className={styles.Active}>
-                                    <Typography.Title level={5}>
-                                        активен{' '}
-                                        {isProUser &&
-                                            title.includes('PRO') &&
-                                            ` до ${String(day).padStart(2, '0')}.${String(
-                                                month,
-                                            ).padStart(2, '0')}`}
-                                    </Typography.Title>
-                                    <CheckOutlined />
-                                </div>
-                            )}
-                        </Card>
-                    );
-                })}
-            </div>
-        </React.Fragment>
-    );
+                return (
+                    <Card
+                        title={title}
+                        extra={
+                            <Button type='link' onClick={handleOpen}>
+                                Подробнее
+                            </Button>
+                        }
+                        key={title}
+                        hoverable={false}
+                        data-test-id={dataTestId}
+                        cover={
+                            <div
+                                className={cn(styles.cover, {
+                                    [styles.Inactive]: isShowPro,
+                                })}
+                            >
+                                <img alt={title} src={image} />
+                            </div>
+                        }
+                    >
+                        {isShowPro ? (
+                            <Button
+                                type='primary'
+                                data-test-id={DATA_TEST_ID.ACTIVATE_TARIFF_BTN}
+                                onClick={handleOpen}
+                            >
+                                Активировать
+                            </Button>
+                        ) : (
+                            <div className={styles.active}>
+                                <Typography.Title level={5}>
+                                    активен{' '}
+                                    {isProUser &&
+                                        title.includes('PRO') &&
+                                        ` до ${String(day).padStart(2, '0')}.${String(
+                                            month,
+                                        ).padStart(2, '0')}`}
+                                </Typography.Title>
+                                <CheckOutlined />
+                            </div>
+                        )}
+                    </Card>
+                );
+            })}
+        </div>
+    </React.Fragment>
+);

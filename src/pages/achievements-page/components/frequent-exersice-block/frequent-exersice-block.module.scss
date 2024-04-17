@@ -1,12 +1,12 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.FrequentExersiceBlock {
+.frequentExersiceBlock {
     display: flex;
     align-items: center;
     padding-top: $gap-7xl;
     gap: $gap-xl 150px;
 
-    .Pie {
+    .pie {
         max-width: 520px;
         width: 100%;
         height: 211px;
@@ -16,7 +16,7 @@
         padding: 0;
         flex-direction: column;
 
-        .Pie {
+        .pie {
             max-width: 100%;
         }
     }

@@ -8,10 +8,11 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import { JointNotification } from '@components/joint-notification';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { signOut } from '@redux/reducers/auth-slice';
 import { appSelector } from '@redux/selectors';
+import { PATH } from '@routes/path';
 import { Button, Layout, Menu } from 'antd';
 import cn from 'classnames';
 

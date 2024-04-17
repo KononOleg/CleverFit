@@ -1,10 +1,11 @@
 import { Pie } from '@ant-design/plots';
 import { getFrequentExercises } from '@utils/get-frequent-exercises';
 
-import { Activity, ActivityList } from '../../../../types';
 import { ActivityRows } from '../activity-rows';
 
 import styles from './frequent-exersice-block.module.scss';
+
+import { Activity, ActivityList } from '@/types/index';
 
 type Props = {
     activityList: ActivityList;
@@ -37,8 +38,8 @@ export const FrequentExersiceBlock = ({ activityList }: Props) => {
     };
 
     return (
-        <div className={styles.FrequentExersiceBlock}>
-            <div className={styles.Pie}>
+        <div className={styles.frequentExersiceBlock}>
+            <div className={styles.pie}>
                 <Pie {...config} />
             </div>
 

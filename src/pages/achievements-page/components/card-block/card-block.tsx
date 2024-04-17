@@ -1,9 +1,9 @@
 import { calculateActivityDate } from '@utils/calculate-activity-date';
 import { Card, Typography } from 'antd';
 
-import { ActivityList } from '../../../../types';
-
 import styles from './card-block.module.scss';
+
+import { ActivityList } from '@/types/index';
 
 type Props = {
     activityList: ActivityList;
@@ -21,12 +21,12 @@ export const CardBlock = ({ activityList }: Props) => {
     ];
 
     return (
-        <div className={styles.CardBlock}>
+        <div className={styles.cardBlock}>
             {cardData.map(({ id, value, description }) => (
-                <Card className={styles.Card} key={id}>
-                    <div className={styles.CardBody}>
+                <Card className={styles.card} key={id}>
+                    <div className={styles.cardBody}>
                         <Typography.Title level={1}>{value}</Typography.Title>
-                        <span className={styles.Description}>{description}</span>
+                        <span className={styles.description}>{description}</span>
                     </div>
                 </Card>
             ))}

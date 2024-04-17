@@ -40,7 +40,7 @@ export const AchievementsPage = () => {
     }, [dispatch, training, trainingList]);
 
     return (
-        <Card className={styles.AchievementsPage}>
+        <Card className={styles.achievementsPage}>
             <Tabs items={tabsItems} destroyInactiveTabPane={true} />
         </Card>
     );

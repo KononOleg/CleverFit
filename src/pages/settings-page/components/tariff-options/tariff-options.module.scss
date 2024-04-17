@@ -1,31 +1,31 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.Options {
+.options {
     max-width: 505px;
     display: flex;
     flex-direction: column;
     gap: $gap-2xs;
     padding: $gap-5xl 0;
 
-    .Option {
+    .option {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        .Title {
+        .title {
             display: flex;
             align-items: center;
             gap: $gap-3xs;
             font-weight: $font-weight-xl;
         }
 
-        .Icon {
+        .icon {
             font-size: $font-size-m;
             color: $character-light-secondary-45;
             cursor: pointer;
         }
 
-        .Disabled {
+        .disabled {
             color: $character-light-disable-25;
         }
 
@@ -35,7 +35,7 @@
     }
 
     @media (max-width: 830px) {
-        .Title {
+        .title {
             align-items: start;
             max-width: 197px;
         }

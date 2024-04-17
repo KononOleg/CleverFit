@@ -1,5 +1,6 @@
 import { EditOutlined } from '@ant-design/icons';
-import { colors,DATA_TEST_ID } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
+import { getBadgeColor } from '@utils/get-badge-color';
 import { Badge, Button } from 'antd';
 import cn from 'classnames';
 
@@ -22,15 +23,15 @@ export const BadgeCustom = ({
     onChange,
     isImplementation,
 }: Props) => (
-    <div className={styles.BadgeCustomWrapper}>
+    <div className={styles.badgeCustomWrapper}>
         {isExercise ? (
-            <p className={styles.ExerciseText}>{text}</p>
+            <p className={styles.exerciseText}>{text}</p>
         ) : (
             <Badge
                 className={cn({
-                    [styles.BadgeCustomDisabled]: isImplementation,
+                    [styles.badgeCustomDisabled]: isImplementation,
                 })}
-                color={colors.get(text)}
+                color={getBadgeColor(text)}
                 text={text}
             />
         )}

@@ -1,18 +1,18 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.FilterPanel {
+.filterPanel {
     margin-top: $gap-2s;
     display: flex;
     align-items: center;
 
     gap: $gap-2xl;
 
-    .Title {
+    .title {
         max-width: 118px;
         width: 100%;
     }
 
-    .Trainings {
+    .trainings {
         display: flex;
         flex-wrap: wrap;
         gap: $gap-3s 0;

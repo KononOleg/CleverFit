@@ -1,5 +1,4 @@
 import { API_PATH } from '@constants/index';
-
 import {
     ChangePasswordRequest,
     CheckEmailRequest,
@@ -7,7 +6,7 @@ import {
     LoginRequest,
     LoginResponse,
     RegisterRequest,
-} from '../../types';
+} from '@redux/types';
 
 import { apiSlice } from '.';
 

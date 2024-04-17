@@ -1,12 +1,12 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.FrequentTrainingBlock {
+.frequentTrainingBlock {
     display: flex;
     flex-direction: column;
     gap: $gap-xs;
     padding-top: 56px;
 
-    .TrainingWrapper {
+    .trainingWrapper {
         display: flex;
         align-items: center;
         gap: 105px;
@@ -15,7 +15,7 @@
             margin: 0;
         }
 
-        .Subtitle {
+        .subtitle {
             max-width: 99px;
             width: 100%;
             text-align: left;
@@ -26,7 +26,7 @@
     @media (max-width: 1000px) {
         padding-top: $gap-2xs;
 
-        .TrainingWrapper {
+        .trainingWrapper {
             gap: $gap-9xl;
         }
     }

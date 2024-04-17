@@ -1,8 +1,8 @@
 import CheckableTag from 'antd/es/tag/CheckableTag';
 
-import { TrainingList, TrainingType } from '../../../../types';
-
 import styles from './filter-panel.module.scss';
+
+import { TrainingList, TrainingType } from '@/types/index';
 
 type Props = {
     trainingData: TrainingList;
@@ -11,9 +11,9 @@ type Props = {
 };
 
 export const FilterPanel = ({ trainingData, selectedTraining, setSelectedTraining }: Props) => (
-    <div className={styles.FilterPanel}>
-        <span className={styles.Title}>Тип тренировки :</span>
-        <div className={styles.Trainings}>
+    <div className={styles.filterPanel}>
+        <span className={styles.title}>Тип тренировки :</span>
+        <div className={styles.trainings}>
             {trainingData.map((tag) => (
                 <CheckableTag
                     key={tag.key}

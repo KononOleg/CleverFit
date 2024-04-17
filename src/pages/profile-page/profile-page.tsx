@@ -5,11 +5,11 @@ import { IMAGE_PATH } from '@constants/index';
 import { useUpdateUserMutation } from '@redux/services/profile-service';
 import { Card } from 'antd';
 
-import { ProfileAvatar, User } from '../../types';
-
 import { ProfileForm } from './components/profile-form';
 
 import styles from './profile-page.module.scss';
+
+import { ProfileAvatar, User } from '@/types/index';
 
 export const ProfilePage = () => {
     const [updateUser, { isSuccess, isError }] = useUpdateUserMutation();
@@ -29,7 +29,7 @@ export const ProfilePage = () => {
 
     return (
         <React.Fragment>
-            <Card className={styles.ProfileCard}>
+            <Card className={styles.profileCard}>
                 <ProfileForm submitHandler={submitHandler} />
             </Card>
 

@@ -10,28 +10,28 @@ export const FeedbackCard = ({ fullName, imageSrc, message, rating, createdAt }:
     const [name, surName] = fullName?.split(' ') ?? [];
 
     return (
-        <Card bordered={false} className={styles.FeedbackCard}>
-            <div className={styles.FeedbackWrapper}>
-                <div className={styles.ProfileInfo}>
+        <Card bordered={false} className={styles.feedbackCard}>
+            <div className={styles.feedbackWrapper}>
+                <div className={styles.profileInfo}>
                     <Avatar size={42} src={imageSrc} icon={<UserOutlined />} />
                     <div>
                         <h6>{name || 'Пользователь'}</h6>
                         <h6>{surName || ''}</h6>
                     </div>
                 </div>
-                <div className={styles.Description}>
-                    <div className={styles.Rating}>
+                <div className={styles.description}>
+                    <div className={styles.rating}>
                         <Rate
-                            className={styles.Rate}
+                            className={styles.rate}
                             disabled={true}
                             value={rating}
                             character={({ index }) => characterRender(index, rating)}
                         />
-                        <span className={styles.Date}>
+                        <span className={styles.date}>
                             {new Date(createdAt).toLocaleDateString()}
                         </span>
                     </div>
-                    <p className={styles.Message}>{message}</p>
+                    <p className={styles.message}>{message}</p>
                 </div>
             </div>
         </Card>

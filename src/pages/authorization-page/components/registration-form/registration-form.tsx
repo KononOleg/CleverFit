@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import {
     DATA_TEST_ID,
     PASSWORD_MESSAGE_ERROR,
-    PATH,
     VALIDATION_EMAIL,
     VALIDATION_FIELD_REQUIRED,
     VALIDATION_PASSWORD,
@@ -10,6 +9,7 @@ import {
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useRegistrationMutation } from '@redux/services/auth-service';
+import { PATH } from '@routes/path';
 import { Button, Form, Input } from 'antd';
 
 import { checkPrevPath, confirmPasswordRule } from '../../../../utils';

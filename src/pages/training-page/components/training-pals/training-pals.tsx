@@ -3,11 +3,12 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { inviteSelector } from '@redux/selectors';
 import { List, Typography } from 'antd';
 
-import { JointTrainig } from '../../../../types';
 import { JointTrainingCard } from '../joint-training-card';
 import { JointTrainingModal } from '../joint-training-modal';
 
 import styles from './training-pals.module.scss';
+
+import { JointTrainig } from '@/types/index';
 
 export const TrainingPals = () => {
     const { trainingPals } = useAppSelector(inviteSelector);
@@ -24,8 +25,8 @@ export const TrainingPals = () => {
 
     return (
         <React.Fragment>
-            <div className={styles.TrainingPals}>
-                <Typography.Title level={4} className={styles.Title}>
+            <div className={styles.trainingPals}>
+                <Typography.Title level={4} className={styles.title}>
                     Мои партнёры по тренировкам
                 </Typography.Title>
                 {isEmptyTrainingPals ? (
@@ -43,7 +44,7 @@ export const TrainingPals = () => {
                                 onClickHandler={openJointTrainingModalHandler}
                             />
                         )}
-                        className={styles.PalsList}
+                        className={styles.palsList}
                     />
                 )}
             </div>

@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CloseOutlined, EditOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { TrainingForm } from '@components/training-form';
-import { DATA_TEST_ID, DD_MM_YYYY, PATH } from '@constants/index';
+import { DATA_TEST_ID, DD_MM_YYYY } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { addExercise, deleteExercises, resetCreatedTraining } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
+import { PATH } from '@routes/path';
 import { Button, Drawer } from 'antd';
 import moment from 'moment';
 
@@ -68,7 +69,7 @@ export const DrawerExercise = ({
             width={isDesktopVersion ? 408 : 360}
             closeIcon={isEditExercises && !isJointTraining ? <EditOutlined /> : <PlusOutlined />}
             open={openDrawerExercises}
-            className={styles.DrawerExercises}
+            className={styles.drawerExercises}
             data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT}
             extra={
                 <Button
@@ -107,7 +108,7 @@ export const DrawerExercise = ({
             {isTrainingPage ? (
                 <TrainingForm isEditExercises={isEditExercises} />
             ) : (
-                <div className={styles.Status}>
+                <div className={styles.status}>
                     <BadgeCustom text={selectedTraining} />
                     <p>
                         {moment(selectedDate || (createdTraining?.name as string)).format(
@@ -116,7 +117,7 @@ export const DrawerExercise = ({
                     </p>
                 </div>
             )}
-            <div className={styles.Exercises}>
+            <div className={styles.exercises}>
                 {createdTraining.exercises.map(
                     ({ _id, name, replays, weight, approaches }, index) => (
                         <div key={`${_id}${index.toString()}`}>
@@ -134,7 +135,7 @@ export const DrawerExercise = ({
                     ),
                 )}
 
-                <div className={styles.Buttons}>
+                <div className={styles.buttons}>
                     <Button
                         type='link'
                         icon={<PlusOutlined />}

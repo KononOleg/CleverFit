@@ -4,10 +4,11 @@ import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { Button } from 'antd';
 
-import { Training } from '../../../../types';
 import { TableExercises } from '../table-exercises';
 
 import styles from './training-list.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     openDrawerExercisesHandler: () => void;
@@ -20,7 +21,7 @@ export const TrainingList = ({ openDrawerExercisesHandler, onChangeTrainingHandl
     const isTrainingListEmpty = trainingList && trainingList.length === 0;
 
     return (
-        <div className={styles.TrainingList}>
+        <div className={styles.trainingList}>
             <TableExercises onChangeTrainingHandler={onChangeTrainingHandler} />
 
             {!isTrainingListEmpty && (
@@ -28,7 +29,7 @@ export const TrainingList = ({ openDrawerExercisesHandler, onChangeTrainingHandl
                     type='primary'
                     size='large'
                     icon={<PlusOutlined />}
-                    className={styles.AddButton}
+                    className={styles.addButton}
                     data-test-id={DATA_TEST_ID.CREATE_NEW_TRAINING_BUTTON}
                     onClick={openDrawerExercisesHandler}
                 >

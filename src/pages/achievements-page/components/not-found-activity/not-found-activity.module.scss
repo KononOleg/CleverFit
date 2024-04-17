@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.NotFoundActivity {
+.notFoundActivity {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
     height: 48vh;
     gap: $gap-xl;
 
-    .Title {
+    .title {
         text-align: center;
     }
 }

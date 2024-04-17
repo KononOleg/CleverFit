@@ -6,12 +6,13 @@ import { getTrainingByDay } from '@utils/index';
 import cn from 'classnames';
 import moment from 'moment';
 
-import { Nullable } from '../../../../types';
 import { CardExercises } from '../card-exercises';
 import { CardTraining } from '../card-training';
 import { DrawerExercise } from '../drawer-exercise';
 
 import styles from './card-modal.module.scss';
+
+import { Nullable } from '@/types/index';
 
 type Props = {
     offsetTop: number;
@@ -65,9 +66,9 @@ export const CardModal = ({ offsetTop }: Props) => {
     return (
         <React.Fragment>
             <div
-                className={cn(styles.CardWrapper, {
-                    [styles.CardWrapperRight]: isRight && !offsetTop,
-                    [styles.CardWrapperLeft]: !isRight && !offsetTop,
+                className={cn(styles.cardWrapper, {
+                    [styles.cardWrapperRight]: isRight && !offsetTop,
+                    [styles.cardWrapperLeft]: !isRight && !offsetTop,
                 })}
                 style={{ top: offsetTop }}
             >

@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-
 import { useState } from 'react';
 import { DownOutlined, EditOutlined } from '@ant-design/icons';
 import { DATA_TEST_ID } from '@constants/index';
@@ -10,10 +9,11 @@ import { getKeyByPeriod } from '@utils/find-period-option';
 import { Button, Table } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
-import { Training } from '../../../../types';
 import { EditTraining } from '../edit-training';
 
 import styles from './table-exercises.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     onChangeTrainingHandler: (training: Training) => void;
@@ -36,7 +36,7 @@ export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
             dataIndex: 'trainingType',
             key: 'trainingType',
             render: (_, record) => (
-                <div className={styles.TrainingType}>
+                <div className={styles.trainingType}>
                     <BadgeCustom isEdit={false} text={record.name} />
                     <Button type='link' onClick={() => openEditTrainingHandler(record)}>
                         <DownOutlined />
@@ -65,7 +65,7 @@ export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
             render: (_, record, index) => (
                 <Button
                     type='link'
-                    className={styles.EditButton}
+                    className={styles.editButton}
                     data-test-id={`${DATA_TEST_ID.UPDATE_MY_TRAINING_TABLE_ICON}${index}`}
                     onClick={() => onChangeTrainingHandler(record)}
                     disabled={record.isImplementation}
@@ -79,7 +79,7 @@ export const TableExercises = ({ onChangeTrainingHandler }: Props) => {
     return (
         <Table
             data-test-id={DATA_TEST_ID.MY_TRAININGS_TABLE}
-            className={styles.TableExercises}
+            className={styles.tableExercises}
             columns={columns}
             pagination={{ position: ['bottomLeft', 'bottomLeft'] }}
             dataSource={training}

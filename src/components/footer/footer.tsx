@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DownloadApp } from '@components/download-app';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
+import { PATH } from '@routes/path';
 import { Button } from 'antd';
 
 import styles from './footer.module.scss';

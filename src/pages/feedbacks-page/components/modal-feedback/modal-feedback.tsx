@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction,  useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { DATA_TEST_ID } from '@constants/index';
 import { useCreateFeedbackMutation } from '@redux/services/feedback-service';
 import { characterRender } from '@utils/character-rate-render';
@@ -51,7 +51,7 @@ export const ModalFeedback = ({ open, setOpen, handleRefetch }: Props) => {
             <Modal
                 open={open}
                 title='Ваш отзыв'
-                className={styles.ModalFeedback}
+                className={styles.modalFeedback}
                 onOk={handleOk}
                 onCancel={handleCancel}
                 centered={true}

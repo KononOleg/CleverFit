@@ -1,7 +1,8 @@
-import { Training } from '../../../../types';
 import { BadgeCustom } from '../badge-custom';
 
 import styles from './badge-training.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     training: Training[];
@@ -12,7 +13,7 @@ type Props = {
 export const BadgeTraining = ({ training, isEdit, onChange }: Props) => (
     <ul>
         {training.map(({ name, _id, isImplementation }, index) => (
-            <li className={styles.BadgeList} key={_id}>
+            <li className={styles.badgeList} key={_id}>
                 <BadgeCustom
                     text={name}
                     isEdit={isEdit}

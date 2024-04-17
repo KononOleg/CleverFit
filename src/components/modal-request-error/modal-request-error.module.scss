@@ -1,6 +1,6 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
-.ModalRequestError:global.ant-modal {
+.modalRequestError:global.ant-modal {
     max-width: 416px;
     width: 100% !important;
 

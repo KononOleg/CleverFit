@@ -5,10 +5,13 @@ import { appSelector } from '@redux/selectors';
 import cn from 'classnames';
 import moment from 'moment';
 
-import { Activity, ActivityList } from '../../../../types';
 import { ActivityRows } from '../activity-rows';
 
 import styles from './activity-block.module.scss';
+
+import { Activity, ActivityList } from '@/types/index';
+
+
 
 type Props = {
     activityList: ActivityList;
@@ -51,8 +54,8 @@ export const ActivityBlock = ({ activityList }: Props) => {
     };
 
     return (
-        <div className={cn(styles.ActivityBlock, { [styles.ActivityBlockFullSize]: isFullSize })}>
-            <div className={styles.Column}>
+        <div className={cn(styles.activityBlock, { [styles.activityBlockFullSize]: isFullSize })}>
+            <div className={styles.column}>
                 <Column {...config} scrollbar={isFullSize && { x: {} }} />
             </div>
 

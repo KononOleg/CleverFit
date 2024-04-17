@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
     DATA_TEST_ID,
-    PATH,
     VALIDATION_EMAIL,
     VALIDATION_FIELD_REQUIRED,
     VALIDATION_PASSWORD,
@@ -9,6 +8,7 @@ import {
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { authSelector, prevLocationsSelector } from '@redux/selectors';
 import { useCheckEmailMutation, useLoginMutation } from '@redux/services/auth-service';
+import { PATH } from '@routes/path';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 import { checkPrevPath } from '../../../../utils';
