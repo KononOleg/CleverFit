@@ -49,6 +49,7 @@ export const MyWorkouts = () => {
     const saveTrainingHandler = () => {
         if (isEditTraining) updateTrainingHandler();
         else createTrainingHandler();
+        getTraining();
         closeDrawerExercisesHandler();
     };
 

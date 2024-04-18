@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: $gap-s $gap-2xl;
-    margin-top: $gap-s;
+    margin: $gap-s 0 $gap-xl;
 
     .cover {
         position: relative;

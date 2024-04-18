@@ -24,11 +24,11 @@
     }
 
     .buttonSettings {
-        display: flex;
-        align-items: center;
-        gap: $gap-m;
-
         a {
+            display: flex;
+            align-items: center;
+            gap: $gap-m;
+
             color: $character-light-title-85;
         }
     }
@@ -96,12 +96,11 @@
             background: $neutral-gray-1;
 
             span {
-                display: block;
                 width: 14px;
                 height: 14px;
             }
 
-            a {
+            p {
                 display: none;
             }
         }

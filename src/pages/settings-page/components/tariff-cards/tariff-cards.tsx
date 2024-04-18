@@ -44,7 +44,7 @@ export const TariffCards = ({ handleOpen, isProUser, month, day }: Props) => (
                         cover={
                             <div
                                 className={cn(styles.cover, {
-                                    [styles.Inactive]: isShowPro,
+                                    [styles.inactive]: isShowPro,
                                 })}
                             >
                                 <img alt={title} src={image} />

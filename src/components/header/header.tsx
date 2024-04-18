@@ -88,10 +88,12 @@ Header.Setting = () => (
     <Button
         type='text'
         size='middle'
-        icon={<SettingOutlined />}
         className={styles.buttonSettings}
         data-test-id={DATA_TEST_ID.HEADER_SETTINGS}
     >
-        <Link to={PATH.SETTINGS}>Настройки</Link>
+        <Link to={PATH.SETTINGS}>
+            <SettingOutlined />
+            <p>Настройки</p>
+        </Link>
     </Button>
 );

@@ -21,7 +21,7 @@
             flex-direction: column;
             gap: $gap-2xs;
 
-            span {
+            :global(.anticon) {
                 color: $primary-light-9;
             }
         }
@@ -121,7 +121,7 @@
             li {
                 padding: 0;
 
-                span:first-child {
+                :global(.anticon) {
                     display: none;
                 }
             }

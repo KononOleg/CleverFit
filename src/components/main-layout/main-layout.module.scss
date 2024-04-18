@@ -42,6 +42,11 @@ header,
             .mainFourth {
                 padding: $gap-xl 0 $gap-6xl;
             }
+
+            .mainSecond,
+            .mainFifth {
+                padding: $gap-xl $gap-m;
+            }
         }
     }
 }
