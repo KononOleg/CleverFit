@@ -1,0 +1,23 @@
+@import '../../../../styles/variables.scss';
+
+.frequentExersiceBlock {
+    display: flex;
+    align-items: center;
+    padding-top: $gap-7xl;
+    gap: $gap-xl 150px;
+
+    .pie {
+        max-width: 520px;
+        width: 100%;
+        height: 211px;
+    }
+
+    @media (max-width: 1000px) {
+        padding: 0;
+        flex-direction: column;
+
+        .pie {
+            max-width: 100%;
+        }
+    }
+}

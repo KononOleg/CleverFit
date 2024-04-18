@@ -1,7 +1,7 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.TableExercises {
-    .TrainingType {
+.tableExercises {
+    .trainingType {
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -12,7 +12,7 @@
         }
     }
 
-    .EditButton {
+    .editButton {
         font-size: $font-size-xl-tablet;
     }
 

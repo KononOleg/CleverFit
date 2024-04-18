@@ -9,11 +9,11 @@ type Props = {
 };
 
 export const AlertCustom = ({ description, dataTestId }: Props) => (
-    <div className={styles.AlertWrapper}>
+    <div className={styles.alertWrapper}>
         <Alert
             message={description}
             type='success'
-            className={styles.Alert}
+            className={styles.alert}
             data-test-id={dataTestId || DATA_TEST_ID.ALERT}
             closable={true}
             showIcon={true}

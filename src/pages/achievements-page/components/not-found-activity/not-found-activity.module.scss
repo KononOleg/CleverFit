@@ -1,0 +1,14 @@
+@import '../../../../styles/variables.scss';
+
+.notFoundActivity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 48vh;
+    gap: $gap-xl;
+
+    .title {
+        text-align: center;
+    }
+}

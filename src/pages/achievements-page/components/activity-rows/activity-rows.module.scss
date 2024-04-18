@@ -1,0 +1,9 @@
+@import '../../../../styles/variables.scss';
+
+.activityRows {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: $gap-m 100px;
+}

@@ -1,17 +1,17 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.FeedbackCard {
+.feedbackCard {
     :global(.ant-card-body) {
         padding: $gap-m !important;
     }
 }
 
-.FeedbackWrapper {
+.feedbackWrapper {
     display: flex;
     gap: $gap-s;
 }
 
-.ProfileInfo {
+.profileInfo {
     min-width: 174px;
     height: 96px;
     display: flex;
@@ -26,13 +26,13 @@
     }
 }
 
-.Description {
+.description {
     display: flex;
     flex-direction: column;
     gap: $gap-s;
 }
 
-.Message {
+.message {
     max-width: 950px;
     color: $neutral-gray-7;
     word-wrap: break-word;
@@ -40,19 +40,19 @@
     line-height: $font-line-s;
 }
 
-.Rating {
+.rating {
     height: 16px;
     display: flex;
     align-items: center;
     gap: $gap-m;
 }
 
-.Date {
+.date {
     font-size: $font-size-xs;
     color: $neutral-gray-6;
 }
 
-.Rate {
+.rate {
     :global(.ant-rate-star:not(:last-child)) {
         margin-right: $gap-3xs;
     }
@@ -64,11 +64,11 @@
 }
 
 @media (max-width: 830px) {
-    .FeedbackWrapper {
+    .feedbackWrapper {
         flex-direction: column;
     }
 
-    .ProfileInfo {
+    .profileInfo {
         height: 42px;
         flex-direction: row;
     }

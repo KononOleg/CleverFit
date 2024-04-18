@@ -1,5 +1,5 @@
 import { push } from 'redux-first-history';
-import { HttpStatusCode, PATH } from '@constants/index';
+import { HTTP_STATUS_CODE } from '@constants/index';
 import { INVITE_STATUS } from '@constants/invite-status';
 import { setConfirmEmail, setPassword, setToken } from '@redux/reducers/auth-slice';
 import {
@@ -17,6 +17,7 @@ import { inviteApi } from '@redux/services/invite-service';
 import { profileApi } from '@redux/services/profile-service';
 import { trainingApi } from '@redux/services/training-service';
 import { createListenerMiddleware } from '@reduxjs/toolkit';
+import { PATH } from '@routes/path';
 
 export const listenerMiddleware = createListenerMiddleware();
 
@@ -48,11 +49,11 @@ listenerMiddleware.startListening({
 listenerMiddleware.startListening({
     matcher: authApi.endpoints.registration.matchRejected,
     effect: ({ meta, payload }, { dispatch }) => {
-        if (payload?.status === HttpStatusCode.CONFLICT) dispatch(push(PATH.ERROR_USER_EXIST));
+        if (payload?.status === HTTP_STATUS_CODE.CONFLICT) dispatch(push(PATH.ERROR_USER_EXIST));
         else {
             const { password } = meta.arg.originalArgs;
 
-            dispatch(setPassword({ password }));
+            dispatch(setPassword(password));
             dispatch(push(PATH.ERROR));
         }
     },
@@ -63,7 +64,7 @@ listenerMiddleware.startListening({
     effect: ({ meta }, { dispatch }) => {
         const { email } = meta.arg.originalArgs;
 
-        dispatch(setConfirmEmail({ email }));
+        dispatch(setConfirmEmail(email));
         dispatch(push(PATH.CONFIRM_EMAIL));
     },
 });
@@ -75,7 +76,7 @@ listenerMiddleware.startListening({
         else {
             const { email } = meta.arg.originalArgs;
 
-            dispatch(setConfirmEmail({ email }));
+            dispatch(setConfirmEmail(email));
             dispatch(push(PATH.ERROR_CHECK_EMAIL));
         }
     },
@@ -100,7 +101,7 @@ listenerMiddleware.startListening({
     effect: ({ meta }, { dispatch }) => {
         const { password } = meta.arg.originalArgs;
 
-        dispatch(setPassword({ password }));
+        dispatch(setPassword(password));
         dispatch(push(PATH.ERROR_CHANGE_PASSWORD));
     },
 });

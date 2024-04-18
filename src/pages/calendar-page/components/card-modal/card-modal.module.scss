@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.CardWrapper {
+.cardWrapper {
     position: absolute;
     top: 0;
     z-index: 9;
@@ -12,14 +12,14 @@
     }
 }
 
-.CardWrapperRight {
+.cardWrapperRight {
     right: 3px;
 }
-.CardWrapperLeft {
+.cardWrapperLeft {
     left: 3px;
 }
 
-.CardModal {
+.cardModal {
     min-width: 264px;
     display: flex;
     flex-direction: column;

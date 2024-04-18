@@ -73,10 +73,10 @@ export const TrainingForm = ({ isEditExercises }: Props) => {
     };
 
     return (
-        <div className={styles.TrainingForm}>
+        <div className={styles.trainingForm}>
             {createdTrainingPal ? (
-                <div className={styles.Partner}>
-                    <div className={styles.UserInfo}>
+                <div className={styles.partner}>
+                    <div className={styles.userInfo}>
                         <Avatar
                             size={42}
                             alt={createdTrainingPal.name}
@@ -102,8 +102,8 @@ export const TrainingForm = ({ isEditExercises }: Props) => {
                 />
             )}
 
-            <div className={styles.Period}>
-                <div className={styles.InputWrapper}>
+            <div className={styles.period}>
+                <div className={styles.inputWrapper}>
                     <DatePicker
                         size='small'
                         data-test-id={DATA_TEST_ID.MODAL_DRAWER_RIGHT_DATE_PICKER}
@@ -125,7 +125,7 @@ export const TrainingForm = ({ isEditExercises }: Props) => {
             </div>
 
             {isShowPeriod && (
-                <div className={styles.InputWrapper}>
+                <div className={styles.inputWrapper}>
                     <TrainingListSelect
                         dataTestId={DATA_TEST_ID.MODAL_DRAWER_RIGHT_SELECT_PERIOD}
                         trainingList={periodOptions}

@@ -6,10 +6,11 @@ import { inviteSelector } from '@redux/selectors';
 import { sortTrainingList } from '@utils/filter-training-list';
 import { Button, Input, List } from 'antd';
 
-import { JointTrainig } from '../../../../types';
 import { JointTrainingCard } from '../joint-training-card';
 
 import styles from './joint-training-list.module.scss';
+
+import { JointTrainig } from '@/types/index';
 
 type Props = {
     goBackHandler: () => void;
@@ -25,19 +26,19 @@ export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Pr
     const searchHandler = (value: string) => setSearchValue(value);
 
     return (
-        <div className={styles.JointTrainingList}>
-            <div className={styles.Searhing} data-test-id={DATA_TEST_ID.SEARCH_INPUT}>
+        <div className={styles.jointTrainingList}>
+            <div className={styles.searhing} data-test-id={DATA_TEST_ID.SEARCH_INPUT}>
                 <Button
                     icon={<ArrowLeftOutlined />}
                     type='text'
-                    className={styles.BackButton}
+                    className={styles.backButton}
                     onClick={goBackHandler}
                 >
                     Назад
                 </Button>
                 <Input.Search
                     placeholder='Поиск по имени'
-                    className={styles.SearhInput}
+                    className={styles.searhInput}
                     onSearch={searchHandler}
                 />
             </div>
@@ -51,7 +52,7 @@ export const JointTrainingList = ({ goBackHandler, onChangeTrainingHandler }: Pr
                         searchValue={searchValue}
                     />
                 )}
-                className={styles.JointList}
+                className={styles.jointList}
                 pagination={
                     filteredTrainingList.length > 12 && {
                         pageSize: 12,

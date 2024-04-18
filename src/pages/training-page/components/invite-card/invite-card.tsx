@@ -10,10 +10,11 @@ import {
 import { Avatar, Button, Typography } from 'antd';
 import moment from 'moment';
 
-import { Invite } from '../../../../types';
 import { InviteTrainingCard } from '../invite-training-card';
 
 import styles from './invite-card.module.scss';
+
+import { Invite } from '@/types/index';
 
 type Props = {
     invite: Invite;
@@ -42,24 +43,24 @@ export const InviteCard = ({ invite }: Props) => {
 
     return (
         // eslint-disable-next-line no-underscore-dangle
-        <div key={invite._id} className={styles.InviteCard}>
-            <div className={styles.UserInfo}>
+        <div key={invite._id} className={styles.inviteCard}>
+            <div className={styles.userInfo}>
                 <Avatar
                     size={42}
                     alt={invite.from.firstName}
                     src={invite.from.imageSrc}
                     icon={<UserOutlined />}
                 />
-                <div className={styles.UserName}>
+                <div className={styles.userName}>
                     <h6>{invite.from.firstName}</h6>
                     <h6>{invite.from.lastName}</h6>
                 </div>
             </div>
-            <div className={styles.Message}>
-                <Typography.Text className={styles.Date}>
+            <div className={styles.message}>
+                <Typography.Text className={styles.date}>
                     {moment(invite.createdAt).format(DD_MM_YYYY)}
                 </Typography.Text>
-                <Typography.Title level={5} className={styles.Greeting}>
+                <Typography.Title level={5} className={styles.greeting}>
                     {`Привет, я ищу партнёра для совместных [${TRAININGS.get(
                         invite.training.name,
                     )}]. Ты хочешь присоединиться ко мне на
@@ -75,7 +76,7 @@ export const InviteCard = ({ invite }: Props) => {
                     />
                 )}
             </div>
-            <div className={styles.Buttons}>
+            <div className={styles.buttons}>
                 <Button type='primary' size='large' onClick={acceptInviteHandler}>
                     Тренироваться вместе
                 </Button>

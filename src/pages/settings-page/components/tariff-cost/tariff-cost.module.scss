@@ -1,20 +1,20 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.TariffCost {
+.tariffCost {
     padding-top: $gap-5xl;
 
-    .Title {
+    .title {
         font-size: $font-size-s;
         font-weight: $font-weight-xl;
         margin-bottom: $gap-3xl;
     }
 
-    .Costs {
+    .costs {
         display: flex;
         flex-direction: column;
         gap: $gap-l;
 
-        .Cost {
+        .cost {
             width: 100%;
             max-width: 267px;
             display: flex;

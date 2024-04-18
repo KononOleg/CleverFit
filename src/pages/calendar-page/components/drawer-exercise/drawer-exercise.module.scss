@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.DrawerExercises {
+.drawerExercises {
     font-family: Inter;
 
     :global(.ant-drawer-content) {
@@ -24,13 +24,13 @@
         padding: 0 $gap-4xl 0;
     }
 
-    .Status {
+    .status {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
-    .Buttons {
+    .buttons {
         display: flex;
         align-items: center;
         justify-content: space-between;

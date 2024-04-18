@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Nullable, Tariff, User } from '../../types';
+import { Nullable, Tariff, User } from '@/types/index';
+
 
 type AuthState = {
     profile: Nullable<User>;

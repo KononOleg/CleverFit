@@ -1,0 +1,67 @@
+@import '../../../../styles/variables.scss';
+
+.cardBlock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $gap-xl;
+    padding-top: $gap-2xl;
+
+    .card {
+        max-width: 156px;
+        width: 100%;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 2px 8px 0 #00000026;
+
+        :global(.ant-card-body) {
+            padding: $gap-xl $gap-l;
+        }
+
+        h1 {
+            margin-bottom: $gap-2xs;
+        }
+
+        .description {
+            color: $character-light-secondary-45;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        padding-top: $gap-xs;
+        display: grid;
+        grid-template-columns: repeat(2, 156px);
+    }
+
+    @media (max-width: 830px) {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-m;
+
+        .card {
+            max-width: 100%;
+            height: $gap-8xl;
+            flex-direction: row;
+
+            .cardBody {
+                width: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            :global(.ant-card-body) {
+                width: 100%;
+                padding: $gap-2xs $gap-m;
+            }
+
+            h1 {
+                margin: 0;
+            }
+        }
+    }
+}

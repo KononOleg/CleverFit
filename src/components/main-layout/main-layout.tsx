@@ -3,11 +3,10 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from '@components/footer';
 import { Header } from '@components/header';
 import { Sider } from '@components/sider';
-import { PATH } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
-import { inviteSelector, profileSelector } from '@redux/selectors';
+import { inviteSelector } from '@redux/selectors';
 import { useLazyGetInviteListQuery } from '@redux/services/invite-service';
-import { useLazyGetCurrentUserQuery } from '@redux/services/profile-service';
+import { PATH } from '@routes/path';
 import cn from 'classnames';
 import moment from 'moment';
 
@@ -25,15 +24,8 @@ type Props = {
 
 export const MainLayout = ({ isShowHeader = true }: Props) => {
     const { pathname } = useLocation();
-    const { profile } = useAppSelector(profileSelector);
     const { inviteList } = useAppSelector(inviteSelector);
-
     const [getInviteList] = useLazyGetInviteListQuery();
-    const [getCurrentUser] = useLazyGetCurrentUserQuery();
-
-    useEffect(() => {
-        if (profile === null) setTimeout(getCurrentUser, 200);
-    }, [getCurrentUser, profile]);
 
     useEffect(() => {
         if (inviteList.length === 0) getInviteList();
@@ -50,16 +42,16 @@ export const MainLayout = ({ isShowHeader = true }: Props) => {
     const isMainFifth = isSettingsPage;
 
     return (
-        <div className={styles.MainLayout}>
+        <div className={styles.mainLayout}>
             <Sider />
-            <div className={styles.Wrapper}>
+            <div className={styles.wrapper}>
                 {isShowHeader && <Header />}
                 <main
-                    className={cn(styles.Main, {
-                        [styles.MainSecond]: isMainSecond,
-                        [styles.MainThird]: isMainThird,
-                        [styles.MainFourth]: isMainFourth,
-                        [styles.MainFifth]: isMainFifth,
+                    className={cn(styles.main, {
+                        [styles.mainSecond]: isMainSecond,
+                        [styles.mainThird]: isMainThird,
+                        [styles.mainFourth]: isMainFourth,
+                        [styles.mainFifth]: isMainFifth,
                     })}
                 >
                     <Outlet />

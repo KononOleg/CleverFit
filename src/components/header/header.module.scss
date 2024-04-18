@@ -1,4 +1,4 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
 .header {
     padding-top: $gap-2m;
@@ -20,15 +20,15 @@
 
     .containerRight {
         justify-content: flex-end;
-        margin-bottom: $gap-xs;
+        margin-bottom: $gap-4xs;
     }
 
     .buttonSettings {
-        display: flex;
-        align-items: center;
-        gap: $gap-m;
-
         a {
+            display: flex;
+            align-items: center;
+            gap: $gap-m;
+
             color: $character-light-title-85;
         }
     }
@@ -96,12 +96,11 @@
             background: $neutral-gray-1;
 
             span {
-                display: block;
                 width: 14px;
                 height: 14px;
             }
 
-            a {
+            p {
                 display: none;
             }
         }

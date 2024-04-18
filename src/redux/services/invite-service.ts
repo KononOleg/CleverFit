@@ -1,5 +1,4 @@
 import { API_PATH } from '@constants/index';
-
 import {
     GetInviteListResponse,
     GetTrainingPalsResponse,
@@ -10,7 +9,7 @@ import {
     SendInviteAnswerResponse,
     SendInviteRequest,
     SendInviteResponse,
-} from '../../types';
+} from '@redux/types';
 
 import { apiSlice } from '.';
 

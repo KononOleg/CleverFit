@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import styles from './not-found-page.module.scss';
 
 export const NotFoundPage = () => (
-    <Card className={styles.NotFoundPage}>
+    <Card className={styles.notFoundPage}>
         <NotFound />
     </Card>
 );

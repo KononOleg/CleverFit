@@ -4,9 +4,9 @@ import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setExercise } from '@redux/reducers/training-slice';
 import { Checkbox, Input, InputNumber } from 'antd';
 
-import { Nullable } from '../../../../types';
-
 import styles from './exercise-form.module.scss';
+
+import { Nullable } from '@/types/index';
 
 type Props = {
     excerciseNameInitial: string;
@@ -42,8 +42,8 @@ export const ExerciseForm = ({
         dispatch(setExercise({ approaches: value as number, index }));
 
     return (
-        <div className={styles.Exercise}>
-            <div className={styles.ExerciseName}>
+        <div className={styles.exercise}>
+            <div className={styles.exerciseName}>
                 <Input
                     data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_EXERCISE}${index}`}
                     className={styles.Input}
@@ -53,7 +53,7 @@ export const ExerciseForm = ({
                 />
 
                 {isCheck && (
-                    <div className={styles.Checkbox}>
+                    <div className={styles.checkbox}>
                         <Checkbox
                             data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_CHECKBOX_EXERCISE}${index}`}
                             checked={isChecked}
@@ -63,33 +63,33 @@ export const ExerciseForm = ({
                 )}
             </div>
 
-            <div className={styles.Wrapper}>
-                <div className={styles.LabelReplays}>Подходы</div>
-                <div className={styles.InputWrapper}>
-                    <div className={styles.Label}>Вес, кг</div>
-                    <div className={styles.Label}>Количество</div>
+            <div className={styles.wrapper}>
+                <div className={styles.labelReplays}>Подходы</div>
+                <div className={styles.inputWrapper}>
+                    <div className={styles.label}>Вес, кг</div>
+                    <div className={styles.label}>Количество</div>
                 </div>
             </div>
-            <div className={styles.Wrapper}>
+            <div className={styles.wrapper}>
                 <InputNumber
                     data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_QUANTITY}${index}`}
-                    className={styles.InputReplays}
+                    className={styles.inputReplays}
                     addonBefore='+'
                     min={1}
                     defaultValue={replaysInitial}
                     onChange={onChangeReplays}
                 />
-                <div className={styles.InputWrapper}>
+                <div className={styles.inputWrapper}>
                     <InputNumber
                         data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_WEIGHT}${index}`}
-                        className={styles.Input}
+                        className={styles.input}
                         defaultValue={weightInitial}
                         onChange={onChangeWeight}
                     />
-                    <PlusOutlined className={styles.Multi} />
+                    <PlusOutlined className={styles.multi} />
                     <InputNumber
                         data-test-id={`${DATA_TEST_ID.MODAL_DRAWER_RIGHT_INPUT_APPROACH}${index}`}
-                        className={styles.Input}
+                        className={styles.input}
                         min={1}
                         defaultValue={approachesInitial}
                         onChange={onChangeApproaches}

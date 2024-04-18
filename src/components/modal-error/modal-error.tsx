@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
+import { PATH } from '@routes/path';
 import { Button, Modal, Result } from 'antd';
 
 import styles from './modal-error.module.scss';
@@ -26,7 +27,7 @@ export const ModalError = ({ isError }: Props) => {
         <Modal
             open={open}
             centered={true}
-            className={styles.ModalError}
+            className={styles.modalError}
             onCancel={handleCancel}
             footer={null}
             closable={false}

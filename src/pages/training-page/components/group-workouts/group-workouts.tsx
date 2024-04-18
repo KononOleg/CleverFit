@@ -86,10 +86,10 @@ export const GroupWorkouts = () => {
 
     return (
         <React.Fragment>
-            <div className={styles.GroupWorkouts}>
+            <div className={styles.groupWorkouts}>
                 <InviteList />
-                <div className={styles.Description}>
-                    <Typography.Title className={styles.Title} level={3}>
+                <div className={styles.description}>
+                    <Typography.Title className={styles.title} level={3}>
                         Хочешь тренироваться с тем, кто разделяет твои цели и темп? <br /> Можешь
                         найти друга для совместных тренировок среди других пользователей.
                     </Typography.Title>
@@ -99,7 +99,7 @@ export const GroupWorkouts = () => {
                         друга.
                     </Typography.Text>
 
-                    <div className={styles.Buttons}>
+                    <div className={styles.buttons}>
                         <Button type='link' block={true} onClick={getJointTrainingListHandler}>
                             Случайный выбор
                         </Button>

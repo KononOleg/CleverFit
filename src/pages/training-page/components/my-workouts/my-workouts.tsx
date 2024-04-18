@@ -14,10 +14,11 @@ import {
 import { isOldDate } from '@utils/index';
 import { Button, Typography } from 'antd';
 
-import { Training } from '../../../../types';
 import { TrainingList } from '../training-list';
 
 import styles from './my-workouts.module.scss';
+
+import { Training } from '@/types/index';
 
 export const MyWorkouts = () => {
     const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ export const MyWorkouts = () => {
     const saveTrainingHandler = () => {
         if (isEditTraining) updateTrainingHandler();
         else createTrainingHandler();
+        getTraining();
         closeDrawerExercisesHandler();
     };
 
@@ -66,7 +68,7 @@ export const MyWorkouts = () => {
                     onChangeTrainingHandler={onChangeTrainingHandler}
                 />
             ) : (
-                <div className={styles.MyWorkoutsEmpty}>
+                <div className={styles.myWorkoutsEmpty}>
                     <Typography.Text>У вас еще нет созданных тренировок</Typography.Text>
                     <Button
                         type='primary'

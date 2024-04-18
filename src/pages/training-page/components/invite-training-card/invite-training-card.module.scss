@@ -1,13 +1,13 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.InviteTrainingCard {
+.inviteTrainingCard {
     position: absolute !important;
     top: 75%;
     left: 0;
     width: 285px;
     z-index: 9;
 
-    .Period {
+    .period {
         font-size: $font-size-m;
     }
 
@@ -29,13 +29,13 @@
         padding: $gap-xl $gap-s;
     }
 
-    .Column {
+    .column {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .Approaches {
+    .approaches {
         color: $primary-light-6;
     }
 

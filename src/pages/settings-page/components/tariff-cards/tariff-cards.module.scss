@@ -1,12 +1,12 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.Cards {
+.cards {
     display: flex;
     flex-wrap: wrap;
     gap: $gap-s $gap-2xl;
-    margin-top: $gap-s;
+    margin: $gap-s 0 $gap-xl;
 
-    .Cover {
+    .cover {
         position: relative;
         max-width: 240px;
 
@@ -17,7 +17,7 @@
         }
     }
 
-    .Active {
+    .active {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -28,7 +28,7 @@
         }
     }
 
-    .Inactive img {
+    .inactive img {
         filter: grayscale(1);
         opacity: 0.3;
     }
@@ -62,7 +62,7 @@
     }
 
     @media (max-width: 830px) {
-        .Cover {
+        .cover {
             max-width: 100%;
         }
 

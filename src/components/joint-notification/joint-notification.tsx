@@ -14,7 +14,7 @@ export const JointNotification = () => {
             data-test-id={DATA_TEST_ID.NOTIFICATION_ABOUT_JOINT_TRAINING}
             count={inviteList.length}
             size='small'
-            className={`anticon anticon-calendar ant-menu-item-icon ${styles.JointNotification}`}
+            className={`anticon anticon-calendar ant-menu-item-icon ${styles.jointNotification}`}
         >
             <HeartFilled />
         </Badge>

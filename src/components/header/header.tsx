@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined, SettingOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
+import { PATH } from '@routes/path';
 import { Breadcrumb, Button, Typography } from 'antd';
 import cn from 'classnames';
 
@@ -16,6 +17,7 @@ export const Header = () => {
     const isProfilePage = pathname === PATH.PROFILE;
     const isSettingsPage = pathname === PATH.SETTINGS;
     const isTrainingPage = pathname === PATH.TRAINING;
+    const isAchievementsPage = pathname === PATH.ACHIEVEMENTS;
 
     const isShowBreadcrumb = !isProfilePage && !isSettingsPage;
 
@@ -38,6 +40,11 @@ export const Header = () => {
                             <Link to={PATH.CALENDAR}>Календарь</Link>
                         </Breadcrumb.Item>
                     )}
+                    {isAchievementsPage && (
+                        <Breadcrumb.Item>
+                            <Link to={PATH.CALENDAR}>Достижения</Link>
+                        </Breadcrumb.Item>
+                    )}
                 </Breadcrumb>
             )}
 
@@ -51,7 +58,7 @@ export const Header = () => {
                 </div>
             )}
 
-            {(isCalendarPage || isTrainingPage) && (
+            {(isCalendarPage || isTrainingPage || isAchievementsPage) && (
                 <div className={cn(styles.container, styles.containerRight)}>
                     <Header.Setting />
                 </div>
@@ -81,10 +88,12 @@ Header.Setting = () => (
     <Button
         type='text'
         size='middle'
-        icon={<SettingOutlined />}
         className={styles.buttonSettings}
         data-test-id={DATA_TEST_ID.HEADER_SETTINGS}
     >
-        <Link to={PATH.SETTINGS}>Настройки</Link>
+        <Link to={PATH.SETTINGS}>
+            <SettingOutlined />
+            <p>Настройки</p>
+        </Link>
     </Button>
 );

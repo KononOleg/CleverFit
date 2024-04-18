@@ -17,7 +17,7 @@ export const Highlighter: FC<Props> = ({ text, searchValue }) => {
             {parts.map((part, index) => (
                 <span key={`${index.toString()}:${part}`}>
                     {part.toLowerCase() === searchValue.toLowerCase() ? (
-                        <span className={styles.HighlightText}>{part}</span>
+                        <span className={styles.highlightText}>{part}</span>
                     ) : (
                         part
                     )}

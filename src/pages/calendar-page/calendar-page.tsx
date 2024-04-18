@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Portal } from '@components/portal';
-import { DATA_TEST_ID, LocalData } from '@constants/index';
+import { DATA_TEST_ID, LOCAL_DATE } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { setSelectedDate, setTrainingList } from '@redux/reducers/training-slice';
 import { appSelector, trainingSelector } from '@redux/selectors';
@@ -46,14 +46,14 @@ export const CalendarPage = () => {
         const trainingByDay = getTrainingByDay(date.toISOString(true), training);
 
         if (!isDesktopVersion)
-            return trainingByDay?.length ? <div className={styles.СellMobile} /> : undefined;
+            return trainingByDay?.length ? <div className={styles.cellMobile} /> : undefined;
 
         return <BadgeTraining training={getTrainingByDay(date.toISOString(true), training)} />;
     };
 
     return (
         <React.Fragment>
-            <div className={styles.CalendarPage}>
+            <div className={styles.calendarPage}>
                 {isOpenModal && (
                     <Portal container={selectedCell}>
                         <CardModal offsetTop={offsetTop} />
@@ -63,7 +63,7 @@ export const CalendarPage = () => {
                 <Calendar
                     onSelect={onSelectHandler}
                     dateCellRender={dateCellRender}
-                    locale={LocalData}
+                    locale={LOCAL_DATE}
                     fullscreen={isDesktopVersion}
                 />
             </div>

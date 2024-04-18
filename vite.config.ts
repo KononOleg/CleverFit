@@ -18,8 +18,9 @@ export default defineConfig(({ command }) => ({
             '@hooks': path.resolve(__dirname, 'src/hooks'),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@redux': path.resolve(__dirname, 'src/redux'),
-            '@types': path.resolve(__dirname, 'src/types'),
+            '@/types': path.resolve(__dirname, 'src/types'),
             '@utils': path.resolve(__dirname, 'src/utils'),
+            '@routes': path.resolve(__dirname, 'src/routes'),
         },
     },
 }));

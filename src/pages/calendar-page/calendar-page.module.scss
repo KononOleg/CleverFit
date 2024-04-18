@@ -1,6 +1,6 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
-.CalendarPage {
+.calendarPage {
     padding: $gap-3xs $gap-xl $gap-11xl;
     background: $primary-light-1;
 
@@ -26,7 +26,7 @@
         z-index: 7;
     }
 
-    .СellMobile {
+    .cellMobile {
         position: absolute;
         width: 100%;
         height: 100%;

@@ -23,7 +23,7 @@ export const ModalFeedbackSuccess = ({ isSuccess, handleCloseModalSuccess }: Pro
     return (
         <Modal
             open={open}
-            className={styles.ModalFeedbackSuccess}
+            className={styles.modalFeedbackSuccess}
             centered={true}
             footer={null}
             closable={false}

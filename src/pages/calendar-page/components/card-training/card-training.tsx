@@ -9,11 +9,12 @@ import { Button, Card } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import moment from 'moment';
 
-import { Training } from '../../../../types';
 import { BadgeTraining } from '../badge-training';
 import { Empty } from '../empty';
 
 import styles from '../card-modal/card-modal.module.scss';
+
+import { Training } from '@/types/index';
 
 type Props = {
     trainingByDay: Training[];
@@ -37,7 +38,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
 
     return (
         <Card
-            className={styles.CardModal}
+            className={styles.cardModal}
             data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING}
             title={
                 <React.Fragment>
@@ -47,7 +48,7 @@ export const CardTraining = ({ trainingByDay, nextModalHandler, onChange }: Prop
                     />
                     <Button
                         data-test-id={DATA_TEST_ID.MODAL_CREATE_TRAINING_BUTTON_CLOSE}
-                        className={styles.CloseButton}
+                        className={styles.closeButton}
                         type='text'
                         size='small'
                         icon={<CloseOutlined />}

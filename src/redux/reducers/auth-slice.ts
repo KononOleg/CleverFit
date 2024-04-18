@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Nullable } from '../../types';
+import { Nullable } from '@/types/index';
+
+
 
 type AuthState = {
     token: Nullable<string>;
@@ -30,11 +32,11 @@ export const authSlice = createSlice({
             localStorage.clear();
             state.token = null;
         },
-        setConfirmEmail(state, action: PayloadAction<{ email: string }>) {
-            state.email = action.payload.email;
+        setConfirmEmail(state, { payload: email }: PayloadAction<string>) {
+            state.email = email;
         },
-        setPassword(state, action: PayloadAction<{ password: string }>) {
-            state.email = action.payload.password;
+        setPassword(state, { payload: password }: PayloadAction<string>) {
+            state.password = password;
         },
         setToken(state, action: PayloadAction<{ accessToken: string; remember: boolean }>) {
             if (action.payload.remember) localStorage.setItem('token', action.payload.accessToken);

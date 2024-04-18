@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.DrawerTariff {
+.drawerTariff {
     font-family: Inter;
 
     .tariffPro {
@@ -15,14 +15,14 @@
         }
     }
 
-    .Traits {
+    .traits {
         display: flex;
         flex-direction: column;
         gap: $gap-s;
         padding-bottom: $gap-7xl;
     }
 
-    .Trait {
+    .trait {
         display: flex;
         justify-content: end;
 
@@ -31,7 +31,7 @@
         }
     }
 
-    .Buttons {
+    .buttons {
         padding-top: $gap-7xl;
         display: flex;
         gap: $gap-2m;
@@ -39,35 +39,35 @@
         margin-bottom: $gap-xl;
     }
 
-    .Title {
+    .title {
         margin-right: auto;
     }
 
-    .LastTrait {
+    .lastTrait {
         margin-left: $gap-7xl;
         margin-right: $gap-m;
     }
 
-    .Tariff {
+    .tariff {
         padding: $gap-3xs $gap-s;
         font-size: $font-size-xs;
         line-height: $font-line-xs;
     }
 
-    .Tariff:first-child {
+    .tariff:first-child {
         background-color: $neutral-gray-4;
     }
 
-    .Tariff:last-child {
+    .tariff:last-child {
         background-color: $primary-light-1;
         color: $primary-light-7;
     }
 
-    .CloseCircle {
+    .closeCircle {
         color: $character-light-disable-25;
     }
 
-    .CheckCircle {
+    .checkCircle {
         color: $character-light-success;
     }
 

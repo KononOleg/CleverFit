@@ -4,9 +4,9 @@ import { DATA_TEST_ID } from '@constants/index';
 import { useRemoveInviteMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Modal } from 'antd';
 
-import { JointTrainig } from '../../../../types';
-
 import styles from './joint-training-modal.module.scss';
+
+import { JointTrainig } from '@/types/index';
 
 type Props = {
     open: boolean;
@@ -27,15 +27,15 @@ export const JointTrainingModal = ({ open, onClose, partner }: Props) => {
     return (
         <Modal
             data-test-id={DATA_TEST_ID.PARTNER_MODAL}
-            className={styles.JointTrainingModal}
+            className={styles.jointTrainingModal}
             open={open}
             centered={true}
             onCancel={onClose}
             footer={null}
         >
             <React.Fragment>
-                <div className={styles.Block}>
-                    <div className={styles.UserInfo}>
+                <div className={styles.block}>
+                    <div className={styles.userInfo}>
                         <Avatar
                             size={42}
                             alt={partner.name}
@@ -48,23 +48,23 @@ export const JointTrainingModal = ({ open, onClose, partner }: Props) => {
                             <br /> {surName}
                         </h6>
                     </div>
-                    <div className={styles.Trainings}>
-                        <div className={styles.Training}>
-                            <span className={styles.TrainingType}>Тип тренировки:</span>
-                            <span className={styles.TrainingInfo}>{partner.trainingType}</span>
+                    <div className={styles.trainings}>
+                        <div className={styles.training}>
+                            <span className={styles.trainingType}>Тип тренировки:</span>
+                            <span className={styles.trainingInfo}>{partner.trainingType}</span>
                         </div>
 
-                        <div className={styles.Training}>
-                            <span className={styles.TrainingType}>Средняя нагрузка:</span>
-                            <span className={styles.TrainingInfo}>
+                        <div className={styles.training}>
+                            <span className={styles.trainingType}>Средняя нагрузка:</span>
+                            <span className={styles.trainingInfo}>
                                 {partner.avgWeightInWeek} кг/нед
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div className={styles.Block}>
-                    <div className={styles.Status}>
+                <div className={styles.block}>
+                    <div className={styles.status}>
                         тренировка одобрена
                         <CheckCircleFilled />
                     </div>

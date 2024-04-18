@@ -1,6 +1,6 @@
-@import '../../index.variables.scss';
+@import '../../styles/variables.scss';
 
-.JointNotification {
+.jointNotification {
     :global(.ant-badge-count) {
         top: $gap-2s;
     }

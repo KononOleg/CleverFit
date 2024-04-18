@@ -1,11 +1,11 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import { colors } from '@constants/index';
 import { BadgeCustom } from '@pages/calendar-page/components/badge-custom';
+import { getBadgeColor } from '@utils/get-badge-color';
 import { Button, Card } from 'antd';
 
-import { Training } from '../../../../types';
-
 import styles from './edit-training.module.scss';
+
+import { Training } from '@/types/index';
 
 type CardProps = {
     selectedTraining: Training;
@@ -22,7 +22,7 @@ export const EditTraining: React.FC<CardProps> = ({
 
     return (
         <Card
-            className={styles.EditTraining}
+            className={styles.editTraining}
             actions={[
                 <Button size='middle' type='ghost' block={true} onClick={editExercisesHandel}>
                     Добавить упражнения
@@ -30,8 +30,8 @@ export const EditTraining: React.FC<CardProps> = ({
             ]}
         >
             <div
-                className={styles.Title}
-                style={{ borderBottom: `2px solid ${colors.get(selectedTraining.name)}` }}
+                className={styles.title}
+                style={{ borderBottom: `2px solid ${getBadgeColor(selectedTraining.name)}` }}
             >
                 <Button
                     type='text'
@@ -41,7 +41,7 @@ export const EditTraining: React.FC<CardProps> = ({
                 />
                 <span>{selectedTraining?.name}</span>
             </div>
-            <div className={styles.Body}>
+            <div className={styles.body}>
                 {selectedTraining.exercises.map(({ _id, name }, index) => (
                     <div key={_id}>
                         <BadgeCustom text={name} isEdit={false} isExercise={true} index={index} />

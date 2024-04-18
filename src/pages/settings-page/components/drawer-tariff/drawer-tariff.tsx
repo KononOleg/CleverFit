@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircleFilled, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import { DATA_TEST_ID } from '@constants/index';
+import { DATA_TEST_ID, TRAITS } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector, profileSelector } from '@redux/selectors';
 import { useBuyTariffMutation } from '@redux/services/profile-service';
@@ -10,37 +10,6 @@ import { TariffCost } from '../tariff-cost';
 import { TariffSuccessModal } from '../tariff-modal';
 
 import styles from './drawer-tariff.module.scss';
-
-const Traits = [
-    {
-        title: 'Статистика за месяц',
-        free: true,
-    },
-    {
-        title: 'Статистика за всё время',
-        free: false,
-    },
-    {
-        title: 'Совместные тренировки',
-        free: true,
-    },
-    {
-        title: 'Участие в марафонах',
-        free: false,
-    },
-    {
-        title: 'Приложение iOS',
-        free: false,
-    },
-    {
-        title: 'Приложение Android',
-        free: false,
-    },
-    {
-        title: 'Индивидуальный Chat GPT',
-        free: false,
-    },
-];
 
 type Props = {
     open: boolean;
@@ -72,7 +41,7 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
     return (
         <React.Fragment>
             <Drawer
-                className={styles.DrawerTariff}
+                className={styles.drawerTariff}
                 title='Сравнить тарифы'
                 data-test-id={DATA_TEST_ID.TARIFF_SIDER}
                 open={open}
@@ -102,22 +71,22 @@ export const DrawerTariff = ({ open, handleClose, isProUser, month, day }: Props
                         </Typography.Title>
                     </div>
                 )}
-                <div className={styles.Buttons}>
-                    <div className={styles.Tariff}>FREE</div>
-                    <div className={styles.Tariff}>
-                        PRO {isProUser && <CheckCircleOutlined className={styles.CheckCircle} />}
+                <div className={styles.buttons}>
+                    <div className={styles.tariff}>FREE</div>
+                    <div className={styles.tariff}>
+                        PRO {isProUser && <CheckCircleOutlined className={styles.checkCircle} />}
                     </div>
                 </div>
-                <div className={styles.Traits}>
-                    {Traits.map(({ title, free }) => (
-                        <div key={title} className={styles.Trait}>
-                            <div className={styles.Title}>{title}</div>
+                <div className={styles.traits}>
+                    {TRAITS.map(({ title, free }) => (
+                        <div key={title} className={styles.trait}>
+                            <div className={styles.title}>{title}</div>
                             {free ? (
                                 <CheckCircleFilled />
                             ) : (
-                                <CloseCircleOutlined className={styles.CloseCircle} />
+                                <CloseCircleOutlined className={styles.closeCircle} />
                             )}
-                            <CheckCircleFilled className={styles.LastTrait} />
+                            <CheckCircleFilled className={styles.lastTrait} />
                         </div>
                     ))}
                 </div>

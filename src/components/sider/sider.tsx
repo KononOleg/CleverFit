@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { push } from 'redux-first-history';
 import {
     CalendarOutlined,
     IdcardOutlined,
@@ -8,10 +9,14 @@ import {
     TrophyFilled,
 } from '@ant-design/icons';
 import { JointNotification } from '@components/joint-notification';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { ModalError } from '@components/modal-error';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch, useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { signOut } from '@redux/reducers/auth-slice';
+import { setTraining } from '@redux/reducers/training-slice';
 import { appSelector } from '@redux/selectors';
+import { useLazyGetTrainingQuery } from '@redux/services/training-service';
+import { PATH } from '@routes/path';
 import { Button, Layout, Menu } from 'antd';
 import cn from 'classnames';
 
@@ -22,96 +27,114 @@ import styles from './sider.module.scss';
 const { Sider: SiderAntd } = Layout;
 const items = [
     {
-        key: '1',
+        key: PATH.CALENDAR,
         icon: <CalendarOutlined />,
-        label: <Link to={PATH.CALENDAR}>Календарь</Link>,
+        label: <span>Календарь</span>,
     },
     {
-        key: '2',
+        key: PATH.TRAINING,
         icon: <JointNotification />,
-        label: <Link to={PATH.TRAINING}>Тренировки</Link>,
+        label: <span>Тренировки</span>,
     },
     {
-        key: '3',
+        key: PATH.ACHIEVEMENTS,
         icon: <TrophyFilled />,
-        label: <Link to=''>Достижения</Link>,
+        label: <span data-test-id={DATA_TEST_ID.SIDEBAR_ACHIEVEMENTS}>Достижения</span>,
     },
     {
-        key: '4',
+        key: PATH.PROFILE,
         icon: <IdcardOutlined />,
-        label: <Link to={PATH.PROFILE}>Профиль</Link>,
+        label: <span>Профиль</span>,
     },
 ];
 
 export const Sider = () => {
+    const dispatch = useAppDispatch();
     const { isDesktopVersion } = useAppSelector(appSelector);
     const [collapsed, setCollapsed] = useState(true);
-    const dispatch = useAppDispatch();
+
+    const [getTraining, { isError }] = useLazyGetTrainingQuery();
+
+    const handleItemClick = async ({ key }: { key: string }) => {
+        if (key === PATH.PROFILE) dispatch(push(key));
+        else {
+            const { data: training } = await getTraining();
+
+            if (training) {
+                dispatch(setTraining(training));
+                dispatch(push(key));
+            }
+        }
+    };
 
     const signOutHandler = () => dispatch(signOut());
     const setCollapsedHandler = () => setCollapsed(!collapsed);
 
     return (
-        <SiderAntd
-            trigger={null}
-            theme='light'
-            collapsed={collapsed}
-            className={styles.menu}
-            width={isDesktopVersion ? '208' : '106'}
-            collapsedWidth={isDesktopVersion ? '64' : '1'}
-        >
-            <div
-                className={cn(styles.menuWrapper, {
-                    [styles.menuWrapperCollapsed]: !collapsed,
-                })}
+        <Fragment>
+            <SiderAntd
+                trigger={null}
+                theme='light'
+                collapsed={collapsed}
+                className={styles.menu}
+                width={isDesktopVersion ? '208' : '106'}
+                collapsedWidth={isDesktopVersion ? '64' : '1'}
             >
-                <div>
-                    <Link to='/' className={styles.logoWrapper}>
-                        <div className={collapsed ? styles.logoSmall : styles.logo} />
-                    </Link>
-                    <Menu
-                        mode='inline'
-                        selectable={false}
-                        inlineIndent={0}
-                        className={styles.menuWrapperItem}
-                        items={items}
-                    />
-
-                    <div className={styles.btnClose}>
-                        <Button
-                            type='link'
-                            data-test-id={
-                                isDesktopVersion
-                                    ? DATA_TEST_ID.SIDER_SWITCH
-                                    : DATA_TEST_ID.SIDER_SWITCH_MOBILE
-                            }
-                            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                            className={styles.siderBtn}
-                            onClick={setCollapsedHandler}
+                <div
+                    className={cn(styles.menuWrapper, {
+                        [styles.menuWrapperCollapsed]: !collapsed,
+                    })}
+                >
+                    <div>
+                        <Link to='/' className={styles.logoWrapper}>
+                            <div className={collapsed ? styles.logoSmall : styles.logo} />
+                        </Link>
+                        <Menu
+                            mode='inline'
+                            selectable={false}
+                            inlineIndent={0}
+                            className={styles.menuWrapperItem}
+                            onClick={handleItemClick}
+                            items={items}
                         />
+
+                        <div className={styles.btnClose}>
+                            <Button
+                                type='link'
+                                data-test-id={
+                                    isDesktopVersion
+                                        ? DATA_TEST_ID.SIDER_SWITCH
+                                        : DATA_TEST_ID.SIDER_SWITCH_MOBILE
+                                }
+                                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                                className={styles.siderBtn}
+                                onClick={setCollapsedHandler}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.exitWrapper}>
+                        <Link className={styles.exit} to={PATH.AUTH} onClick={signOutHandler}>
+                            <img
+                                className={cn(styles.exit, {
+                                    [styles.exitImg]: collapsed,
+                                    [styles.exitImgHide]: !collapsed,
+                                })}
+                                src={ExitPNG}
+                                alt='exit'
+                            />
+                            <span
+                                className={cn(styles.exit, {
+                                    [styles.open]: !collapsed,
+                                    [styles.hide]: collapsed,
+                                })}
+                            >
+                                Выход
+                            </span>
+                        </Link>
                     </div>
                 </div>
-                <div className={styles.exitWrapper}>
-                    <Link className={styles.exit} to={PATH.AUTH} onClick={signOutHandler}>
-                        <img
-                            className={cn(styles.exit, {
-                                [styles.exitImg]: collapsed,
-                                [styles.exitImgHide]: !collapsed,
-                            })}
-                            src={ExitPNG}
-                            alt='exit'
-                        />
-                        <span
-                            className={cn(styles.exit, {
-                                [styles.open]: !collapsed,
-                                [styles.hide]: collapsed,
-                            })}
-                        >
-                            Выход
-                        </span>
-                    </Link>
-                </div>
-            </div>
-        </SiderAntd>
+            </SiderAntd>
+            <ModalError isError={isError} />
+        </Fragment>
     );
 };

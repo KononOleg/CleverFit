@@ -1,0 +1,44 @@
+@import '../../../../styles/variables.scss';
+
+.activityBlock {
+    display: flex;
+    align-items: center;
+    gap: $gap-xl 151px;
+    padding-top: $gap-s;
+
+    .column {
+        width: 100%;
+        max-width: 520px;
+        height: 376px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.15);
+
+        canvas {
+            max-width: 100% !important;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+
+        .column {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 830px) {
+        padding: 0;
+
+        .column {
+            height: 236px;
+        }
+    }
+}
+
+.activityBlockFullSize {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .column {
+        max-width: 100%;
+    }
+}

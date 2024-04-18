@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { ModalRequestError } from '@components/modal-request-error';
-import { API_HOST, API_PATH, DATA_TEST_ID, HttpStatusCode } from '@constants/index';
+import { API_HOST, API_PATH, DATA_TEST_ID, HTTP_STATUS_CODE } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector, authSelector } from '@redux/selectors';
 import { getBase64 } from '@utils/index';
@@ -52,7 +52,7 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
     const onCloseModal = () => setIsBigFileError(false);
     const handleChange = ({ fileList: newFileList }: { fileList: UploadFile[] }) => {
         setFileList(newFileList);
-        if (newFileList[0].error?.status === HttpStatusCode.CONFLICT) setIsBigFileError(true);
+        if (newFileList[0].error?.status === HTTP_STATUS_CODE.CONFLICT) setIsBigFileError(true);
     };
 
     return (
@@ -75,7 +75,7 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
                 </Upload>
             </Form.Item>
             <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                <img alt='example' className={styles.PreviewImage} src={previewImage} />
+                <img alt='example' className={styles.previewImage} src={previewImage} />
             </Modal>
             <ModalRequestError
                 isError={isBigFileError}
@@ -92,13 +92,13 @@ export const UploadAvatar = ({ imgSrc }: Props) => {
 
 UploadAvatar.UploadButton = ({ isDesktopVersion }: { isDesktopVersion: boolean }) =>
     isDesktopVersion ? (
-        <button className={styles.UploadButton} type='button'>
+        <button className={styles.uploadButton} type='button'>
             <PlusOutlined />
-            <div className={styles.UploadText}>Загрузить фото профиля</div>
+            <div className={styles.uploadText}>Загрузить фото профиля</div>
         </button>
     ) : (
-        <div className={styles.MobileButton}>
-            <span className={styles.MobileText}>Загрузить фото профиля:</span>
+        <div className={styles.mobileButton}>
+            <span className={styles.mobileText}>Загрузить фото профиля:</span>
             <Button icon={<UploadOutlined />} size='large'>
                 Загрузить
             </Button>

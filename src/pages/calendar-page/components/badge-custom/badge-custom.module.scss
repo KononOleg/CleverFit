@@ -1,6 +1,6 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.BadgeCustomWrapper {
+.badgeCustomWrapper {
     height: 18px;
     display: flex;
     align-items: center;
@@ -10,13 +10,13 @@
         font-size: $font-size-xs;
     }
 
-    .BadgeCustomDisabled {
+    .badgeCustomDisabled {
         :global(.ant-badge-status-text) {
             color: $neutral-gray-6;
         }
     }
 
-    .ExerciseText {
+    .exerciseText {
         color: $neutral-gray-7;
     }
 }

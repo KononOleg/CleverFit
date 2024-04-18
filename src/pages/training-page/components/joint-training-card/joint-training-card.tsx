@@ -7,9 +7,9 @@ import { useSendInviteAnswerMutation } from '@redux/services/invite-service';
 import { Avatar, Button, Card } from 'antd';
 import cn from 'classnames';
 
-import { JointTrainig } from '../../../../types';
-
 import styles from './joint-training-card.module.scss';
+
+import { JointTrainig } from '@/types/index';
 
 type Props = {
     partner: JointTrainig;
@@ -51,17 +51,17 @@ export const JointTrainingCard = ({
 
     return (
         <Card
-            className={cn(styles.UserCard, {
-                [styles.UserCardSecond]: isMyPartner,
-                [styles.UserCardThird]: !isMyPartner,
-                [styles.UserCardFourth]: isRejected,
+            className={cn(styles.userCard, {
+                [styles.userCardSecond]: isMyPartner,
+                [styles.userCardThird]: !isMyPartner,
+                [styles.userCardFourth]: isRejected,
             })}
             key={partner.id}
             data-test-id={`${DATA_TEST_ID.JOINT_TRAINING_CARDS}${index}`}
             onClick={onClick}
         >
             <div>
-                <div className={styles.UserInfo}>
+                <div className={styles.userInfo}>
                     <Avatar
                         size={42}
                         alt={partner.name}
@@ -71,21 +71,21 @@ export const JointTrainingCard = ({
 
                     <h6>{highlight(partner.name)}</h6>
                 </div>
-                <div className={styles.Trainings}>
-                    <div className={styles.Training}>
-                        <span className={styles.TrainingType}>Тип тренировки:</span>
-                        <span className={styles.TrainingInfo}>{partner.trainingType}</span>
+                <div className={styles.trainings}>
+                    <div className={styles.training}>
+                        <span className={styles.trainingType}>Тип тренировки:</span>
+                        <span className={styles.trainingInfo}>{partner.trainingType}</span>
                     </div>
 
-                    <div className={styles.Training}>
-                        <span className={styles.TrainingType}>Средняя нагрузка:</span>
-                        <span className={styles.TrainingInfo}>
+                    <div className={styles.training}>
+                        <span className={styles.trainingType}>Средняя нагрузка:</span>
+                        <span className={styles.trainingInfo}>
                             {partner.avgWeightInWeek} кг/нед
                         </span>
                     </div>
                 </div>
                 {!isMyPartner && (
-                    <div className={styles.Buttons}>
+                    <div className={styles.buttons}>
                         <Button
                             block={true}
                             size='middle'
@@ -97,15 +97,15 @@ export const JointTrainingCard = ({
                         </Button>
 
                         {partner.status && (
-                            <div className={styles.Status}>
+                            <div className={styles.status}>
                                 {isPending && 'ожидает подтверждения'}
                                 {isAccepted && 'запрос одобрен'}
                                 {isRejected && 'запрос отклонен'}
                                 {isAccepted && (
-                                    <CheckCircleFilled className={styles.AcceptedStatus} />
+                                    <CheckCircleFilled className={styles.acceptedStatus} />
                                 )}
                                 {isRejected && (
-                                    <ExclamationCircleOutlined className={styles.RejectedStatus} />
+                                    <ExclamationCircleOutlined className={styles.rejectedStatus} />
                                 )}
                             </div>
                         )}

@@ -1,0 +1,36 @@
+@import '../../../../styles/variables.scss';
+
+.filterPanel {
+    margin-top: $gap-2s;
+    display: flex;
+    align-items: center;
+
+    gap: $gap-2xl;
+
+    .title {
+        max-width: 118px;
+        width: 100%;
+    }
+
+    .trainings {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-3s 0;
+    }
+
+    :global(.ant-tag) {
+        margin-right: $gap-s;
+        border: $gap-5xs solid $character-light-dividers;
+        line-height: $font-line-xs;
+    }
+
+    :global(.ant-tag-checkable-checked) {
+        background: $primary-light-1;
+        border: $gap-5xs solid $primary-light-3;
+        color: $primary-light-6;
+    }
+
+    @media (max-width: 1000px) {
+        align-items: flex-start;
+    }
+}

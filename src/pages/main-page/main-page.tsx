@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { ModalError } from '@components/modal-error';
-import { DATA_TEST_ID, PATH } from '@constants/index';
+import { DATA_TEST_ID } from '@constants/index';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { setTraining } from '@redux/reducers/training-slice';
+import { useLazyGetCurrentUserQuery } from '@redux/services/profile-service';
 import { useLazyGetTrainingQuery } from '@redux/services/training-service';
+import { PATH } from '@routes/path';
 import { Button } from 'antd';
 import cn from 'classnames';
 
@@ -15,15 +17,22 @@ export const MainPage = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [getTraining, { isError }] = useLazyGetTrainingQuery();
+    const [getTraining, { isError: isTrainingError }] = useLazyGetTrainingQuery();
+    const [getCurrentUser, { isError: isProfileError }] = useLazyGetCurrentUserQuery();
 
-    const onNavigate = async (route: string) => {
+    const onNavigateTraining = async (route: string) => {
         const { data: training } = await getTraining();
 
         if (training) {
             dispatch(setTraining(training));
             navigate(route);
         }
+    };
+
+    const onNavigateProfile = async () => {
+        const { data: profile } = await getCurrentUser();
+
+        if (profile) navigate(PATH.PROFILE);
     };
 
     return (
@@ -64,7 +73,7 @@ export const MainPage = () => {
                             type='text'
                             icon={<HeartFilled />}
                             data-test-id={DATA_TEST_ID.MENU_BUTTON_TRAINING}
-                            onClick={() => onNavigate(PATH.TRAINING)}
+                            onClick={() => onNavigateTraining(PATH.TRAINING)}
                         >
                             Тренировки
                         </Button>
@@ -76,7 +85,7 @@ export const MainPage = () => {
                             type='text'
                             icon={<CalendarOutlined />}
                             data-test-id={DATA_TEST_ID.MENU_BUTTON_CALENDAR}
-                            onClick={() => onNavigate(PATH.CALENDAR)}
+                            onClick={() => onNavigateTraining(PATH.CALENDAR)}
                         >
                             Календар
                         </Button>
@@ -88,13 +97,14 @@ export const MainPage = () => {
                             type='text'
                             icon={<IdcardOutlined />}
                             data-test-id={DATA_TEST_ID.MENU_BUTTON_PROFILE}
+                            onClick={() => onNavigateProfile()}
                         >
-                            <Link to={PATH.PROFILE}>Профиль</Link>
+                            Профиль
                         </Button>
                     </div>
                 </div>
             </div>
-            <ModalError isError={isError} />
+            <ModalError isError={isTrainingError || isProfileError} />
         </React.Fragment>
     );
 };

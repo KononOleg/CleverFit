@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Invite, JointTrainig, Nullable } from '../../types';
+import { Invite, JointTrainig, Nullable } from '@/types/index';
+
+
 
 type InviteState = {
     jointTrainigList: JointTrainig[];

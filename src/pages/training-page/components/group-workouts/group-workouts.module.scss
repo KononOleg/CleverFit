@@ -1,21 +1,21 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
 
-.GroupWorkouts {
+.groupWorkouts {
     display: flex;
     flex-direction: column;
     gap: $gap-xl;
 
-    .Description {
+    .description {
         padding: $gap-xl $gap-xl $gap-m;
         border: $gap-5xs solid $character-light-dividers;
         background: $neutral-gray-2;
         text-align: center;
 
-        .Title {
+        .title {
             color: $primary-light-9;
             margin-bottom: $gap-4xl;
         }
-        .Buttons {
+        .buttons {
             display: flex;
             justify-content: center;
             margin-top: $gap-l;
@@ -26,14 +26,11 @@
     }
 
     @media (max-width: 830px) {
-        .Description {
+        .description {
             padding: $gap-m $gap-4xs;
-
-            .Buttons {  
-                padding: 0;
-            }
         }
-        .Buttons {
+        .buttons {
+            padding: 0;
             flex-direction: column;
             align-items: center;
         }

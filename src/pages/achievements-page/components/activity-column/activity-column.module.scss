@@ -1,0 +1,91 @@
+@import '../../../../styles/variables.scss';
+
+.activityColumnPie {
+    width: 100% !important;
+
+    .title {
+        width: 194px !important;
+    }
+}
+
+.activityColumn {
+    width: 195px;
+
+    .title {
+        display: block;
+        width: 182px;
+    }
+
+    .titleWrapper {
+        display: flex;
+        align-items: center;
+
+        button {
+            height: $gap-m;
+            display: flex;
+            align-items: center;
+            padding: 0 $gap-m;
+        }
+    }
+
+    .activityWeek {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-2m;
+        margin-top: $gap-l;
+
+        .activityDay {
+            display: flex;
+            gap: $gap-m;
+            align-items: center;
+
+            .day {
+                width: 92px;
+            }
+
+            :global(.ant-badge-count) {
+                background: $primary-light-6;
+            }
+
+            :global(.ant-scroll-number) {
+                span {
+                    color: $neutral-gray-1;
+                }
+            }
+        }
+
+        .dayEmpty {
+            :global(.ant-scroll-number) {
+                span {
+                    color: $primary-light-6;
+                }
+            }
+
+            :global(.ant-badge-count) {
+                background: $primary-light-1;
+            }
+        }
+
+        .pieChart {
+            :global(.ant-badge-count) {
+                background: $character-light-error;
+            }
+
+            :global(.ant-scroll-number) {
+                span {
+                    color: $neutral-gray-1;
+                }
+            }
+        }
+    }
+
+    .activity {
+        font-weight: $font-weight-xl;
+    }
+}
+
+@media (max-width: 1000px) {
+    .activityColumn {
+        width: 100%;
+    }
+}

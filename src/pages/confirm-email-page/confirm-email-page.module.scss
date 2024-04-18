@@ -1,7 +1,7 @@
-@import '../../index.variables.scss';
-@import '../../index.global.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/index.global.scss';
 
-.Result {
+.result {
     :global(.ant-result-extra) {
         display: flex;
         align-items: center;

@@ -20,7 +20,7 @@ export const TariffSuccessModal = () => {
 
     return (
         <Modal
-            className={styles.TariffSuccessModal}
+            className={styles.tariffSuccessModal}
             open={open}
             closable={true}
             footer={false}
@@ -28,15 +28,15 @@ export const TariffSuccessModal = () => {
             centered={true}
             data-test-id={DATA_TEST_ID.TARIFF_MODAL_SUCCESS}
         >
-            <div className={styles.Wrapper}>
-                <CheckCircleFilled className={styles.Icon} />
+            <div className={styles.wrapper}>
+                <CheckCircleFilled className={styles.icon} />
                 <span>
                     <Typography.Title level={3}>Чек для оплаты у вас на почте</Typography.Title>
                     Мы отправили инструкцию для оплаты вам на e-mail
-                    <span className={styles.Email}>{profile?.email}</span>. После подтверждения
+                    <span className={styles.email}>{profile?.email}</span>. После подтверждения
                     оплаты войдите в приложение заново.
                 </span>
-                <span className={styles.Bottom}>Не пришло письмо? Проверьте папку Спам.</span>
+                <span className={styles.bottom}>Не пришло письмо? Проверьте папку Спам.</span>
             </div>
         </Modal>
     );

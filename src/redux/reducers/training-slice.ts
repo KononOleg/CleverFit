@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Exercise, Nullable, Training, TrainingList } from '../../types';
+import { Exercise, Nullable, Training, TrainingList } from '@/types/index';
+
+
 
 type AuthState = {
     training: Training[];

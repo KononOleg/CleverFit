@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PATH } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { ModalFeedback } from '@pages/feedbacks-page/components/modal-feedback';
 import { profileSelector } from '@redux/selectors';
 import { useGetTariffListQuery } from '@redux/services/profile-service';
 import { useGetTrainingListQuery } from '@redux/services/training-service';
+import { PATH } from '@routes/path';
 import { Button, Card } from 'antd';
 import moment from 'moment';
 
@@ -35,7 +35,7 @@ export const SettingsPage = () => {
 
     return (
         <React.Fragment>
-            <Card className={styles.SettingsPage}>
+            <Card className={styles.settingsPage}>
                 <TariffCards
                     handleOpen={openTariffSiderHandler}
                     isProUser={isProUser}
@@ -43,7 +43,7 @@ export const SettingsPage = () => {
                     day={day}
                 />
                 <TariffOptions isProUser={isProUser} />
-                <div className={styles.Buttons}>
+                <div className={styles.buttons}>
                     <Button type='primary' onClick={openNewFeedbackHandler}>
                         Написать отзыв
                     </Button>

@@ -1,8 +1,8 @@
 import { Select } from 'antd';
 
-import { Nullable, PeriodOptions, TrainingList } from '../../../../types';
-
 import styles from './training-list-select.module.scss';
+
+import { Nullable, PeriodOptions, TrainingList } from '@/types/index';
 
 type Props = {
     trainingList: TrainingList | PeriodOptions[];
@@ -31,7 +31,7 @@ export const TrainingListSelect = ({
     return (
         <Select
             defaultValue={defaultValue || 'Выбор типа тренировки'}
-            className={styles.TrainingSelect}
+            className={styles.trainingSelect}
             options={options}
             onChange={onChange}
             data-test-id={dataTestId}

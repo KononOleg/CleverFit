@@ -29,9 +29,9 @@ export const FeedbacksPage = () => {
                 (isEmptyFeedbacks ? (
                     <NoFeedbacks handleOpenNewFeedback={handleOpenNewFeedback} />
                 ) : (
-                    <div className={styles.FeedbacksWrapper}>
+                    <div className={styles.feedbacksWrapper}>
                         <div
-                            className={classNames(styles.Feedbacks, {
+                            className={classNames(styles.feedbacks, {
                                 [styles.FeedbacksAll]: isAllFeedbacks,
                             })}
                         >
@@ -41,7 +41,7 @@ export const FeedbacksPage = () => {
                                     <FeedbackCard key={feedback.id} {...feedback} />
                                 ))}
                         </div>
-                        <div className={styles.Buttons}>
+                        <div className={styles.buttons}>
                             <Button
                                 type='primary'
                                 onClick={handleOpenNewFeedback}

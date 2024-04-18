@@ -1,10 +1,11 @@
-@import '../../../../index.variables.scss';
+@import '../../../../styles/variables.scss';
+
 :global(.ant-modal-mask) {
     background: $background !important;
 }
 
-.JointTrainingModal {
-    .UserInfo {
+.jointTrainingModal {
+    .userInfo {
         width: 239px;
         display: flex;
         gap: $gap-xs;
@@ -23,12 +24,12 @@
         padding: $gap-6xl $gap-4xl;
     }
 
-    .Block {
+    .block {
         display: flex;
         align-items: center;
     }
 
-    .Status {
+    .status {
         width: 239px;
         display: flex;
         gap: $gap-xs;
@@ -38,24 +39,24 @@
         }
     }
 
-    .Trainings {
+    .trainings {
         display: flex;
         flex-direction: column;
         gap: $gap-2xs;
 
-        .Training {
+        .training {
             display: flex;
             align-items: center;
             gap: $gap-s;
 
-            .TrainingInfo {
+            .trainingInfo {
                 font-size: $font-size-s;
                 font-weight: $font-weight-l;
                 line-height: $font-line-s;
                 color: $primary-light-6;
             }
 
-            .TrainingType {
+            .trainingType {
                 width: 110px;
                 font-size: $font-size-xs;
                 font-weight: $font-weight-xs;
@@ -71,17 +72,17 @@
             padding: 16px 12px;
         }
 
-        .Block {
+        .block {
             flex-direction: column;
             align-items: flex-start;
             gap: $gap-s;
         }
 
-        .Block:last-child {
+        .block:last-child {
             flex-direction: column-reverse;
             align-items: center;
 
-            .Status {
+            .status {
                 width: 100%;
                 justify-content: center;
             }

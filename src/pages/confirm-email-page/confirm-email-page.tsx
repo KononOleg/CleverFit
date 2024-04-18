@@ -31,7 +31,7 @@ export const ConfirmEmailPage = () => {
     return (
         <React.Fragment>
             <Result
-                className={styles.Result}
+                className={styles.result}
                 status={isError ? 'error' : 'info'}
                 title={`${isError ? 'Неверный код.' : ''} Введите код для восстановления аккаунта`}
                 subTitle={
