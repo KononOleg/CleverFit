@@ -4,6 +4,7 @@ import { DDDD } from '@constants/index';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { appSelector } from '@redux/selectors';
 import { getWeekDays } from '@utils/get-week-days';
+import { sortWeekday } from '@utils/sort-weekday';
 import { Badge, Button } from 'antd';
 import cn from 'classnames';
 import moment from 'moment';
@@ -17,19 +18,23 @@ type Props = {
     title: string;
     isPieChart?: boolean;
     isFullSize?: boolean;
+    key?: string;
 };
 
-export const ActivityColumn = ({ activityList, title, isPieChart, isFullSize }: Props) => {
+export const ActivityColumn = ({ activityList, title, isPieChart, isFullSize, key }: Props) => {
     const { isDesktopVersion } = useAppSelector(appSelector);
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const handleCollapsed = () => setIsCollapsed((prevState) => !prevState);
+
+    const showActivityWeek = (!isDesktopVersion && !isCollapsed) || isDesktopVersion || !isFullSize;
 
     return (
         <div
             className={cn(styles.activityColumn, {
                 [styles.activityColumnPie]: isPieChart,
             })}
+            key={key}
         >
             <div className={styles.titleWrapper}>
                 <span className={styles.title}>{title}</span>
@@ -39,14 +44,14 @@ export const ActivityColumn = ({ activityList, title, isPieChart, isFullSize }: 
                     </Button>
                 )}
             </div>
-            {((!isDesktopVersion && !isCollapsed) || isDesktopVersion || !isFullSize) && (
+            {showActivityWeek && (
                 <div className={styles.activityWeek}>
-                    {activityList.map(({ date, activity, name }, index) => (
+                    {sortWeekday(activityList).map(({ date, activityPerDay, name }, index) => (
                         <div className={styles.activityDay} key={date}>
                             <Badge
                                 count={index + 1}
                                 className={cn({
-                                    [styles.dayEmpty]: !activity,
+                                    [styles.dayEmpty]: !activityPerDay,
                                     [styles.pieChart]: isPieChart,
                                 })}
                                 size='small'
@@ -59,7 +64,7 @@ export const ActivityColumn = ({ activityList, title, isPieChart, isFullSize }: 
                                 <span className={styles.activity}>{name}</span>
                             ) : (
                                 <span className={styles.activity}>
-                                    {activity ? `${activity} кг` : ''}
+                                    {activityPerDay ? `${activityPerDay} кг` : ''}
                                 </span>
                             )}
                         </div>

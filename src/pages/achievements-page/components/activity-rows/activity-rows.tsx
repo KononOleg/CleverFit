@@ -30,6 +30,7 @@ export const ActivityRows = ({ activityList, isFullSize, isPieChart, title }: Pr
                             activityList={activityList.slice(startIndex, endIndex)}
                             title={`Неделя ${startDay}-${endDay}`}
                             isFullSize={isFullSize}
+                            key={startDay}
                         />
                     );
                 })

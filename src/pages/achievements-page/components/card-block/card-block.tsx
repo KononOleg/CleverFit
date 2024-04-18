@@ -1,4 +1,4 @@
-import { calculateActivityDate } from '@utils/calculate-activity-date';
+import { calculateActivityData } from '@utils/calculate-activity-data';
 import { Card, Typography } from 'antd';
 
 import styles from './card-block.module.scss';
@@ -11,7 +11,7 @@ type Props = {
 
 export const CardBlock = ({ activityList }: Props) => {
     const { totalLoad, loadPerDay, totalReplays, totalApproaches } =
-        calculateActivityDate(activityList);
+        calculateActivityData(activityList);
 
     const cardData = [
         { id: 1, value: totalLoad, description: 'Общая нагрузка, кг' },

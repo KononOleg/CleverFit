@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useLayoutEffect, useState } from 'react';
 import { useAppSelector } from '@hooks/typed-react-redux-hooks';
 import { trainingSelector } from '@redux/selectors';
 import { getActivityList } from '@utils/get-activity-list';
@@ -24,7 +24,7 @@ export const Achievements = ({ period }: Props) => {
 
     const isEmptyActivityList = activityList.length === 0;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setActivityList(getActivityList(training, period, selectedTraining));
     }, [period, selectedTraining, training]);
 

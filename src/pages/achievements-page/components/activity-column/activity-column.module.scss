@@ -4,13 +4,17 @@
     width: 100% !important;
 
     .title {
-        display: block;
-        width: 194px;
+        width: 194px !important;
     }
 }
 
 .activityColumn {
-    width: 182px;
+    width: 195px;
+
+    .title {
+        display: block;
+        width: 182px;
+    }
 
     .titleWrapper {
         display: flex;

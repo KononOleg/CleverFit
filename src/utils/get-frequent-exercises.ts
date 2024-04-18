@@ -37,6 +37,8 @@ export const getFrequentExercises = (activityList: ActivityList) => {
             replays: 0,
             approaches: 0,
             exercises: [],
+            activityPerDay: 0,
+            names: [],
         });
     }
 

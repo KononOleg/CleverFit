@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { Training, TrainingType } from '../types';
+import { Exercise, Training, TrainingType } from '../types';
 
 export const getActivityList = (
     training: Training[],
@@ -12,7 +12,7 @@ export const getActivityList = (
     const days: string[] = [];
 
     if (period === 'week') {
-        const weekStart = currentDate.startOf('week');
+        const weekStart = currentDate.clone().subtract(6, 'days').startOf('day');
 
         Array(7)
             .fill(0)
@@ -39,16 +39,22 @@ export const getActivityList = (
     if (filteredTraining.length === 0) return [];
 
     return days.map((day) => {
-        const trainingFind = filteredTraining.find(({ date }) => moment(date).isSame(day, 'day'));
+        const trainingFind = filteredTraining.filter(({ date }) => moment(date).isSame(day, 'day'));
 
         let activity = 0;
         let replays = 0;
         let approaches = 0;
+        const trainingExercises: Exercise[] = [];
+        const trainingNames: string[] = [];
 
-        trainingFind?.exercises.forEach((exercises) => {
-            activity += exercises.weight * exercises.replays * exercises.approaches;
-            replays += exercises.replays;
-            approaches += exercises.approaches;
+        trainingFind.forEach(({ exercises, name }) => {
+            trainingNames.push(name);
+            exercises.forEach((exercise) => {
+                activity += exercise.weight * exercise.replays * exercise.approaches;
+                replays += exercise.replays;
+                approaches += exercise.approaches;
+                trainingExercises.push(exercise);
+            });
         });
 
         return {
@@ -56,8 +62,10 @@ export const getActivityList = (
             activity,
             replays,
             approaches,
-            name: trainingFind?.name || '',
-            exercises: trainingFind?.exercises || [],
+            activityPerDay: activity / trainingExercises.length,
+            name: '',
+            exercises: trainingExercises,
+            names: trainingNames,
         };
     });
 };

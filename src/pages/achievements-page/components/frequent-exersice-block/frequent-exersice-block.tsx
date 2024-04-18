@@ -26,8 +26,9 @@ export const FrequentExersiceBlock = ({ activityList }: Props) => {
                 style: {
                     fontSize: 16,
                     fill: '#000',
+                    position: 'outside',
+                    connector: false,
                 },
-                offset: 30,
             },
         ],
         style: {

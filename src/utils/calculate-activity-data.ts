@@ -1,6 +1,6 @@
 import { ActivityList } from '../types';
 
-export const calculateActivityDate = (activityList: ActivityList) => {
+export const calculateActivityData = (activityList: ActivityList) => {
     let totalLoad = 0;
     let totalReplays = 0;
     let totalApproaches = 0;

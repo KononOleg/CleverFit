@@ -86,6 +86,8 @@ export type From = {
 export type Activity = {
     date: string;
     activity: number;
+    activityPerDay: number;
+    names: string[];
     replays: number;
     approaches: number;
     name: string;

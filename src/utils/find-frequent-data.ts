@@ -24,17 +24,19 @@ export const findFrequentData = (activityList: ActivityList) => {
             }
         });
 
-        const trainingName = training.name;
+        training.names.forEach((name) => {
+            const trainingName = name;
 
-        if (trainingName) {
-            if (trainingMap[trainingName]) trainingMap[trainingName] += 1;
-            else trainingMap[trainingName] = 1;
+            if (trainingName) {
+                if (trainingMap[trainingName]) trainingMap[trainingName] += 1;
+                else trainingMap[trainingName] = 1;
 
-            if (trainingMap[trainingName] > maxTrainingCount) {
-                mostFrequentTraining = trainingName;
-                maxTrainingCount = trainingMap[trainingName];
+                if (trainingMap[trainingName] > maxTrainingCount) {
+                    mostFrequentTraining = trainingName;
+                    maxTrainingCount = trainingMap[trainingName];
+                }
             }
-        }
+        });
     });
 
     return { mostFrequentTraining, mostFrequentExercise };
